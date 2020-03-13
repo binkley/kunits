@@ -2,6 +2,14 @@
 
 Units of measurement in Kotlin
 
+# Build
+
+On Mac, GNU coreutils can cause issues with `stty`.  Run this way:
+
+```
+$ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
+```
+
 ## Reading
 
 * [_Physikal_](https://github.com/Tenkiv/Physikal)
