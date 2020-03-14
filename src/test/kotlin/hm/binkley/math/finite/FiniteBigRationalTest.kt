@@ -6,6 +6,8 @@ import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.FiniteBigRational.Companion.TEN
 import hm.binkley.math.finite.FiniteBigRational.Companion.TWO
 import hm.binkley.math.finite.FiniteBigRational.Companion.ZERO
+import java.math.BigDecimal
+import java.math.BigInteger
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotEquals
@@ -14,8 +16,6 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.math.BigDecimal
-import java.math.BigInteger
 
 private typealias BInt = BigInteger
 private typealias BDouble = BigDecimal
