@@ -20,8 +20,10 @@ object Poppyseeds : EnglishLengths<Poppyseeds>("Poppyseed") {
 class Poppyseed(value: FiniteBigRational) :
     Measure<Poppyseeds>(Poppyseeds, value)
 
-inline val Int.poppyseed
+inline val Int.poppyseeds
     get() = Poppyseed(this over 1)
+inline val FiniteBigRational.poppyseeds
+    get() = this
 
 object Barleycorns : EnglishLengths<Barleycorns>("Barleycorn") {
     override fun new(value: FiniteBigRational) = Barleycorn(value)
@@ -31,8 +33,10 @@ object Barleycorns : EnglishLengths<Barleycorns>("Barleycorn") {
 class Barleycorn(value: FiniteBigRational) :
     Measure<Barleycorns>(Barleycorns, value)
 
-inline val Int.barleycorn
+inline val Int.barleycorns
     get() = Barleycorn(this over 1)
+inline val FiniteBigRational.barleycorns
+    get() = Barleycorn(this)
 
 object Inches : EnglishLengths<Inches>("Inch") {
     override fun new(value: FiniteBigRational) = Inch(value)
@@ -42,8 +46,10 @@ object Inches : EnglishLengths<Inches>("Inch") {
 class Inch(value: FiniteBigRational) :
     Measure<Inches>(Inches, value)
 
-inline val Int.inch
+inline val Int.inches
     get() = Inch(this over 1)
+inline val FiniteBigRational.inches
+    get() = Inch(this)
 
 object Sticks : EnglishLengths<Sticks>("Stick") {
     override fun new(value: FiniteBigRational) = Stick(value)
@@ -53,8 +59,10 @@ object Sticks : EnglishLengths<Sticks>("Stick") {
 class Stick(value: FiniteBigRational) :
     Measure<Sticks>(Sticks, value)
 
-inline val Int.stick
+inline val Int.sticks
     get() = Stick(this over 1)
+inline val FiniteBigRational.sticks
+    get() = Stick(this)
 
 object Hands : EnglishLengths<Hands>("Hand") {
     override fun new(value: FiniteBigRational) = Hand(value)
@@ -64,8 +72,10 @@ object Hands : EnglishLengths<Hands>("Hand") {
 class Hand(value: FiniteBigRational) :
     Measure<Hands>(Hands, value)
 
-inline val Int.hand
+inline val Int.hands
     get() = Hand(this over 1)
+inline val FiniteBigRational.hands
+    get() = Hand(this)
 
 object Feet : EnglishLengths<Feet>("Foot") {
     override fun new(value: FiniteBigRational) = Foot(value)
@@ -75,8 +85,10 @@ object Feet : EnglishLengths<Feet>("Foot") {
 class Foot(value: FiniteBigRational) :
     Measure<Feet>(Feet, value)
 
-inline val Int.foot
+inline val Int.feet
     get() = Foot(this over 1)
+inline val FiniteBigRational.feet
+    get() = Foot(this)
 
 object Yards : EnglishLengths<Yards>("Yard") {
     override fun new(value: FiniteBigRational) = Yard(value)
@@ -86,8 +98,10 @@ object Yards : EnglishLengths<Yards>("Yard") {
 class Yard(value: FiniteBigRational) :
     Measure<Yards>(Yards, value)
 
-inline val Int.yard
+inline val Int.yards
     get() = Yard(this over 1)
+inline val FiniteBigRational.yards
+    get() = Yard(this)
 
 object Fathoms : EnglishLengths<Fathoms>("Fathom") {
     override fun new(value: FiniteBigRational) = Fathom(value)
@@ -97,8 +111,10 @@ object Fathoms : EnglishLengths<Fathoms>("Fathom") {
 class Fathom(value: FiniteBigRational) :
     Measure<Fathoms>(Fathoms, value)
 
-inline val Int.fathom
+inline val Int.fathoms
     get() = Fathom(this over 1)
+inline val FiniteBigRational.fathoms
+    get() = Fathom(this)
 
 /** There is a clever way to do this, but this is simple if tedious. */
 private val ratios = mapOf(

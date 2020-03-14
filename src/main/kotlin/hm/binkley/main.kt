@@ -11,7 +11,7 @@ import hm.binkley.kunit.english.Sticks
 import hm.binkley.kunit.english.Yards
 import hm.binkley.kunit.english.minus
 import hm.binkley.kunit.english.plus
-import hm.binkley.kunit.english.poppyseed
+import hm.binkley.kunit.english.poppyseeds
 import hm.binkley.kunit.english.to
 import hm.binkley.kunit.times
 import hm.binkley.kunit.unaryMinus
@@ -34,7 +34,7 @@ fun main() {
     println()
     println("UNITS AND MEASURES")
 
-    val m1 = 120.poppyseed
+    val m1 = 120.poppyseeds
 
     println(+m1)
     println(-m1)
