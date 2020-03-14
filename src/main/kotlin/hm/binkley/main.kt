@@ -1,5 +1,21 @@
 package hm.binkley
 
+import hm.binkley.kunit.div
+import hm.binkley.kunit.english.Barleycorns
+import hm.binkley.kunit.english.Fathoms
+import hm.binkley.kunit.english.Feet
+import hm.binkley.kunit.english.Hands
+import hm.binkley.kunit.english.Inches
+import hm.binkley.kunit.english.Poppyseeds
+import hm.binkley.kunit.english.Sticks
+import hm.binkley.kunit.english.Yards
+import hm.binkley.kunit.english.minus
+import hm.binkley.kunit.english.plus
+import hm.binkley.kunit.english.poppyseed
+import hm.binkley.kunit.english.to
+import hm.binkley.kunit.times
+import hm.binkley.kunit.unaryMinus
+import hm.binkley.kunit.unaryPlus
 import hm.binkley.math.BigRational.Companion.NEGATIVE_INFINITY
 import hm.binkley.math.BigRational.Companion.NaN
 import hm.binkley.math.BigRational.Companion.ONE
@@ -10,11 +26,31 @@ import hm.binkley.math.downTo
 import hm.binkley.math.over
 import hm.binkley.math.rangeTo
 import hm.binkley.math.toBigRational
-import java.math.BigDecimal
 import lombok.Generated
+import java.math.BigDecimal
 
 @Generated // Lie to JaCoCo
 fun main() {
+    println()
+    println("UNITS AND MEASURES")
+
+    val m1 = 120.poppyseed
+
+    println(+m1)
+    println(-m1)
+    println(m1.to(Poppyseeds))
+    println(m1.to(Barleycorns))
+    println(m1 + m1)
+    println(m1 + m1.to(Barleycorns))
+    println(m1.to(Hands) - m1)
+    println(m1 * 3)
+    println(m1 / 3)
+    println(m1.to(Inches).to(Sticks))
+    println((m1.to(Yards) + m1.to(Feet) - m1.to(Barleycorns)).to(Fathoms))
+
+    println()
+    println("RATIONALS")
+
     println("ZERO is $ZERO")
     println("NaN is $NaN")
     println("POSITIVE_INFINITY is $POSITIVE_INFINITY")

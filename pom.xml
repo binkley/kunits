@@ -11,7 +11,7 @@
 
     <name>KUnit</name>
     <description>
-        General units for Kotlin
+        Units of measurement in Kotlin
     </description>
     <url>https://github.com/binkley/kunit</url>
     <licenses>

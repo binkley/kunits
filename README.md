@@ -8,7 +8,7 @@
 
 Units of measurement in Kotlin
 
-# Build
+## Build
 
 On Mac, GNU coreutils can cause issues with `stty`.  Run this way:
 
