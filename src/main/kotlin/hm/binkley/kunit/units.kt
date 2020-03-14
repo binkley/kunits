@@ -1,5 +1,11 @@
 package hm.binkley.kunit
 
+import hm.binkley.math.finite.FiniteBigRational
+import hm.binkley.math.finite.div
+import hm.binkley.math.finite.minus
+import hm.binkley.math.finite.plus
+import hm.binkley.math.finite.times
+import hm.binkley.math.finite.unaryMinus
 import java.util.Objects.hash
 
 abstract class Units<U : Units<U>>(

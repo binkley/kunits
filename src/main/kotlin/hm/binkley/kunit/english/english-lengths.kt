@@ -1,13 +1,13 @@
 package hm.binkley.kunit.english
 
-import hm.binkley.kunit.FiniteBigRational
-import hm.binkley.kunit.FiniteBigRational.Companion.ONE
 import hm.binkley.kunit.Measure
 import hm.binkley.kunit.Units
-import hm.binkley.kunit.minus
-import hm.binkley.kunit.over
-import hm.binkley.kunit.plus
-import hm.binkley.kunit.times
+import hm.binkley.math.finite.FiniteBigRational
+import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
+import hm.binkley.math.finite.minus
+import hm.binkley.math.finite.over
+import hm.binkley.math.finite.plus
+import hm.binkley.math.finite.times
 
 sealed class EnglishLengths<U : EnglishLengths<U>>(name: String) :
     Units<U>(name)
