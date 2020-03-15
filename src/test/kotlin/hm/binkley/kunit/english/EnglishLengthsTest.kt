@@ -82,11 +82,23 @@ internal class EnglishLengthsTest {
 
     @Test
     fun `should add`() {
-        assertEquals(3.poppyseeds + 4.inches, 51.poppyseeds)
+        assertEquals((3 over 1).poppyseeds + 4.inches, 51.poppyseeds)
     }
 
     @Test
     fun `should subtract`() {
         assertEquals(3.poppyseeds - 4.inches, (-45).poppyseeds)
+    }
+
+    @Test
+    fun `should pretty print`() {
+        assertEquals("1 poppyseeds", "${1.poppyseeds}")
+        assertEquals("1 barleycorns", "${1.barleycorns}")
+        assertEquals("1\"", "${1.inches}")
+        assertEquals("1 sticks", "${1.sticks}")
+        assertEquals("1 hh", "${1.hands}")
+        assertEquals("1'", "${1.feet}")
+        assertEquals("1 yd", "${1.yards}")
+        assertEquals("1 fm", "${1.fathoms}")
     }
 }

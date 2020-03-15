@@ -21,9 +21,9 @@ class Poppyseed(value: FiniteBigRational) :
     Measure<Poppyseeds>(Poppyseeds, value)
 
 inline val Int.poppyseeds
-    get() = Poppyseed(this over 1)
+    get() = (this over 1).poppyseeds
 inline val FiniteBigRational.poppyseeds
-    get() = this
+    get() = Poppyseed(this)
 
 object Barleycorns : EnglishLengths<Barleycorns>("Barleycorn") {
     override fun new(value: FiniteBigRational) = Barleycorn(value)
@@ -34,7 +34,7 @@ class Barleycorn(value: FiniteBigRational) :
     Measure<Barleycorns>(Barleycorns, value)
 
 inline val Int.barleycorns
-    get() = Barleycorn(this over 1)
+    get() = (this over 1).barleycorns
 inline val FiniteBigRational.barleycorns
     get() = Barleycorn(this)
 
@@ -47,7 +47,7 @@ class Inch(value: FiniteBigRational) :
     Measure<Inches>(Inches, value)
 
 inline val Int.inches
-    get() = Inch(this over 1)
+    get() = (this over 1).inches
 inline val FiniteBigRational.inches
     get() = Inch(this)
 
@@ -60,7 +60,7 @@ class Stick(value: FiniteBigRational) :
     Measure<Sticks>(Sticks, value)
 
 inline val Int.sticks
-    get() = Stick(this over 1)
+    get() = (this over 1).sticks
 inline val FiniteBigRational.sticks
     get() = Stick(this)
 
@@ -73,7 +73,7 @@ class Hand(value: FiniteBigRational) :
     Measure<Hands>(Hands, value)
 
 inline val Int.hands
-    get() = Hand(this over 1)
+    get() = (this over 1).hands
 inline val FiniteBigRational.hands
     get() = Hand(this)
 
@@ -86,7 +86,7 @@ class Foot(value: FiniteBigRational) :
     Measure<Feet>(Feet, value)
 
 inline val Int.feet
-    get() = Foot(this over 1)
+    get() = (this over 1).feet
 inline val FiniteBigRational.feet
     get() = Foot(this)
 
@@ -99,7 +99,7 @@ class Yard(value: FiniteBigRational) :
     Measure<Yards>(Yards, value)
 
 inline val Int.yards
-    get() = Yard(this over 1)
+    get() = (this over 1).yards
 inline val FiniteBigRational.yards
     get() = Yard(this)
 
@@ -112,7 +112,7 @@ class Fathom(value: FiniteBigRational) :
     Measure<Fathoms>(Fathoms, value)
 
 inline val Int.fathoms
-    get() = Fathom(this over 1)
+    get() = (this over 1).fathoms
 inline val FiniteBigRational.fathoms
     get() = Fathom(this)
 
@@ -185,10 +185,7 @@ private val ratios = mapOf(
 )
 
 fun <U : EnglishLengths<U>, V : EnglishLengths<V>> Measure<U>.to(other: V) =
-    other.new(
-        value * (ratios[other to unit]
-            ?: error("Missing ratio for $other from $unit"))
-    )
+    other.new(value * (ratios.getValue(other to unit)))
 
 // With automatic unit conversion -- for explicit conversion, remove these
 // definitions, and rely on Unit<*>'s definitions
