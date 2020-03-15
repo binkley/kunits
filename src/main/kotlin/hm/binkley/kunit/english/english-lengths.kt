@@ -20,9 +20,9 @@ object Poppyseeds : EnglishLengths<Poppyseeds>("Poppyseed") {
 class Poppyseed(value: FiniteBigRational) :
     Measure<Poppyseeds>(Poppyseeds, value)
 
-inline val Int.poppyseeds
+val Int.poppyseeds
     get() = (this over 1).poppyseeds
-inline val FiniteBigRational.poppyseeds
+val FiniteBigRational.poppyseeds
     get() = Poppyseed(this)
 
 object Barleycorns : EnglishLengths<Barleycorns>("Barleycorn") {
@@ -33,9 +33,9 @@ object Barleycorns : EnglishLengths<Barleycorns>("Barleycorn") {
 class Barleycorn(value: FiniteBigRational) :
     Measure<Barleycorns>(Barleycorns, value)
 
-inline val Int.barleycorns
+val Int.barleycorns
     get() = (this over 1).barleycorns
-inline val FiniteBigRational.barleycorns
+val FiniteBigRational.barleycorns
     get() = Barleycorn(this)
 
 object Inches : EnglishLengths<Inches>("Inch") {
@@ -46,9 +46,9 @@ object Inches : EnglishLengths<Inches>("Inch") {
 class Inch(value: FiniteBigRational) :
     Measure<Inches>(Inches, value)
 
-inline val Int.inches
+val Int.inches
     get() = (this over 1).inches
-inline val FiniteBigRational.inches
+val FiniteBigRational.inches
     get() = Inch(this)
 
 object Sticks : EnglishLengths<Sticks>("Stick") {
@@ -59,9 +59,9 @@ object Sticks : EnglishLengths<Sticks>("Stick") {
 class Stick(value: FiniteBigRational) :
     Measure<Sticks>(Sticks, value)
 
-inline val Int.sticks
+val Int.sticks
     get() = (this over 1).sticks
-inline val FiniteBigRational.sticks
+val FiniteBigRational.sticks
     get() = Stick(this)
 
 object Hands : EnglishLengths<Hands>("Hand") {
@@ -72,9 +72,9 @@ object Hands : EnglishLengths<Hands>("Hand") {
 class Hand(value: FiniteBigRational) :
     Measure<Hands>(Hands, value)
 
-inline val Int.hands
+val Int.hands
     get() = (this over 1).hands
-inline val FiniteBigRational.hands
+val FiniteBigRational.hands
     get() = Hand(this)
 
 object Feet : EnglishLengths<Feet>("Foot") {
@@ -85,9 +85,9 @@ object Feet : EnglishLengths<Feet>("Foot") {
 class Foot(value: FiniteBigRational) :
     Measure<Feet>(Feet, value)
 
-inline val Int.feet
+val Int.feet
     get() = (this over 1).feet
-inline val FiniteBigRational.feet
+val FiniteBigRational.feet
     get() = Foot(this)
 
 object Yards : EnglishLengths<Yards>("Yard") {
@@ -98,9 +98,9 @@ object Yards : EnglishLengths<Yards>("Yard") {
 class Yard(value: FiniteBigRational) :
     Measure<Yards>(Yards, value)
 
-inline val Int.yards
+val Int.yards
     get() = (this over 1).yards
-inline val FiniteBigRational.yards
+val FiniteBigRational.yards
     get() = Yard(this)
 
 /** There is a clever way to do this, but this is simple if tedious. */

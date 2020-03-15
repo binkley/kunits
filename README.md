@@ -16,6 +16,16 @@ On Mac, GNU coreutils can cause issues with `stty`.  Run this way:
 $ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
 ```
 
+## Problems
+
+The trivial properties for converting `Int` to English Units could be
+`inline`.  However
+[_Kotlin inline functions are not marked as covered_](https://github.com/jacoco/jacoco/issues/654)
+causes code coverage to fail.
+
+Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
+I removed `inline` for now, until JaCoCo resolves this issue.
+
 ## Kotlin Rational
 
 An immutable, infinite-precision `BigRational` and `FiniteBigRational` (ratio,
