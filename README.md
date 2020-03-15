@@ -9,17 +9,59 @@
 Units of measurement in Kotlin
 
 * [Build](#build)
+* [Design](#design)
 * [Problems](#problems)
 * [Kotlin rational](#kotlin-rational)
 * [Reading](#reading)
 
 ## Build
 
-On Mac, GNU coreutils can cause issues with `stty`.  Run this way:
+Try [`./run.sh`](run.sh) for a demonstration.
+
+There are no run-time dependencies.
+
+The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
+offered as a means to reproduce locally what CI does.
+
+This is, by default, a _quiet_ build.  That is, there is no output unless
+there is an error.  If you prefer to see messages from Maven as the build
+progresses, run this way:
+
+```
+$ /mvnw clean verify -Dorg.slf4j.simpleLogger.defaultLogLevel=INFO
+```
+
+With Batect on Mac, GNU coreutils installed by Homebrew can cause issues with
+`stty`.  Run this way to avoid this problem:
 
 ```
 $ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
 ```
+
+## Design
+
+KUnit provides abstractions for representing systems of units in Kotlin, and
+one quirky example,
+[_English units_](https://en.wikipedia.org/wiki/English_units).
+
+This abstraction provides the usual arithmetic operations amongst units, _eg_,
+additions, subtraction, multiplication, and division.
+
+The top-level API represents:
+
+- [`Units`](src/main/kotlin/hm/binkley/kunit/units.kt) representing units of
+measurement in the abstract with no quantities
+- [`Measure`](src/main/kotlin/hm/binkley/kunit/units.kt) representing
+measurements in the concrete of a given unit with a quantity expressed as a
+[`FiniteBigRational`](#kotlin-rational)
+
+The code shows a generic pattern for implementing a Unit System with
+[English units of length](src/main/kotlin/hm/binkley/kunit/english/english-lengths.kt)
+as the exemplar. The pattern can also be seen in
+[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt).
+
+The code relies heavily on `Int` and [`FiniteBigRational`](#kotlin-rational)
+for representing measurements, and conversion ratios between units.
 
 ## Problems
 
@@ -29,9 +71,10 @@ The trivial properties for converting `Int` to English Units could be
 causes code coverage to fail.
 
 Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
-I removed `inline` for now, until JaCoCo resolves this issue.  In hindsight, I
-wish `inline` were an annotation rather than a keyword: it should be a
-compiler hint, not a command.
+`inline` is removed for now, until JaCoCo resolves this issue.  In
+hindsight, one wishes `inline` were an annotation rather than a keyword: it
+should be a compiler hint, not a command, and the compiler should inline
+automatically, as it makes sense, without the programmer being explicit.
 
 ## Kotlin rational
 
@@ -41,18 +84,12 @@ fraction) class for Kotlin.
 There are two versions, `BigRational` and `FiniteBigRational`, providing
 pseudo-IEEE 754 and purely finite versions.
 
-This code is a "finger exercise", largely demonstrating Kotlin operator
-overloading and extension methods, and writing clean, clear, concise Kotlin.
-It also explores the impact of `NaN` (on the `BigRational` version , which is
-extensive), rather than raising an error on division by zero (as the
-`FiniteBigRational` version does).
+This code explores the impact of `NaN` on the `BigRational` version, which is
+extensive, rather than raising an error on division by zero.  The
+`FiniteBigRational` version is much simpler.
 
 A secondary goal is to model the Kotlin standard library, and Java's
 `BigDecimal` and `BigInteger` types, as well as `Number`.
-
-Try `./run.sh` for a demonstration.
-
-There are no run-time dependencies.
 
 ### Platform
 
