@@ -2,7 +2,6 @@ package hm.binkley
 
 import hm.binkley.kunit.div
 import hm.binkley.kunit.english.Barleycorns
-import hm.binkley.kunit.english.Fathoms
 import hm.binkley.kunit.english.Feet
 import hm.binkley.kunit.english.Hands
 import hm.binkley.kunit.english.Inches
@@ -46,7 +45,7 @@ fun main() {
     println(m1 * 3)
     println(m1 / 3)
     println(m1.to(Inches).to(Sticks))
-    println((m1.to(Yards) + m1.to(Feet) - m1.to(Barleycorns)).to(Fathoms))
+    println((m1.to(Yards) + m1.to(Feet) - m1.to(Barleycorns)).to(Hands))
 
     println()
     println("RATIONALS")
