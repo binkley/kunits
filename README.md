@@ -8,6 +8,11 @@
 
 Units of measurement in Kotlin
 
+* [Build](#build)
+* [Problems](#problems)
+* [Kotlin rational](#kotlin-rational)
+* [Reading](#reading)
+
 ## Build
 
 On Mac, GNU coreutils can cause issues with `stty`.  Run this way:
@@ -28,7 +33,7 @@ I removed `inline` for now, until JaCoCo resolves this issue.  In hindsight, I
 wish `inline` were an annotation rather than a keyword: it should be a
 compiler hint, not a command.
 
-## Kotlin Rational
+## Kotlin rational
 
 An immutable, infinite-precision `BigRational` and `FiniteBigRational` (ratio,
 fraction) class for Kotlin.
