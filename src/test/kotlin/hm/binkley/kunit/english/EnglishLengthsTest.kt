@@ -1,5 +1,9 @@
 package hm.binkley.kunit.english
 
+import hm.binkley.kunit.div
+import hm.binkley.kunit.times
+import hm.binkley.kunit.unaryMinus
+import hm.binkley.kunit.unaryPlus
 import hm.binkley.math.finite.over
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -65,13 +69,36 @@ internal class EnglishLengthsTest {
     }
 
     @Test
+    fun `should posite`() {
+        assertEquals((+1).feet, +(1.feet))
+    }
+
+    @Test
+    fun `should negate`() {
+        assertEquals((-1).feet, -(1.feet))
+    }
+
+    @Test
     fun `should add`() {
+        assertEquals(3.poppyseeds, 1.poppyseeds + 2.poppyseeds)
         assertEquals((3 over 1).poppyseeds + 4.inches, 51.poppyseeds)
     }
 
     @Test
     fun `should subtract`() {
+        assertEquals(1.poppyseeds, 3.poppyseeds - 2.poppyseeds)
         assertEquals(3.poppyseeds - 4.inches, (-45).poppyseeds)
+    }
+
+    @Test
+    fun `should multiply`() {
+        assertEquals(3.poppyseeds, 1.poppyseeds * 3)
+        assertEquals(3.poppyseeds, 3 * 1.poppyseeds)
+    }
+
+    @Test
+    fun `should divide`() {
+        assertEquals(1.poppyseeds, 3.poppyseeds / 3)
     }
 
     @Test

@@ -6,8 +6,10 @@ import hm.binkley.math.finite.minus
 import hm.binkley.math.finite.plus
 import hm.binkley.math.finite.times
 import hm.binkley.math.finite.unaryMinus
+import lombok.Generated
 import java.util.Objects.hash
 
+@Generated // Lie to JaCoCo
 abstract class Units<U : Units<U>>(
     val name: String
 ) {
@@ -25,6 +27,7 @@ abstract class Units<U : Units<U>>(
     override fun toString() = name
 }
 
+@Generated // Lie to JaCoCo
 abstract class Measure<U : Units<U>>(
     val unit: U,
     val value: FiniteBigRational
@@ -45,24 +48,20 @@ operator fun <U : Units<U>> Measure<U>.unaryPlus() = this
 operator fun <U : Units<U>> Measure<U>.unaryMinus() = unit.new(-value)
 
 /** Adds the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.plus(other: Measure<U>) =
-    unit.new(value + other.value)
-
-/** Adds the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.plus(addend: Int) =
-    unit.new(value + addend)
+operator fun <U : Units<U>> Measure<U>.plus(addend: Measure<U>) =
+    unit.new(value + addend.value)
 
 /** Subtracts the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.minus(other: Measure<U>) =
-    unit.new(value - other.value)
-
-/** Subtracts the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.minus(subtrahend: Int) =
-    unit.new(value - subtrahend)
+operator fun <U : Units<U>> Measure<U>.minus(subtrahend: Measure<U>) =
+    unit.new(value - subtrahend.value)
 
 /** Multiplies the measure, with the _left_ returned as units. */
 operator fun <U : Units<U>> Measure<U>.times(multiplicand: Int) =
     unit.new(value * multiplicand)
+
+/** Multiplies the measure, with the _right_ returned as units. */
+operator fun <U : Units<U>> Int.times(multiplicand: Measure<U>) =
+    multiplicand.unit.new(this * multiplicand.value)
 
 /** Divides the measure, with the _left_ returned as units. */
 operator fun <U : Units<U>> Measure<U>.div(divisor: Int) =
