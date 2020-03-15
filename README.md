@@ -24,7 +24,9 @@ The trivial properties for converting `Int` to English Units could be
 causes code coverage to fail.
 
 Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
-I removed `inline` for now, until JaCoCo resolves this issue.
+I removed `inline` for now, until JaCoCo resolves this issue.  In hindsight, I
+wish `inline` were an annotation rather than a keyword: it should be a
+compiler hint, not a command.
 
 ## Kotlin Rational
 
