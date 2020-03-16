@@ -31,12 +31,41 @@ progresses, run this way:
 $ /mvnw clean verify -Dorg.slf4j.simpleLogger.defaultLogLevel=INFO
 ```
 
+Use `./mvnw` or `./batect build` to build, run tests, and create a demo
+program.
+
+This works "out of the box", however, an important optimization is to avoid
+redownloading plugins and dependencies from within a Docker container.
+
+When using [batect](https://batect.dev/), either create a local cache
+directory, or link to your user Maven cache directory:
+
+```
+$ mkdir .maven-cache
+```
+
+(Redownloads all Maven components and dependencies, but one time only.)
+
+or:
+
+```
+$ ln -s ~/.m2 .maven-cache
+```
+
+(Shares Maven component and dependency downloads across projects.)
+
+The batect Docker container will use this cache.
+
 With Batect on Mac, GNU coreutils installed by Homebrew can cause issues with
 `stty`.  Run this way to avoid this problem:
 
 ```
 $ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
 ```
+
+### Platform
+
+This code is tested and verified on JDK 11 and JDK 13.
 
 ## Design
 
@@ -90,37 +119,6 @@ extensive, rather than raising an error on division by zero.  The
 
 A secondary goal is to model the Kotlin standard library, and Java's
 `BigDecimal` and `BigInteger` types, as well as `Number`.
-
-### Platform
-
-This code is tested and verified on JDK 11 and JDK 13.
-
-### Preparing
-
-Use `./mvnw` or `./batect build` to build, run tests, and create a demo
-program.
-
-This works "out of the box", however, an important optimization is to avoid
-redownloading plugins and dependencies from within a Docker container.
-
-When using [batect](https://batect.dev/), either create a local cache
-directory, or link to your user Maven cache directory:
-
-```
-$ mkdir .maven-cache
-```
-
-(Redownloads all Maven components and dependencies, but one time only.)
-
-or:
-
-```
-$ ln -s ~/.m2 .maven-cache
-```
-
-(Shares Maven component and dependency downloads across projects.)
-
-The batect Docker container will use this cache.
 
 ### Design choices
 
