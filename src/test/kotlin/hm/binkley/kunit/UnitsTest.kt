@@ -7,6 +7,13 @@ import org.junit.jupiter.api.Test
 
 internal class UnitsTest {
     @Test
+    fun `should be named`() {
+        assertEquals("Bar", Bars.name)
+        assertEquals("Bar", "$Bars")
+        assertEquals("1 bars", "${1.bars}")
+    }
+
+    @Test
     fun `should add`() {
         assertEquals(3.bars, 1.bars + 2.bars)
     }
