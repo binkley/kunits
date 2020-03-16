@@ -14,11 +14,6 @@ containers:
       home_directory: /home/container-user
 
 tasks:
-  clean:
-    description: Clean the project directory
-    run:
-      container: build-env
-      command: ./mvnw clean
   build:
     description: Build (and test) the program
     run:
