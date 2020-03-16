@@ -1,4 +1,4 @@
 /.idea/
 /*.iml
-/.maven-cache/
+/.maven-cache
 /target/
