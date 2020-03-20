@@ -87,12 +87,29 @@ measurements in the concrete of a given unit with a quantity expressed as a
 The code shows a generic pattern for implementing a Unit System with
 [English units of length](src/main/kotlin/hm/binkley/kunit/english/english-lengths.kt)
 as the exemplar. The pattern can also be seen in
-[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt).
+[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt) for a system of units
+with a single measurable unit:
+
+```kotlin
+internal sealed class Foos<U : Foos<U>>(name: String) : Units<U>(name)
+
+internal object Bars : Foos<Bars>("Bar") {
+    override fun new(value: FiniteBigRational) = Bar(value)
+    override fun format(value: FiniteBigRational) = "$value bars"
+}
+
+internal class Bar(value: FiniteBigRational) : Measure<Bars>(Bars, value)
+
+internal inline val Int.bars
+    get() = (this over 1).bars
+internal inline val FiniteBigRational.bars
+    get() = Bar(this)
+```
 
 The code relies heavily on `Int` and [`FiniteBigRational`](#kotlin-rational)
 for representing measurements, and conversion ratios between units.
 
-## Problems
+### Problems
 
 The trivial properties for converting `Int` to English Units could be
 `inline`.  However
