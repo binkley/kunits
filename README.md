@@ -65,7 +65,7 @@ $ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
 
 ### Platform
 
-This code is tested and verified on JDK 11 and JDK 13.
+The code passed tests on JDK 11, 13, and 14.
 
 ## Design
 
