@@ -111,6 +111,8 @@ for representing measurements, and conversion ratios between units.
 
 ### Problems
 
+#### Inline
+
 The trivial properties for converting `Int` to English Units could be
 `inline`.  However
 [_Kotlin inline functions are not marked as covered_](https://github.com/jacoco/jacoco/issues/654)
@@ -121,6 +123,11 @@ Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
 hindsight, one wishes `inline` were an annotation rather than a keyword: it
 should be a compiler hint, not a command, and the compiler should inline
 automatically, as it makes sense, without the programmer being explicit.
+
+#### Gaps
+
+The code has not yet explored conversions between systems of units, _eg_,
+between metric and English units.
 
 ## Kotlin rational
 
