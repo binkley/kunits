@@ -10,10 +10,10 @@ import hm.binkley.math.finite.over
 import hm.binkley.math.finite.plus
 import hm.binkley.math.finite.times
 
-sealed class EnglishLengths<L : EnglishLengths<L>>(
+sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,
     internal val poppyseeds: FiniteBigRational
-) : Lengths<L>(name)
+) : Lengths<U>(name)
 
 object Poppyseeds : EnglishLengths<Poppyseeds>("Poppyseed", ONE) {
     override fun new(value: FiniteBigRational) =

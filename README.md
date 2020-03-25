@@ -86,9 +86,13 @@ measurements in the concrete of a given unit with a quantity expressed as a
 
 The code shows a generic pattern for implementing a Unit System with
 [English units of length](src/main/kotlin/hm/binkley/kunit/system/english/length/english-lengths.kt)
-as the exemplar. The pattern can also be seen in
-[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt) for a system of units
-with a single measurable unit:
+as the real world exemplar, and
+[FFF units of length](src/main/kotlin/hm/binkley/kunit/system/fff/length/fff-lengths.kt),
+[FFF units of mass](src/main/kotlin/hm/binkley/kunit/system/fff/mass/fff-masses.kt),
+and
+[FFF units of time](src/main/kotlin/hm/binkley/kunit/system/fff/time/fff-times.kt),
+as a whimsical full system. The pattern can also be seen in
+[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt):
 
 ```kotlin
 internal sealed class Foos<U : Foos<U>>(name: String) : Units<U>(name)
@@ -432,6 +436,7 @@ continued fractions, `FiniteContinuedFraction`.
 * [_English units_](https://en.wikipedia.org/wiki/English_units)
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
 * [_PostCSS Imperial_](https://github.com/sebdeckers/postcss-imperial)
+* [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
 - [_Wheel of fractions_](https://en.wikipedia.org/wiki/Wheel_theory#Wheel_of_fractions)
 - [_Abstract algebra_](https://en.wikipedia.org/wiki/Abstract_algebra)
 - [_Projectively extended real line_](https://en.wikipedia.org/wiki/Projectively_extended_real_line)

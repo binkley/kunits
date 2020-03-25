@@ -87,7 +87,7 @@ internal class EnglishLengthsTest {
     @Test
     fun `should subtract`() {
         assertEquals(1.poppyseeds, 3.poppyseeds - 2.poppyseeds)
-        assertEquals(3.poppyseeds - 4.inches, (-45).poppyseeds)
+        assertEquals((3 over 1).poppyseeds - 4.inches, (-45).poppyseeds)
     }
 
     @Test

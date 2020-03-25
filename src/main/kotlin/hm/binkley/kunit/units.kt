@@ -28,19 +28,19 @@ abstract class Units<U : Units<U>>(
 }
 
 @Generated // Lie to JaCoCo
-abstract class Lengths<L : Lengths<L>>(
+abstract class Lengths<U : Lengths<U>>(
     name: String
-) : Units<L>(name)
+) : Units<U>(name)
 
 @Generated // Lie to JaCoCo
-abstract class Masses<M : Masses<M>>(
+abstract class Masses<U : Masses<U>>(
     name: String
-) : Units<M>(name)
+) : Units<U>(name)
 
 @Generated // Lie to JaCoCo
-abstract class Times<T : Times<T>>(
+abstract class Times<U : Times<U>>(
     name: String
-) : Units<T>(name)
+) : Units<U>(name)
 
 @Generated // Lie to JaCoCo
 abstract class Measure<U : Units<U>>(
