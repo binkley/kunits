@@ -48,18 +48,17 @@ internal class UnitsTest {
     }
 }
 
-internal sealed class Foos<L : Foos<L>>(
+internal sealed class Foos<U : Foos<U>>(
     name: String,
     bars: FiniteBigRational
-) : Lengths<L>(name, bars)
+) : Lengths<U>(name, bars)
 
 internal object Bars : Foos<Bars>("Bar", ONE) {
     override fun new(value: FiniteBigRational) = Bar(value)
     override fun format(value: FiniteBigRational) = "$value bars"
 }
 
-internal class Bar(value: FiniteBigRational) :
-    Measure<Bars>(Bars, value)
+internal class Bar(value: FiniteBigRational) : Measure<Bars>(Bars, value)
 
 internal inline val Int.bars get() = (this over 1).bars
 internal inline val FiniteBigRational.bars get() = Bar(this)
