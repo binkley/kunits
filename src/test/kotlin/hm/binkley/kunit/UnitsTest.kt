@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test
 internal class UnitsTest {
     @Test
     fun `should be named`() {
-        assertEquals("Bar", Bars.name)
-        assertEquals("Bar", "$Bars")
+        assertEquals("bar", Bars.name)
+        assertEquals("Qux bar", "$Bars")
         assertEquals("1 bars", "${1.bars}")
     }
 
@@ -49,19 +49,27 @@ internal class UnitsTest {
         assertEquals(1.bars, 3.bars / 3)
         assertEquals(1.bars, 3.bars / (3 over 1))
     }
+
+//    @Test
+//    fun `should convert between systems`() {
+//        assertEquals(1.furlongs.to(Yards), 220.yards)
+//        assertEquals(220.yards.to(Furlongs), 1.furlongs)
+//    }
 }
+
+internal object Qux : System<Qux>("Qux")
 
 internal sealed class Foos<U : Foos<U>>(
     name: String,
     bars: FiniteBigRational
-) : Lengths<U>(name, bars)
+) : Lengths<Qux, U>(Qux, name, bars)
 
-internal object Bars : Foos<Bars>("Bar", ONE) {
+internal object Bars : Foos<Bars>("bar", ONE) {
     override fun new(value: FiniteBigRational) = Bar(value)
     override fun format(value: FiniteBigRational) = "$value bars"
 }
 
-internal class Bar(value: FiniteBigRational) : Measure<Bars>(Bars, value)
+internal class Bar(value: FiniteBigRational) : Measure<Qux, Bars>(Bars, value)
 
 internal inline val Int.bars get() = (this over 1).bars
 internal inline val FiniteBigRational.bars get() = Bar(this)

@@ -10,20 +10,11 @@ import lombok.Generated
 import java.util.Objects.hash
 
 @Generated // Lie to JaCoCo
-abstract class Units<U : Units<U>>(
-    /** Must be unique for each unit. */
-    val name: String,
-    /** Used for conversations, not for equality, etc. */
-    internal val base: FiniteBigRational
+abstract class System<S : System<S>>(
+    val name: String
 ) {
-    /** Creates a new unit from the given [value]. */
-    abstract fun new(value: FiniteBigRational): Measure<U>
-
-    /** Presents the calling measure suitable for humans. */
-    abstract fun format(value: FiniteBigRational): String
-
     override fun equals(other: Any?) = this === other ||
-            other is Units<*> &&
+            other is System<*> &&
             name == other.name
 
     override fun hashCode() = hash(name)
@@ -31,34 +22,60 @@ abstract class Units<U : Units<U>>(
 }
 
 @Generated // Lie to JaCoCo
-abstract class Lengths<U : Lengths<U>>(
-    name: String,
-    base: FiniteBigRational
-) : Units<U>(name, base)
+abstract class Units<S : System<S>, U : Units<S, U>>(
+    val system: S, // TODO: Is this needed?
+    /** Must be unique for each unit. */
+    val name: String,
+    /** Used for conversations, not for equality, etc. */
+    internal val base: FiniteBigRational
+) {
+    /** Creates a new unit from the given [value]. */
+    abstract fun new(value: FiniteBigRational): Measure<S, U>
+
+    /** Presents the calling measure suitable for humans. */
+    abstract fun format(value: FiniteBigRational): String
+
+    override fun equals(other: Any?) = this === other ||
+            other is Units<*, *> &&
+            system == other.system &&
+            name == other.name
+
+    override fun hashCode() = hash(system, name)
+    override fun toString() = "$system $name" // TODO: Ugh
+}
 
 @Generated // Lie to JaCoCo
-abstract class Masses<U : Masses<U>>(
+abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
+    system: S,
     name: String,
     base: FiniteBigRational
-) : Units<U>(name, base)
+) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
-abstract class Times<U : Times<U>>(
+abstract class Masses<S : System<S>, U : Masses<S, U>>(
+    system: S,
     name: String,
     base: FiniteBigRational
-) : Units<U>(name, base)
+) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
-abstract class Measure<U : Units<U>>(
+abstract class Times<S : System<S>, U : Times<S, U>>(
+    system: S,
+    name: String,
+    base: FiniteBigRational
+) : Units<S, U>(system, name, base)
+
+@Generated // Lie to JaCoCo
+abstract class Measure<S : System<S>, U : Units<S, U>>(
     val unit: U,
     val value: FiniteBigRational
 ) {
     /** Converts this measure into [other] units. */
-    fun <V : Units<V>> to(other: V) =
+    fun <V : Units<S, V>> to(other: V) =
         other.new(value * unit.base / other.base)
 
     override fun equals(other: Any?) = this === other ||
-            other is Measure<*> &&
+            other is Measure<*, *> &&
             unit == other.unit &&
             value == other.value
 
@@ -67,41 +84,46 @@ abstract class Measure<U : Units<U>>(
 }
 
 /** Returns this measure. */
-operator fun <U : Units<U>> Measure<U>.unaryPlus() = this
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.unaryPlus() = this
 
 /** Returns the additive inverse of this measure. */
-operator fun <U : Units<U>> Measure<U>.unaryMinus() = unit.new(-value)
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.unaryMinus() =
+    unit.new(-value)
 
 /** Adds the measures, with the _left_ returned as units. */
-operator fun <U : Units<U>, V : Units<V>> Measure<U>.plus(
-    other: Measure<V>
-) = unit.new(value + other.to(unit).value)
+operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.plus(
+    other: Measure<S, V>
+): Measure<S, U> =
+    unit.new(value + other.to(unit).value)
 
 /** Subtracts the measures, with the _left_ returned as units. */
-operator fun <U : Units<U>, V : Units<V>> Measure<U>.minus(
-    other: Measure<V>
-) = unit.new(value - other.to(unit).value)
+operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.minus(
+    other: Measure<S, V>
+): Measure<S, U> =
+    unit.new(value - other.to(unit).value)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.times(multiplicand: Int) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: Int) =
     unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _right_ returned as units. */
-operator fun <U : Units<U>> Int.times(multiplicand: Measure<U>) =
+operator fun <S : System<S>, U : Units<S, U>> Int.times(multiplicand: Measure<S, U>) =
     multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.times(multiplicand: FiniteBigRational) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: FiniteBigRational) =
     unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> FiniteBigRational.times(multiplicand: Measure<U>) =
+operator fun <S : System<S>, U : Units<S, U>> FiniteBigRational.times(
+    multiplicand: Measure<S, U>
+) =
     multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales down the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.div(divisor: Int) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: Int) =
     unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.div(divisor: FiniteBigRational) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: FiniteBigRational) =
     unit.new(value / divisor)
