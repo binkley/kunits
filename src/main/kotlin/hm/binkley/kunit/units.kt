@@ -28,6 +28,21 @@ abstract class Units<U : Units<U>>(
 }
 
 @Generated // Lie to JaCoCo
+abstract class Lengths<L : Lengths<L>>(
+    name: String
+) : Units<L>(name)
+
+@Generated // Lie to JaCoCo
+abstract class Masses<M : Times<M>>(
+    name: String
+) : Units<M>(name)
+
+@Generated // Lie to JaCoCo
+abstract class Times<T : Times<T>>(
+    name: String
+) : Units<T>(name)
+
+@Generated // Lie to JaCoCo
 abstract class Measure<U : Units<U>>(
     val unit: U,
     val value: FiniteBigRational

@@ -1,7 +1,7 @@
 package hm.binkley.kunit.system.english.length
 
+import hm.binkley.kunit.Lengths
 import hm.binkley.kunit.Measure
-import hm.binkley.kunit.Units
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.div
@@ -10,10 +10,10 @@ import hm.binkley.math.finite.over
 import hm.binkley.math.finite.plus
 import hm.binkley.math.finite.times
 
-sealed class EnglishLengths<U : EnglishLengths<U>>(
+sealed class EnglishLengths<L : EnglishLengths<L>>(
     name: String,
     internal val poppyseeds: FiniteBigRational
-) : Units<U>(name)
+) : Lengths<L>(name)
 
 object Poppyseeds : EnglishLengths<Poppyseeds>("Poppyseed", ONE) {
     override fun new(value: FiniteBigRational) =

@@ -24,7 +24,7 @@ internal class UnitsTest {
     }
 }
 
-internal sealed class Foos<U : Foos<U>>(name: String) : Units<U>(name)
+internal sealed class Foos<L : Foos<L>>(name: String) : Lengths<L>(name)
 
 internal object Bars : Foos<Bars>("Bar") {
     override fun new(value: FiniteBigRational) = Bar(value)
