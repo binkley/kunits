@@ -85,7 +85,7 @@ measurements in the concrete of a given unit with a quantity expressed as a
 [`FiniteBigRational`](#kotlin-rational)
 
 The code shows a generic pattern for implementing a Unit System with
-[English units of length](src/main/kotlin/hm/binkley/kunit/english/english-lengths.kt)
+[English units of length](src/main/kotlin/hm/binkley/kunit/system/english/length/english-lengths.kt)
 as the exemplar. The pattern can also be seen in
 [a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt) for a system of units
 with a single measurable unit:
