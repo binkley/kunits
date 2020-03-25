@@ -33,7 +33,7 @@ abstract class Lengths<L : Lengths<L>>(
 ) : Units<L>(name)
 
 @Generated // Lie to JaCoCo
-abstract class Masses<M : Times<M>>(
+abstract class Masses<M : Masses<M>>(
     name: String
 ) : Units<M>(name)
 
