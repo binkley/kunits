@@ -40,11 +40,14 @@ internal class UnitsTest {
     fun `should multiply`() {
         assertEquals(3.bars, 1.bars * 3)
         assertEquals(3.bars, 3 * 1.bars)
+        assertEquals(3.bars, 1.bars * (3 over 1))
+        assertEquals(3.bars, (3 over 1) * 1.bars)
     }
 
     @Test
     fun `should divide`() {
         assertEquals(1.bars, 3.bars / 3)
+        assertEquals(1.bars, 3.bars / (3 over 1))
     }
 }
 

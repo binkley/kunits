@@ -11,13 +11,15 @@ import java.util.Objects.hash
 
 @Generated // Lie to JaCoCo
 abstract class Units<U : Units<U>>(
+    /** Must be unique for each unit. */
     val name: String,
+    /** Used for conversations, not for equality, etc. */
     internal val base: FiniteBigRational
 ) {
-    /** Creates a new unit from the given _value_. */
+    /** Creates a new unit from the given [value]. */
     abstract fun new(value: FiniteBigRational): Measure<U>
 
-    /** Presents the measure suitable for human output. */
+    /** Presents the calling measure suitable for humans. */
     abstract fun format(value: FiniteBigRational): String
 
     override fun equals(other: Any?) = this === other ||
@@ -51,6 +53,7 @@ abstract class Measure<U : Units<U>>(
     val unit: U,
     val value: FiniteBigRational
 ) {
+    /** Converts this measure into [other] units. */
     fun <V : Units<V>> to(other: V) =
         other.new(value * unit.base / other.base)
 
@@ -69,24 +72,36 @@ operator fun <U : Units<U>> Measure<U>.unaryPlus() = this
 /** Returns the additive inverse of this measure. */
 operator fun <U : Units<U>> Measure<U>.unaryMinus() = unit.new(-value)
 
-/** Adds the measure, with the _left_ returned as units. */
+/** Adds the measures, with the _left_ returned as units. */
 operator fun <U : Units<U>, V : Units<V>> Measure<U>.plus(
     other: Measure<V>
 ) = unit.new(value + other.to(unit).value)
 
-/** Subtracts the measure, with the _left_ returned as units. */
+/** Subtracts the measures, with the _left_ returned as units. */
 operator fun <U : Units<U>, V : Units<V>> Measure<U>.minus(
     other: Measure<V>
 ) = unit.new(value - other.to(unit).value)
 
-/** Multiplies the measure, with the _left_ returned as units. */
+/** Scales up the measure, with the _left_ returned as units. */
 operator fun <U : Units<U>> Measure<U>.times(multiplicand: Int) =
     unit.new(value * multiplicand)
 
-/** Multiplies the measure, with the _right_ returned as units. */
+/** Scales up the measure, with the _right_ returned as units. */
 operator fun <U : Units<U>> Int.times(multiplicand: Measure<U>) =
     multiplicand.unit.new(this * multiplicand.value)
 
-/** Divides the measure, with the _left_ returned as units. */
+/** Scales up the measure, with the _left_ returned as units. */
+operator fun <U : Units<U>> Measure<U>.times(multiplicand: FiniteBigRational) =
+    unit.new(value * multiplicand)
+
+/** Scales up the measure, with the _left_ returned as units. */
+operator fun <U : Units<U>> FiniteBigRational.times(multiplicand: Measure<U>) =
+    multiplicand.unit.new(this * multiplicand.value)
+
+/** Scales down the measure, with the _left_ returned as units. */
 operator fun <U : Units<U>> Measure<U>.div(divisor: Int) =
+    unit.new(value / divisor)
+
+/** Scales down the measure, with the _left_ returned as units. */
+operator fun <U : Units<U>> Measure<U>.div(divisor: FiniteBigRational) =
     unit.new(value / divisor)
