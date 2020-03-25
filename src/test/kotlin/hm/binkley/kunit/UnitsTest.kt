@@ -15,13 +15,36 @@ internal class UnitsTest {
     }
 
     @Test
+    fun `should posite`() {
+        assertEquals((+1).bars, +(1.bars))
+    }
+
+    @Test
+    fun `should negate`() {
+        assertEquals((-1).bars, -(1.bars))
+    }
+
+    @Test
     fun `should add`() {
         assertEquals(3.bars, 1.bars + 2.bars)
+        assertEquals((3 over 1).bars + 4.bars, 7.bars)
     }
 
     @Test
     fun `should subtract`() {
         assertEquals(1.bars, 3.bars - 2.bars)
+        assertEquals((3 over 1).bars - 4.bars, (-1).bars)
+    }
+
+    @Test
+    fun `should multiply`() {
+        assertEquals(3.bars, 1.bars * 3)
+        assertEquals(3.bars, 3 * 1.bars)
+    }
+
+    @Test
+    fun `should divide`() {
+        assertEquals(1.bars, 3.bars / 3)
     }
 }
 

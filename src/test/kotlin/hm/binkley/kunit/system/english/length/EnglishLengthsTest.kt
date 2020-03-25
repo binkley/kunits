@@ -71,39 +71,6 @@ internal class EnglishLengthsTest {
     }
 
     @Test
-    fun `should posite`() {
-        assertEquals((+1).feet, +(1.feet))
-    }
-
-    @Test
-    fun `should negate`() {
-        assertEquals((-1).feet, -(1.feet))
-    }
-
-    @Test
-    fun `should add`() {
-        assertEquals(3.poppyseeds, 1.poppyseeds + 2.poppyseeds)
-        assertEquals((3 over 1).poppyseeds + 4.inches, 51.poppyseeds)
-    }
-
-    @Test
-    fun `should subtract`() {
-        assertEquals(1.poppyseeds, 3.poppyseeds - 2.poppyseeds)
-        assertEquals((3 over 1).poppyseeds - 4.inches, (-45).poppyseeds)
-    }
-
-    @Test
-    fun `should multiply`() {
-        assertEquals(3.poppyseeds, 1.poppyseeds * 3)
-        assertEquals(3.poppyseeds, 3 * 1.poppyseeds)
-    }
-
-    @Test
-    fun `should divide`() {
-        assertEquals(1.poppyseeds, 3.poppyseeds / 3)
-    }
-
-    @Test
     fun `should pretty print`() {
         assertEquals("1 poppyseeds", "${1.poppyseeds}")
         assertEquals("1 barleycorns", "${1.barleycorns}")
