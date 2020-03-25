@@ -23,7 +23,7 @@ abstract class System<S : System<S>>(
 
 @Generated // Lie to JaCoCo
 abstract class Units<S : System<S>, U : Units<S, U>>(
-    val system: S,
+    val system: S, // TODO: Is this needed?
     /** Must be unique for each unit. */
     val name: String,
     /** Used for conversations, not for equality, etc. */
