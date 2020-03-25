@@ -1,5 +1,11 @@
 package hm.binkley.kunit
 
+import hm.binkley.kunit.system.english.into
+import hm.binkley.kunit.system.english.length.Yards
+import hm.binkley.kunit.system.english.length.yards
+import hm.binkley.kunit.system.fff.into
+import hm.binkley.kunit.system.fff.length.Furlongs
+import hm.binkley.kunit.system.fff.length.furlongs
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.over
@@ -50,11 +56,11 @@ internal class UnitsTest {
         assertEquals(1.bars, 3.bars / (3 over 1))
     }
 
-//    @Test
-//    fun `should convert between systems`() {
-//        assertEquals(1.furlongs.to(Yards), 220.yards)
-//        assertEquals(220.yards.to(Furlongs), 1.furlongs)
-//    }
+    @Test
+    fun `should convert between systems`() {
+        assertEquals(1.furlongs.into(Yards), 220.yards)
+        assertEquals(220.yards.into(Furlongs), 1.furlongs)
+    }
 }
 
 internal object Qux : System<Qux>("Qux")
