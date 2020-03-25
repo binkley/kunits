@@ -1,11 +1,5 @@
 package hm.binkley.kunit.system.english.length
 
-import hm.binkley.kunit.div
-import hm.binkley.kunit.minus
-import hm.binkley.kunit.plus
-import hm.binkley.kunit.times
-import hm.binkley.kunit.unaryMinus
-import hm.binkley.kunit.unaryPlus
 import hm.binkley.math.finite.over
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
