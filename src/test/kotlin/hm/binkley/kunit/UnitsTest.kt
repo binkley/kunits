@@ -1,6 +1,7 @@
 package hm.binkley.kunit
 
 import hm.binkley.math.finite.FiniteBigRational
+import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.over
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -24,16 +25,18 @@ internal class UnitsTest {
     }
 }
 
-internal sealed class Foos<L : Foos<L>>(name: String) : Lengths<L>(name)
+internal sealed class Foos<L : Foos<L>>(
+    name: String,
+    bars: FiniteBigRational
+) : Lengths<L>(name, bars)
 
-internal object Bars : Foos<Bars>("Bar") {
+internal object Bars : Foos<Bars>("Bar", ONE) {
     override fun new(value: FiniteBigRational) = Bar(value)
     override fun format(value: FiniteBigRational) = "$value bars"
 }
 
-internal class Bar(value: FiniteBigRational) : Measure<Bars>(Bars, value)
+internal class Bar(value: FiniteBigRational) :
+    Measure<Bars>(Bars, value)
 
-internal inline val Int.bars
-    get() = (this over 1).bars
-internal inline val FiniteBigRational.bars
-    get() = Bar(this)
+internal inline val Int.bars get() = (this over 1).bars
+internal inline val FiniteBigRational.bars get() = Bar(this)

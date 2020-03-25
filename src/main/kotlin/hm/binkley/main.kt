@@ -1,6 +1,8 @@
 package hm.binkley
 
 import hm.binkley.kunit.div
+import hm.binkley.kunit.minus
+import hm.binkley.kunit.plus
 import hm.binkley.kunit.system.english.length.Barleycorns
 import hm.binkley.kunit.system.english.length.Feet
 import hm.binkley.kunit.system.english.length.Hands
@@ -8,10 +10,7 @@ import hm.binkley.kunit.system.english.length.Inches
 import hm.binkley.kunit.system.english.length.Poppyseeds
 import hm.binkley.kunit.system.english.length.Sticks
 import hm.binkley.kunit.system.english.length.Yards
-import hm.binkley.kunit.system.english.length.minus
-import hm.binkley.kunit.system.english.length.plus
 import hm.binkley.kunit.system.english.length.poppyseeds
-import hm.binkley.kunit.system.english.length.to
 import hm.binkley.kunit.times
 import hm.binkley.kunit.unaryMinus
 import hm.binkley.kunit.unaryPlus

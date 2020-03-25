@@ -11,7 +11,8 @@ import java.util.Objects.hash
 
 @Generated // Lie to JaCoCo
 abstract class Units<U : Units<U>>(
-    val name: String
+    val name: String,
+    internal val base: FiniteBigRational
 ) {
     /** Creates a new unit from the given _value_. */
     abstract fun new(value: FiniteBigRational): Measure<U>
@@ -29,24 +30,30 @@ abstract class Units<U : Units<U>>(
 
 @Generated // Lie to JaCoCo
 abstract class Lengths<U : Lengths<U>>(
-    name: String
-) : Units<U>(name)
+    name: String,
+    base: FiniteBigRational
+) : Units<U>(name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Masses<U : Masses<U>>(
-    name: String
-) : Units<U>(name)
+    name: String,
+    base: FiniteBigRational
+) : Units<U>(name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Times<U : Times<U>>(
-    name: String
-) : Units<U>(name)
+    name: String,
+    base: FiniteBigRational
+) : Units<U>(name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Measure<U : Units<U>>(
     val unit: U,
     val value: FiniteBigRational
 ) {
+    fun <V : Units<V>> to(other: V) =
+        other.new(value * unit.base / other.base)
+
     override fun equals(other: Any?) = this === other ||
             other is Measure<*> &&
             unit == other.unit &&
@@ -63,12 +70,14 @@ operator fun <U : Units<U>> Measure<U>.unaryPlus() = this
 operator fun <U : Units<U>> Measure<U>.unaryMinus() = unit.new(-value)
 
 /** Adds the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.plus(addend: Measure<U>) =
-    unit.new(value + addend.value)
+operator fun <U : Units<U>, V : Units<V>> Measure<U>.plus(
+    other: Measure<V>
+) = unit.new(value + other.to(unit).value)
 
 /** Subtracts the measure, with the _left_ returned as units. */
-operator fun <U : Units<U>> Measure<U>.minus(subtrahend: Measure<U>) =
-    unit.new(value - subtrahend.value)
+operator fun <U : Units<U>, V : Units<V>> Measure<U>.minus(
+    other: Measure<V>
+) = unit.new(value - other.to(unit).value)
 
 /** Multiplies the measure, with the _left_ returned as units. */
 operator fun <U : Units<U>> Measure<U>.times(multiplicand: Int) =
