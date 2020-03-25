@@ -128,7 +128,6 @@
                 <configuration>
                     <args>
                         <arg>-Werror</arg>
-                        <arg>-progressive</arg>
                     </args>
                 </configuration>
                 <executions>
