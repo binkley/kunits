@@ -11,11 +11,15 @@ jobs:
       - uses: actions/checkout@master
 
       - uses: actions/cache@master
+        env:
+          cache-name: cache-maven-dependencies
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ runner.os }}-maven-
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Set up JDK 11
         uses: actions/setup-java@master
