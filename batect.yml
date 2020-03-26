@@ -18,7 +18,7 @@ tasks:
     description: Build (and test) the program
     run:
       container: build-env
-      command: ./mvnw
+      command: ./mvnw -C -Dorg.slf4j.simpleLogger.defaultLogLevel=INFO
   run:
     description: Runs the demo program
     run:
