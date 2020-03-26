@@ -1,4 +1,4 @@
-package hm.binkley.kunit
+package hm.binkley.kunits
 
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.div

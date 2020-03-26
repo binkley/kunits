@@ -1,8 +1,8 @@
-package hm.binkley.kunit.system.english.length
+package hm.binkley.kunits.system.english.length
 
-import hm.binkley.kunit.Lengths
-import hm.binkley.kunit.Measure
-import hm.binkley.kunit.system.english.English
+import hm.binkley.kunits.Lengths
+import hm.binkley.kunits.Measure
+import hm.binkley.kunits.system.english.English
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.over
@@ -11,7 +11,8 @@ sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,
     poppyseeds: FiniteBigRational
 ) : Lengths<English, U>(
-    English, name, poppyseeds)
+    English, name, poppyseeds
+)
 
 object Poppyseeds : EnglishLengths<Poppyseeds>("poppyseed", ONE) {
     override fun new(value: FiniteBigRational) = Poppyseed(value)

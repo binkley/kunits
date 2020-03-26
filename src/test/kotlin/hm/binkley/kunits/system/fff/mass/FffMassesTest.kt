@@ -1,4 +1,4 @@
-package hm.binkley.kunit.system.fff.mass
+package hm.binkley.kunits.system.fff.mass
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

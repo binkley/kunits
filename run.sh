@@ -1,5 +1,5 @@
 #!/bin/sh
 
-test -r target/kunit-0-SNAPSHOT-jar-with-dependencies.jar || ./mvnw "$@"
+test -r target/kunits-0-SNAPSHOT-jar-with-dependencies.jar || ./mvnw "$@"
 
-exec java -jar target/kunit-0-SNAPSHOT-jar-with-dependencies.jar
+exec java -jar target/kunits-0-SNAPSHOT-jar-with-dependencies.jar

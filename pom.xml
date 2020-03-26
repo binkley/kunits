@@ -6,14 +6,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hm.binkley</groupId>
-    <artifactId>kunit</artifactId>
+    <artifactId>kunits</artifactId>
     <version>0-SNAPSHOT</version>
 
-    <name>KUnit</name>
+    <name>KUnits</name>
     <description>
         Units of measurement in Kotlin
     </description>
-    <url>https://github.com/binkley/kunit</url>
+    <url>https://github.com/binkley/kunits</url>
     <licenses>
         <license>
             <name>Public Domain</name>
@@ -23,12 +23,11 @@
     </licenses>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/binkley/kunit/issues</url>
+        <url>https://github.com/binkley/kunits/issues</url>
     </issueManagement>
     <scm>
-        <connection>scm:git:git://github.com/binkley/kunit
-        </connection>
-        <url>https://github.com/binkley/kunit</url>
+        <connection>scm:git:git://github.com/binkley/kunits</connection>
+        <url>https://github.com/binkley/kunits</url>
     </scm>
 
     <properties>
@@ -345,7 +344,7 @@
         <repository>
             <id>github</id>
             <name>GitHub binkley Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/binkley/kunit</url>
+            <url>https://maven.pkg.github.com/binkley/kunits</url>
         </repository>
     </distributionManagement>
 </project>

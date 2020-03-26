@@ -1,4 +1,4 @@
-package hm.binkley.kunit.system.fff.time
+package hm.binkley.kunits.system.fff.time
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

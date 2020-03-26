@@ -1,8 +1,8 @@
-package hm.binkley.kunit.system.fff.time
+package hm.binkley.kunits.system.fff.time
 
-import hm.binkley.kunit.Measure
-import hm.binkley.kunit.Times
-import hm.binkley.kunit.system.fff.FFF
+import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Times
+import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.over

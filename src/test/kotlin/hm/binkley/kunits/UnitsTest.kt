@@ -1,11 +1,11 @@
-package hm.binkley.kunit
+package hm.binkley.kunits
 
-import hm.binkley.kunit.system.english.into
-import hm.binkley.kunit.system.english.length.Yards
-import hm.binkley.kunit.system.english.length.yards
-import hm.binkley.kunit.system.fff.into
-import hm.binkley.kunit.system.fff.length.Furlongs
-import hm.binkley.kunit.system.fff.length.furlongs
+import hm.binkley.kunits.system.english.into
+import hm.binkley.kunits.system.english.length.Yards
+import hm.binkley.kunits.system.english.length.yards
+import hm.binkley.kunits.system.fff.into
+import hm.binkley.kunits.system.fff.length.Furlongs
+import hm.binkley.kunits.system.fff.length.furlongs
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.over

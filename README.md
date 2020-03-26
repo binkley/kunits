@@ -2,9 +2,9 @@
 <img src="https://unlicense.org/pd-icon.png" alt="Public Domain" align="right"/>
 </a>
 
-# Kunit
+# KUnits
 
-![Local Build](https://github.com/binkley/kunit/workflows/Local%20Build/badge.svg)
+![Local Build](https://github.com/binkley/kunits/workflows/Local%20Build/badge.svg)
 
 Units of measurement in Kotlin
 
@@ -69,7 +69,7 @@ The code passed tests on JDK 11, 13, and 14.
 
 ## Design
 
-KUnit provides abstractions for representing systems of units in Kotlin, and
+KUnits provides abstractions for representing systems of units in Kotlin, and
 one quirky example,
 [_English units_](https://en.wikipedia.org/wiki/English_units).
 
@@ -78,19 +78,19 @@ additions, subtraction, multiplication, and division.
 
 The top-level API represents:
 
-- [`Units`](src/main/kotlin/hm/binkley/kunit/units.kt) representing units of
+- [`Units`](src/main/kotlin/hm/binkley/kunits/units.kt) representing units of
 measurement in the abstract with no quantities
-- [`Measure`](src/main/kotlin/hm/binkley/kunit/units.kt) representing
+- [`Measure`](src/main/kotlin/hm/binkley/kunits/units.kt) representing
 measurements in the concrete of a given unit with a quantity expressed as a
 [`FiniteBigRational`](#kotlin-rational)
 
 The code shows a generic pattern for implementing a Unit System with
-[English units of length](src/main/kotlin/hm/binkley/kunit/system/english/length/english-lengths.kt)
+[English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/english-lengths.kt)
 as the real world exemplar, and
-[FFF units of length](src/main/kotlin/hm/binkley/kunit/system/fff/length/fff-lengths.kt),
-[FFF units of mass](src/main/kotlin/hm/binkley/kunit/system/fff/mass/fff-masses.kt),
+[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/fff-lengths.kt),
+[FFF units of mass](src/main/kotlin/hm/binkley/kunits/system/fff/mass/fff-masses.kt),
 and
-[FFF units of time](src/main/kotlin/hm/binkley/kunit/system/fff/time/fff-times.kt),
+[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt),
 as a whimsical full system. The pattern can also be seen in
 [a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt):
 

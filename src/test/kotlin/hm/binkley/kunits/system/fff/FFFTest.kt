@@ -1,11 +1,11 @@
-package hm.binkley.kunit.system.english
+package hm.binkley.kunits.system.fff
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class EnglishTest {
+internal class FFFTest {
     @Test
     fun `should pretty print`() {
-        assertEquals("English", "$English")
+        assertEquals("FFF", "$FFF")
     }
 }

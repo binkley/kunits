@@ -1,4 +1,4 @@
-package hm.binkley.kunit.system.english.length
+package hm.binkley.kunits.system.english.length
 
 import hm.binkley.math.finite.over
 import org.junit.jupiter.api.Assertions.assertEquals
