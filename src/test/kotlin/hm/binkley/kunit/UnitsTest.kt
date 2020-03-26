@@ -14,13 +14,6 @@ import org.junit.jupiter.api.Test
 
 internal class UnitsTest {
     @Test
-    fun `should be named`() {
-        assertEquals("bar", Bars.name)
-        assertEquals("Qux bar", "$Bars")
-        assertEquals("1 bars", "${1.bars}")
-    }
-
-    @Test
     fun `should posite`() {
         assertEquals((+1).bars, +(1.bars))
     }
@@ -61,21 +54,28 @@ internal class UnitsTest {
         assertEquals(1.furlongs.into(Yards), 220.yards)
         assertEquals(220.yards.into(Furlongs), 1.furlongs)
     }
+
+    @Test
+    fun `should pretty print`() {
+        assertEquals("Foo", "$Foo")
+        assertEquals("Foo bar", "$Bars")
+        assertEquals("1 bars", "${1.bars}")
+    }
 }
 
-internal object Qux : System<Qux>("Qux")
+internal object Foo : System<Foo>("Foo")
 
-internal sealed class Foos<U : Foos<U>>(
+internal sealed class FooLengths<U : FooLengths<U>>(
     name: String,
     bars: FiniteBigRational
-) : Lengths<Qux, U>(Qux, name, bars)
+) : Lengths<Foo, U>(Foo, name, bars)
 
-internal object Bars : Foos<Bars>("bar", ONE) {
+internal object Bars : FooLengths<Bars>("bar", ONE) {
     override fun new(value: FiniteBigRational) = Bar(value)
     override fun format(value: FiniteBigRational) = "$value bars"
 }
 
-internal class Bar(value: FiniteBigRational) : Measure<Qux, Bars>(Bars, value)
+internal class Bar(value: FiniteBigRational) : Measure<Foo, Bars>(Bars, value)
 
 internal inline val Int.bars get() = (this over 1).bars
 internal inline val FiniteBigRational.bars get() = Bar(this)

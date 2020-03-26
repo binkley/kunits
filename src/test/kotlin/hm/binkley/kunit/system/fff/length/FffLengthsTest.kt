@@ -11,6 +11,7 @@ internal class FffLengthsTest {
 
     @Test
     fun `should pretty print`() {
+        assertEquals("FFF furlong", "$Furlongs")
         assertEquals("1 fur", "${1.furlongs}")
     }
 }

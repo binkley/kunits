@@ -66,12 +66,19 @@ internal class EnglishLengthsTest {
 
     @Test
     fun `should pretty print`() {
+        assertEquals("English poppyseed", "$Poppyseeds")
         assertEquals("1 poppyseeds", "${1.poppyseeds}")
+        assertEquals("English barleycorn", "$Barleycorns")
         assertEquals("1 barleycorns", "${1.barleycorns}")
+        assertEquals("English inch", "$Inches")
         assertEquals("1\"", "${1.inches}")
+        assertEquals("English stick", "$Sticks")
         assertEquals("1 sticks", "${1.sticks}")
+        assertEquals("English hand", "$Hands")
         assertEquals("1 hh", "${1.hands}")
+        assertEquals("English foot", "$Feet")
         assertEquals("1'", "${1.feet}")
+        assertEquals("English yard", "$Yards")
         assertEquals("1 yd", "${1.yards}")
     }
 }

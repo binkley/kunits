@@ -11,6 +11,7 @@ internal class FffTimesTest {
 
     @Test
     fun `should pretty print`() {
+        assertEquals("FFF fortnight", "$Fortnights")
         assertEquals("1 ftn", "${1.fortnights}")
     }
 }

@@ -11,6 +11,7 @@ internal class FffMassesTest {
 
     @Test
     fun `should pretty print`() {
+        assertEquals("FFF firkin", "$Firkins")
         assertEquals("1 fir", "${1.firkins}")
     }
 }
