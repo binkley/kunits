@@ -49,14 +49,13 @@
         <main.class>hm.binkley.MainKt</main.class>
         <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
         <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
         <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
         <maven-versions-plugin.version>2.7</maven-versions-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+        <owasp.skip>false</owasp.skip>
         <project.build.sourceEncoding>${java.charset}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
         <!-- @formatter:on -->
@@ -229,6 +228,9 @@
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
                 <version>${dependency-check-maven.version}</version>
+                <configuration>
+                    <skip>${owasp.skip}</skip>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -262,17 +264,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${nexus-staging-maven-plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                </configuration>
             </plugin>
         </plugins>
 
@@ -350,53 +341,11 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <profiles>
-        <!-- Deployment profile (required so these plugins are only used when deploying) -->
-        <profile>
-            <id>deploy</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- Prevent `gpg` from using pinentry programs -->
-                                    <gpgArguments>
-                                        <arg>--pinentry-mode</arg>
-                                        <arg>loopback</arg>
-                                    </gpgArguments>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+        <repository>
+            <id>github</id>
+            <name>GitHub binkley Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/binkley/kunit</url>
+        </repository>
     </distributionManagement>
 </project>
