@@ -55,6 +55,12 @@ With Batect on Mac, GNU coreutils installed by Homebrew can cause issues with
 $ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
 ```
 
+### Systems of units
+
+* English
+* FFF
+* MIT
+
 ### Kotlin rational
 
 This library depends on
