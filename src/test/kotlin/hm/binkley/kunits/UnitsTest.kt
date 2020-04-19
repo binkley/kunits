@@ -1,11 +1,15 @@
 package hm.binkley.kunits
 
 import hm.binkley.kunits.system.english.into
+import hm.binkley.kunits.system.english.length.Inches
 import hm.binkley.kunits.system.english.length.Yards
+import hm.binkley.kunits.system.english.length.inches
 import hm.binkley.kunits.system.english.length.yards
 import hm.binkley.kunits.system.fff.into
 import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.fff.length.furlongs
+import hm.binkley.kunits.system.mit.into
+import hm.binkley.kunits.system.mit.length.smoots
 import hm.binkley.math.finite.FiniteBigRational
 import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
 import hm.binkley.math.finite.over
@@ -53,6 +57,7 @@ internal class UnitsTest {
     fun `should convert between systems`() {
         assertEquals(1.furlongs.into(Yards), 220.yards)
         assertEquals(220.yards.into(Furlongs), 1.furlongs)
+        assertEquals(1.smoots.into(Inches), 67.inches)
     }
 
     @Test

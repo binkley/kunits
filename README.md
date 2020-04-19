@@ -142,3 +142,4 @@ between metric and English units.
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
 * [_PostCSS Imperial_](https://github.com/sebdeckers/postcss-imperial)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
+* [_Smoot_](https://en.wikipedia.org/wiki/Smoot)
