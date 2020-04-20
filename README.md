@@ -23,12 +23,12 @@ Try [`./run.sh`](run.sh) for a demonstration.
 The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
 offered as a means to reproduce locally what CI does.
 
-This is, by default, a _quiet_ build.  That is, there is no output unless
-there is an error.  If you prefer to see messages from Maven as the build
-progresses, run this way:
+This is, by default, a _noisy_ build.  That is, there is lots output even
+without errors.  If you prefer to no messages from Maven as the build
+progresses (errors still disply), run this way:
 
 ```
-$ /mvnw clean verify -Dorg.slf4j.simpleLogger.defaultLogLevel=INFO
+$ /mvnw clean verify -Dorg.slf4j.simpleLogger.defaultLogLevel=WARN
 ```
 
 Use `./mvnw` or `./batect build` to build, run tests, and create a demo
