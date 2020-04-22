@@ -10,6 +10,10 @@
 
 Units of measurement in Kotlin
 
+(This project covers mostly silly units: Metric is uninteresting except
+that being based on base-10, it is not representable by binary computers; the
+French revolutionaries overlooked that.)
+
 * [Build](#build)
 * [Design](#design)
 * [Problems](#problems)
