@@ -26,9 +26,9 @@ abstract class System<S : System<S>>(
 abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Must be unique for each system. */
     val system: S,
-    /** Must be unique for each unit. */
+    /** Must be unique for each unit within [system]. */
     val name: String,
-    /** Used for conversations, not for equality, etc. */
+    /** Used for conversions, not for equality, etc. */
     internal val base: FixedBigRational
 ) {
     /** Creates a new unit from the given [value]. */
@@ -72,7 +72,7 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     val unit: U,
     val value: FixedBigRational
 ) {
-    /** Converts this measure into [other] units. */
+    /** Converts this measure into [other]'s units. */
     fun <V : Units<S, V>> to(other: V) =
         other.new(value * unit.base / other.base)
 
