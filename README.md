@@ -94,7 +94,7 @@ The top-level API represents:
 measurement in the abstract with no quantities
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/units.kt) representing
 measurements in the concrete of a given unit with a quantity expressed as a
-[`FiniteBigRational`](#kotlin-rational)
+[`FixedBigRational`](#kotlin-rational)
 
 The code shows a generic pattern for implementing a Unit System with
 [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/english-lengths.kt)
@@ -109,21 +109,21 @@ as a whimsical full system. The pattern can also be seen in
 ```kotlin
 internal sealed class Foos<U : Foos<U>>(
     name: String,
-    bars: FiniteBigRational
+    bars: FixedBigRational
 ) : Lengths<U>(name, bars)
 
 internal object Bars : Foos<Bars>("Bar", ONE) {
-    override fun new(value: FiniteBigRational) = Bar(value)
-    override fun format(value: FiniteBigRational) = "$value bars"
+    override fun new(value: FixedBigRational) = Bar(value)
+    override fun format(value: FixedBigRational) = "$value bars"
 }
 
-internal class Bar(value: FiniteBigRational) : Measure<Bars>(Bars, value)
+internal class Bar(value: FixedBigRational) : Measure<Bars>(Bars, value)
 
 internal inline val Int.bars get() = (this over 1).bars
-internal inline val FiniteBigRational.bars get() = Bar(this)
+internal inline val FixedBigRational.bars get() = Bar(this)
 ```
 
-The code relies heavily on `Int` and [`FiniteBigRational`](#kotlin-rational)
+The code relies heavily on `Int` and [`FixedBigRational`](#kotlin-rational)
 for representing measurements, and conversion ratios between units.
 
 ### Problems

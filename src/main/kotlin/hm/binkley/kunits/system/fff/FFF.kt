@@ -6,7 +6,7 @@ import hm.binkley.kunits.System
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.length.Yards
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.math.finite.times
+import hm.binkley.math.times
 
 object FFF : System<FFF>("FFF")
 

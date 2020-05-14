@@ -6,7 +6,7 @@ import hm.binkley.kunits.System
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.length.Inches
 import hm.binkley.kunits.system.mit.length.Smoots
-import hm.binkley.math.finite.times
+import hm.binkley.math.times
 
 object MIT : System<MIT>("MIT")
 

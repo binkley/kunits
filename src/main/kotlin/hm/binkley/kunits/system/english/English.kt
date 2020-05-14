@@ -6,7 +6,7 @@ import hm.binkley.kunits.System
 import hm.binkley.kunits.system.english.length.Yards
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.math.finite.div
+import hm.binkley.math.div
 
 object English : System<English>("English")
 

@@ -1,16 +1,17 @@
 package hm.binkley.kunits
 
-import hm.binkley.math.finite.FiniteBigRational
-import hm.binkley.math.finite.div
-import hm.binkley.math.finite.minus
-import hm.binkley.math.finite.plus
-import hm.binkley.math.finite.times
-import hm.binkley.math.finite.unaryMinus
+import hm.binkley.math.div
+import hm.binkley.math.finite.FixedBigRational
+import hm.binkley.math.minus
+import hm.binkley.math.plus
+import hm.binkley.math.times
+import hm.binkley.math.unaryMinus
 import lombok.Generated
 import java.util.Objects.hash
 
 @Generated // Lie to JaCoCo
 abstract class System<S : System<S>>(
+    /** Must be unique for each system. */
     val name: String
 ) {
     override fun equals(other: Any?) = this === other ||
@@ -23,17 +24,18 @@ abstract class System<S : System<S>>(
 
 @Generated // Lie to JaCoCo
 abstract class Units<S : System<S>, U : Units<S, U>>(
-    val system: S, // TODO: Is this needed?
+    /** Must be unique for each system. */
+    val system: S,
     /** Must be unique for each unit. */
     val name: String,
     /** Used for conversations, not for equality, etc. */
-    internal val base: FiniteBigRational
+    internal val base: FixedBigRational
 ) {
     /** Creates a new unit from the given [value]. */
-    abstract fun new(value: FiniteBigRational): Measure<S, U>
+    abstract fun new(value: FixedBigRational): Measure<S, U>
 
     /** Presents the calling measure suitable for humans. */
-    abstract fun format(value: FiniteBigRational): String
+    abstract fun format(value: FixedBigRational): String
 
     override fun equals(other: Any?) = this === other ||
             other is Units<*, *> &&
@@ -41,34 +43,34 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
             name == other.name
 
     override fun hashCode() = hash(system, name)
-    override fun toString() = "$system $name" // TODO: Ugh
+    override fun toString() = "$system $name" // TODO: Ugh -- I18N, etc.
 }
 
 @Generated // Lie to JaCoCo
 abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
     system: S,
     name: String,
-    base: FiniteBigRational
+    base: FixedBigRational
 ) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Masses<S : System<S>, U : Masses<S, U>>(
     system: S,
     name: String,
-    base: FiniteBigRational
+    base: FixedBigRational
 ) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Times<S : System<S>, U : Times<S, U>>(
     system: S,
     name: String,
-    base: FiniteBigRational
+    base: FixedBigRational
 ) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     val unit: U,
-    val value: FiniteBigRational
+    val value: FixedBigRational
 ) {
     /** Converts this measure into [other] units. */
     fun <V : Units<S, V>> to(other: V) =
@@ -111,11 +113,11 @@ operator fun <S : System<S>, U : Units<S, U>> Int.times(multiplicand: Measure<S,
     multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: FiniteBigRational) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: FixedBigRational) =
     unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> FiniteBigRational.times(
+operator fun <S : System<S>, U : Units<S, U>> FixedBigRational.times(
     multiplicand: Measure<S, U>
 ) =
     multiplicand.unit.new(this * multiplicand.value)
@@ -125,5 +127,5 @@ operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: Int) =
     unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: FiniteBigRational) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: FixedBigRational) =
     unit.new(value / divisor)

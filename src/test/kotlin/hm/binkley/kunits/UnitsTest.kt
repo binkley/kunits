@@ -10,8 +10,8 @@ import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.fff.length.furlongs
 import hm.binkley.kunits.system.mit.into
 import hm.binkley.kunits.system.mit.length.smoots
-import hm.binkley.math.finite.FiniteBigRational
-import hm.binkley.math.finite.FiniteBigRational.Companion.ONE
+import hm.binkley.math.finite.FixedBigRational
+import hm.binkley.math.finite.FixedBigRational.Companion.ONE
 import hm.binkley.math.finite.over
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -72,15 +72,15 @@ internal object Foo : System<Foo>("Foo")
 
 internal sealed class FooLengths<U : FooLengths<U>>(
     name: String,
-    bars: FiniteBigRational
+    bars: FixedBigRational
 ) : Lengths<Foo, U>(Foo, name, bars)
 
 internal object Bars : FooLengths<Bars>("bar", ONE) {
-    override fun new(value: FiniteBigRational) = Bar(value)
-    override fun format(value: FiniteBigRational) = "$value bars"
+    override fun new(value: FixedBigRational) = Bar(value)
+    override fun format(value: FixedBigRational) = "$value bars"
 }
 
-internal class Bar(value: FiniteBigRational) : Measure<Foo, Bars>(Bars, value)
+internal class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
 
 internal inline val Int.bars get() = (this over 1).bars
-internal inline val FiniteBigRational.bars get() = Bar(this)
+internal inline val FixedBigRational.bars get() = Bar(this)
