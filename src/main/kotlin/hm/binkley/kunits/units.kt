@@ -95,14 +95,12 @@ operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.unaryMinus() =
 /** Adds the measures, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.plus(
     other: Measure<S, V>
-): Measure<S, U> =
-    unit.new(value + other.to(unit).value)
+): Measure<S, U> = unit.new(value + other.to(unit).value)
 
 /** Subtracts the measures, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.minus(
     other: Measure<S, V>
-): Measure<S, U> =
-    unit.new(value - other.to(unit).value)
+): Measure<S, U> = unit.new(value - other.to(unit).value)
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: Int) =
@@ -119,8 +117,7 @@ operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> FixedBigRational.times(
     multiplicand: Measure<S, U>
-) =
-    multiplicand.unit.new(this * multiplicand.value)
+) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales down the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: Int) =
