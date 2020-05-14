@@ -23,16 +23,8 @@ fun main() {
     println(m1.to(Hands) - m1)
     println(m1 * 3)
     println(m1 / 3)
+    println(m1.to(Inches).to(Sticks))
     println(
-        m1.to(Inches).to(
-            Sticks
-        )
-    )
-    println(
-        (m1.to(Yards) + m1.to(
-            Feet
-        ) - m1.to(Barleycorns)).to(
-            Hands
-        )
+        (m1.to(Yards) + m1.to(Feet) - m1.to(Barleycorns)).to(Hands)
     )
 }
