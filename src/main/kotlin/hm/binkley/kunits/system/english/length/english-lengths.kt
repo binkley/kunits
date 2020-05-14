@@ -23,6 +23,7 @@ class Poppyseed(value: FixedBigRational) :
     Measure<English, Poppyseeds>(Poppyseeds, value)
 
 val Int.poppyseeds get() = (this over 1).poppyseeds
+val Long.poppyseeds get() = (this over 1).poppyseeds
 val FixedBigRational.poppyseeds get() = Poppyseed(this)
 
 object Barleycorns : EnglishLengths<Barleycorns>("barleycorn", (4 over 1)) {
@@ -34,6 +35,7 @@ class Barleycorn(value: FixedBigRational) :
     Measure<English, Barleycorns>(Barleycorns, value)
 
 val Int.barleycorns get() = (this over 1).barleycorns
+val Long.barleycorns get() = (this over 1).barleycorns
 val FixedBigRational.barleycorns get() = Barleycorn(this)
 
 object Inches : EnglishLengths<Inches>("inch", (12 over 1)) {
@@ -45,6 +47,7 @@ class Inch(value: FixedBigRational) :
     Measure<English, Inches>(Inches, value)
 
 val Int.inches get() = (this over 1).inches
+val Long.inches get() = (this over 1).inches
 val FixedBigRational.inches get() = Inch(this)
 
 object Sticks : EnglishLengths<Sticks>("stick", (24 over 1)) {
@@ -56,6 +59,7 @@ class Stick(value: FixedBigRational) :
     Measure<English, Sticks>(Sticks, value)
 
 val Int.sticks get() = (this over 1).sticks
+val Long.sticks get() = (this over 1).sticks
 val FixedBigRational.sticks get() = Stick(this)
 
 object Hands : EnglishLengths<Hands>("hand", (48 over 1)) {
@@ -67,6 +71,7 @@ class Hand(value: FixedBigRational) :
     Measure<English, Hands>(Hands, value)
 
 val Int.hands get() = (this over 1).hands
+val Long.hands get() = (this over 1).hands
 val FixedBigRational.hands get() = Hand(this)
 
 object Feet : EnglishLengths<Feet>("foot", (144 over 1)) {
@@ -78,6 +83,7 @@ class Foot(value: FixedBigRational) :
     Measure<English, Feet>(Feet, value)
 
 val Int.feet get() = (this over 1).feet
+val Long.feet get() = (this over 1).feet
 val FixedBigRational.feet get() = Foot(this)
 
 object Yards : EnglishLengths<Yards>("yard", (432 over 1)) {
@@ -89,4 +95,5 @@ class Yard(value: FixedBigRational) :
     Measure<English, Yards>(Yards, value)
 
 val Int.yards get() = (this over 1).yards
+val Long.yards get() = (this over 1).yards
 val FixedBigRational.yards get() = Yard(this)

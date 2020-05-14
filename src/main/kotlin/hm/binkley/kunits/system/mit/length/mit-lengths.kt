@@ -23,6 +23,7 @@ class Smoot(value: FixedBigRational) :
     Measure<MIT, Smoots>(Smoots, value)
 
 val Int.smoots get() = (this over 1).smoots
+val Long.smoots get() = (this over 1).smoots
 val FixedBigRational.smoots get() = Smoot(this)
 
 object Ears : MitLengths<Ears>("ear", 3 over 67) {
@@ -34,4 +35,5 @@ class Ear(value: FixedBigRational) :
     Measure<MIT, Ears>(Ears, value)
 
 val Int.ears get() = (this over 1).ears
+val Long.ears get() = (this over 1).ears
 val FixedBigRational.ears get() = Ear(this)

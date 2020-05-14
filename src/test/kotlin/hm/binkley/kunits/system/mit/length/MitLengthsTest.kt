@@ -8,10 +8,10 @@ internal class MitLengthsTest {
     @Test
     fun `should convert`() {
         assertEquals(1.smoots.to(Ears), (67 over 3).ears)
-        assertEquals(1.smoots.to(Smoots), 1.smoots)
+        assertEquals(1L.smoots.to(Smoots), 1.smoots)
 
         assertEquals(1.ears.to(Ears), 1.ears)
-        assertEquals(1.ears.to(Smoots), (3 over 67).smoots)
+        assertEquals(1L.ears.to(Smoots), (3 over 67).smoots)
     }
 
     @Test

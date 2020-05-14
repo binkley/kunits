@@ -21,4 +21,5 @@ class Fortnight(value: FixedBigRational) :
     Measure<FFF, Fortnights>(Fortnights, value)
 
 val Int.fortnights get() = (this over 1).fortnights
+val Long.fortnights get() = (this over 1).fortnights
 val FixedBigRational.fortnights get() = Fortnight(this)

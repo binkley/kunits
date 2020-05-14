@@ -23,4 +23,5 @@ class Furlong(value: FixedBigRational) :
     Measure<FFF, Furlongs>(Furlongs, value)
 
 val Int.furlongs get() = (this over 1).furlongs
+val Long.furlongs get() = (this over 1).furlongs
 val FixedBigRational.furlongs get() = Furlong(this)

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class FffLengthsTest {
     @Test
     fun `should convert`() {
-        assertEquals(1.furlongs.to(Furlongs), 1.furlongs)
+        assertEquals(1.furlongs.to(Furlongs), 1L.furlongs)
     }
 
     @Test

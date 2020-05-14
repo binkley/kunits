@@ -19,12 +19,12 @@ import org.junit.jupiter.api.Test
 internal class UnitsTest {
     @Test
     fun `should posite`() {
-        assertEquals((+1).bars, +(1.bars))
+        assertEquals((+1).bars, +(1L.bars))
     }
 
     @Test
     fun `should negate`() {
-        assertEquals((-1).bars, -(1.bars))
+        assertEquals((-1L).bars, -(1.bars))
     }
 
     @Test
@@ -43,6 +43,8 @@ internal class UnitsTest {
     fun `should multiply`() {
         assertEquals(3.bars, 1.bars * 3)
         assertEquals(3.bars, 3 * 1.bars)
+        assertEquals(3.bars, 1.bars * 3L)
+        assertEquals(3.bars, 3L * 1.bars)
         assertEquals(3.bars, 1.bars * (3 over 1))
         assertEquals(3.bars, (3 over 1) * 1.bars)
     }
@@ -50,6 +52,7 @@ internal class UnitsTest {
     @Test
     fun `should divide`() {
         assertEquals(1.bars, 3.bars / 3)
+        assertEquals(1.bars, 3.bars / 3L)
         assertEquals(1.bars, 3.bars / (3 over 1))
     }
 
@@ -83,4 +86,5 @@ internal object Bars : FooLengths<Bars>("bar", ONE) {
 internal class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
 
 internal inline val Int.bars get() = (this over 1).bars
+internal inline val Long.bars get() = (this over 1).bars
 internal inline val FixedBigRational.bars get() = Bar(this)
