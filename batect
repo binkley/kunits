@@ -8,7 +8,7 @@
     # You should commit this file to version control alongside the rest of your project. It should not be installed globally.
     # For more information, visit https://github.com/batect/batect.
 
-    VERSION="0.51.0"
+    VERSION="0.52.0"
     DOWNLOAD_URL_ROOT=${BATECT_DOWNLOAD_URL_ROOT:-"https://dl.bintray.com/batect/batect"}
     DOWNLOAD_URL=${BATECT_DOWNLOAD_URL:-"$DOWNLOAD_URL_ROOT/$VERSION/bin/batect-$VERSION.jar"}
     QUIET_DOWNLOAD=${BATECT_QUIET_DOWNLOAD:-false}
@@ -94,7 +94,7 @@
     }
 
     function getJavaVersion() {
-        java -version 2>&1 | head -n1 | sed -En ';s/.* version "([0-9]+)(\.([0-9]+))?.*".*/\1.\3/p;'
+        java -version 2>&1 | grep version | sed -En ';s/.* version "([0-9]+)(\.([0-9]+))?.*".*/\1.\3/p;'
     }
 
     function extractJavaMajorVersion() {

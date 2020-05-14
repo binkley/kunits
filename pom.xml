@@ -47,7 +47,7 @@
         <ktlint-maven-plugin.version>1.4.2</ktlint-maven-plugin.version>
         <lombok.version>1.18.12</lombok.version>
         <main.class>hm.binkley.MainKt</main.class>
-        <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
