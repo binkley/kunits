@@ -15,8 +15,8 @@ abstract class System<S : System<S>>(
     val name: String
 ) {
     override fun equals(other: Any?) = this === other ||
-            other is System<*> &&
-            name == other.name
+        other is System<*> &&
+        name == other.name
 
     override fun hashCode() = hash(name)
     override fun toString() = name
@@ -38,9 +38,9 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     abstract fun format(value: FixedBigRational): String
 
     override fun equals(other: Any?) = this === other ||
-            other is Units<*, *> &&
-            system == other.system &&
-            name == other.name
+        other is Units<*, *> &&
+        system == other.system &&
+        name == other.name
 
     override fun hashCode() = hash(system, name)
     override fun toString() = "$system $name" // TODO: Ugh -- I18N, etc.
@@ -77,9 +77,9 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
         other.new(value * unit.base / other.base)
 
     override fun equals(other: Any?) = this === other ||
-            other is Measure<*, *> &&
-            unit == other.unit &&
-            value == other.value
+        other is Measure<*, *> &&
+        unit == other.unit &&
+        value == other.value
 
     override fun hashCode() = hash(unit, value)
     override fun toString() = unit.format(value)
@@ -103,23 +103,33 @@ operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.min
 ): Measure<S, U> = unit.new(value - other.to(unit).value)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: Int) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
+    multiplicand: Int
+) =
     unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: Long) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
+    multiplicand: Long
+) =
     unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(multiplicand: FixedBigRational) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
+    multiplicand: FixedBigRational
+) =
     unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _right_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Int.times(multiplicand: Measure<S, U>) =
+operator fun <S : System<S>, U : Units<S, U>> Int.times(
+    multiplicand: Measure<S, U>
+) =
     multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _right_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Long.times(multiplicand: Measure<S, U>) =
+operator fun <S : System<S>, U : Units<S, U>> Long.times(
+    multiplicand: Measure<S, U>
+) =
     multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _left_ returned as units. */
@@ -128,13 +138,19 @@ operator fun <S : System<S>, U : Units<S, U>> FixedBigRational.times(
 ) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales down the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: Int) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
+    divisor: Int
+) =
     unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: Long) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
+    divisor: Long
+) =
     unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(divisor: FixedBigRational) =
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
+    divisor: FixedBigRational
+) =
     unit.new(value / divisor)
