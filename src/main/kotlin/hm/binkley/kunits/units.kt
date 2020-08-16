@@ -9,6 +9,7 @@ import hm.binkley.math.unaryMinus
 import lombok.Generated
 import java.util.Objects.hash
 
+/** @todo Racy.  Different threads could potentially trigger this */
 private val systemNames = mutableSetOf<String>()
 
 @Generated // Lie to JaCoCo
