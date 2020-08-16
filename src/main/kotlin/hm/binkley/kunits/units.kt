@@ -17,7 +17,6 @@ abstract class System<S : System<S>>(
     val name: String
 ) {
     init {
-        println("*** I AM A ${this.javaClass} with name, $name")
         @Suppress("LeakingThis")
         if (!systemNames.add(name)) error(
             "Whoops!  Two different systems of units with the  same name?  $name"

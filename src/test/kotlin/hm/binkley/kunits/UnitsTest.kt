@@ -75,8 +75,8 @@ internal class UnitsTest {
     @Test
     fun `should complain about duplicate system names`() {
         val error = assertThrows<ExceptionInInitializerError> {
-            println(Foo.name)
-            println(DuplicateFoo.name)
+            Foo
+            DuplicateFoo
         }
 
         assertTrue(error.cause!!.message!!.contains(Foo.name))
