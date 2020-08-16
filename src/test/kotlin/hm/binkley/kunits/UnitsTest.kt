@@ -13,6 +13,7 @@ import hm.binkley.kunits.system.mit.length.smoots
 import hm.binkley.math.finite.FixedBigRational
 import hm.binkley.math.finite.FixedBigRational.Companion.ONE
 import hm.binkley.math.finite.over
+import hm.binkley.math.finite.toBigRational
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -97,8 +98,8 @@ private object Bars : FooLengths<Bars>("bar", ONE) {
 
 private class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
 
-private inline val Int.bars get() = (this over 1).bars
-private inline val Long.bars get() = (this over 1).bars
+private inline val Int.bars get() = toBigRational().bars
+private inline val Long.bars get() = toBigRational().bars
 private inline val FixedBigRational.bars get() = Bar(this)
 
 private object DuplicateFoo : System<DuplicateFoo>("Foo")
