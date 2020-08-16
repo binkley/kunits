@@ -14,7 +14,9 @@ import hm.binkley.math.finite.FixedBigRational
 import hm.binkley.math.finite.FixedBigRational.Companion.ONE
 import hm.binkley.math.finite.over
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 internal class UnitsTest {
     @Test
@@ -69,22 +71,34 @@ internal class UnitsTest {
         assertEquals("Foo bar", "$Bars")
         assertEquals("1 bars", "${1.bars}")
     }
+
+    @Test
+    fun `should complain about duplicate system names`() {
+        val error = assertThrows<ExceptionInInitializerError> {
+            println(Foo.name)
+            println(DuplicateFoo.name)
+        }
+
+        assertTrue(error.cause!!.message!!.contains(Foo.name))
+    }
 }
 
-internal object Foo : System<Foo>("Foo")
+private object Foo : System<Foo>("Foo")
 
-internal sealed class FooLengths<U : FooLengths<U>>(
+private sealed class FooLengths<U : FooLengths<U>>(
     name: String,
     bars: FixedBigRational
 ) : Lengths<Foo, U>(Foo, name, bars)
 
-internal object Bars : FooLengths<Bars>("bar", ONE) {
+private object Bars : FooLengths<Bars>("bar", ONE) {
     override fun new(value: FixedBigRational) = Bar(value)
     override fun format(value: FixedBigRational) = "$value bars"
 }
 
-internal class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
+private class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
 
-internal inline val Int.bars get() = (this over 1).bars
-internal inline val Long.bars get() = (this over 1).bars
-internal inline val FixedBigRational.bars get() = Bar(this)
+private inline val Int.bars get() = (this over 1).bars
+private inline val Long.bars get() = (this over 1).bars
+private inline val FixedBigRational.bars get() = Bar(this)
+
+private object DuplicateFoo : System<DuplicateFoo>("Foo")

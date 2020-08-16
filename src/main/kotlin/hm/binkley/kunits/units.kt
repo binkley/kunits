@@ -9,11 +9,21 @@ import hm.binkley.math.unaryMinus
 import lombok.Generated
 import java.util.Objects.hash
 
+private val systemNames = mutableSetOf<String>()
+
 @Generated // Lie to JaCoCo
 abstract class System<S : System<S>>(
     /** Must be unique for each system. */
     val name: String
 ) {
+    init {
+        println("*** I AM A ${this.javaClass} with name, $name")
+        @Suppress("LeakingThis")
+        if (!systemNames.add(name)) error(
+            "Whoops!  Two different systems of units with the  same name?  $name"
+        )
+    }
+
     override fun equals(other: Any?) = this === other ||
         other is System<*> &&
         name == other.name
