@@ -20,7 +20,7 @@ abstract class System<S : System<S>>(
     init {
         @Suppress("LeakingThis")
         if (!systemNames.add(name)) error(
-            "Whoops!  Two different systems of units with the  same name?  $name"
+            "Whoops!  Two different systems of units with the same name?  $name"
         )
     }
 
