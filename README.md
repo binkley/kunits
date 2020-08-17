@@ -83,7 +83,9 @@ The code passed tests on JDK 11, 13, and 14.
 
 KUnits provides abstractions for representing systems of units in Kotlin, and
 one quirky example,
-[_English units_](https://en.wikipedia.org/wiki/English_units).
+[_English units_](https://en.wikipedia.org/wiki/English_units).  (Contrast
+traditional English units with
+[_Imperial units_](https://www.britannica.com/topic/Imperial-unit).)
 
 This abstraction provides the usual arithmetic operations amongst units, _eg_,
 additions, subtraction, multiplication, and division.
