@@ -5,7 +5,7 @@ containers:
       - local: .
         container: /code
         options: cached
-      - local: .maven-cache
+      - local: ~/.m2
         container: /home/container-user/.m2
         options: cached
     working_directory: /code
@@ -18,7 +18,7 @@ tasks:
     description: Build (and test) the program
     run:
       container: build-env
-      command: ./mvnw -C -Dorg.slf4j.simpleLogger.defaultLogLevel=INFO
+      command: ./mvnw -C
   run:
     description: Runs the demo program
     run:

@@ -6,7 +6,7 @@ rem For more information, visit https://github.com/batect/batect.
 
 setlocal EnableDelayedExpansion
 
-set "version=0.52.0"
+set "version=0.63.0"
 
 if "%BATECT_CACHE_DIR%" == "" (
     set "BATECT_CACHE_DIR=%USERPROFILE%\.batect\cache"
@@ -22,7 +22,7 @@ $ErrorActionPreference = 'Stop'^
 
 ^
 
-$Version='0.52.0'^
+$Version='0.63.0'^
 
 ^
 
@@ -48,13 +48,17 @@ $UrlEncodedVersion = [Uri]::EscapeDataString($Version)^
 
 $DownloadUrl = getValueOrDefault $env:BATECT_DOWNLOAD_URL "$DownloadUrlRoot/$UrlEncodedVersion/bin/batect-$UrlEncodedVersion.jar"^
 
+$ExpectedChecksum = getValueOrDefault $env:BATECT_DOWNLOAD_CHECKSUM '47e7124a874cbcdaaeef811f6f4ea3b0833b8552b58dd697547236351d96551f'^
+
 ^
 
 $RootCacheDir = getValueOrDefault $env:BATECT_CACHE_DIR "$env:USERPROFILE\.batect\cache"^
 
-$CacheDir = "$RootCacheDir\$Version"^
+$VersionCacheDir = "$RootCacheDir\$Version"^
 
-$JarPath = "$CacheDir\batect-$Version.jar"^
+$JarPath = "$VersionCacheDir\batect-$Version.jar"^
+
+$DidDownload = 'false'^
 
 ^
 
@@ -64,9 +68,13 @@ function main() {^
 
         download^
 
+        $DidDownload = 'true'^
+
     }^
 
 ^
+
+    checkChecksum^
 
     runApplication @args^
 
@@ -130,11 +138,29 @@ function download() {^
 
 ^
 
+function checkChecksum() {^
+
+    $localChecksum = (Get-FileHash -Algorithm 'SHA256' $JarPath).Hash.ToLower()^
+
+^
+
+    if ($localChecksum -ne $expectedChecksum) {^
+
+        Write-Host -ForegroundColor Red "The downloaded version of batect does not have the expected checksum. Delete '$JarPath' and then re-run this script to download it again."^
+
+        exit 1^
+
+    }^
+
+}^
+
+^
+
 function createCacheDir() {^
 
-    if (-not (Test-Path $CacheDir)) {^
+    if (-not (Test-Path $VersionCacheDir)) {^
 
-        New-Item -ItemType Directory -Path $CacheDir ^| Out-Null^
+        New-Item -ItemType Directory -Path $VersionCacheDir ^| Out-Null^
 
     }^
 
@@ -165,6 +191,10 @@ function runApplication() {^
     $combinedArgs = $javaArgs + @("-Djava.net.useSystemProxies=true", "-jar", $JarPath) + $args^
 
     $env:HOSTNAME = $env:COMPUTERNAME^
+
+    $env:BATECT_WRAPPER_CACHE_DIR = $RootCacheDir^
+
+    $env:BATECT_WRAPPER_DID_DOWNLOAD = $DidDownload^
 
 ^
 
@@ -372,6 +402,10 @@ rem If we modify the script while it is still running (eg. because we're updatin
 rem because it continues execution from the next byte (which was previously the end of the line).
 rem By explicitly exiting on the same line as starting the application, we avoid these issues as cmd.exe has already read the entire
 rem line before we start the application and therefore will always exit.
+
+rem Why do we set PSModulePath?
+rem See issue #627
+set "PSModulePath="
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -File "%ps1Path%" %* && exit /b 0 || exit /b !ERRORLEVEL!
 
 rem What's this for?

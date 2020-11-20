@@ -8,22 +8,26 @@
     # You should commit this file to version control alongside the rest of your project. It should not be installed globally.
     # For more information, visit https://github.com/batect/batect.
 
-    VERSION="0.52.0"
+    VERSION="0.63.0"
+    CHECKSUM="${BATECT_DOWNLOAD_CHECKSUM:-47e7124a874cbcdaaeef811f6f4ea3b0833b8552b58dd697547236351d96551f}"
     DOWNLOAD_URL_ROOT=${BATECT_DOWNLOAD_URL_ROOT:-"https://dl.bintray.com/batect/batect"}
     DOWNLOAD_URL=${BATECT_DOWNLOAD_URL:-"$DOWNLOAD_URL_ROOT/$VERSION/bin/batect-$VERSION.jar"}
     QUIET_DOWNLOAD=${BATECT_QUIET_DOWNLOAD:-false}
 
-    ROOT_CACHE_DIR=${BATECT_CACHE_DIR:-"$HOME/.batect/cache"}
-    CACHE_DIR="$ROOT_CACHE_DIR/$VERSION"
-    JAR_PATH="$CACHE_DIR/batect-$VERSION.jar"
+    BATECT_WRAPPER_CACHE_DIR=${BATECT_CACHE_DIR:-"$HOME/.batect/cache"}
+    VERSION_CACHE_DIR="$BATECT_WRAPPER_CACHE_DIR/$VERSION"
+    JAR_PATH="$VERSION_CACHE_DIR/batect-$VERSION.jar"
+    BATECT_WRAPPER_DID_DOWNLOAD=false
 
     SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     function main() {
         if ! haveVersionCachedLocally; then
             download
+            BATECT_WRAPPER_DID_DOWNLOAD=true
         fi
 
+        checkChecksum
         runApplication "$@"
     }
 
@@ -34,17 +38,34 @@
     function download() {
         checkForCurl
 
-        echo "Downloading batect version $VERSION from $DOWNLOAD_URL..."
-        mkdir -p "$CACHE_DIR"
+        mkdir -p "$VERSION_CACHE_DIR"
         temp_file=$(mktemp)
 
         if [[ $QUIET_DOWNLOAD == 'true' ]]; then
-            curl --fail --show-error --location --output "$temp_file" "$DOWNLOAD_URL"
+            curl --silent --fail --show-error --location --output "$temp_file" "$DOWNLOAD_URL"
         else
+            echo "Downloading batect version $VERSION from $DOWNLOAD_URL..."
             curl -# --fail --show-error --location --output "$temp_file" "$DOWNLOAD_URL"
         fi
 
         mv "$temp_file" "$JAR_PATH"
+    }
+
+    function checkChecksum() {
+        local_checksum=$(getLocalChecksum)
+
+        if [[ "$local_checksum" != "$CHECKSUM" ]]; then
+            echo "The downloaded version of batect does not have the expected checksum. Delete '$JAR_PATH' and then re-run this script to download it again."
+            exit 1
+        fi
+    }
+
+    function getLocalChecksum() {
+        if [[ "$(uname)" == "Darwin" ]]; then
+            shasum -a 256 "$JAR_PATH" | cut -d' ' -f1
+        else
+            sha256sum "$JAR_PATH" | cut -d' ' -f1
+        fi
     }
 
     function runApplication() {
@@ -60,6 +81,8 @@
         fi
 
         BATECT_WRAPPER_SCRIPT_DIR="$SCRIPT_PATH" \
+        BATECT_WRAPPER_CACHE_DIR="$BATECT_WRAPPER_CACHE_DIR" \
+        BATECT_WRAPPER_DID_DOWNLOAD="$BATECT_WRAPPER_DID_DOWNLOAD" \
         HOSTNAME="$HOSTNAME" \
         exec \
             java \
