@@ -10,10 +10,10 @@ import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.fff.length.furlongs
 import hm.binkley.kunits.system.mit.into
 import hm.binkley.kunits.system.mit.length.smoots
-import hm.binkley.math.finite.FixedBigRational
-import hm.binkley.math.finite.FixedBigRational.Companion.ONE
-import hm.binkley.math.finite.over
-import hm.binkley.math.finite.toBigRational
+import hm.binkley.math.fixed.FixedBigRational
+import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.fixed.over
+import hm.binkley.math.fixed.toBigRational
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

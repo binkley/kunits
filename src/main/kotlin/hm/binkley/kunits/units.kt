@@ -1,11 +1,8 @@
 package hm.binkley.kunits
 
 import hm.binkley.math.div
-import hm.binkley.math.finite.FixedBigRational
-import hm.binkley.math.minus
-import hm.binkley.math.plus
+import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.times
-import hm.binkley.math.unaryMinus
 import lombok.Generated
 import java.util.Objects.hash
 

@@ -3,9 +3,9 @@ package hm.binkley.kunits.system.fff.mass
 import hm.binkley.kunits.Masses
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.math.finite.FixedBigRational
-import hm.binkley.math.finite.FixedBigRational.Companion.ONE
-import hm.binkley.math.finite.over
+import hm.binkley.math.fixed.FixedBigRational
+import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.fixed.over
 
 sealed class FffMasses<U : FffMasses<U>>(
     name: String,

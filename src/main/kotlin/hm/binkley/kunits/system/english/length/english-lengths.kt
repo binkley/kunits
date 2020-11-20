@@ -3,9 +3,9 @@ package hm.binkley.kunits.system.english.length
 import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.system.english.English
-import hm.binkley.math.finite.FixedBigRational
-import hm.binkley.math.finite.FixedBigRational.Companion.ONE
-import hm.binkley.math.finite.over
+import hm.binkley.math.fixed.FixedBigRational
+import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.fixed.over
 
 sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,

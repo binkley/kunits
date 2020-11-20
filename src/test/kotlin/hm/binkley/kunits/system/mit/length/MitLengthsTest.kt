@@ -1,6 +1,6 @@
 package hm.binkley.kunits.system.mit.length
 
-import hm.binkley.math.finite.over
+import hm.binkley.math.fixed.over
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

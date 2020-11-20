@@ -3,9 +3,9 @@ package hm.binkley.kunits.system.fff.time
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Times
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.math.finite.FixedBigRational
-import hm.binkley.math.finite.FixedBigRational.Companion.ONE
-import hm.binkley.math.finite.over
+import hm.binkley.math.fixed.FixedBigRational
+import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.fixed.over
 
 sealed class FffTimes<U : FffTimes<U>>(
     name: String,
