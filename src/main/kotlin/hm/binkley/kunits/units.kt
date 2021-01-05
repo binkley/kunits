@@ -52,21 +52,18 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     override fun toString() = "$system $name" // TODO: Ugh -- I18N, etc.
 }
 
-@Generated // Lie to JaCoCo
 abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
     system: S,
     name: String,
     base: FixedBigRational,
 ) : Units<S, U>(system, name, base)
 
-@Generated // Lie to JaCoCo
 abstract class Masses<S : System<S>, U : Masses<S, U>>(
     system: S,
     name: String,
     base: FixedBigRational,
 ) : Units<S, U>(system, name, base)
 
-@Generated // Lie to JaCoCo
 abstract class Times<S : System<S>, U : Times<S, U>>(
     system: S,
     name: String,
