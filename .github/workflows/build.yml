@@ -24,7 +24,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@master
         with:
-          version: 15
+          java-version: 15
 
       - name: Build and verify
         run: ./mvnw --no-transfer-progress --strict-checksums verify
