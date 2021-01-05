@@ -5,17 +5,16 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.times
 import lombok.Generated
 import java.util.Objects.hash
+import java.util.concurrent.ConcurrentSkipListSet
 
-/** @todo Racy.  Different threads could potentially trigger this */
-private val systemNames = mutableSetOf<String>()
+private val systemNames = ConcurrentSkipListSet<String>()
 
 @Generated // Lie to JaCoCo
 abstract class System<S : System<S>>(
     /** Must be unique for each system. */
-    val name: String
+    val name: String,
 ) {
     init {
-        @Suppress("LeakingThis")
         if (!systemNames.add(name)) error(
             "Whoops!  Two different systems of units with the same name?  $name"
         )
@@ -36,7 +35,7 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Must be unique for each unit within [system]. */
     val name: String,
     /** Used for conversions, not for equality, etc. */
-    internal val base: FixedBigRational
+    internal val base: FixedBigRational,
 ) {
     /** Creates a new unit from the given [value]. */
     abstract fun new(value: FixedBigRational): Measure<S, U>
@@ -57,27 +56,27 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
 abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
     system: S,
     name: String,
-    base: FixedBigRational
+    base: FixedBigRational,
 ) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Masses<S : System<S>, U : Masses<S, U>>(
     system: S,
     name: String,
-    base: FixedBigRational
+    base: FixedBigRational,
 ) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Times<S : System<S>, U : Times<S, U>>(
     system: S,
     name: String,
-    base: FixedBigRational
+    base: FixedBigRational,
 ) : Units<S, U>(system, name, base)
 
 @Generated // Lie to JaCoCo
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     val unit: U,
-    val value: FixedBigRational
+    val value: FixedBigRational,
 ) {
     /** Converts this measure into [other]'s units. */
     fun <V : Units<S, V>> to(other: V) =
@@ -101,55 +100,55 @@ operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.unaryMinus() =
 
 /** Adds the measures, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.plus(
-    other: Measure<S, V>
+    other: Measure<S, V>,
 ): Measure<S, U> = unit.new(value + other.to(unit).value)
 
 /** Subtracts the measures, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.minus(
-    other: Measure<S, V>
+    other: Measure<S, V>,
 ): Measure<S, U> = unit.new(value - other.to(unit).value)
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
-    multiplicand: Int
+    multiplicand: Int,
 ) = unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
-    multiplicand: Long
+    multiplicand: Long,
 ) = unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
-    multiplicand: FixedBigRational
+    multiplicand: FixedBigRational,
 ) = unit.new(value * multiplicand)
 
 /** Scales up the measure, with the _right_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Int.times(
-    multiplicand: Measure<S, U>
+    multiplicand: Measure<S, U>,
 ) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _right_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Long.times(
-    multiplicand: Measure<S, U>
+    multiplicand: Measure<S, U>,
 ) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> FixedBigRational.times(
-    multiplicand: Measure<S, U>
+    multiplicand: Measure<S, U>,
 ) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales down the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
-    divisor: Int
+    divisor: Int,
 ) = unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
-    divisor: Long
+    divisor: Long,
 ) = unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
-    divisor: FixedBigRational
+    divisor: FixedBigRational,
 ) = unit.new(value / divisor)
