@@ -4,7 +4,7 @@ on: [ push ]
 
 jobs:
   build:
-    name: Builds, verifies, and publishes
+    name: Build and verify
     runs-on: ubuntu-latest
 
     steps:
