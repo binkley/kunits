@@ -27,4 +27,4 @@ jobs:
           version: 15
 
       - name: Build and verify
-        run: ./mvnw -C verify
+        run: ./mvnw --no-transfer-progress --strict-checksums verify
