@@ -8,8 +8,8 @@ import hm.binkley.kunits.system.english.length.Inches
 import hm.binkley.kunits.system.mit.length.Smoots
 import hm.binkley.math.times
 
-object MIT : System<MIT>("MIT")
+object MIT : System<MIT>()
 
 fun <U : Lengths<MIT, U>, V : Lengths<English, V>> Measure<MIT, U>.into(
-    other: V
+    other: V,
 ) = Inches.new(to(Smoots).value * 67).to(other)

@@ -5,19 +5,10 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.times
 import lombok.Generated
 import java.util.Objects.hash
-import java.util.concurrent.ConcurrentSkipListSet
 
-private val systemNames = ConcurrentSkipListSet<String>()
-
-abstract class System<S : System<S>>(
-    /** Must be unique for each system. */
-    val name: String,
-) {
-    init {
-        if (!systemNames.add(name)) error(
-            "Whoops!  Two different systems of units with the same name?  $name"
-        )
-    }
+abstract class System<S : System<S>> {
+    @Suppress("LeakingThis")
+    val name: String = nameOf(this)
 
     @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
@@ -26,6 +17,10 @@ abstract class System<S : System<S>>(
 
     override fun hashCode() = hash(name)
     override fun toString() = name
+
+    private companion object {
+        private fun nameOf(system: System<*>) = system::class.simpleName!!
+    }
 }
 
 abstract class Units<S : System<S>, U : Units<S, U>>(

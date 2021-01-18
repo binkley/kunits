@@ -8,7 +8,7 @@ import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.math.div
 
-object English : System<English>("English")
+object English : System<English>()
 
 fun <U : Lengths<English, U>, V : Lengths<FFF, V>> Measure<English, U>.into(
     other: V

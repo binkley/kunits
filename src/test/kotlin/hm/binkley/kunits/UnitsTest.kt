@@ -16,9 +16,7 @@ import hm.binkley.math.fixed.over
 import hm.binkley.math.fixed.toBigRational
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertNotEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import java.lang.System.identityHashCode
 
 internal class UnitsTest {
@@ -76,17 +74,8 @@ internal class UnitsTest {
     }
 
     @Test
-    fun `should complain about duplicate system names`() {
-        val error = assertThrows<ExceptionInInitializerError> {
-            Foo
-            DuplicateFoo
-        }
-
-        assertTrue(error.cause!!.message!!.contains(Foo.name))
-    }
-
-    @Test
     fun `should be named`() {
+        Foo.name shouldBe "Foo"
         Bars.name shouldBe "bar"
     }
 
@@ -104,7 +93,7 @@ internal class UnitsTest {
     }
 }
 
-private object Foo : System<Foo>("Foo")
+private object Foo : System<Foo>()
 
 private sealed class FooLengths<U : FooLengths<U>>(
     name: String,
@@ -121,5 +110,3 @@ private class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
 private inline val Int.bars get() = toBigRational().bars
 private inline val Long.bars get() = toBigRational().bars
 private inline val FixedBigRational.bars get() = Bar(this)
-
-private object DuplicateFoo : System<DuplicateFoo>("Foo")
