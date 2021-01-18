@@ -8,9 +8,7 @@ import hm.binkley.kunits.system.english.length.Poppyseeds
 import hm.binkley.kunits.system.english.length.Sticks
 import hm.binkley.kunits.system.english.length.Yards
 import hm.binkley.kunits.system.english.length.poppyseeds
-import lombok.Generated
 
-@Generated // Lie to JaCoCo
 fun main() {
     val m1 = 120.poppyseeds
 

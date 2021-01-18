@@ -15,9 +15,11 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 import hm.binkley.math.fixed.toBigRational
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.lang.System.identityHashCode
 
 internal class UnitsTest {
     @Test
@@ -82,13 +84,31 @@ internal class UnitsTest {
 
         assertTrue(error.cause!!.message!!.contains(Foo.name))
     }
+
+    @Test
+    fun `should be named`() {
+        assertEquals("bar", Bars.name)
+    }
+
+    @Test
+    fun `should be part of a system`() {
+        assertEquals(Foo, Bars.system)
+    }
+
+    @Test
+    fun `should hash`() {
+        assertNotEquals(identityHashCode(Foo), Foo.hashCode())
+        assertNotEquals(identityHashCode(Bars), Bars.hashCode())
+        val measure = 1.bars
+        assertNotEquals(identityHashCode(measure), measure.hashCode())
+    }
 }
 
 private object Foo : System<Foo>("Foo")
 
 private sealed class FooLengths<U : FooLengths<U>>(
     name: String,
-    bars: FixedBigRational
+    bars: FixedBigRational,
 ) : Lengths<Foo, U>(Foo, name, bars)
 
 private object Bars : FooLengths<Bars>("bar", ONE) {

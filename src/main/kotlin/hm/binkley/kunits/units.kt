@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentSkipListSet
 
 private val systemNames = ConcurrentSkipListSet<String>()
 
-@Generated // Lie to JaCoCo
 abstract class System<S : System<S>>(
     /** Must be unique for each system. */
     val name: String,
@@ -20,6 +19,7 @@ abstract class System<S : System<S>>(
         )
     }
 
+    @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
         other is System<*> &&
         name == other.name
@@ -28,7 +28,6 @@ abstract class System<S : System<S>>(
     override fun toString() = name
 }
 
-@Generated // Lie to JaCoCo
 abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Must be unique for each system. */
     val system: S,
@@ -43,6 +42,7 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Presents the calling measure suitable for humans. */
     abstract fun format(value: FixedBigRational): String
 
+    @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
         other is Units<*, *> &&
         system == other.system &&
@@ -70,7 +70,6 @@ abstract class Times<S : System<S>, U : Times<S, U>>(
     base: FixedBigRational,
 ) : Units<S, U>(system, name, base)
 
-@Generated // Lie to JaCoCo
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     val unit: U,
     val value: FixedBigRational,
@@ -79,6 +78,7 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     fun <V : Units<S, V>> to(other: V) =
         other.new(value * unit.base / other.base)
 
+    @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *> &&
         unit == other.unit &&
