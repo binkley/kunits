@@ -11,7 +11,7 @@ Units of measurement in Kotlin
 [![build](https://github.com/binkley/kunits/workflows/build/badge.svg)](https://github.com/binkley/kunits/actions)
 [![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
 [![Public Domain](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
-[![made with kotlin](https://img.shields.io/badge/made%20with-Kotlin-1f425f.svg)](https://kotlinlang.org/)
+[![kotlin](https://img.shields.io/github/languages/top/binkley/kunits)](https://kotlinlang.org/)
 
 (This project covers mostly silly units: Metric is uninteresting except that
 being based on base-10, it is not representable by binary computers; the
