@@ -7,6 +7,7 @@ import lombok.Generated
 import java.util.Objects.hash
 
 abstract class System<S : System<S>> {
+    /** Should be unique globally: automatically the simple class name. */
     @Suppress("LeakingThis")
     val name: String = nameOf(this)
 
@@ -102,23 +103,18 @@ operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>> Measure<S, U>.min
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
-    multiplicand: Int,
+    multiplicand: FixedBigRational,
 ) = unit.new(value * multiplicand)
+
+/** Scales up the measure, with the _left_ returned as units. */
+operator fun <S : System<S>, U : Units<S, U>> FixedBigRational.times(
+    multiplicand: Measure<S, U>,
+) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
     multiplicand: Long,
 ) = unit.new(value * multiplicand)
-
-/** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
-    multiplicand: FixedBigRational,
-) = unit.new(value * multiplicand)
-
-/** Scales up the measure, with the _right_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> Int.times(
-    multiplicand: Measure<S, U>,
-) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _right_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Long.times(
@@ -126,13 +122,13 @@ operator fun <S : System<S>, U : Units<S, U>> Long.times(
 ) = multiplicand.unit.new(this * multiplicand.value)
 
 /** Scales up the measure, with the _left_ returned as units. */
-operator fun <S : System<S>, U : Units<S, U>> FixedBigRational.times(
-    multiplicand: Measure<S, U>,
-) = multiplicand.unit.new(this * multiplicand.value)
+operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.times(
+    multiplicand: Int,
+) = unit.new(value * multiplicand)
 
 /** Scales down the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
-    divisor: Int,
+    divisor: FixedBigRational,
 ) = unit.new(value / divisor)
 
 /** Scales down the measure, with the _left_ returned as units. */
@@ -140,7 +136,12 @@ operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
     divisor: Long,
 ) = unit.new(value / divisor)
 
+/** Scales up the measure, with the _right_ returned as units. */
+operator fun <S : System<S>, U : Units<S, U>> Int.times(
+    multiplicand: Measure<S, U>,
+) = multiplicand.unit.new(this * multiplicand.value)
+
 /** Scales down the measure, with the _left_ returned as units. */
 operator fun <S : System<S>, U : Units<S, U>> Measure<S, U>.div(
-    divisor: FixedBigRational,
+    divisor: Int,
 ) = unit.new(value / divisor)
