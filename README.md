@@ -1,18 +1,20 @@
 <a href="LICENSE.md">
-<img src="https://unlicense.org/pd-icon.png" alt="Public Domain" align="right"/>
+<img src="./images/public-domain.png" alt="Public Domain" align="right"/>
 </a>
 
 # KUnits
 
 Units of measurement in Kotlin
 
+<img src="./images/kunits.png" alt="KUnits" align="right" width="20%"/>
+
 [![build](https://github.com/binkley/kunits/workflows/build/badge.svg)](https://github.com/binkley/kunits/actions)
 [![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
 [![Public Domain](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 [![made with kotlin](https://img.shields.io/badge/made%20with-Kotlin-1f425f.svg)](https://kotlinlang.org/)
 
-(This project covers mostly silly units: Metric is uninteresting except
-that being based on base-10, it is not representable by binary computers; the
+(This project covers mostly silly units: Metric is uninteresting except that
+being based on base-10, it is not representable by binary computers; the
 French revolutionaries overlooked that.)
 
 * [Build](#build)
@@ -28,8 +30,8 @@ Try [`./run.sh`](run.sh) for a demonstration.
 The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
 offered as a means to reproduce locally what CI does.
 
-This is, by default, a _noisy_ build.  That is, there is lots output even
-without errors.  If you prefer to no messages from Maven as the build
+This is, by default, a _noisy_ build. That is, there is lots output even
+without errors. If you prefer to no messages from Maven as the build
 progresses (errors still disply), run this way:
 
 ```
@@ -54,7 +56,7 @@ $ ln -s ~/.m2 .maven-cache
 The batect Docker container will use this cache.
 
 With Batect on Mac, GNU coreutils installed by Homebrew can cause issues with
-`stty`.  Run this way to avoid this problem:
+`stty`. Run this way to avoid this problem:
 
 ```
 $ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
@@ -72,7 +74,7 @@ This library depends on
 [`kotlin-rational`](https://github.com/binkley/kotlin-rational) for
 representing finite big rationals.
 
-Presently there is no published dependency for `kotlin-rational`.  To build
+Presently there is no published dependency for `kotlin-rational`. To build
 KUnits, install locally from the `finite-rational-1.0.0` tag.
 
 ### Platform
@@ -93,19 +95,20 @@ additions, subtraction, multiplication, and division.
 The top-level API represents:
 
 - [`Units`](src/main/kotlin/hm/binkley/kunits/units.kt) representing units of
-measurement in the abstract with no quantities
+  measurement in the abstract with no quantities
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/units.kt) representing
-measurements in the concrete of a given unit with a quantity expressed as a
-[`FixedBigRational`](#kotlin-rational)
+  measurements in the concrete of a given unit with a quantity expressed as a
+  [`FixedBigRational`](#kotlin-rational)
 
 The code shows a generic pattern for implementing a Unit System with
 [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/english-lengths.kt)
 as the real world exemplar, and
-[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/fff-lengths.kt),
-[FFF units of mass](src/main/kotlin/hm/binkley/kunits/system/fff/mass/fff-masses.kt),
-and
-[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt),
-as a whimsical full system. The pattern can also be seen in
+[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/fff-lengths.kt)
+,
+[FFF units of mass](src/main/kotlin/hm/binkley/kunits/system/fff/mass/fff-masses.kt)
+, and
+[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt)
+, as a whimsical full system. The pattern can also be seen in
 [a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt):
 
 ```kotlin
@@ -133,15 +136,16 @@ for representing measurements, and conversion ratios between units.
 #### Inline
 
 The trivial properties for converting `Int` to English Units could be
-`inline`.  However
-[_Kotlin inline functions are not marked as covered_](https://github.com/jacoco/jacoco/issues/654)
+`inline`. However
+[_Kotlin inline functions are not marked as
+covered_](https://github.com/jacoco/jacoco/issues/654)
 causes code coverage to fail.
 
 Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
-`inline` is removed for now, until JaCoCo resolves this issue.  In
-hindsight, one wishes `inline` were an annotation rather than a keyword: it
-should be a compiler hint, not a command, and the compiler should inline
-automatically, as it makes sense, without the programmer being explicit.
+`inline` is removed for now, until JaCoCo resolves this issue. In hindsight,
+one wishes `inline` were an annotation rather than a keyword: it should be a
+compiler hint, not a command, and the compiler should inline automatically, as
+it makes sense, without the programmer being explicit.
 
 #### Gaps
 
