@@ -1,11 +1,11 @@
 package hm.binkley.kunits.system.mit
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 internal class MITTest {
     @Test
     fun `should pretty print`() {
-        assertEquals("MIT", "$MIT")
+        "$MIT" shouldBe "MIT"
     }
 }

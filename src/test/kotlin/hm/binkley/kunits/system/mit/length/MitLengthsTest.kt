@@ -1,23 +1,23 @@
 package hm.binkley.kunits.system.mit.length
 
 import hm.binkley.math.fixed.over
-import org.junit.jupiter.api.Assertions.assertEquals
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 internal class MitLengthsTest {
     @Test
     fun `should convert`() {
-        assertEquals(1.smoots.to(Ears), (67 over 3).ears)
-        assertEquals(1L.smoots.to(Smoots), 1.smoots)
+        1.smoots.to(Ears) shouldBe (67 over 3).ears
+        1L.smoots.to(Smoots) shouldBe 1.smoots
 
-        assertEquals(1.ears.to(Ears), 1.ears)
-        assertEquals(1L.ears.to(Smoots), (3 over 67).smoots)
+        1.ears.to(Ears) shouldBe 1.ears
+        1L.ears.to(Smoots) shouldBe (3 over 67).smoots
     }
 
     @Test
     fun `should pretty print`() {
-        assertEquals("MIT smoot", "$Smoots")
-        assertEquals("1 sm", "${1.smoots}")
-        assertEquals("1 ear", "${1.ears}")
+        "$Smoots" shouldBe "MIT smoot"
+        "${1.smoots}" shouldBe "1 sm"
+        "${1.ears}" shouldBe "1 ear"
     }
 }
