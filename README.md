@@ -78,7 +78,7 @@ KUnits, install locally from the `finite-rational-1.0.0` tag.
 
 ### Platform
 
-The code passed tests on JDK 11, 13, and 14.
+The code passed tests on JDK 11, and 13-15 (12 was not tested).
 
 ## Design
 
