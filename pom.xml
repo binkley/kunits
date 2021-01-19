@@ -32,6 +32,7 @@
 
     <properties>
         <!-- @formatter:off -->
+        <buildplan-maven-plugin.version>1.4</buildplan-maven-plugin.version>
         <dependency-check-maven.version>6.0.5</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.15.0.1</detekt-maven-plugin.version>
         <dokka.version>1.4.10.2</dokka.version>
@@ -123,6 +124,16 @@
 
         <plugins>
             <plugin>
+                <groupId>fr.jcgay.maven.plugins</groupId>
+                <artifactId>buildplan-maven-plugin</artifactId>
+                <version>${buildplan-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>${maven-enforcer-plugin.version}</version>
                 <configuration>
@@ -139,11 +150,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
