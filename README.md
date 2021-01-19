@@ -24,41 +24,18 @@ French revolutionaries overlooked that.)
 
 ## Build
 
-Try [`./run.sh`](run.sh) for a demonstration.
+Try [`./run.sh`](./run.sh) for a demonstration.
 
 The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
 offered as a means to reproduce locally what CI does.
 
-This is, by default, a _noisy_ build. That is, there is lots output even
-without errors. If you prefer to no messages from Maven as the build
-progresses (errors still disply), run this way:
-
 ```
-$ /mvnw clean verify -Dorg.slf4j.simpleLogger.defaultLogLevel=WARN
-```
-
-Use `./mvnw` or `./batect build` to build, run tests, and create a demo
-program.
-
-This works "out of the box", however, an important optimization is to avoid
-redownloading plugins and dependencies from within a Docker container.
-
-When using [batect](https://batect.dev/), link to your user Maven cache
-directory:
-
-```
-$ ln -s ~/.m2 .maven-cache
-```
-
-(Shares Maven component and dependency downloads across projects.)
-
-The batect Docker container will use this cache.
-
-With Batect on Mac, GNU coreutils installed by Homebrew can cause issues with
-`stty`. Run this way to avoid this problem:
-
-```
-$ PATH=/bin:"$PATH" ./batect [REST OF COMMAND ...]
+# With Maven
+$ ./mvnw clean verify
+$ ./run.sh
+# With Batect
+$ ./batect build
+$ ./batect run
 ```
 
 ### Systems of units
