@@ -88,20 +88,21 @@ as the real world exemplar, and
 [a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt):
 
 ```kotlin
-internal sealed class Foos<U : Foos<U>>(
+sealed class Foos<U : Foos<U>>(
     name: String,
     bars: FixedBigRational
 ) : Lengths<U>(name, bars)
 
-internal object Bars : Foos<Bars>("Bar", ONE) {
+object Bars : Foos<Bars>("Bar", ONE) {
     override fun new(value: FixedBigRational) = Bar(value)
     override fun format(value: FixedBigRational) = "$value bars"
 }
 
-internal class Bar(value: FixedBigRational) : Measure<Bars>(Bars, value)
+class Bar(value: FixedBigRational) : Measure<Bars>(Bars, value)
 
-internal inline val Int.bars get() = (this over 1).bars
-internal inline val FixedBigRational.bars get() = Bar(this)
+val Int.bars get() = (this over 1).bars
+val FixedBigRational.bars get() = Bar(this)
+val Measure<Foos, *>.bars get() = to(Bars)
 ```
 
 The code relies heavily on `Int` and [`FixedBigRational`](#kotlin-rational)
