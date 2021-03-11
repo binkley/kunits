@@ -9,7 +9,7 @@ import hm.binkley.math.fixed.over
 
 sealed class MitLengths<U : MitLengths<U>>(
     name: String,
-    smoots: FixedBigRational
+    smoots: FixedBigRational,
 ) : Lengths<MIT, U>(
     MIT, name, smoots
 )
