@@ -33,14 +33,14 @@
     <properties>
         <!-- @formatter:off -->
         <buildplan-maven-plugin.version>1.4</buildplan-maven-plugin.version>
-        <dependency-check-maven.version>6.1.0</dependency-check-maven.version>
+        <dependency-check-maven.version>6.1.2</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.15.0.1</detekt-maven-plugin.version>
         <dokka.version>1.4.10.2</dokka.version>
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>11</jdk.version>
         <junit.version>5.7.1</junit.version>
-        <kotest.version>4.4.0</kotest.version>
+        <kotest.version>4.4.3</kotest.version>
         <kotlin-rational.version>2.0.1</kotlin-rational.version>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
         <kotlin.version>1.4.30</kotlin.version>
