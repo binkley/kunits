@@ -112,6 +112,8 @@ private object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
 private class Foo(value: FixedBigRational) :
     Measure<Metasyntactic, Foos>(Foos, value)
 
+// NB -- Kotlin lacks the hygenic macro facilities of Scheme or Haskell:
+// explicitly declare conversions from type T to a Foo via BigRational
 private inline val Int.foos get() = toBigRational().foos
 private inline val Long.foos get() = toBigRational().foos
 private inline val FixedBigRational.foos get() = Foo(this)
