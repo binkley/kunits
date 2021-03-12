@@ -60,6 +60,12 @@ internal class UnitsTest {
     }
 
     @Test
+    fun `should convert between units`() {
+        1.quxen.bars shouldBe 2.bars
+        2L.bars.quxen shouldBe 1L.quxen
+    }
+
+    @Test
     fun `should convert between systems`() {
         220.yards shouldBe 1.furlongs.into(Yards)
         1.furlongs shouldBe 220.yards.into(Furlongs)
@@ -110,3 +116,16 @@ private class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
 private inline val Int.bars get() = toBigRational().bars
 private inline val Long.bars get() = toBigRational().bars
 private inline val FixedBigRational.bars get() = Bar(this)
+private val Measure<Foo, *>.bars get() = to(Bars)
+
+private object Quxen : FooLengths<Quxen>("qux", 2 over 1) {
+    override fun new(value: FixedBigRational) = Qux(value)
+    override fun format(value: FixedBigRational) = "$value quxen"
+}
+
+private class Qux(value: FixedBigRational) : Measure<Foo, Quxen>(Quxen, value)
+
+private inline val Int.quxen get() = toBigRational().quxen
+private inline val Long.quxen get() = toBigRational().quxen
+private inline val FixedBigRational.quxen get() = Qux(this)
+private val Measure<Foo, *>.quxen get() = to(Quxen)
