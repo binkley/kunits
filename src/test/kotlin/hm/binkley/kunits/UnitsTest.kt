@@ -22,47 +22,45 @@ import java.lang.System.identityHashCode
 internal class UnitsTest {
     @Test
     fun `should posite`() {
-        +(1L.bars) shouldBe (+1).bars
+        +(1L.foos) shouldBe (+1).foos
     }
 
     @Test
     fun `should negate`() {
-        -(1.bars) shouldBe (-1L).bars
+        -(1.foos) shouldBe (-1L).foos
     }
 
     @Test
     fun `should add`() {
-        1.bars + 2.bars shouldBe 3.bars
-        7.bars shouldBe ((3 over 1).bars + 4.bars)
+        1.foos + 2.foos shouldBe 3.foos
     }
 
     @Test
     fun `should subtract`() {
-        3.bars - 2.bars shouldBe 1.bars
-        (-1).bars shouldBe ((3 over 1).bars - 4.bars)
+        3.foos - 2.foos shouldBe 1.foos
     }
 
     @Test
     fun `should multiply`() {
-        1.bars * 3 shouldBe 3.bars
-        3 * 1.bars shouldBe 3.bars
-        1.bars * 3L shouldBe 3.bars
-        3L * 1.bars shouldBe 3.bars
-        1.bars * (3 over 1) shouldBe 3.bars
-        (3 over 1) * 1.bars shouldBe 3.bars
+        1.foos * 3 shouldBe 3.foos
+        3 * 1.foos shouldBe 3.foos
+        1.foos * 3L shouldBe 3.foos
+        3L * 1.foos shouldBe 3.foos
+        1.foos * (3 over 1) shouldBe 3.foos
+        (3 over 1) * 1.foos shouldBe 3.foos
     }
 
     @Test
     fun `should divide`() {
-        3.bars / 3 shouldBe 1.bars
-        3.bars / 3L shouldBe 1.bars
-        3.bars / (3 over 1) shouldBe 1.bars
+        3.foos / 3 shouldBe 1.foos
+        3.foos / 3L shouldBe 1.foos
+        3.foos / (3 over 1) shouldBe 1.foos
     }
 
     @Test
     fun `should convert between units`() {
-        1.quxen.bars shouldBe 2.bars
-        2L.bars.quxen shouldBe 1L.quxen
+        1.bars.foos shouldBe 2.foos
+        2L.foos.bars shouldBe 1L.bars
     }
 
     @Test
@@ -74,58 +72,60 @@ internal class UnitsTest {
 
     @Test
     fun `should pretty print`() {
-        "$Foo" shouldBe "Foo"
-        "$Bars" shouldBe "Foo bar"
-        "${1.bars}" shouldBe "1 bars"
+        "$Metasyntactic" shouldBe "Metasyntactic"
+        "$Foos" shouldBe "Metasyntactic foo"
+        "${1.foos}" shouldBe "1 foos"
     }
 
     @Test
     fun `should be named`() {
-        Foo.name shouldBe "Foo"
-        Bars.name shouldBe "bar"
+        Metasyntactic.name shouldBe "Metasyntactic"
+        Foos.name shouldBe "foo"
     }
 
     @Test
     fun `should be part of a system`() {
-        Bars.system shouldBe Foo
+        Foos.system shouldBe Metasyntactic
     }
 
     @Test
     fun `should hash`() {
-        assertNotEquals(identityHashCode(Foo), Foo.hashCode())
-        assertNotEquals(identityHashCode(Bars), Bars.hashCode())
-        val measure = 1.bars
+        assertNotEquals(identityHashCode(Metasyntactic), Metasyntactic.hashCode())
+        assertNotEquals(identityHashCode(Foos), Foos.hashCode())
+        val measure = 1.foos
         assertNotEquals(identityHashCode(measure), measure.hashCode())
     }
 }
 
-private object Foo : System<Foo>()
+private object Metasyntactic : System<Metasyntactic>()
 
-private sealed class FooLengths<U : FooLengths<U>>(
+private sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
     name: String,
     bars: FixedBigRational,
-) : Lengths<Foo, U>(Foo, name, bars)
+) : Lengths<Metasyntactic, U>(Metasyntactic, name, bars)
 
-private object Bars : FooLengths<Bars>("bar", ONE) {
+private object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
+    override fun new(value: FixedBigRational) = Foo(value)
+    override fun format(value: FixedBigRational) = "$value foos"
+}
+
+private class Foo(value: FixedBigRational) :
+    Measure<Metasyntactic, Foos>(Foos, value)
+
+private inline val Int.foos get() = toBigRational().foos
+private inline val Long.foos get() = toBigRational().foos
+private inline val FixedBigRational.foos get() = Foo(this)
+private val Measure<Metasyntactic, *>.foos get() = to(Foos)
+
+private object Bars : MetasyntacticLengths<Bars>("bar", 2 over 1) {
     override fun new(value: FixedBigRational) = Bar(value)
     override fun format(value: FixedBigRational) = "$value bars"
 }
 
-private class Bar(value: FixedBigRational) : Measure<Foo, Bars>(Bars, value)
+private class Bar(value: FixedBigRational) :
+    Measure<Metasyntactic, Bars>(Bars, value)
 
 private inline val Int.bars get() = toBigRational().bars
 private inline val Long.bars get() = toBigRational().bars
 private inline val FixedBigRational.bars get() = Bar(this)
-private val Measure<Foo, *>.bars get() = to(Bars)
-
-private object Quxen : FooLengths<Quxen>("qux", 2 over 1) {
-    override fun new(value: FixedBigRational) = Qux(value)
-    override fun format(value: FixedBigRational) = "$value quxen"
-}
-
-private class Qux(value: FixedBigRational) : Measure<Foo, Quxen>(Quxen, value)
-
-private inline val Int.quxen get() = toBigRational().quxen
-private inline val Long.quxen get() = toBigRational().quxen
-private inline val FixedBigRational.quxen get() = Qux(this)
-private val Measure<Foo, *>.quxen get() = to(Quxen)
+private val Measure<Metasyntactic, *>.bars get() = to(Bars)
