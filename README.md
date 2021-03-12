@@ -85,24 +85,30 @@ as the real world exemplar, and
 , and
 [FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt)
 , as a whimsical full system. The pattern can also be seen in
-[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt):
+[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt) based on
+[_metasyntactic
+variables_](https://en.wikipedia.org/wiki/Metasyntactic_variable) (`foo`,
+`bar`, and ilk):
 
 ```kotlin
-sealed class Foos<U : Foos<U>>(
-    name: String,
-    bars: FixedBigRational
-) : Lengths<U>(name, bars)
+object Metasyntactic : System<Metasyntactic>()
 
-object Bars : Foos<Bars>("Bar", ONE) {
-    override fun new(value: FixedBigRational) = Bar(value)
-    override fun format(value: FixedBigRational) = "$value bars"
+sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
+    name: String,
+    bars: FixedBigRational,
+) : Lengths<Metasyntactic, U>(Metasyntactic, name, bars)
+
+object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
+    override fun new(value: FixedBigRational) = Foo(value)
+    override fun format(value: FixedBigRational) = "$value foos"
 }
 
-class Bar(value: FixedBigRational) : Measure<Bars>(Bars, value)
+class Foo(value: FixedBigRational) : Measure<Metasyntactic, Foos>(Foos, value)
 
-val Int.bars get() = (this over 1).bars
-val FixedBigRational.bars get() = Bar(this)
-val Measure<Foos, *>.bars get() = to(Bars)
+inline val Int.foos get() = toBigRational().foos
+inline val Long.foos get() = toBigRational().foos
+inline val FixedBigRational.foos get() = Foo(this)
+val Measure<Metasyntactic, *>.foos get() = to(Foos)
 ```
 
 The code relies heavily on `Int` and [`FixedBigRational`](#kotlin-rational)
