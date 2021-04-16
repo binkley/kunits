@@ -24,7 +24,7 @@ French revolutionaries overlooked that.)
 
 ## Build
 
-Try [`./run.sh`](./run.sh) for a demonstration.
+Try [`./run`](./run) for a demonstration.
 
 The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
 offered as a means to reproduce locally what CI does.
@@ -32,7 +32,7 @@ offered as a means to reproduce locally what CI does.
 ```
 # With Maven
 $ ./mvnw clean verify
-$ ./run.sh
+$ ./run
 # With Batect
 $ ./batect build
 $ ./batect run
