@@ -40,7 +40,7 @@
         <java.charset>UTF-8</java.charset>
         <jdk.version>11</jdk.version>
         <junit.version>5.8.0-M1</junit.version>
-        <kotest.version>4.4.3</kotest.version>
+        <kotest.version>4.5.0.RC1</kotest.version>
         <kotlin-rational.version>kotlin-rational-2.1.1</kotlin-rational.version>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
         <kotlin.version>1.5.0</kotlin.version>
