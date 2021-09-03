@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 internal class EnglishLengthsTest {
     @Test
     fun `should convert`() {
-        1.poppyseeds shouldBe 1.poppyseeds.poppyseeds
+        1.poppyseeds shouldBe 1.poppyseeds
         1L.poppyseeds.barleycorns shouldBe (1 over 4).barleycorns
         1.poppyseeds.inches shouldBe (1 over 12).inches
         1.poppyseeds.sticks shouldBe (1 over 24).sticks
@@ -17,7 +17,7 @@ internal class EnglishLengthsTest {
         1.poppyseeds.miles shouldBe (1 over 760_320).miles
 
         4.poppyseeds shouldBe 1.barleycorns.poppyseeds
-        1.barleycorns shouldBe 1L.barleycorns.barleycorns
+        1.barleycorns shouldBe 1L.barleycorns
         1.barleycorns.inches shouldBe (1 over 3).inches
         1.barleycorns.sticks shouldBe (1 over 6).sticks
         1.barleycorns.hands shouldBe (1 over 12).hands
@@ -27,7 +27,7 @@ internal class EnglishLengthsTest {
 
         12.poppyseeds shouldBe 1.inches.poppyseeds
         3.barleycorns shouldBe 1L.inches.barleycorns
-        1.inches shouldBe 1.inches.inches
+        1.inches shouldBe 1.inches
         1.inches.sticks shouldBe (1 over 2).sticks
         1.inches.hands shouldBe (1 over 4).hands
         1.inches.feet shouldBe (1 over 12).feet
@@ -37,7 +37,7 @@ internal class EnglishLengthsTest {
         24.poppyseeds shouldBe 1.sticks.poppyseeds
         6.barleycorns shouldBe 1L.sticks.barleycorns
         2.inches shouldBe 1.sticks.inches
-        1.sticks shouldBe 1.sticks.sticks
+        1.sticks shouldBe 1.sticks
         1.sticks.hands shouldBe (1 over 2).hands
         1.sticks.feet shouldBe (1 over 6).feet
         1.sticks.yards shouldBe (1 over 18).yards
@@ -47,7 +47,7 @@ internal class EnglishLengthsTest {
         12.barleycorns shouldBe 1L.hands.barleycorns
         4.inches shouldBe 1.hands.inches
         2.sticks shouldBe 1.hands.sticks
-        1.hands shouldBe 1.hands.hands
+        1.hands shouldBe 1.hands
         1.hands.feet shouldBe (1 over 3).feet
         1.hands.yards shouldBe (1 over 9).yards
         1.hands.miles shouldBe (1 over 15_840).miles
@@ -57,7 +57,7 @@ internal class EnglishLengthsTest {
         12.inches shouldBe 1.feet.inches
         6.sticks shouldBe 1.feet.sticks
         3.hands shouldBe 1.feet.hands
-        1.feet shouldBe 1.feet.feet
+        1.feet shouldBe 1.feet
         1.feet.yards shouldBe (1 over 3).yards
         1.feet.miles shouldBe (1 over 5280).miles
 
@@ -67,7 +67,7 @@ internal class EnglishLengthsTest {
         18.sticks shouldBe 1.yards.sticks
         9.hands shouldBe 1.yards.hands
         3.feet shouldBe 1.yards.feet
-        1.yards shouldBe 1.yards.yards
+        1.yards shouldBe 1.yards
         1.yards.miles shouldBe (1 over 1760).miles
 
         760_320.poppyseeds shouldBe 1.miles.poppyseeds
@@ -77,7 +77,7 @@ internal class EnglishLengthsTest {
         15_840.hands shouldBe 1.miles.hands
         5280.feet shouldBe 1.miles.feet
         1760.yards shouldBe 1.miles.yards
-        1.miles shouldBe 1.miles.miles
+        1.miles shouldBe 1.miles
     }
 
     @Test
