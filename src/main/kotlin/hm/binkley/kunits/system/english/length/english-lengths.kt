@@ -105,3 +105,16 @@ val Int.yards get() = toBigRational().yards
 val Long.yards get() = toBigRational().yards
 val FixedBigRational.yards get() = Yard(this)
 val Measure<English, *>.yards get() = to(Yards)
+
+object Miles : EnglishLengths<Miles>("mile", 760_320 over 1) {
+    override fun new(value: FixedBigRational) = Mile(value)
+    override fun format(value: FixedBigRational) = "$value mi"
+}
+
+class Mile(value: FixedBigRational) :
+    Measure<English, Miles>(Miles, value)
+
+val Int.miles get() = toBigRational().miles
+val Long.miles get() = toBigRational().miles
+val FixedBigRational.miles get() = Mile(this)
+val Measure<English, *>.miles get() = to(Miles)
