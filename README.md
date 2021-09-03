@@ -117,13 +117,51 @@ for representing measurements, and conversion ratios between units.
 
 ### Problems
 
+#### Syntactic sugar
+
+There are too many options on what "nice" Kotlin syntactic sugar looks 
+like.  The most "natural English" approach might be:
+```
+2.feet in Inches // *not* valid Kotlin
+```
+However, this is a compilation failure as the "in" needs to be "\`in\`" since 
+`in` is a keyword.
+
+Another is:
+```
+2.feet to Inches
+```
+This works, but is confusing in context of the `to` function for creating 
+a `Pair` instance.
+
+Note both of the above are also more verbose in some situations, as in:
+```
+24.inches shouldBe (2.feet to Inches)
+```
+This needs parentheses so that `2.feet` does not bind more tightly to the 
+left-hand `shouldBe` infix function than to the right-hand `to` infix 
+function.
+
+Another is just skip syntactic sugar:
+```
+Feet(2).convertTo(Inches)
+```
+This loses the pleasantness of Kotlin, and might as well be Java (with a 
+`new` keyword added for that language).
+
+A compromise is to chain extension properties, which pleases no one:
+```
+2.feet.inches
+```
+And this violates what extension properties are for.
+
 #### Inline
 
-The trivial properties for converting `Int` to English Units could be
-`inline`. However
-[_Kotlin inline functions are not marked as
-covered_](https://github.com/jacoco/jacoco/issues/654)
-causes code coverage to fail.
+The trivial extension properties for converting `Int` (and other numeric 
+types) to English Units could be `inline`. However [_Kotlin inline 
+functions are not marked as
+covered_](https://github.com/jacoco/jacoco/issues/654) causes code 
+coverage to fail.
 
 Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
 `inline` is removed for now, until JaCoCo resolves this issue. In hindsight,
@@ -138,9 +176,13 @@ between metric and English units.
 
 ## Reading
 
-* [_Physikal_](https://github.com/Tenkiv/Physikal)
+* [_Chart showing the relationships of distance
+  measures_](https://en.wikipedia.org/wiki/English_units#/media/File:English_Length_Units_Graph.svg)
 * [_English units_](https://en.wikipedia.org/wiki/English_units)
-* [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
-* [_PostCSS Imperial_](https://github.com/sebdeckers/postcss-imperial)
+* [_English Weights &amp;
+  Measures_](http://home.clara.net/brianp/quickref.html)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
+* [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
+* [_Physikal_](https://github.com/Tenkiv/Physikal)
+* [_PostCSS Imperial_](https://github.com/sebdeckers/postcss-imperial)
 * [_Smoot_](https://en.wikipedia.org/wiki/Smoot)
