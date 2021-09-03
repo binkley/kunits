@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class FffTimesTest {
     @Test
     fun `should convert`() {
-        1.fortnights.to(Fortnights) shouldBe 1L.fortnights
+        1.fortnights.convertTo(Fortnights) shouldBe 1L.fortnights
     }
 
     @Test

@@ -12,4 +12,4 @@ object MIT : System<MIT>()
 
 fun <U : Lengths<MIT, U>, V : Lengths<English, V>> Measure<MIT, U>.into(
     other: V,
-) = Inches.new(to(Smoots).value * 67).to(other)
+) = Inches.new(convertTo(Smoots).value * 67).convertTo(other)

@@ -12,4 +12,4 @@ object English : System<English>()
 
 fun <U : Lengths<English, U>, V : Lengths<FFF, V>> Measure<English, U>.into(
     other: V
-) = Furlongs.new(this.to(Yards).value / 220).to(other)
+) = Furlongs.new(this.convertTo(Yards).value / 220).convertTo(other)

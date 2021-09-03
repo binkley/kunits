@@ -117,7 +117,7 @@ private class Foo(value: FixedBigRational) :
 private inline val Int.foos get() = toBigRational().foos
 private inline val Long.foos get() = toBigRational().foos
 private inline val FixedBigRational.foos get() = Foo(this)
-private val Measure<Metasyntactic, *>.foos get() = to(Foos)
+private val Measure<Metasyntactic, *>.foos get() = convertTo(Foos)
 
 private object Bars : MetasyntacticLengths<Bars>("bar", 2 over 1) {
     override fun new(value: FixedBigRational) = Bar(value)
@@ -130,4 +130,4 @@ private class Bar(value: FixedBigRational) :
 private inline val Int.bars get() = toBigRational().bars
 private inline val Long.bars get() = toBigRational().bars
 private inline val FixedBigRational.bars get() = Bar(this)
-private val Measure<Metasyntactic, *>.bars get() = to(Bars)
+private val Measure<Metasyntactic, *>.bars get() = convertTo(Bars)

@@ -12,4 +12,4 @@ object FFF : System<FFF>()
 
 fun <U : Lengths<FFF, U>, V : Lengths<English, V>> Measure<FFF, U>.into(
     other: V
-) = Yards.new(to(Furlongs).value * 220).to(other)
+) = Yards.new(convertTo(Furlongs).value * 220).convertTo(other)

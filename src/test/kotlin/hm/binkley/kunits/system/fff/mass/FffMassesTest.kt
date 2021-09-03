@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class FffMassesTest {
     @Test
     fun `should convert`() {
-        1.firkins.to(Firkins) shouldBe 1L.firkins
+        1.firkins.convertTo(Firkins) shouldBe 1L.firkins
     }
 
     @Test

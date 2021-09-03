@@ -26,7 +26,7 @@ class Poppyseed(value: FixedBigRational) :
 val Int.poppyseeds get() = toBigRational().poppyseeds
 val Long.poppyseeds get() = toBigRational().poppyseeds
 val FixedBigRational.poppyseeds get() = Poppyseed(this)
-val Measure<English, *>.poppyseeds get() = to(Poppyseeds)
+val Measure<English, *>.poppyseeds get() = convertTo(Poppyseeds)
 
 object Barleycorns : EnglishLengths<Barleycorns>("barleycorn", 4 over 1) {
     override fun new(value: FixedBigRational) = Barleycorn(value)
@@ -39,7 +39,7 @@ class Barleycorn(value: FixedBigRational) :
 val Int.barleycorns get() = toBigRational().barleycorns
 val Long.barleycorns get() = toBigRational().barleycorns
 val FixedBigRational.barleycorns get() = Barleycorn(this)
-val Measure<English, *>.barleycorns get() = to(Barleycorns)
+val Measure<English, *>.barleycorns get() = convertTo(Barleycorns)
 
 object Inches : EnglishLengths<Inches>("inch", (12 over 1)) {
     override fun new(value: FixedBigRational) = Inch(value)
@@ -52,7 +52,7 @@ class Inch(value: FixedBigRational) :
 val Int.inches get() = toBigRational().inches
 val Long.inches get() = toBigRational().inches
 val FixedBigRational.inches get() = Inch(this)
-val Measure<English, *>.inches get() = to(Inches)
+val Measure<English, *>.inches get() = convertTo(Inches)
 
 object Sticks : EnglishLengths<Sticks>("stick", 24 over 1) {
     override fun new(value: FixedBigRational) = Stick(value)
@@ -65,7 +65,7 @@ class Stick(value: FixedBigRational) :
 val Int.sticks get() = toBigRational().sticks
 val Long.sticks get() = toBigRational().sticks
 val FixedBigRational.sticks get() = Stick(this)
-val Measure<English, *>.sticks get() = to(Sticks)
+val Measure<English, *>.sticks get() = convertTo(Sticks)
 
 object Hands : EnglishLengths<Hands>("hand", 48 over 1) {
     override fun new(value: FixedBigRational) = Hand(value)
@@ -78,7 +78,7 @@ class Hand(value: FixedBigRational) :
 val Int.hands get() = toBigRational().hands
 val Long.hands get() = toBigRational().hands
 val FixedBigRational.hands get() = Hand(this)
-val Measure<English, *>.hands get() = to(Hands)
+val Measure<English, *>.hands get() = convertTo(Hands)
 
 object Feet : EnglishLengths<Feet>("foot", 144 over 1) {
     override fun new(value: FixedBigRational) = Foot(value)
@@ -91,7 +91,7 @@ class Foot(value: FixedBigRational) :
 val Int.feet get() = toBigRational().feet
 val Long.feet get() = toBigRational().feet
 val FixedBigRational.feet get() = Foot(this)
-val Measure<English, *>.feet get() = to(Feet)
+val Measure<English, *>.feet get() = convertTo(Feet)
 
 object Yards : EnglishLengths<Yards>("yard", 432 over 1) {
     override fun new(value: FixedBigRational) = Yard(value)
@@ -104,7 +104,7 @@ class Yard(value: FixedBigRational) :
 val Int.yards get() = toBigRational().yards
 val Long.yards get() = toBigRational().yards
 val FixedBigRational.yards get() = Yard(this)
-val Measure<English, *>.yards get() = to(Yards)
+val Measure<English, *>.yards get() = convertTo(Yards)
 
 object Miles : EnglishLengths<Miles>("mile", 760_320 over 1) {
     override fun new(value: FixedBigRational) = Mile(value)
@@ -117,4 +117,4 @@ class Mile(value: FixedBigRational) :
 val Int.miles get() = toBigRational().miles
 val Long.miles get() = toBigRational().miles
 val FixedBigRational.miles get() = Mile(this)
-val Measure<English, *>.miles get() = to(Miles)
+val Measure<English, *>.miles get() = convertTo(Miles)
