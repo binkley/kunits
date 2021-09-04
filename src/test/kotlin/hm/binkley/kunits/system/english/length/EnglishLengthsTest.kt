@@ -15,6 +15,7 @@ internal class EnglishLengthsTest {
         1.poppyseeds.feet shouldBe (1 over 144).feet
         1.poppyseeds.yards shouldBe (1 over 432).yards
         1.poppyseeds.miles shouldBe (1 over 760_320).miles
+        1.poppyseeds.leagues shouldBe (1 over 2_280_960).leagues
 
         4.poppyseeds shouldBe 1.barleycorns.poppyseeds
         1L.barleycorns shouldBe 1.barleycorns
@@ -24,6 +25,7 @@ internal class EnglishLengthsTest {
         1.barleycorns.feet shouldBe (1 over 36).feet
         1.barleycorns.yards shouldBe (1 over 108).yards
         1.barleycorns.miles shouldBe (1 over 190_080).miles
+        1.barleycorns.leagues shouldBe (1 over 570_240).leagues
 
         12.poppyseeds shouldBe 1.inches.poppyseeds
         3.barleycorns shouldBe 1.inches.barleycorns
@@ -33,6 +35,7 @@ internal class EnglishLengthsTest {
         1.inches.feet shouldBe (1 over 12).feet
         1.inches.yards shouldBe (1 over 36).yards
         1.inches.miles shouldBe (1 over 63_360).miles
+        1.inches.leagues shouldBe (1 over 190_080).leagues
 
         24.poppyseeds shouldBe 1.sticks.poppyseeds
         6.barleycorns shouldBe 1.sticks.barleycorns
@@ -42,6 +45,7 @@ internal class EnglishLengthsTest {
         1.sticks.feet shouldBe (1 over 6).feet
         1.sticks.yards shouldBe (1 over 18).yards
         1.sticks.miles shouldBe (1 over 31_680).miles
+        1.sticks.leagues shouldBe (1 over 95_040).leagues
 
         48.poppyseeds shouldBe 1.hands.poppyseeds
         12.barleycorns shouldBe 1.hands.barleycorns
@@ -51,6 +55,7 @@ internal class EnglishLengthsTest {
         1.hands.feet shouldBe (1 over 3).feet
         1.hands.yards shouldBe (1 over 9).yards
         1.hands.miles shouldBe (1 over 15_840).miles
+        1.hands.leagues shouldBe (1 over 47_520).leagues
 
         144.poppyseeds shouldBe 1.feet.poppyseeds
         36.barleycorns shouldBe 1.feet.barleycorns
@@ -60,6 +65,7 @@ internal class EnglishLengthsTest {
         1L.feet shouldBe 1.feet
         1.feet.yards shouldBe (1 over 3).yards
         1.feet.miles shouldBe (1 over 5280).miles
+        1.feet.leagues shouldBe (1 over 15_840).leagues
 
         432.poppyseeds shouldBe 1.yards.poppyseeds
         108.barleycorns shouldBe 1.yards.barleycorns
@@ -69,6 +75,7 @@ internal class EnglishLengthsTest {
         3.feet shouldBe 1.yards.feet
         1L.yards shouldBe 1.yards
         1.yards.miles shouldBe (1 over 1760).miles
+        1.yards.leagues shouldBe (1 over 5280).leagues
 
         760_320.poppyseeds shouldBe 1.miles.poppyseeds
         190_080.barleycorns shouldBe 1.miles.barleycorns
@@ -78,6 +85,17 @@ internal class EnglishLengthsTest {
         5280.feet shouldBe 1.miles.feet
         1760.yards shouldBe 1.miles.yards
         1L.miles shouldBe 1.miles
+        1.miles.leagues shouldBe (1 over 3).leagues
+
+        2_280_960.poppyseeds shouldBe 1.leagues.poppyseeds
+        570_240.barleycorns shouldBe 1.leagues.barleycorns
+        190_080.inches shouldBe 1.leagues.inches
+        95_040.sticks shouldBe 1.leagues.sticks
+        47_520.hands shouldBe 1.leagues.hands
+        15_840.feet shouldBe 1.leagues.feet
+        5280.yards shouldBe 1.leagues.yards
+        3.miles shouldBe 1.leagues.miles
+        1L.leagues shouldBe 1.leagues
     }
 
     @Test
@@ -85,11 +103,12 @@ internal class EnglishLengthsTest {
         "$Poppyseeds" shouldBe "English poppyseed"
         "${1.poppyseeds}" shouldBe "1 poppyseeds"
         "$Barleycorns" shouldBe "English barleycorn"
-        "${1.barleycorns}" shouldBe "1 barleycorns"
+        "${1.barleycorns}" shouldBe "1 Bc"
         "$Inches" shouldBe "English inch"
         "${1.inches}" shouldBe "1\""
         "$Sticks" shouldBe "English stick"
-        "${1.sticks}" shouldBe "1 sticks"
+        "${1.sticks}" shouldBe "1 stick"
+        "${2.sticks}" shouldBe "2 sticks"
         "$Hands" shouldBe "English hand"
         "${1.hands}" shouldBe "1 hh"
         "$Feet" shouldBe "English foot"
@@ -98,5 +117,7 @@ internal class EnglishLengthsTest {
         "${1.yards}" shouldBe "1 yd"
         "$Miles" shouldBe "English mile"
         "${1.miles}" shouldBe "1 mi"
+        "$Leagues" shouldBe "English league"
+        "${1.leagues}" shouldBe "1 lea"
     }
 }

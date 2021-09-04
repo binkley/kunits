@@ -30,7 +30,7 @@ val Measure<English, *>.poppyseeds get() = convertTo(Poppyseeds)
 
 object Barleycorns : EnglishLengths<Barleycorns>("barleycorn", 4 over 1) {
     override fun new(value: FixedBigRational) = Barleycorn(value)
-    override fun format(value: FixedBigRational) = "$value barleycorns"
+    override fun format(value: FixedBigRational) = "$value Bc"
 }
 
 class Barleycorn(value: FixedBigRational) :
@@ -56,7 +56,10 @@ val Measure<English, *>.inches get() = convertTo(Inches)
 
 object Sticks : EnglishLengths<Sticks>("stick", 24 over 1) {
     override fun new(value: FixedBigRational) = Stick(value)
-    override fun format(value: FixedBigRational) = "$value sticks"
+    override fun format(value: FixedBigRational) = when (value) {
+        ONE -> "1 stick"
+        else -> "$value sticks"
+    }
 }
 
 class Stick(value: FixedBigRational) :
@@ -118,3 +121,16 @@ val Int.miles get() = toBigRational().miles
 val Long.miles get() = toBigRational().miles
 val FixedBigRational.miles get() = Mile(this)
 val Measure<English, *>.miles get() = convertTo(Miles)
+
+object Leagues : EnglishLengths<Leagues>("league", 2_280_960 over 1) {
+    override fun new(value: FixedBigRational) = League(value)
+    override fun format(value: FixedBigRational) = "$value lea"
+}
+
+class League(value: FixedBigRational) :
+    Measure<English, Leagues>(Leagues, value)
+
+val Int.leagues get() = toBigRational().leagues
+val Long.leagues get() = toBigRational().leagues
+val FixedBigRational.leagues get() = League(this)
+val Measure<English, *>.leagues get() = convertTo(Leagues)
