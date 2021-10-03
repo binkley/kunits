@@ -13,3 +13,8 @@ object English : System<English>()
 fun <U : Lengths<English, U>, V : Lengths<FFF, V>> Measure<English, U>.into(
     other: V
 ) = Furlongs.new(this.convertTo(Yards).value / 220).convertTo(other)
+
+// TODO: Conversion from English weights to Firkin
+// fun <U : Masses<English, U>, V : Masses<FFF, V>> Measure<English, U>.into(
+//    other: V
+// ): Nothing = TODO("CONVERT ENGLISH TO FFF")
