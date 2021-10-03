@@ -33,7 +33,7 @@ internal class EnglishWeightsTest {
         "$Scruples" shouldBe "English scruples"
         "${1.scruples}" shouldBe "1 scruples"
         "$Drams" shouldBe "English drams"
-        "${1.drams}" shouldBe "1 drams"
+        "${1.drams}" shouldBe "1 dr"
         "$Ounces" shouldBe "English ounces"
         "${1.ounces}" shouldBe "1 oz"
         "$Pounds" shouldBe "English pounds"

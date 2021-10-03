@@ -30,7 +30,7 @@ val Measure<English, *>.scruples get() = convertTo(Scruples)
 
 object Drams : EnglishWeights<Drams>("drams", 3 over 1) {
     override fun new(value: FixedBigRational) = Dram(value)
-    override fun format(value: FixedBigRational) = "$value drams"
+    override fun format(value: FixedBigRational) = "$value dr"
 }
 
 class Dram(value: FixedBigRational) :
