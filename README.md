@@ -14,7 +14,7 @@ Units of measurement in Kotlin
 [![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 
 (This project covers mostly silly units: Metric is uninteresting except that
-being based on base-10, it is not representable by binary computers; the
+being based on base 10, it is not representable by binary computers; the
 French revolutionaries overlooked that.)
 
 * [Build](#build)
