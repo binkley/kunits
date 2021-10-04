@@ -53,3 +53,16 @@ val Int.pounds get() = toBigRational().pounds
 val Long.pounds get() = toBigRational().pounds
 val FixedBigRational.pounds get() = Pound(this)
 val Measure<English, *>.pounds get() = convertTo(Pounds)
+
+object Stone : EnglishWeights<Stone>("stone", 3584 over 1) {
+    override fun new(value: FixedBigRational) = Stone_(value)
+    override fun format(value: FixedBigRational) = "$value st"
+}
+
+class Stone_(value: FixedBigRational) :
+    Measure<English, Stone>(Stone, value)
+
+val Int.stone get() = toBigRational().stone
+val Long.stone get() = toBigRational().stone
+val FixedBigRational.stone get() = Stone_(this)
+val Measure<English, *>.stone get() = convertTo(Stone)
