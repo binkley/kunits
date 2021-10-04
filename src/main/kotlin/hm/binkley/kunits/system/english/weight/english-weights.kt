@@ -10,25 +10,12 @@ import hm.binkley.math.fixed.toBigRational
 
 sealed class EnglishWeights<U : EnglishWeights<U>>(
     name: String,
-    scruples: FixedBigRational,
+    drams: FixedBigRational,
 ) : Lengths<English, U>(
-    English, name, scruples
+    English, name, drams
 )
 
-object Scruples : EnglishWeights<Scruples>("scruples", ONE) {
-    override fun new(value: FixedBigRational) = Scruple(value)
-    override fun format(value: FixedBigRational) = "$value scruples"
-}
-
-class Scruple(value: FixedBigRational) :
-    Measure<English, Scruples>(Scruples, value)
-
-val Int.scruples get() = toBigRational().scruples
-val Long.scruples get() = toBigRational().scruples
-val FixedBigRational.scruples get() = Scruple(this)
-val Measure<English, *>.scruples get() = convertTo(Scruples)
-
-object Drams : EnglishWeights<Drams>("drams", 3 over 1) {
+object Drams : EnglishWeights<Drams>("drams", ONE) {
     override fun new(value: FixedBigRational) = Dram(value)
     override fun format(value: FixedBigRational) = "$value dr"
 }
@@ -41,7 +28,7 @@ val Long.drams get() = toBigRational().drams
 val FixedBigRational.drams get() = Dram(this)
 val Measure<English, *>.drams get() = convertTo(Drams)
 
-object Ounces : EnglishWeights<Ounces>("ounces", 48 over 1) {
+object Ounces : EnglishWeights<Ounces>("ounces", 16 over 1) {
     override fun new(value: FixedBigRational) = Ounce(value)
     override fun format(value: FixedBigRational) = "$value oz"
 }
@@ -54,7 +41,7 @@ val Long.ounces get() = toBigRational().ounces
 val FixedBigRational.ounces get() = Ounce(this)
 val Measure<English, *>.ounces get() = convertTo(Ounces)
 
-object Pounds : EnglishWeights<Pounds>("pounds", 768 over 1) {
+object Pounds : EnglishWeights<Pounds>("pounds", 256 over 1) {
     override fun new(value: FixedBigRational) = Pound(value)
     override fun format(value: FixedBigRational) = "$value lb"
 }
