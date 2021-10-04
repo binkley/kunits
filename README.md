@@ -176,6 +176,7 @@ between metric and English units.
 
 ## Reading
 
+* [_Avoirdupois system_](https://en.wikipedia.org/wiki/Avoirdupois_system)
 * [_Chart showing the relationships of distance
   measures_](https://en.wikipedia.org/wiki/English_units#/media/File:English_Length_Units_Graph.svg)
 * [_English units_](https://en.wikipedia.org/wiki/English_units)
