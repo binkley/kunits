@@ -49,10 +49,10 @@ $ ./batect run
 
 This library depends on
 [`kotlin-rational`](https://github.com/binkley/kotlin-rational) for
-representing finite big rationals.
+representing big rationals.
 
 Presently there is no published dependency for `kotlin-rational`. To build
-KUnits, install locally from the `finite-rational-1.0.0` tag.
+KUnits, install locally from the `kotlin-rational-1.0.0` tag.
 
 ### Platform
 
