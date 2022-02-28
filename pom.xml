@@ -46,7 +46,6 @@
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
         <kotlin.version>1.6.20-RC</kotlin.version>
         <ktlint-maven-plugin.version>1.11.2</ktlint-maven-plugin.version>
-        <lombok.version>1.18.22</lombok.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
@@ -64,13 +63,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <!-- Non-obvious, but addresses Warning from Kotlin compiler -->
             <groupId>org.jetbrains.kotlin</groupId>
