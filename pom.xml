@@ -21,14 +21,35 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/binkley/kunits/issues</url>
-    </issueManagement>
     <scm>
         <connection>scm:git:git://github.com/binkley/kunits</connection>
         <url>https://github.com/binkley/kunits</url>
     </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/binkley/kunits/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>GitHub</system>
+        <url>https://github.com/binkley/kunits/actions</url>
+    </ciManagement>
+
+    <developers>
+        <developer>
+            <id>binkley</id>
+            <name>Brian Oxley</name>
+            <email>binkley@alumni.rice.edu</email>
+            <roles>
+                <role>owner</role>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Chicago</timezone>
+            <properties>
+                <picUrl>https://avatars.githubusercontent.com/u/186421?s=60&amp;v=4</picUrl>
+            </properties>
+        </developer>
+    </developers>
 
     <properties>
         <!-- @formatter:off -->
@@ -47,6 +68,7 @@
         <ktlint-maven-plugin.version>1.11.2</ktlint-maven-plugin.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
         <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.2.2</maven-project-info-reports-plugin.version>
@@ -60,6 +82,14 @@
         <versions-maven-plugin.version>2.9.0</versions-maven-plugin.version>
         <!-- @formatter:on -->
     </properties>
+
+    <repositories>
+        <repository>
+            <!-- Needed to find kotlin-rational -->
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -252,7 +282,7 @@
                     <config>config/detekt.yml</config>
                     <report>
                         <report>
-                            html:${basedir}/target/site/detekt/index.html
+                            html:${project.reporting.outputDirectory}/detekt.html
                         </report>
                     </report>
                 </configuration>
@@ -336,6 +366,29 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>${maven-project-info-reports-plugin.version}
                 </version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>ci-management</report>
+                            <report>issue-management</report>
+                            <report>licenses</report>
+                            <report>scm</report>
+                            <report>summary</report>
+                            <report>team</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>${maven-changelog-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
