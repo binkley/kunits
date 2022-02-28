@@ -44,7 +44,7 @@
         <kotlin-rational.version>kotlin-rational-2.1.1</kotlin-rational.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
-        <kotlin.version>1.6.10</kotlin.version>
+        <kotlin.version>1.6.20-RC</kotlin.version>
         <ktlint-maven-plugin.version>1.11.2</ktlint-maven-plugin.version>
         <lombok.version>1.18.22</lombok.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
@@ -52,7 +52,7 @@
         <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.2.2</maven-project-info-reports-plugin.version>
-        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+        <maven-site-plugin.version>3.11.0</maven-site-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <owasp.skip>false</owasp.skip>
