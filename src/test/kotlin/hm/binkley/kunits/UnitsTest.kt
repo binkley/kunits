@@ -94,13 +94,6 @@ internal class UnitsTest {
     @Suppress("ReplaceCallWithBinaryOperator")
     @Test
     fun `should equate`() {
-        Metasyntactic.equals(Metasyntactic).shouldBeTrue()
-        Metasyntactic.equals(this).shouldBeFalse()
-        Metasyntactic.equals(Martian).shouldBeFalse()
-        Foos.equals(Foos).shouldBeTrue()
-        Foos.equals(this).shouldBeFalse()
-        Foos.equals(Groks).shouldBeFalse()
-        Foos.equals(Bars).shouldBeFalse()
         val measure = 1.foos
         measure.equals(measure).shouldBeTrue()
         measure.equals(this).shouldBeFalse()
@@ -111,8 +104,6 @@ internal class UnitsTest {
 
     @Test
     fun `should hash`() {
-        identityHashCode(Metasyntactic) shouldNotBe Metasyntactic.hashCode()
-        identityHashCode(Foos) shouldNotBe Foos.hashCode()
         val measure = 1.foos
         identityHashCode(measure) shouldNotBe measure.hashCode()
     }

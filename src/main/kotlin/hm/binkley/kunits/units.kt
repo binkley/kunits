@@ -9,11 +9,8 @@ abstract class System<S : System<S>> {
     /** Should be unique globally: automatically the simple class name. */
     val name: String = this::class.simpleName!!
 
-    override fun equals(other: Any?) = this === other ||
-        other is System<*> &&
-        name == other.name
+    // Systems are singleton objects, so no point to defining equals/hashCode
 
-    override fun hashCode() = hash(name)
     override fun toString() = name
 }
 
@@ -31,12 +28,8 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Presents the calling measure suitable for humans. */
     abstract fun format(value: FixedBigRational): String
 
-    override fun equals(other: Any?) = this === other ||
-        other is Units<*, *> &&
-        system == other.system &&
-        name == other.name
+    // Units are singleton objects, so no point to defining equals/hashCode
 
-    override fun hashCode() = hash(system, name)
     override fun toString() = "$system $name" // TODO: Ugh -- I18N, etc.
 }
 
