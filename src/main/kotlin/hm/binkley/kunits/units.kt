@@ -7,8 +7,7 @@ import java.util.Objects.hash
 
 abstract class System<S : System<S>> {
     /** Should be unique globally: automatically the simple class name. */
-    @Suppress("LeakingThis")
-    val name: String = nameOf(this)
+    val name: String = this::class.simpleName!!
 
     override fun equals(other: Any?) = this === other ||
         other is System<*> &&
@@ -16,10 +15,6 @@ abstract class System<S : System<S>> {
 
     override fun hashCode() = hash(name)
     override fun toString() = name
-
-    private companion object {
-        private fun nameOf(system: System<*>) = system::class.simpleName!!
-    }
 }
 
 abstract class Units<S : System<S>, U : Units<S, U>>(

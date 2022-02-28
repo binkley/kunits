@@ -12,12 +12,13 @@ import hm.binkley.kunits.system.mit.into
 import hm.binkley.kunits.system.mit.length.smoots
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
 import hm.binkley.math.fixed.over
 import hm.binkley.math.fixed.toBigRational
+import io.kotest.matchers.booleans.shouldBeFalse
+import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertNotEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
 import java.lang.System.identityHashCode
 
@@ -93,30 +94,27 @@ internal class UnitsTest {
     @Suppress("ReplaceCallWithBinaryOperator")
     @Test
     fun `should equate`() {
-        assertTrue(Metasyntactic.equals(Metasyntactic))
-        assertFalse(Metasyntactic.equals(this))
-        assertFalse(Metasyntactic.equals(Martian))
-        assertTrue(Foos.equals(Foos))
-        assertFalse(Foos.equals(this))
-        assertFalse(Foos.equals(Groks))
-        assertFalse(Foos.equals(Bars))
+        Metasyntactic.equals(Metasyntactic).shouldBeTrue()
+        Metasyntactic.equals(this).shouldBeFalse()
+        Metasyntactic.equals(Martian).shouldBeFalse()
+        Foos.equals(Foos).shouldBeTrue()
+        Foos.equals(this).shouldBeFalse()
+        Foos.equals(Groks).shouldBeFalse()
+        Foos.equals(Bars).shouldBeFalse()
         val measure = 1.foos
-        assertTrue(measure.equals(measure))
-        assertFalse(measure.equals(this))
-        assertFalse(measure.equals(1.groks))
-        assertFalse(measure.equals(1.bars))
-        assertFalse(measure.equals(2.foos))
+        measure.equals(measure).shouldBeTrue()
+        measure.equals(this).shouldBeFalse()
+        measure.equals(1.groks).shouldBeFalse()
+        measure.equals(1.bars).shouldBeFalse()
+        measure.equals(2.foos).shouldBeFalse()
     }
 
     @Test
     fun `should hash`() {
-        assertNotEquals(
-            identityHashCode(Metasyntactic),
-            Metasyntactic.hashCode()
-        )
-        assertNotEquals(identityHashCode(Foos), Foos.hashCode())
+        identityHashCode(Metasyntactic) shouldNotBe Metasyntactic.hashCode()
+        identityHashCode(Foos) shouldNotBe Foos.hashCode()
         val measure = 1.foos
-        assertNotEquals(identityHashCode(measure), measure.hashCode())
+        identityHashCode(measure) shouldNotBe measure.hashCode()
     }
 }
 
@@ -125,8 +123,8 @@ object Metasyntactic : System<Metasyntactic>()
 
 sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
     name: String,
-    bars: FixedBigRational,
-) : Lengths<Metasyntactic, U>(Metasyntactic, name, bars)
+    foos: FixedBigRational,
+) : Lengths<Metasyntactic, U>(Metasyntactic, name, foos)
 
 object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
     override fun new(value: FixedBigRational) = Foo(value)
@@ -141,7 +139,7 @@ val Long.foos get() = toBigRational().foos
 val FixedBigRational.foos get() = Foo(this)
 val Measure<Metasyntactic, *>.foos get() = convertTo(Foos)
 
-object Bars : MetasyntacticLengths<Bars>("bar", 2 over 1) {
+object Bars : MetasyntacticLengths<Bars>("bar", TWO) {
     override fun new(value: FixedBigRational) = Bar(value)
     override fun format(value: FixedBigRational) = "$value bars"
 }
