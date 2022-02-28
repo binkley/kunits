@@ -15,7 +15,9 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 import hm.binkley.math.fixed.toBigRational
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.lang.System.identityHashCode
 
@@ -88,46 +90,87 @@ internal class UnitsTest {
         Foos.system shouldBe Metasyntactic
     }
 
+    @Suppress("ReplaceCallWithBinaryOperator")
+    @Test
+    fun `should equate`() {
+        assertTrue(Metasyntactic.equals(Metasyntactic))
+        assertFalse(Metasyntactic.equals(this))
+        assertFalse(Metasyntactic.equals(Martian))
+        assertTrue(Foos.equals(Foos))
+        assertFalse(Foos.equals(this))
+        assertFalse(Foos.equals(Groks))
+        assertFalse(Foos.equals(Bars))
+        val measure = 1.foos
+        assertTrue(measure.equals(measure))
+        assertFalse(measure.equals(this))
+        assertFalse(measure.equals(1.groks))
+        assertFalse(measure.equals(1.bars))
+        assertFalse(measure.equals(2.foos))
+    }
+
     @Test
     fun `should hash`() {
-        assertNotEquals(identityHashCode(Metasyntactic), Metasyntactic.hashCode())
+        assertNotEquals(
+            identityHashCode(Metasyntactic),
+            Metasyntactic.hashCode()
+        )
         assertNotEquals(identityHashCode(Foos), Foos.hashCode())
         val measure = 1.foos
         assertNotEquals(identityHashCode(measure), measure.hashCode())
     }
 }
 
-private object Metasyntactic : System<Metasyntactic>()
+// Main system, units, and measures for tests
+object Metasyntactic : System<Metasyntactic>()
 
-private sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
+sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
     name: String,
     bars: FixedBigRational,
 ) : Lengths<Metasyntactic, U>(Metasyntactic, name, bars)
 
-private object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
+object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
     override fun new(value: FixedBigRational) = Foo(value)
     override fun format(value: FixedBigRational) = "$value foos"
 }
 
-private class Foo(value: FixedBigRational) :
+class Foo(value: FixedBigRational) :
     Measure<Metasyntactic, Foos>(Foos, value)
 
-// NB -- Kotlin lacks the hygenic macro facilities of Scheme or Haskell:
-// explicitly declare conversions from type T to a Foo via BigRational
-private inline val Int.foos get() = toBigRational().foos
-private inline val Long.foos get() = toBigRational().foos
-private inline val FixedBigRational.foos get() = Foo(this)
-private val Measure<Metasyntactic, *>.foos get() = convertTo(Foos)
+val Int.foos get() = toBigRational().foos
+val Long.foos get() = toBigRational().foos
+val FixedBigRational.foos get() = Foo(this)
+val Measure<Metasyntactic, *>.foos get() = convertTo(Foos)
 
-private object Bars : MetasyntacticLengths<Bars>("bar", 2 over 1) {
+object Bars : MetasyntacticLengths<Bars>("bar", 2 over 1) {
     override fun new(value: FixedBigRational) = Bar(value)
     override fun format(value: FixedBigRational) = "$value bars"
 }
 
-private class Bar(value: FixedBigRational) :
+class Bar(value: FixedBigRational) :
     Measure<Metasyntactic, Bars>(Bars, value)
 
-private inline val Int.bars get() = toBigRational().bars
-private inline val Long.bars get() = toBigRational().bars
-private inline val FixedBigRational.bars get() = Bar(this)
-private val Measure<Metasyntactic, *>.bars get() = convertTo(Bars)
+val Int.bars get() = toBigRational().bars
+val Long.bars get() = toBigRational().bars
+val FixedBigRational.bars get() = Bar(this)
+val Measure<Metasyntactic, *>.bars get() = convertTo(Bars)
+
+// Alternate system, units, and measures for tests
+object Martian : System<Martian>()
+
+sealed class MartianLengths<U : MartianLengths<U>>(
+    name: String,
+    bars: FixedBigRational,
+) : Lengths<Martian, U>(Martian, name, bars)
+
+object Groks : MartianLengths<Groks>("grok", ONE) {
+    override fun new(value: FixedBigRational) = Grok(value)
+    override fun format(value: FixedBigRational) = "$value groks"
+}
+
+class Grok(value: FixedBigRational) :
+    Measure<Martian, Groks>(Groks, value)
+
+val Int.groks get() = toBigRational().groks
+val Long.groks get() = toBigRational().groks
+val FixedBigRational.groks get() = Grok(this)
+val Measure<Martian, *>.groks get() = convertTo(Groks)

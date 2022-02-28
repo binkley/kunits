@@ -3,7 +3,6 @@ package hm.binkley.kunits
 import hm.binkley.math.div
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.times
-import lombok.Generated
 import java.util.Objects.hash
 
 abstract class System<S : System<S>> {
@@ -11,7 +10,6 @@ abstract class System<S : System<S>> {
     @Suppress("LeakingThis")
     val name: String = nameOf(this)
 
-    @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
         other is System<*> &&
         name == other.name
@@ -38,7 +36,6 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Presents the calling measure suitable for humans. */
     abstract fun format(value: FixedBigRational): String
 
-    @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
         other is Units<*, *> &&
         system == other.system &&
@@ -74,7 +71,6 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     fun <V : Units<S, V>> convertTo(other: V) =
         other.new(value * unit.base / other.base)
 
-    @Generated // Lie to JaCoCo
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *> &&
         unit == other.unit &&
