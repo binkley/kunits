@@ -285,32 +285,29 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- TODO: Disable until JDK10+ compatibility
-                  See https://github.com/Kotlin/dokka/issues/294 -->
-            <!--            <plugin>-->
-            <!--                <groupId>org.jetbrains.dokka</groupId>-->
-            <!--                <artifactId>dokka-maven-plugin</artifactId>-->
-            <!--                <version>${dokka.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <outputFormat>javadoc</outputFormat>-->
-            <!--                    <reportUndocumented>true</reportUndocumented>-->
-            <!--                    <sourceLinks>-->
-            <!--                        <link>-->
-            <!--                            <path>${project.basedir}</path>-->
-            <!--                            <url>https://github.com/binkley/kunits/blob/master</url>-->
-            <!--                            <lineSuffix>#L</lineSuffix>-->
-            <!--                        </link>-->
-            <!--                    </sourceLinks>-->
-            <!--                </configuration>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <phase>pre-site</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>dokka</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>${dokka.version}</version>
+                <configuration>
+                    <reportUndocumented>true</reportUndocumented>
+                    <sourceLinks>
+                        <link>
+                            <path>${project.basedir}</path>
+                            <url>${project.url}/blob/master</url>
+                            <lineSuffix>#L</lineSuffix>
+                        </link>
+                    </sourceLinks>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>dokka</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>
