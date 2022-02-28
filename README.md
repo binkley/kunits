@@ -13,9 +13,9 @@ Units of measurement in Kotlin
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
 [![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 
-(This project covers mostly silly units: Metric is uninteresting except that
+This project covers mostly silly units: Metric is uninteresting except that
 being based on base 10, it is not representable by binary computers; the
-French revolutionaries overlooked that.)
+French revolutionaries overlooked that.
 
 * [Build](#build)
 * [Design](#design)
