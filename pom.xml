@@ -356,19 +356,4 @@
             </plugin>
         </plugins>
     </reporting>
-
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub binkley Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/binkley/kunits</url>
-        </repository>
-    </distributionManagement>
 </project>
