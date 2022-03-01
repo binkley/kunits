@@ -95,6 +95,19 @@ val Long.shaftments get() = (this over 1).shaftments
 val FixedBigRational.shaftments get() = Shaftment(this)
 val Measure<English, *>.shaftments get() = convertTo(Shaftments)
 
+object Links : EnglishLengths<Links>("link", 2_376 over 25) {
+    override fun new(value: FixedBigRational) = Link(value)
+    override fun format(value: FixedBigRational) = "$value links"
+}
+
+class Link(value: FixedBigRational) :
+    Measure<English, Links>(Links, value)
+
+val Int.links get() = (this over 1).links
+val Long.links get() = (this over 1).links
+val FixedBigRational.links get() = Link(this)
+val Measure<English, *>.links get() = convertTo(Links)
+
 object Feet : EnglishLengths<Feet>("foot", 144 over 1) {
     override fun new(value: FixedBigRational) = Foot(value)
     override fun format(value: FixedBigRational) = "$value'"

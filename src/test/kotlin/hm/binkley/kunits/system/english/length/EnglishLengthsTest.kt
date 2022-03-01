@@ -13,6 +13,7 @@ internal class EnglishLengthsTest {
         (1 over 24).sticks shouldBe 1.lines.sticks
         (1 over 48).hands shouldBe 1.lines.hands
         (1 over 72).shaftments shouldBe 1.lines.shaftments
+        (25 over 2_376).links shouldBe 1.lines.links
         (1 over 144).feet shouldBe 1.lines.feet
         (1 over 432).yards shouldBe 1.lines.yards
         (1 over 540).ells shouldBe 1.lines.ells
@@ -28,6 +29,7 @@ internal class EnglishLengthsTest {
         (1 over 6).sticks shouldBe 1.barleycorns.sticks
         (1 over 12).hands shouldBe 1.barleycorns.hands
         (1 over 18).shaftments shouldBe 1.barleycorns.shaftments
+        (25 over 594).links shouldBe 1.barleycorns.links
         (1 over 36).feet shouldBe 1.barleycorns.feet
         (1 over 108).yards shouldBe 1.barleycorns.yards
         (1 over 135).ells shouldBe 1.barleycorns.ells
@@ -43,6 +45,7 @@ internal class EnglishLengthsTest {
         (1 over 2).sticks shouldBe 1.inches.sticks
         (1 over 4).hands shouldBe 1.inches.hands
         (1 over 6).shaftments shouldBe 1.inches.shaftments
+        (25 over 198).links shouldBe 1.inches.links
         (1 over 12).feet shouldBe 1.inches.feet
         (1 over 36).yards shouldBe 1.inches.yards
         (1 over 45).ells shouldBe 1.inches.ells
@@ -58,6 +61,7 @@ internal class EnglishLengthsTest {
         1L.sticks shouldBe 1.sticks
         (1 over 2).hands shouldBe 1.sticks.hands
         (1 over 3).shaftments shouldBe 1.sticks.shaftments
+        (25 over 99).links shouldBe 1.sticks.links
         (1 over 6).feet shouldBe 1.sticks.feet
         (1 over 18).yards shouldBe 1.sticks.yards
         (2 over 45).ells shouldBe 1.sticks.ells
@@ -73,6 +77,7 @@ internal class EnglishLengthsTest {
         2.sticks shouldBe 1.hands.sticks
         1L.hands shouldBe 1.hands
         (2 over 3).shaftments shouldBe 1.hands.shaftments
+        (50 over 99).links shouldBe 1.hands.links
         (1 over 3).feet shouldBe 1.hands.feet
         (1 over 9).yards shouldBe 1.hands.yards
         (4 over 45).ells shouldBe 1.hands.ells
@@ -88,6 +93,7 @@ internal class EnglishLengthsTest {
         3.sticks shouldBe 1.shaftments.sticks
         (3 over 2).hands shouldBe 1.shaftments.hands
         1L.shaftments shouldBe 1.shaftments
+        (25 over 33).links shouldBe 1.shaftments.links
         (1 over 2).feet shouldBe 1.shaftments.feet
         (1 over 6).yards shouldBe 1.shaftments.yards
         (2 over 15).ells shouldBe 1.shaftments.ells
@@ -97,12 +103,29 @@ internal class EnglishLengthsTest {
         (1 over 10_560).miles shouldBe 1.shaftments.miles
         (1 over 31_680).leagues shouldBe 1.shaftments.leagues
 
+        (2_376 over 25).lines shouldBe 1.links.lines
+        (594 over 25).barleycorns shouldBe 1.links.barleycorns
+        (198 over 25).inches shouldBe 1.links.inches
+        (99 over 25).sticks shouldBe 1.links.sticks
+        (99 over 50).hands shouldBe 1.links.hands
+        (33 over 25).shaftments shouldBe 1.links.shaftments
+        1L.links shouldBe 1.links
+        (33 over 50).feet shouldBe 1.links.feet
+        (11 over 50).yards shouldBe 1.links.yards
+        (22 over 125).ells shouldBe 1.links.ells
+        (1 over 25).rods shouldBe 1.links.rods
+        (1 over 100).chains shouldBe 1.links.chains
+        (1 over 1_000).furlongs shouldBe 1.links.furlongs
+        (1 over 8_000).miles shouldBe 1.links.miles
+        (1 over 24_000).leagues shouldBe 1.links.leagues
+
         144.lines shouldBe 1.feet.lines
         36.barleycorns shouldBe 1.feet.barleycorns
         12.inches shouldBe 1.feet.inches
         6.sticks shouldBe 1.feet.sticks
         3.hands shouldBe 1.feet.hands
         2.shaftments shouldBe 1.feet.shaftments
+        (50 over 33).links shouldBe 1.feet.links
         1L.feet shouldBe 1.feet
         (1 over 3).yards shouldBe 1.feet.yards
         (4 over 15).ells shouldBe 1.feet.ells
@@ -118,6 +141,7 @@ internal class EnglishLengthsTest {
         18.sticks shouldBe 1.yards.sticks
         9.hands shouldBe 1.yards.hands
         6.shaftments shouldBe 1.yards.shaftments
+        (50 over 11).links shouldBe 1.yards.links
         3.feet shouldBe 1.yards.feet
         1L.yards shouldBe 1.yards
         (4 over 5).ells shouldBe 1.yards.ells
@@ -133,6 +157,7 @@ internal class EnglishLengthsTest {
         (45 over 2).sticks shouldBe 1.ells.sticks
         (45 over 4).hands shouldBe 1.ells.hands
         (15 over 2).shaftments shouldBe 1.ells.shaftments
+        (125 over 22).links shouldBe 1.ells.links
         (15 over 4).feet shouldBe 1.ells.feet
         (5 over 4).yards shouldBe 1.ells.yards
         1L.ells shouldBe 1.ells
@@ -148,6 +173,7 @@ internal class EnglishLengthsTest {
         99.sticks shouldBe 1.rods.sticks
         (99 over 2).hands shouldBe 1.rods.hands
         33.shaftments shouldBe 1.rods.shaftments
+        25.links shouldBe 1.rods.links
         (33 over 2).feet shouldBe 1.rods.feet
         (11 over 2).yards shouldBe 1.rods.yards
         (22 over 5).ells shouldBe 1.rods.ells
@@ -163,6 +189,7 @@ internal class EnglishLengthsTest {
         396.sticks shouldBe 1.chains.sticks
         198.hands shouldBe 1.chains.hands
         132.shaftments shouldBe 1.chains.shaftments
+        100.links shouldBe 1.chains.links
         66.feet shouldBe 1.chains.feet
         22.yards shouldBe 1.chains.yards
         (88 over 5).ells shouldBe 1.chains.ells
@@ -178,6 +205,7 @@ internal class EnglishLengthsTest {
         3_960.sticks shouldBe 1.furlongs.sticks
         1_980.hands shouldBe 1.furlongs.hands
         1_320.shaftments shouldBe 1.furlongs.shaftments
+        1_000.links shouldBe 1.furlongs.links
         660.feet shouldBe 1.furlongs.feet
         220.yards shouldBe 1.furlongs.yards
         176.ells shouldBe 1.furlongs.ells
@@ -193,6 +221,7 @@ internal class EnglishLengthsTest {
         31_680.sticks shouldBe 1.miles.sticks
         15_840.hands shouldBe 1.miles.hands
         10_560.shaftments shouldBe 1.miles.shaftments
+        8_000.links shouldBe 1.miles.links
         5_280.feet shouldBe 1.miles.feet
         1_760.yards shouldBe 1.miles.yards
         1_408.ells shouldBe 1.miles.ells
@@ -208,6 +237,7 @@ internal class EnglishLengthsTest {
         95_040.sticks shouldBe 1.leagues.sticks
         47_520.hands shouldBe 1.leagues.hands
         31_680.shaftments shouldBe 1.leagues.shaftments
+        24_000.links shouldBe 1.leagues.links
         15_840.feet shouldBe 1.leagues.feet
         5_280.yards shouldBe 1.leagues.yards
         4_224.ells shouldBe 1.leagues.ells
@@ -234,6 +264,8 @@ internal class EnglishLengthsTest {
         "${1.hands}" shouldBe "1 hh"
         "$Shaftments" shouldBe "English shaftment"
         "${1.shaftments}" shouldBe "1 shaftments"
+        "$Links" shouldBe "English link"
+        "${1.links}" shouldBe "1 links"
         "$Feet" shouldBe "English foot"
         "${1.feet}" shouldBe "1'"
         "$Yards" shouldBe "English yard"
