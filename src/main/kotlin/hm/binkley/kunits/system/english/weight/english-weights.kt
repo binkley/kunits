@@ -66,11 +66,12 @@ val Long.cloves get() = (this over 1).cloves
 val FixedBigRational.cloves get() = Clove(this)
 val Measure<English, *>.cloves get() = convertTo(Cloves)
 
-object Stone : EnglishWeights<Stone>("stone", 3584 over 1) {
+object Stone : EnglishWeights<Stone>("stone", 3_584 over 1) {
     override fun new(value: FixedBigRational) = Stone_(value)
     override fun format(value: FixedBigRational) = "$value st"
 }
 
+/** Note the odd naming as "stone" is plural for "stone". */
 class Stone_(value: FixedBigRational) :
     Measure<English, Stone>(Stone, value)
 
@@ -78,3 +79,16 @@ val Int.stone get() = (this over 1).stone
 val Long.stone get() = (this over 1).stone
 val FixedBigRational.stone get() = Stone_(this)
 val Measure<English, *>.stone get() = convertTo(Stone)
+
+object Tods : EnglishWeights<Tods>("tods", 7_168 over 1) {
+    override fun new(value: FixedBigRational) = Tod(value)
+    override fun format(value: FixedBigRational) = "$value tods"
+}
+
+class Tod(value: FixedBigRational) :
+    Measure<English, Tods>(Tods, value)
+
+val Int.tods get() = (this over 1).tods
+val Long.tods get() = (this over 1).tods
+val FixedBigRational.tods get() = Tod(this)
+val Measure<English, *>.tods get() = convertTo(Tods)
