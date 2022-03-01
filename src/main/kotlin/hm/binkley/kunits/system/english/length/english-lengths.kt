@@ -82,6 +82,19 @@ val Long.hands get() = (this over 1).hands
 val FixedBigRational.hands get() = Hand(this)
 val Measure<English, *>.hands get() = convertTo(Hands)
 
+object Shaftments : EnglishLengths<Shaftments>("shaftment", 72 over 1) {
+    override fun new(value: FixedBigRational) = Shaftment(value)
+    override fun format(value: FixedBigRational) = "$value shaftments"
+}
+
+class Shaftment(value: FixedBigRational) :
+    Measure<English, Shaftments>(Shaftments, value)
+
+val Int.shaftments get() = (this over 1).shaftments
+val Long.shaftments get() = (this over 1).shaftments
+val FixedBigRational.shaftments get() = Shaftment(this)
+val Measure<English, *>.shaftments get() = convertTo(Shaftments)
+
 object Feet : EnglishLengths<Feet>("foot", 144 over 1) {
     override fun new(value: FixedBigRational) = Foot(value)
     override fun format(value: FixedBigRational) = "$value'"
