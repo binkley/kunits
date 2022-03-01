@@ -380,11 +380,13 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+            <!-- TODO: For Batect, needs an image that includes git
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changelog-plugin</artifactId>
                 <version>${maven-changelog-plugin.version}</version>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
