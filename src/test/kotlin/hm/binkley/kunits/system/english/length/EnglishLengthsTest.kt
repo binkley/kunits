@@ -14,6 +14,7 @@ internal class EnglishLengthsTest {
         1.poppyseeds.hands shouldBe (1 over 48).hands
         1.poppyseeds.feet shouldBe (1 over 144).feet
         1.poppyseeds.yards shouldBe (1 over 432).yards
+        1.poppyseeds.rods shouldBe (1 over 2_376).rods
         1.poppyseeds.furlongs shouldBe (1 over 95_040).furlongs
         1.poppyseeds.miles shouldBe (1 over 760_320).miles
         1.poppyseeds.leagues shouldBe (1 over 2_280_960).leagues
@@ -25,6 +26,7 @@ internal class EnglishLengthsTest {
         1.barleycorns.hands shouldBe (1 over 12).hands
         1.barleycorns.feet shouldBe (1 over 36).feet
         1.barleycorns.yards shouldBe (1 over 108).yards
+        1.barleycorns.rods shouldBe (1 over 594).rods
         1.barleycorns.furlongs shouldBe (1 over 23_760).furlongs
         1.barleycorns.miles shouldBe (1 over 190_080).miles
         1.barleycorns.leagues shouldBe (1 over 570_240).leagues
@@ -36,6 +38,7 @@ internal class EnglishLengthsTest {
         1.inches.hands shouldBe (1 over 4).hands
         1.inches.feet shouldBe (1 over 12).feet
         1.inches.yards shouldBe (1 over 36).yards
+        1.inches.rods shouldBe (1 over 198).rods
         1.inches.furlongs shouldBe (1 over 7_920).furlongs
         1.inches.miles shouldBe (1 over 63_360).miles
         1.inches.leagues shouldBe (1 over 190_080).leagues
@@ -47,6 +50,7 @@ internal class EnglishLengthsTest {
         1.sticks.hands shouldBe (1 over 2).hands
         1.sticks.feet shouldBe (1 over 6).feet
         1.sticks.yards shouldBe (1 over 18).yards
+        1.sticks.rods shouldBe (1 over 99).rods
         1.sticks.furlongs shouldBe (1 over 3_960).furlongs
         1.sticks.miles shouldBe (1 over 31_680).miles
         1.sticks.leagues shouldBe (1 over 95_040).leagues
@@ -58,6 +62,7 @@ internal class EnglishLengthsTest {
         1L.hands shouldBe 1.hands
         1.hands.feet shouldBe (1 over 3).feet
         1.hands.yards shouldBe (1 over 9).yards
+        1.hands.rods shouldBe (2 over 99).rods
         1.hands.furlongs shouldBe (1 over 1_980).furlongs
         1.hands.miles shouldBe (1 over 15_840).miles
         1.hands.leagues shouldBe (1 over 47_520).leagues
@@ -69,6 +74,7 @@ internal class EnglishLengthsTest {
         3.hands shouldBe 1.feet.hands
         1L.feet shouldBe 1.feet
         1.feet.yards shouldBe (1 over 3).yards
+        1.feet.rods shouldBe (2 over 33).rods
         1.feet.furlongs shouldBe (1 over 660).furlongs
         1.feet.miles shouldBe (1 over 5_280).miles
         1.feet.leagues shouldBe (1 over 15_840).leagues
@@ -80,9 +86,22 @@ internal class EnglishLengthsTest {
         9.hands shouldBe 1.yards.hands
         3.feet shouldBe 1.yards.feet
         1L.yards shouldBe 1.yards
+        1.yards.rods shouldBe (2 over 11).rods
         1.yards.furlongs shouldBe (1 over 220).furlongs
         1.yards.miles shouldBe (1 over 1_760).miles
         1.yards.leagues shouldBe (1 over 5_280).leagues
+
+        2_376.poppyseeds shouldBe 1.rods.poppyseeds
+        594.barleycorns shouldBe 1.rods.barleycorns
+        198.inches shouldBe 1.rods.inches
+        99.sticks shouldBe 1.rods.sticks
+        (99 over 2).hands shouldBe 1.rods.hands
+        (33 over 2).feet shouldBe 1.rods.feet
+        (11 over 2).yards shouldBe 1.rods.yards
+        1L.rods shouldBe 1.rods
+        1.rods.furlongs shouldBe (1 over 40).furlongs
+        1.rods.miles shouldBe (1 over 320).miles
+        1.rods.leagues shouldBe (1 over 960).leagues
 
         95_040.poppyseeds shouldBe 1.furlongs.poppyseeds
         23_760.barleycorns shouldBe 1.furlongs.barleycorns
@@ -91,6 +110,7 @@ internal class EnglishLengthsTest {
         1_980.hands shouldBe 1.furlongs.hands
         660.feet shouldBe 1.furlongs.feet
         220.yards shouldBe 1.furlongs.yards
+        40.rods shouldBe 1.furlongs.rods
         1L.furlongs shouldBe 1.furlongs
         1.furlongs.miles shouldBe (1 over 8).miles
         1.furlongs.leagues shouldBe (1 over 24).leagues
@@ -102,6 +122,7 @@ internal class EnglishLengthsTest {
         15_840.hands shouldBe 1.miles.hands
         5_280.feet shouldBe 1.miles.feet
         1_760.yards shouldBe 1.miles.yards
+        320.rods shouldBe 1.miles.rods
         8.furlongs shouldBe 1.miles.furlongs
         1L.miles shouldBe 1.miles
         1.miles.leagues shouldBe (1 over 3).leagues
@@ -113,6 +134,7 @@ internal class EnglishLengthsTest {
         47_520.hands shouldBe 1.leagues.hands
         15_840.feet shouldBe 1.leagues.feet
         5_280.yards shouldBe 1.leagues.yards
+        960.rods shouldBe 1.leagues.rods
         24.furlongs shouldBe 1.leagues.furlongs
         3.miles shouldBe 1.leagues.miles
         1L.leagues shouldBe 1.leagues
