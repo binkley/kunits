@@ -80,12 +80,11 @@ The top-level API represents:
 The code shows a generic pattern for implementing a Unit System with
 [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/english-lengths.kt)
 as the real world exemplar, and
-[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/fff-lengths.kt)
-,
-[FFF units of mass](src/main/kotlin/hm/binkley/kunits/system/fff/mass/fff-masses.kt)
-, and
-[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt)
-, as a whimsical full system. The pattern can also be seen in
+[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/fff-lengths.kt),
+[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt),
+and
+[FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/fff-weights.kt),
+as a whimsical full system. The pattern can also be seen in
 [a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt) based on
 [_metasyntactic
 variables_](https://en.wikipedia.org/wiki/Metasyntactic_variable) (`foo`,

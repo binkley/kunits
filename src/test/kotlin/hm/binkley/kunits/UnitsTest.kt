@@ -3,13 +3,9 @@ package hm.binkley.kunits
 import hm.binkley.kunits.system.english.into
 import hm.binkley.kunits.system.english.length.Inches
 import hm.binkley.kunits.system.english.length.Yards
-import hm.binkley.kunits.system.english.length.inches
-import hm.binkley.kunits.system.english.length.yards
 import hm.binkley.kunits.system.fff.into
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.kunits.system.fff.length.furlongs
 import hm.binkley.kunits.system.mit.into
-import hm.binkley.kunits.system.mit.length.smoots
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
@@ -21,6 +17,10 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
 import java.lang.System.identityHashCode
+import hm.binkley.kunits.system.english.length.inches as englishInches
+import hm.binkley.kunits.system.english.length.yards as englishYards
+import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
+import hm.binkley.kunits.system.mit.length.smoots as mitSmoots
 
 internal class UnitsTest {
     @Test
@@ -68,9 +68,9 @@ internal class UnitsTest {
 
     @Test
     fun `should convert between systems`() {
-        220.yards shouldBe 1.furlongs.into(Yards)
-        1.furlongs shouldBe 220.yards.into(Furlongs)
-        67.inches shouldBe 1.smoots.into(Inches)
+        220.englishYards shouldBe 1.fffFurlongs.into(Yards)
+        1.fffFurlongs shouldBe 220.englishYards.into(Furlongs)
+        67.englishInches shouldBe 1.mitSmoots.into(Inches)
     }
 
     @Test

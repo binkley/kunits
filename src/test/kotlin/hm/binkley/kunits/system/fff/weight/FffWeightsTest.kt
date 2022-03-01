@@ -1,9 +1,9 @@
-package hm.binkley.kunits.system.fff.mass
+package hm.binkley.kunits.system.fff.weight
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class FffMassesTest {
+internal class FffWeightsTest {
     @Test
     fun `should convert`() {
         1.firkins.convertTo(Firkins) shouldBe 1L.firkins
