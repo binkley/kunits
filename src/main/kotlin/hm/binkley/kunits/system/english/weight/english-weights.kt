@@ -14,6 +14,19 @@ sealed class EnglishWeights<U : EnglishWeights<U>>(
     English, name, drams
 )
 
+object Grains : EnglishWeights<Grains>("grains", 256 over 7000) {
+    override fun new(value: FixedBigRational) = Grain(value)
+    override fun format(value: FixedBigRational) = "$value gr"
+}
+
+class Grain(value: FixedBigRational) :
+    Measure<English, Grains>(Grains, value)
+
+val Int.grains get() = (this over 1).grains
+val Long.grains get() = (this over 1).grains
+val FixedBigRational.grains get() = Grain(this)
+val Measure<English, *>.grains get() = convertTo(Grains)
+
 object Drams : EnglishWeights<Drams>("drams", ONE) {
     override fun new(value: FixedBigRational) = Dram(value)
     override fun format(value: FixedBigRational) = "$value dr"
