@@ -122,15 +122,15 @@ val Long.hundredweight get() = (this over 1).hundredweight
 val FixedBigRational.hundredweight get() = Hundredweight_(this)
 val Measure<English, *>.hundredweight get() = convertTo(Hundredweight)
 
-object Tons : EnglishWeights<Tons>("tons", 573_440 over 1) {
-    override fun new(value: FixedBigRational) = Ton(value)
-    override fun format(value: FixedBigRational) = "$value tons"
+object Tuns : EnglishWeights<Tuns>("tuns", 573_440 over 1) {
+    override fun new(value: FixedBigRational) = Tun(value)
+    override fun format(value: FixedBigRational) = "$value tuns"
 }
 
-class Ton(value: FixedBigRational) :
-    Measure<English, Tons>(Tons, value)
+class Tun(value: FixedBigRational) :
+    Measure<English, Tuns>(Tuns, value)
 
-val Int.tons get() = (this over 1).tons
-val Long.tons get() = (this over 1).tons
-val FixedBigRational.tons get() = Ton(this)
-val Measure<English, *>.tons get() = convertTo(Tons)
+val Int.tuns get() = (this over 1).tuns
+val Long.tuns get() = (this over 1).tuns
+val FixedBigRational.tuns get() = Tun(this)
+val Measure<English, *>.tuns get() = convertTo(Tuns)

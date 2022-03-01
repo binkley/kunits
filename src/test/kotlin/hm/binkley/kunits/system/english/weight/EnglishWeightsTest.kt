@@ -15,7 +15,7 @@ internal class EnglishWeightsTest {
         1.grains.stone shouldBe (1 over 98_000).stone
         1.grains.tods shouldBe (1 over 196_000).tods
         1.grains.hundredweight shouldBe (1 over 784_000).hundredweight
-        1.grains.tons shouldBe (1 over 15_680_000).tons
+        1.grains.tuns shouldBe (1 over 15_680_000).tuns
 
         (875 over 32).grains shouldBe 1.drams.grains
         1L.drams shouldBe 1.drams
@@ -25,7 +25,7 @@ internal class EnglishWeightsTest {
         1.drams.stone shouldBe (1 over 3_584).stone
         1.drams.tods shouldBe (1 over 7_168).tods
         1.drams.hundredweight shouldBe (1 over 28_672).hundredweight
-        1.drams.tons shouldBe (1 over 573_440).tons
+        1.drams.tuns shouldBe (1 over 573_440).tuns
 
         (875 over 2).grains shouldBe 1.ounces.grains
         16.drams shouldBe 1.ounces.drams
@@ -35,7 +35,7 @@ internal class EnglishWeightsTest {
         1.ounces.stone shouldBe (1 over 224).stone
         1.ounces.tods shouldBe (1 over 448).tods
         1.ounces.hundredweight shouldBe (1 over 1_792).hundredweight
-        1.ounces.tons shouldBe (1 over 35_840).tons
+        1.ounces.tuns shouldBe (1 over 35_840).tuns
 
         7000.grains shouldBe 1.pounds.grains
         256.drams shouldBe 1.pounds.drams
@@ -45,7 +45,7 @@ internal class EnglishWeightsTest {
         1.pounds.stone shouldBe (1 over 14).stone
         1.pounds.tods shouldBe (1 over 28).tods
         1.pounds.hundredweight shouldBe (1 over 112).hundredweight
-        1.pounds.tons shouldBe (1 over 2_240).tons
+        1.pounds.tuns shouldBe (1 over 2_240).tuns
 
         49_000.grains shouldBe 1.cloves.grains
         1_792.drams shouldBe 1.cloves.drams
@@ -55,7 +55,7 @@ internal class EnglishWeightsTest {
         1.cloves.stone shouldBe (1 over 2).stone
         1.cloves.tods shouldBe (1 over 4).tods
         1.cloves.hundredweight shouldBe (1 over 16).hundredweight
-        1.cloves.tons shouldBe (1 over 320).tons
+        1.cloves.tuns shouldBe (1 over 320).tuns
 
         98_000.grains shouldBe 1.stone.grains
         3_584.drams shouldBe 1.stone.drams
@@ -65,7 +65,7 @@ internal class EnglishWeightsTest {
         1L.stone shouldBe 1.stone
         1.stone.tods shouldBe (1 over 2).tods
         1.stone.hundredweight shouldBe (1 over 8).hundredweight
-        1.stone.tons shouldBe (1 over 160).tons
+        1.stone.tuns shouldBe (1 over 160).tuns
 
         196_000.grains shouldBe 1.tods.grains
         7_168.drams shouldBe 1.tods.drams
@@ -75,7 +75,7 @@ internal class EnglishWeightsTest {
         2.stone shouldBe 1.tods.stone
         1L.tods shouldBe 1.tods
         1.tods.hundredweight shouldBe (1 over 4).hundredweight
-        1.tods.tons shouldBe (1 over 80).tons
+        1.tods.tuns shouldBe (1 over 80).tuns
 
         784_000.grains shouldBe 1.hundredweight.grains
         28_672.drams shouldBe 1.hundredweight.drams
@@ -85,17 +85,17 @@ internal class EnglishWeightsTest {
         8.stone shouldBe 1.hundredweight.stone
         4.tods shouldBe 1.hundredweight.tods
         1L.hundredweight shouldBe 1.hundredweight
-        1.hundredweight.tons shouldBe (1 over 20).tons
+        1.hundredweight.tuns shouldBe (1 over 20).tuns
 
-        15_680_000.grains shouldBe 1.tons.grains
-        573_440.drams shouldBe 1.tons.drams
-        35_840.ounces shouldBe 1.tons.ounces
-        2_240.pounds shouldBe 1.tons.pounds
-        320.cloves shouldBe 1.tons.cloves
-        160.stone shouldBe 1.tons.stone
-        80.tods shouldBe 1.tons.tods
-        20.hundredweight shouldBe 1.tons.hundredweight
-        1L.tons shouldBe 1.tons
+        15_680_000.grains shouldBe 1.tuns.grains
+        573_440.drams shouldBe 1.tuns.drams
+        35_840.ounces shouldBe 1.tuns.ounces
+        2_240.pounds shouldBe 1.tuns.pounds
+        320.cloves shouldBe 1.tuns.cloves
+        160.stone shouldBe 1.tuns.stone
+        80.tods shouldBe 1.tuns.tods
+        20.hundredweight shouldBe 1.tuns.hundredweight
+        1L.tuns shouldBe 1.tuns
     }
 
     @Test
@@ -116,7 +116,7 @@ internal class EnglishWeightsTest {
         "${1.tods}" shouldBe "1 tods"
         "$Hundredweight" shouldBe "English hundredweight"
         "${1.hundredweight}" shouldBe "1 cwt"
-        "$Tons" shouldBe "English tons"
-        "${1.tons}" shouldBe "1 tons"
+        "$Tuns" shouldBe "English tuns"
+        "${1.tuns}" shouldBe "1 tuns"
     }
 }
