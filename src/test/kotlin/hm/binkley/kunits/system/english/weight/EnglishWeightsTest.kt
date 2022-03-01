@@ -14,6 +14,7 @@ internal class EnglishWeightsTest {
         1.drams.stone shouldBe (1 over 3_584).stone
         1.drams.tods shouldBe (1 over 7_168).tods
         1.drams.hundredweight shouldBe (1 over 28_672).hundredweight
+        1.drams.tons shouldBe (1 over 573_440).tons
 
         16.drams shouldBe 1.ounces.drams
         1L.ounces shouldBe 1.ounces
@@ -22,6 +23,7 @@ internal class EnglishWeightsTest {
         1.ounces.stone shouldBe (1 over 224).stone
         1.ounces.tods shouldBe (1 over 448).tods
         1.ounces.hundredweight shouldBe (1 over 1_792).hundredweight
+        1.ounces.tons shouldBe (1 over 35_840).tons
 
         256.drams shouldBe 1.pounds.drams
         16.ounces shouldBe 1.pounds.ounces
@@ -30,6 +32,7 @@ internal class EnglishWeightsTest {
         1.pounds.stone shouldBe (1 over 14).stone
         1.pounds.tods shouldBe (1 over 28).tods
         1.pounds.hundredweight shouldBe (1 over 112).hundredweight
+        1.pounds.tons shouldBe (1 over 2_240).tons
 
         1_792.drams shouldBe 1.cloves.drams
         112.ounces shouldBe 1.cloves.ounces
@@ -38,6 +41,7 @@ internal class EnglishWeightsTest {
         1.cloves.stone shouldBe (1 over 2).stone
         1.cloves.tods shouldBe (1 over 4).tods
         1.cloves.hundredweight shouldBe (1 over 16).hundredweight
+        1.cloves.tons shouldBe (1 over 320).tons
 
         3_584.drams shouldBe 1.stone.drams
         224.ounces shouldBe 1.stone.ounces
@@ -46,6 +50,7 @@ internal class EnglishWeightsTest {
         1L.stone shouldBe 1.stone
         1.stone.tods shouldBe (1 over 2).tods
         1.stone.hundredweight shouldBe (1 over 8).hundredweight
+        1.stone.tons shouldBe (1 over 160).tons
 
         7_168.drams shouldBe 1.tods.drams
         448.ounces shouldBe 1.tods.ounces
@@ -54,6 +59,7 @@ internal class EnglishWeightsTest {
         2.stone shouldBe 1.tods.stone
         1L.tods shouldBe 1.tods
         1.tods.hundredweight shouldBe (1 over 4).hundredweight
+        1.tods.tons shouldBe (1 over 80).tons
 
         28_672.drams shouldBe 1.hundredweight.drams
         1_792.ounces shouldBe 1.hundredweight.ounces
@@ -62,6 +68,16 @@ internal class EnglishWeightsTest {
         8.stone shouldBe 1.hundredweight.stone
         4.tods shouldBe 1.hundredweight.tods
         1L.hundredweight shouldBe 1.hundredweight
+        1.hundredweight.tons shouldBe (1 over 20).tons
+
+        573_440.drams shouldBe 1.tons.drams
+        35_840.ounces shouldBe 1.tons.ounces
+        2_240.pounds shouldBe 1.tons.pounds
+        320.cloves shouldBe 1.tons.cloves
+        160.stone shouldBe 1.tons.stone
+        80.tods shouldBe 1.tons.tods
+        20.hundredweight shouldBe 1.tons.hundredweight
+        1L.tons shouldBe 1.tons
     }
 
     @Test
@@ -80,5 +96,7 @@ internal class EnglishWeightsTest {
         "${1.tods}" shouldBe "1 tods"
         "$Hundredweight" shouldBe "English hundredweight"
         "${1.hundredweight}" shouldBe "1 cwt"
+        "$Tons" shouldBe "English tons"
+        "${1.tons}" shouldBe "1 tons"
     }
 }
