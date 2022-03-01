@@ -92,3 +92,19 @@ val Int.tods get() = (this over 1).tods
 val Long.tods get() = (this over 1).tods
 val FixedBigRational.tods get() = Tod(this)
 val Measure<English, *>.tods get() = convertTo(Tods)
+
+object Hundredweight : EnglishWeights<Hundredweight>(
+    "hundredweight", 28_672 over 1
+) {
+    override fun new(value: FixedBigRational) = Hundredweight_(value)
+    override fun format(value: FixedBigRational) = "$value cwt"
+}
+
+/** Note the odd naming as "hundredweight" is plural for "hundredweight". */
+class Hundredweight_(value: FixedBigRational) :
+    Measure<English, Hundredweight>(Hundredweight, value)
+
+val Int.hundredweight get() = (this over 1).hundredweight
+val Long.hundredweight get() = (this over 1).hundredweight
+val FixedBigRational.hundredweight get() = Hundredweight_(this)
+val Measure<English, *>.hundredweight get() = convertTo(Hundredweight)
