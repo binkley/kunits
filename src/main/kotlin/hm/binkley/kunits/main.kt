@@ -4,7 +4,7 @@ import hm.binkley.kunits.system.english.length.barleycorns
 import hm.binkley.kunits.system.english.length.feet
 import hm.binkley.kunits.system.english.length.hands
 import hm.binkley.kunits.system.english.length.inches
-import hm.binkley.kunits.system.english.length.poppyseeds
+import hm.binkley.kunits.system.english.length.lines
 import hm.binkley.kunits.system.english.length.sticks
 import hm.binkley.kunits.system.english.length.yards
 import hm.binkley.kunits.system.english.weight.drams
@@ -15,11 +15,11 @@ import hm.binkley.kunits.system.english.weight.stone
 /** Runs the demo. */
 fun main() {
     println("== ENGLISH LENGTHS")
-    val m1 = 120.poppyseeds
+    val m1 = 120.lines
 
     println(+m1)
     println(-m1)
-    println(m1.poppyseeds)
+    println(m1.lines)
     println(m1.barleycorns)
     println(m1 + m1)
     println(m1 + m1.barleycorns)

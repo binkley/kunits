@@ -7,21 +7,21 @@ import org.junit.jupiter.api.Test
 internal class EnglishLengthsTest {
     @Test
     fun `should convert`() {
-        1L.poppyseeds shouldBe 1.poppyseeds
-        (1 over 4).barleycorns shouldBe 1.poppyseeds.barleycorns
-        (1 over 12).inches shouldBe 1.poppyseeds.inches
-        (1 over 24).sticks shouldBe 1.poppyseeds.sticks
-        (1 over 48).hands shouldBe 1.poppyseeds.hands
-        (1 over 144).feet shouldBe 1.poppyseeds.feet
-        (1 over 432).yards shouldBe 1.poppyseeds.yards
-        (1 over 540).ells shouldBe 1.poppyseeds.ells
-        (1 over 2_376).rods shouldBe 1.poppyseeds.rods
-        (1 over 9_504).chains shouldBe 1.poppyseeds.chains
-        (1 over 95_040).furlongs shouldBe 1.poppyseeds.furlongs
-        (1 over 760_320).miles shouldBe 1.poppyseeds.miles
-        (1 over 2_280_960).leagues shouldBe 1.poppyseeds.leagues
+        1L.line shouldBe 1.lines
+        (1 over 4).barleycorns shouldBe 1.lines.barleycorns
+        (1 over 12).inches shouldBe 1.lines.inches
+        (1 over 24).sticks shouldBe 1.lines.sticks
+        (1 over 48).hands shouldBe 1.lines.hands
+        (1 over 144).feet shouldBe 1.lines.feet
+        (1 over 432).yards shouldBe 1.lines.yards
+        (1 over 540).ells shouldBe 1.lines.ells
+        (1 over 2_376).rods shouldBe 1.lines.rods
+        (1 over 9_504).chains shouldBe 1.lines.chains
+        (1 over 95_040).furlongs shouldBe 1.lines.furlongs
+        (1 over 760_320).miles shouldBe 1.lines.miles
+        (1 over 2_280_960).leagues shouldBe 1.lines.leagues
 
-        4.poppyseeds shouldBe 1.barleycorns.poppyseeds
+        4.lines shouldBe 1.barleycorns.lines
         1L.barleycorns shouldBe 1.barleycorns
         (1 over 3).inches shouldBe 1.barleycorns.inches
         (1 over 6).sticks shouldBe 1.barleycorns.sticks
@@ -35,7 +35,7 @@ internal class EnglishLengthsTest {
         (1 over 190_080).miles shouldBe 1.barleycorns.miles
         (1 over 570_240).leagues shouldBe 1.barleycorns.leagues
 
-        12.poppyseeds shouldBe 1.inches.poppyseeds
+        12.lines shouldBe 1.inches.lines
         3.barleycorns shouldBe 1.inches.barleycorns
         1L.inches shouldBe 1.inches
         (1 over 2).sticks shouldBe 1.inches.sticks
@@ -49,7 +49,7 @@ internal class EnglishLengthsTest {
         (1 over 63_360).miles shouldBe 1.inches.miles
         (1 over 190_080).leagues shouldBe 1.inches.leagues
 
-        24.poppyseeds shouldBe 1.sticks.poppyseeds
+        24.lines shouldBe 1.sticks.lines
         6.barleycorns shouldBe 1.sticks.barleycorns
         2.inches shouldBe 1.sticks.inches
         1L.sticks shouldBe 1.sticks
@@ -63,7 +63,7 @@ internal class EnglishLengthsTest {
         (1 over 31_680).miles shouldBe 1.sticks.miles
         (1 over 95_040).leagues shouldBe 1.sticks.leagues
 
-        48.poppyseeds shouldBe 1.hands.poppyseeds
+        48.lines shouldBe 1.hands.lines
         12.barleycorns shouldBe 1.hands.barleycorns
         4.inches shouldBe 1.hands.inches
         2.sticks shouldBe 1.hands.sticks
@@ -77,7 +77,7 @@ internal class EnglishLengthsTest {
         (1 over 15_840).miles shouldBe 1.hands.miles
         (1 over 47_520).leagues shouldBe 1.hands.leagues
 
-        144.poppyseeds shouldBe 1.feet.poppyseeds
+        144.lines shouldBe 1.feet.lines
         36.barleycorns shouldBe 1.feet.barleycorns
         12.inches shouldBe 1.feet.inches
         6.sticks shouldBe 1.feet.sticks
@@ -91,7 +91,7 @@ internal class EnglishLengthsTest {
         (1 over 5_280).miles shouldBe 1.feet.miles
         (1 over 15_840).leagues shouldBe 1.feet.leagues
 
-        432.poppyseeds shouldBe 1.yards.poppyseeds
+        432.lines shouldBe 1.yards.lines
         108.barleycorns shouldBe 1.yards.barleycorns
         36.inches shouldBe 1.yards.inches
         18.sticks shouldBe 1.yards.sticks
@@ -105,7 +105,7 @@ internal class EnglishLengthsTest {
         (1 over 1_760).miles shouldBe 1.yards.miles
         (1 over 5_280).leagues shouldBe 1.yards.leagues
 
-        540.poppyseeds shouldBe 1.ells.poppyseeds
+        540.lines shouldBe 1.ells.lines
         135.barleycorns shouldBe 1.ells.barleycorns
         45.inches shouldBe 1.ells.inches
         (45 over 2).sticks shouldBe 1.ells.sticks
@@ -119,7 +119,7 @@ internal class EnglishLengthsTest {
         (1 over 1_408).miles shouldBe 1.ells.miles
         (1 over 4_224).leagues shouldBe 1.ells.leagues
 
-        2_376.poppyseeds shouldBe 1.rods.poppyseeds
+        2_376.lines shouldBe 1.rods.lines
         594.barleycorns shouldBe 1.rods.barleycorns
         198.inches shouldBe 1.rods.inches
         99.sticks shouldBe 1.rods.sticks
@@ -133,7 +133,7 @@ internal class EnglishLengthsTest {
         (1 over 320).miles shouldBe 1.rods.miles
         (1 over 960).leagues shouldBe 1.rods.leagues
 
-        9_504.poppyseeds shouldBe 1.chains.poppyseeds
+        9_504.lines shouldBe 1.chains.lines
         2_376.barleycorns shouldBe 1.chains.barleycorns
         792.inches shouldBe 1.chains.inches
         396.sticks shouldBe 1.chains.sticks
@@ -147,7 +147,7 @@ internal class EnglishLengthsTest {
         (1 over 80).miles shouldBe 1.chains.miles
         (1 over 240).leagues shouldBe 1.chains.leagues
 
-        95_040.poppyseeds shouldBe 1.furlongs.poppyseeds
+        95_040.lines shouldBe 1.furlongs.lines
         23_760.barleycorns shouldBe 1.furlongs.barleycorns
         7_920.inches shouldBe 1.furlongs.inches
         3_960.sticks shouldBe 1.furlongs.sticks
@@ -161,7 +161,7 @@ internal class EnglishLengthsTest {
         (1 over 8).miles shouldBe 1.furlongs.miles
         (1 over 24).leagues shouldBe 1.furlongs.leagues
 
-        760_320.poppyseeds shouldBe 1.miles.poppyseeds
+        760_320.lines shouldBe 1.miles.lines
         190_080.barleycorns shouldBe 1.miles.barleycorns
         63_360.inches shouldBe 1.miles.inches
         31_680.sticks shouldBe 1.miles.sticks
@@ -175,7 +175,7 @@ internal class EnglishLengthsTest {
         1L.miles shouldBe 1.miles
         (1 over 3).leagues shouldBe 1.miles.leagues
 
-        2_280_960.poppyseeds shouldBe 1.leagues.poppyseeds
+        2_280_960.lines shouldBe 1.leagues.lines
         570_240.barleycorns shouldBe 1.leagues.barleycorns
         190_080.inches shouldBe 1.leagues.inches
         95_040.sticks shouldBe 1.leagues.sticks
@@ -192,9 +192,9 @@ internal class EnglishLengthsTest {
 
     @Test
     fun `should pretty print`() {
-        "$Poppyseeds" shouldBe "English poppyseed"
         // TODO: How to cope with multi-language for singular vs plural?
-        "${1.poppyseeds}" shouldBe "1 poppyseeds"
+        "$Lines" shouldBe "English line"
+        "${1.lines}" shouldBe "1 lines"
         "$Barleycorns" shouldBe "English barleycorn"
         "${1.barleycorns}" shouldBe "1 Bc"
         "$Inches" shouldBe "English inch"

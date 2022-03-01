@@ -9,23 +9,23 @@ import hm.binkley.math.fixed.over
 
 sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,
-    poppyseeds: FixedBigRational,
+    lines: FixedBigRational,
 ) : Lengths<English, U>(
-    English, name, poppyseeds
+    English, name, lines
 )
 
-object Poppyseeds : EnglishLengths<Poppyseeds>("poppyseed", ONE) {
-    override fun new(value: FixedBigRational) = Poppyseed(value)
-    override fun format(value: FixedBigRational) = "$value poppyseeds"
+object Lines : EnglishLengths<Lines>("line", ONE) {
+    override fun new(value: FixedBigRational) = Line(value)
+    override fun format(value: FixedBigRational) = "$value lines"
 }
 
-class Poppyseed(value: FixedBigRational) :
-    Measure<English, Poppyseeds>(Poppyseeds, value)
+class Line(value: FixedBigRational) :
+    Measure<English, Lines>(Lines, value)
 
-val Int.poppyseeds get() = (this over 1).poppyseeds
-val Long.poppyseeds get() = (this over 1).poppyseeds
-val FixedBigRational.poppyseeds get() = Poppyseed(this)
-val Measure<English, *>.poppyseeds get() = convertTo(Poppyseeds)
+val Int.lines get() = (this over 1).lines
+val Long.line get() = (this over 1).lines
+val FixedBigRational.lines get() = Line(this)
+val Measure<English, *>.lines get() = convertTo(Lines)
 
 object Barleycorns : EnglishLengths<Barleycorns>("barleycorn", 4 over 1) {
     override fun new(value: FixedBigRational) = Barleycorn(value)

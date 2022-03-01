@@ -14,7 +14,7 @@ sealed class EnglishWeights<U : EnglishWeights<U>>(
     English, name, drams
 )
 
-object Grains : EnglishWeights<Grains>("grains", 256 over 7000) {
+object Grains : EnglishWeights<Grains>("grain", 256 over 7000) {
     override fun new(value: FixedBigRational) = Grain(value)
     override fun format(value: FixedBigRational) = "$value gr"
 }
@@ -27,7 +27,7 @@ val Long.grains get() = (this over 1).grains
 val FixedBigRational.grains get() = Grain(this)
 val Measure<English, *>.grains get() = convertTo(Grains)
 
-object Drams : EnglishWeights<Drams>("drams", ONE) {
+object Drams : EnglishWeights<Drams>("dram", ONE) {
     override fun new(value: FixedBigRational) = Dram(value)
     override fun format(value: FixedBigRational) = "$value dr"
 }
@@ -40,7 +40,7 @@ val Long.drams get() = (this over 1).drams
 val FixedBigRational.drams get() = Dram(this)
 val Measure<English, *>.drams get() = convertTo(Drams)
 
-object Ounces : EnglishWeights<Ounces>("ounces", 16 over 1) {
+object Ounces : EnglishWeights<Ounces>("ounce", 16 over 1) {
     override fun new(value: FixedBigRational) = Ounce(value)
     override fun format(value: FixedBigRational) = "$value oz"
 }
@@ -53,7 +53,7 @@ val Long.ounces get() = (this over 1).ounces
 val FixedBigRational.ounces get() = Ounce(this)
 val Measure<English, *>.ounces get() = convertTo(Ounces)
 
-object Pounds : EnglishWeights<Pounds>("pounds", 256 over 1) {
+object Pounds : EnglishWeights<Pounds>("pound", 256 over 1) {
     override fun new(value: FixedBigRational) = Pound(value)
     override fun format(value: FixedBigRational) = "$value lb"
 }
@@ -66,7 +66,7 @@ val Long.pounds get() = (this over 1).pounds
 val FixedBigRational.pounds get() = Pound(this)
 val Measure<English, *>.pounds get() = convertTo(Pounds)
 
-object Cloves : EnglishWeights<Cloves>("cloves", 1_792 over 1) {
+object Cloves : EnglishWeights<Cloves>("clove", 1_792 over 1) {
     override fun new(value: FixedBigRational) = Clove(value)
     override fun format(value: FixedBigRational) = "$value cloves"
 }
@@ -93,7 +93,7 @@ val Long.stone get() = (this over 1).stone
 val FixedBigRational.stone get() = Stone_(this)
 val Measure<English, *>.stone get() = convertTo(Stone)
 
-object Tods : EnglishWeights<Tods>("tods", 7_168 over 1) {
+object Tods : EnglishWeights<Tods>("tod", 7_168 over 1) {
     override fun new(value: FixedBigRational) = Tod(value)
     override fun format(value: FixedBigRational) = "$value tods"
 }
@@ -122,7 +122,7 @@ val Long.hundredweight get() = (this over 1).hundredweight
 val FixedBigRational.hundredweight get() = Hundredweight_(this)
 val Measure<English, *>.hundredweight get() = convertTo(Hundredweight)
 
-object Tuns : EnglishWeights<Tuns>("tuns", 573_440 over 1) {
+object Tuns : EnglishWeights<Tuns>("tun", 573_440 over 1) {
     override fun new(value: FixedBigRational) = Tun(value)
     override fun format(value: FixedBigRational) = "$value tuns"
 }
