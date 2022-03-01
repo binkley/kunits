@@ -6,7 +6,6 @@ import hm.binkley.kunits.system.english.English
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
-import hm.binkley.math.fixed.toBigRational
 
 sealed class EnglishWeights<U : EnglishWeights<U>>(
     name: String,
@@ -23,8 +22,8 @@ object Drams : EnglishWeights<Drams>("drams", ONE) {
 class Dram(value: FixedBigRational) :
     Measure<English, Drams>(Drams, value)
 
-val Int.drams get() = toBigRational().drams
-val Long.drams get() = toBigRational().drams
+val Int.drams get() = (this over 1).drams
+val Long.drams get() = (this over 1).drams
 val FixedBigRational.drams get() = Dram(this)
 val Measure<English, *>.drams get() = convertTo(Drams)
 
@@ -36,8 +35,8 @@ object Ounces : EnglishWeights<Ounces>("ounces", 16 over 1) {
 class Ounce(value: FixedBigRational) :
     Measure<English, Ounces>(Ounces, value)
 
-val Int.ounces get() = toBigRational().ounces
-val Long.ounces get() = toBigRational().ounces
+val Int.ounces get() = (this over 1).ounces
+val Long.ounces get() = (this over 1).ounces
 val FixedBigRational.ounces get() = Ounce(this)
 val Measure<English, *>.ounces get() = convertTo(Ounces)
 
@@ -49,8 +48,8 @@ object Pounds : EnglishWeights<Pounds>("pounds", 256 over 1) {
 class Pound(value: FixedBigRational) :
     Measure<English, Pounds>(Pounds, value)
 
-val Int.pounds get() = toBigRational().pounds
-val Long.pounds get() = toBigRational().pounds
+val Int.pounds get() = (this over 1).pounds
+val Long.pounds get() = (this over 1).pounds
 val FixedBigRational.pounds get() = Pound(this)
 val Measure<English, *>.pounds get() = convertTo(Pounds)
 
@@ -62,7 +61,7 @@ object Stone : EnglishWeights<Stone>("stone", 3584 over 1) {
 class Stone_(value: FixedBigRational) :
     Measure<English, Stone>(Stone, value)
 
-val Int.stone get() = toBigRational().stone
-val Long.stone get() = toBigRational().stone
+val Int.stone get() = (this over 1).stone
+val Long.stone get() = (this over 1).stone
 val FixedBigRational.stone get() = Stone_(this)
 val Measure<English, *>.stone get() = convertTo(Stone)
