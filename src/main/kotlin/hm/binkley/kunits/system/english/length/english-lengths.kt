@@ -108,6 +108,19 @@ val Long.yards get() = (this over 1).yards
 val FixedBigRational.yards get() = Yard(this)
 val Measure<English, *>.yards get() = convertTo(Yards)
 
+object Ells : EnglishLengths<Ells>("ells", 540 over 1) {
+    override fun new(value: FixedBigRational) = Ell(value)
+    override fun format(value: FixedBigRational) = "$value ells"
+}
+
+class Ell(value: FixedBigRational) :
+    Measure<English, Ells>(Ells, value)
+
+val Int.ells get() = (this over 1).ells
+val Long.ells get() = (this over 1).ells
+val FixedBigRational.ells get() = Ell(this)
+val Measure<English, *>.ells get() = convertTo(Ells)
+
 object Rods : EnglishLengths<Rods>("rod", 2_376 over 1) {
     override fun new(value: FixedBigRational) = Rod(value)
     override fun format(value: FixedBigRational) = "$value rods"
