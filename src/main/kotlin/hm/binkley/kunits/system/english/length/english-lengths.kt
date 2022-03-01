@@ -121,6 +121,19 @@ val Long.rods get() = (this over 1).rods
 val FixedBigRational.rods get() = Rod(this)
 val Measure<English, *>.rods get() = convertTo(Rods)
 
+object Chains : EnglishLengths<Chains>("chain", 9_504 over 1) {
+    override fun new(value: FixedBigRational) = Chain(value)
+    override fun format(value: FixedBigRational) = "$value ch"
+}
+
+class Chain(value: FixedBigRational) :
+    Measure<English, Chains>(Chains, value)
+
+val Int.chains get() = (this over 1).chains
+val Long.chains get() = (this over 1).chains
+val FixedBigRational.chains get() = Chain(this)
+val Measure<English, *>.chains get() = convertTo(Chains)
+
 object Furlongs : EnglishLengths<Furlongs>("furlong", 95_040 over 1) {
     override fun new(value: FixedBigRational) = Furlong(value)
     override fun format(value: FixedBigRational) = "$value fur"
