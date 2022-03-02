@@ -28,7 +28,7 @@ val FixedBigRational.smoots get() = Smoot(this)
 
 object Ears : MitLengths<Ears>("ear", 3 over 67) {
     override fun new(value: FixedBigRational) = Ear(value)
-    override fun format(value: FixedBigRational) = "$value ear"
+    override fun format(value: FixedBigRational) = "$value ears"
 }
 
 class Ear(value: FixedBigRational) :

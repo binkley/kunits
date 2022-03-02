@@ -18,6 +18,7 @@ internal class MitLengthsTest {
     fun `should pretty print`() {
         "$Smoots" shouldBe "MIT smoot"
         "${1.smoots}" shouldBe "1 sm"
-        "${1.ears}" shouldBe "1 ear"
+        "$Ears" shouldBe "MIT ear"
+        "${1.ears}" shouldBe "1 ears"
     }
 }
