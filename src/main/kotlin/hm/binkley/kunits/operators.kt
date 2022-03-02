@@ -13,13 +13,13 @@ operator fun <S : System<S>, U : Units<S, U>>
 Measure<S, U>.unaryMinus() = unit.new(-value)
 
 /** Adds the two measures using _left_ measure for units. */
-operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>>
-Measure<S, U>.plus(other: Measure<S, V>) =
+operator fun <S : System<S>, U : Units<S, U>>
+Measure<S, U>.plus(other: Measure<S, *>) =
     unit.new(value + other.into(unit).value)
 
 /** Subtracts the two measures using _left_ measure for units. */
-operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>>
-Measure<S, U>.minus(other: Measure<S, V>) =
+operator fun <S : System<S>, U : Units<S, U>>
+Measure<S, U>.minus(other: Measure<S, *>) =
     unit.new(value - other.into(unit).value)
 
 /** Scales up the measure. */
@@ -47,9 +47,9 @@ Measure<S, U>.times(factor: Int) = unit.new(value * factor)
 operator fun <S : System<S>, U : Units<S, U>>
 Int.times(factor: Measure<S, U>) = factor.unit.new(this * factor.value)
 
-/** Takes the ratio of two measures. */
-operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>>
-Measure<S, U>.div(denominator: Measure<S, V>): FixedBigRational =
+/** Takes the ratio of two measures in the same system of units. */
+operator fun <S : System<S>, V : Units<S, V>>
+Measure<S, *>.div(denominator: Measure<S, V>): FixedBigRational =
     (this into denominator.unit).value / denominator.value
 
 /** Scales down the measure. */
