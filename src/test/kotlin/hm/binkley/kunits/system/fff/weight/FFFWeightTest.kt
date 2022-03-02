@@ -11,7 +11,7 @@ internal class FFFWeightTest {
 
     @Test
     fun `should pretty print`() {
-        "$Firkins" shouldBe "FFF firkin"
+        "$Firkin" shouldBe "FFF firkin"
         "${1.firkins}" shouldBe "1 fir"
     }
 }

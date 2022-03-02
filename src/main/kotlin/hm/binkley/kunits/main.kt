@@ -2,18 +2,18 @@ package hm.binkley.kunits
 
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.intoFFF
-import hm.binkley.kunits.system.english.length.Barleycorns
-import hm.binkley.kunits.system.english.length.Feet
-import hm.binkley.kunits.system.english.length.Hands
-import hm.binkley.kunits.system.english.length.Inches
-import hm.binkley.kunits.system.english.length.Lines
-import hm.binkley.kunits.system.english.length.Sticks
+import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
+import hm.binkley.kunits.system.english.length.Foot.Feet
+import hm.binkley.kunits.system.english.length.Hand.Hands
+import hm.binkley.kunits.system.english.length.Inch.Inches
+import hm.binkley.kunits.system.english.length.Line.Lines
+import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.kunits.system.english.length.Yards
 import hm.binkley.kunits.system.english.length.lines
 import hm.binkley.kunits.system.english.length.yards
-import hm.binkley.kunits.system.english.weight.Drams
-import hm.binkley.kunits.system.english.weight.Ounces
-import hm.binkley.kunits.system.english.weight.Pounds
+import hm.binkley.kunits.system.english.weight.Dram.Drams
+import hm.binkley.kunits.system.english.weight.Ounce.Ounces
+import hm.binkley.kunits.system.english.weight.Pound.Pounds
 import hm.binkley.kunits.system.english.weight.Stone
 import hm.binkley.kunits.system.english.weight.drams
 import hm.binkley.kunits.system.english.weight.ounces

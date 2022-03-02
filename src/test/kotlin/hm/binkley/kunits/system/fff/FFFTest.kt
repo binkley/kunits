@@ -3,7 +3,7 @@ package hm.binkley.kunits.system.fff
 import hm.binkley.kunits.system.fff.length.furlongs
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import hm.binkley.kunits.system.english.length.Furlongs as EnglishFurlongs
+import hm.binkley.kunits.system.english.length.Furlong.Furlongs as EnglishFurlongs
 import hm.binkley.kunits.system.english.length.furlongs as englishFurlongs
 
 internal class FFFTest {

@@ -1,5 +1,19 @@
 package hm.binkley.kunits.system.english.length
 
+import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
+import hm.binkley.kunits.system.english.length.Chain.Chains
+import hm.binkley.kunits.system.english.length.Ell.Ells
+import hm.binkley.kunits.system.english.length.Foot.Feet
+import hm.binkley.kunits.system.english.length.Furlong.Furlongs
+import hm.binkley.kunits.system.english.length.Hand.Hands
+import hm.binkley.kunits.system.english.length.Inch.Inches
+import hm.binkley.kunits.system.english.length.League.Leagues
+import hm.binkley.kunits.system.english.length.Line.Lines
+import hm.binkley.kunits.system.english.length.Link.Links
+import hm.binkley.kunits.system.english.length.Mile.Miles
+import hm.binkley.kunits.system.english.length.Rod.Rods
+import hm.binkley.kunits.system.english.length.Shaftment.Shaftments
+import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
@@ -251,36 +265,36 @@ internal class EnglishLengthTest {
     @Test
     fun `should pretty print`() {
         // TODO: How to cope with multi-language for singular vs plural?
-        "$Lines" shouldBe "English line"
+        "$Line" shouldBe "English line"
         "${1.lines}" shouldBe "1 lines"
-        "$Barleycorns" shouldBe "English barleycorn"
+        "$Barleycorn" shouldBe "English barleycorn"
         "${1.barleycorns}" shouldBe "1 Bc"
-        "$Inches" shouldBe "English inch"
+        "$Inch" shouldBe "English inch"
         "${1.inches}" shouldBe "1\""
-        "$Sticks" shouldBe "English stick"
+        "$Stick" shouldBe "English stick"
         "${1.sticks}" shouldBe "1 stick"
         "${2.sticks}" shouldBe "2 sticks"
-        "$Hands" shouldBe "English hand"
+        "$Hand" shouldBe "English hand"
         "${1.hands}" shouldBe "1 hh"
-        "$Shaftments" shouldBe "English shaftment"
+        "$Shaftment" shouldBe "English shaftment"
         "${1.shaftments}" shouldBe "1 shaftments"
         "$Links" shouldBe "English link"
         "${1.links}" shouldBe "1 links"
-        "$Feet" shouldBe "English foot"
+        "$Foot" shouldBe "English foot"
         "${1.feet}" shouldBe "1'"
         "$Yards" shouldBe "English yard"
         "${1.yards}" shouldBe "1 yd"
-        "$Ells" shouldBe "English ells"
+        "$Ell" shouldBe "English ells"
         "${1.ells}" shouldBe "1 ells"
-        "$Rods" shouldBe "English rod"
+        "$Rod" shouldBe "English rod"
         "${1.rods}" shouldBe "1 rods"
-        "$Chains" shouldBe "English chain"
+        "$Chain" shouldBe "English chain"
         "${1.chains}" shouldBe "1 ch"
-        "$Furlongs" shouldBe "English furlong"
+        "$Furlong" shouldBe "English furlong"
         "${1.furlongs}" shouldBe "1 fur"
-        "$Miles" shouldBe "English mile"
+        "$Mile" shouldBe "English mile"
         "${1.miles}" shouldBe "1 mi"
-        "$Leagues" shouldBe "English league"
+        "$League" shouldBe "English league"
         "${1.leagues}" shouldBe "1 lea"
     }
 }

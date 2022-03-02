@@ -3,6 +3,7 @@ package hm.binkley.kunits.system.fff.time
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Time
 import hm.binkley.kunits.system.fff.FFF
+import hm.binkley.kunits.system.fff.time.Fortnight.Fortnights
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
@@ -13,13 +14,14 @@ sealed class FFFTime<U : FFFTime<U>>(
     fortnights: FixedBigRational,
 ) : Time<FFF, U>(FFF, name, fortnights)
 
-object Fortnights : FFFTime<Fortnights>("fortnight", ONE) {
-    override fun new(value: FixedBigRational) = Fortnight(value)
-    override fun format(value: FixedBigRational) = "$value ftn"
-}
+class Fortnight private constructor(value: FixedBigRational) :
+    Measure<FFF, Fortnights>(Fortnights, value) {
 
-class Fortnight(value: FixedBigRational) :
-    Measure<FFF, Fortnights>(Fortnights, value)
+    object Fortnights : FFFTime<Fortnights>("fortnight", ONE) {
+        override fun new(value: FixedBigRational) = Fortnight(value)
+        override fun format(value: FixedBigRational) = "$value ftn"
+    }
+}
 
 val Int.fortnights get() = (this over 1).fortnights
 val Long.fortnights get() = (this over 1).fortnights

@@ -1,5 +1,6 @@
 package hm.binkley.kunits.system.fff.time
 
+import hm.binkley.kunits.system.fff.time.Fortnight.Fortnights
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

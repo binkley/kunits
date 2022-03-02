@@ -91,26 +91,32 @@ variables_](https://en.wikipedia.org/wiki/Metasyntactic_variable) (`foo`,
 `bar`, and ilk):
 
 ```kotlin
+object Metasyntactic : System<Metasyntactic>()
+
 sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
   name: String,
   foos: FixedBigRational,
 ) : Length<Metasyntactic, U>(Metasyntactic, name, foos)
 
-object Foos : MetasyntacticLength<Foos>("foo", ONE) {
-  override fun new(value: FixedBigRational) = Foo(value)
-  override fun format(value: FixedBigRational) = "$value foos"
+class Foo private constructor(value: FixedBigRational) :
+  Measure<Metasyntactic, Foos>(Foos, value) {
+
+  companion object Foos : MetasyntacticLength<Foos>("foo", ONE) {
+    override fun new(value: FixedBigRational) = Foo(value)
+    override fun format(value: FixedBigRational) = "$value foos"
+  }
 }
 
-class Foo(value: FixedBigRational) :
-  Measure<Metasyntactic, Foos>(Foos, value)
-
-val Int.foos get() = toBigRational().foos
-val Long.foos get() = toBigRational().foos
-val FixedBigRational.foos get() = Foo(this)
+val Int.foos get() = (this over 1).foos
+val Long.foos get() = (this over 1).foos
+val FixedBigRational.foos get() = Foos.new(this)
 ```
 For convenience, systems of units may provide conversions to other systems:
 ```kotlin
-
+infix fun <U : Length<Metasyntactic, U>, V : Length<Martian, V>>
+        Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
+  it * (3 over 1)
+}
 ```
 
 The code uses [`FixedBigRational`](#kotlin-rational) for measurement values 

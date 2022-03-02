@@ -1,5 +1,6 @@
 package hm.binkley.kunits.system.mit.length
 
+import hm.binkley.kunits.system.mit.length.Smoot.Smoots
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
@@ -10,7 +11,7 @@ internal class MITLengthTest {
         1L.ears shouldBe 1.ears
         1.ears shouldBe ((3 over 67).smoots into Ears)
 
-        1.smoots shouldBe ((67 over 3).ears into Smoots)
+        1.smoots shouldBe ((67 over 3).ears into Smoot)
         1L.smoots shouldBe 1.smoots
     }
 
