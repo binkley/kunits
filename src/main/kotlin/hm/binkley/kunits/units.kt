@@ -34,10 +34,10 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     val system: S,
     /** Must be unique for each unit within [system]. */
     val name: String,
-    /** Used for conversions, not for equality, etc. */
-    internal val base: FixedBigRational,
+    /** Quantity of base units. */
+    internal val basis: FixedBigRational,
 ) {
-    /** Creates a new unit from the given [value]. */
+    /** Creates a new measure from the given [value]. */
     abstract fun new(value: FixedBigRational): Measure<S, U>
 
     /** Presents the calling measure suitable for humans. */
@@ -89,6 +89,9 @@ abstract class Weight<S : System<S>, U : Weight<S, U>>(
  * See [Furlong] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
  * _measurement_ of that unit.
+ *
+ * @param S the system of units for this measurement
+ * @param U units for this measurement
  */
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     /** Unit for [value]. */
@@ -97,10 +100,23 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     val value: FixedBigRational,
 ) {
     /**
-     * Converts this measure into units of [other] within the same [System].
+     * Converts this measure into units of [other] in a different [System].
+     *
+     * Use [conversion] when moving between systems of units.
+     * It takes the [value] of this measurement expressed in base units for
+     * [U], and returns a new measurement value in base units for [V].
+     * The default conversion leaves the input unchanged, suitable for
+     * converting units within [S].
+     *
+     * @param T the system of units for [other]
+     * @param V the units for [other]
+     * @param other the target units of measure
+     * @param conversion the conversion basis between [unit] and [other]
      */
-    fun <V : Units<S, V>> convertTo(other: V) =
-        other.new(value * unit.base / other.base)
+    fun <T : System<T>, V : Units<T, V>> into(
+        other: V,
+        conversion: (FixedBigRational) -> FixedBigRational = { it },
+    ) = other.new(conversion(value * unit.basis) / other.basis)
 
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *> &&

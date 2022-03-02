@@ -128,7 +128,7 @@ class Foo(value: FixedBigRational) :
 val Int.foos get() = toBigRational().foos
 val Long.foos get() = toBigRational().foos
 val FixedBigRational.foos get() = Foo(this)
-val Measure<Metasyntactic, *>.foos get() = convertTo(Foos)
+val Measure<Metasyntactic, *>.foos get() = into(Foos)
 
 object Bars : MetasyntacticLength<Bars>("bar", TWO) {
     override fun new(value: FixedBigRational) = Bar(value)
@@ -141,7 +141,7 @@ class Bar(value: FixedBigRational) :
 val Int.bars get() = toBigRational().bars
 val Long.bars get() = toBigRational().bars
 val FixedBigRational.bars get() = Bar(this)
-val Measure<Metasyntactic, *>.bars get() = convertTo(Bars)
+val Measure<Metasyntactic, *>.bars get() = into(Bars)
 
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>()
@@ -162,4 +162,4 @@ class Grok(value: FixedBigRational) :
 val Int.groks get() = toBigRational().groks
 val Long.groks get() = toBigRational().groks
 val FixedBigRational.groks get() = Grok(this)
-val Measure<Martian, *>.groks get() = convertTo(Groks)
+val Measure<Martian, *>.groks get() = into(Groks)
