@@ -85,7 +85,7 @@ as the real world exemplar, and
 and
 [FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/fff-weights.kt),
 as a whimsical full system. The pattern can also be seen in
-[a test](src/test/kotlin/hm/binkley/kunit/UnitsTest.kt) based on
+[a test](src/test/kotlin/hm/binkley/kunits/UnitsTest.kt) based on
 [_metasyntactic
 variables_](https://en.wikipedia.org/wiki/Metasyntactic_variable) (`foo`,
 `bar`, and ilk):

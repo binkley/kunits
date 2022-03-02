@@ -6,9 +6,7 @@ import hm.binkley.kunits.system.fff.length.Furlong
 import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.fff.time.FffTimes
 import hm.binkley.kunits.system.fff.weight.FffWeights
-import hm.binkley.math.div
 import hm.binkley.math.fixed.FixedBigRational
-import hm.binkley.math.times
 import java.util.Objects.hash
 
 /**
