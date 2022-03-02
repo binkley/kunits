@@ -5,9 +5,9 @@ import hm.binkley.kunits.Measure
 import hm.binkley.kunits.system.english.length.Yards
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.math.div
-import hm.binkley.kunits.system.fff.length.Furlongs as FffFurlongs
+import hm.binkley.kunits.system.fff.length.Furlongs as FFFFurlongs
 
 /** Converts lengths from English to FFF units. */
 fun <U : Length<English, U>, V : Length<FFF, V>>
 Measure<English, U>.toFFF(other: V) =
-    FffFurlongs.new(convertTo(Yards).value / 220).convertTo(other)
+    FFFFurlongs.new(convertTo(Yards).value / 220).convertTo(other)
