@@ -8,5 +8,5 @@ import hm.binkley.math.times
 import hm.binkley.kunits.system.english.length.Yards as EnglishYards
 
 fun <U : Lengths<FFF, U>, V : Lengths<English, V>>
-Measure<FFF, U>.into(other: V) =
+Measure<FFF, U>.toEnglish(other: V) =
     EnglishYards.new(convertTo(Furlongs).value * 220).convertTo(other)

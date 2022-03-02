@@ -8,5 +8,5 @@ import hm.binkley.math.times
 import hm.binkley.kunits.system.english.length.Inches as EnglishInches
 
 fun <U : Lengths<MIT, U>, V : Lengths<English, V>>
-Measure<MIT, U>.into(other: V) =
+Measure<MIT, U>.toEnglish(other: V) =
     EnglishInches.new(convertTo(Smoots).value * 67).convertTo(other)

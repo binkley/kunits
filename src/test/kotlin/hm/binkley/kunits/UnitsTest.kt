@@ -1,11 +1,11 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.system.english.into
 import hm.binkley.kunits.system.english.length.Inches
 import hm.binkley.kunits.system.english.length.Yards
-import hm.binkley.kunits.system.fff.into
+import hm.binkley.kunits.system.english.toFFF
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.kunits.system.mit.into
+import hm.binkley.kunits.system.fff.toEnglish
+import hm.binkley.kunits.system.mit.toEnglish
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
@@ -68,9 +68,9 @@ internal class UnitsTest {
 
     @Test
     fun `should convert between systems`() {
-        220.englishYards shouldBe 1.fffFurlongs.into(Yards)
-        1.fffFurlongs shouldBe 220.englishYards.into(Furlongs)
-        67.englishInches shouldBe 1.mitSmoots.into(Inches)
+        220.englishYards shouldBe 1.fffFurlongs.toEnglish(Yards)
+        1.fffFurlongs shouldBe 220.englishYards.toFFF(Furlongs)
+        67.englishInches shouldBe 1.mitSmoots.toEnglish(Inches)
     }
 
     @Test

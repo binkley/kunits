@@ -8,5 +8,5 @@ import hm.binkley.math.div
 import hm.binkley.kunits.system.fff.length.Furlongs as FffFurlongs
 
 fun <U : Lengths<English, U>, V : Lengths<FFF, V>>
-Measure<English, U>.into(other: V) =
+Measure<English, U>.toFFF(other: V) =
     FffFurlongs.new(convertTo(Yards).value / 220).convertTo(other)
