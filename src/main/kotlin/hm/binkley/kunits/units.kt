@@ -17,16 +17,23 @@ import java.util.Objects.hash
  * @param S the system of units
  */
 abstract class System<S : System<S>> {
-    /** Should be unique globally: automatically the simple class name. */
+    /** The name for this system of units: the simple class name. */
     val name: String = this::class.simpleName!!
 
     // Systems are singleton objects, so no point to defining equals/hashCode
 
+    /** Presents this system as [name]. */
     override fun toString() = name
 }
 
 /**
  * Represents units within a [System].
+ *
+ * For each kind of system of units (length, weight, time), there is one unit
+ * called the "base" with a [basis] of 1.
+ * Conversion between units uses the basis in calculations.
+ * Example: the meter is the base unit of length in a Metric system of units,
+ * and kilometers have a basis of 1,000.
  *
  * Do not use directly; rather, extend one of the groups of units such as
  * [Length], [Time], or [Weight].
@@ -35,22 +42,31 @@ abstract class System<S : System<S>> {
  * @param U the units of measurement
  */
 abstract class Units<S : System<S>, U : Units<S, U>>(
-    /** Must be unique for each system. */
+    /** The system of units for this unit. */
     val system: S,
     /** Must be unique for each unit within [system]. */
     val name: String,
-    /** Quantity of base units. */
+    /** Amount of 1 unit expressed in base units. */
     internal val basis: FixedBigRational,
 ) {
-    /** Creates a new measure from the given [value]. */
+    /**
+     * Creates a new measure from the given [value].
+     *
+     * @param value the amount of this unit
+     */
     abstract fun new(value: FixedBigRational): Measure<S, U>
 
-    /** Presents the calling measure suitable for humans. */
+    /**
+     * Presents the calling measure suitable for humans.
+     *
+     * @param value the amount of this unit
+     */
     abstract fun format(value: FixedBigRational): String
 
     // Units are singleton objects, so no point to defining equals/hashCode
 
-    override fun toString() = "$system $name" // TODO: Ugh -- I18N, etc.
+    /** Presents this unit as "[system] [name]". */
+    override fun toString() = "$system $name"
 }
 
 /**
@@ -66,8 +82,8 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
 abstract class Length<S : System<S>, U : Length<S, U>>(
     system: S,
     name: String,
-    base: FixedBigRational,
-) : Units<S, U>(system, name, base)
+    basis: FixedBigRational,
+) : Units<S, U>(system, name, basis)
 
 /**
  * Represents units of time within a [System].
@@ -80,8 +96,8 @@ abstract class Length<S : System<S>, U : Length<S, U>>(
 abstract class Time<S : System<S>, U : Time<S, U>>(
     system: S,
     name: String,
-    base: FixedBigRational,
-) : Units<S, U>(system, name, base)
+    basis: FixedBigRational,
+) : Units<S, U>(system, name, basis)
 
 /**
  * Represents units of weight within a [System].
@@ -94,8 +110,8 @@ abstract class Time<S : System<S>, U : Time<S, U>>(
 abstract class Weight<S : System<S>, U : Weight<S, U>>(
     system: S,
     name: String,
-    base: FixedBigRational,
-) : Units<S, U>(system, name, base)
+    basis: FixedBigRational,
+) : Units<S, U>(system, name, basis)
 
 /**
  * Represents measurements of a unit within a [System].
@@ -110,7 +126,7 @@ abstract class Weight<S : System<S>, U : Weight<S, U>>(
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     /** Unit for [value]. */
     val unit: U,
-    /** Quantity of [unit]. */
+    /** Amount of [unit]. */
     val value: FixedBigRational,
 ) {
     /**
@@ -119,6 +135,8 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
      *
      * @param V the units for [other]
      * @param other the target units
+     *
+     * @todo Nothing syntactically prevents converting feet into pounds
      */
     infix fun <V : Units<S, V>> into(other: V) = into(other) { it }
 
@@ -139,11 +157,13 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
         conversion: (FixedBigRational) -> FixedBigRational,
     ) = other.new(conversion(value * unit.basis) / other.basis)
 
+    /** Presents this measure as [Units.format] of [value]. */
+    override fun toString() = unit.format(value)
+
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *> &&
         unit == other.unit &&
         value == other.value
 
     override fun hashCode() = hash(unit, value)
-    override fun toString() = unit.format(value)
 }
