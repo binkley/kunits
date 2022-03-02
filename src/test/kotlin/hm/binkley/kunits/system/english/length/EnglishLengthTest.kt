@@ -17,6 +17,7 @@ import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import hm.binkley.kunits.into
 
 internal class EnglishLengthTest {
     @Test

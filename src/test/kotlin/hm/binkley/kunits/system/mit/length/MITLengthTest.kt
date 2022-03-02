@@ -4,6 +4,7 @@ import hm.binkley.kunits.system.mit.length.Smoot.Smoots
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import hm.binkley.kunits.into
 
 internal class MITLengthTest {
     @Test

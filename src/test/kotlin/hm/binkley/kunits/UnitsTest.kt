@@ -1,5 +1,6 @@
 package hm.binkley.kunits
 
+import hm.binkley.kunits.Bar.Bars
 import hm.binkley.kunits.Foo.Foos
 import hm.binkley.kunits.Grok.Groks
 import hm.binkley.math.fixed.FixedBigRational
@@ -10,6 +11,7 @@ import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.lang.System.identityHashCode
 
@@ -98,6 +100,25 @@ internal class UnitsTest {
         val measure = 1.foos
         identityHashCode(measure) shouldNotBe measure.hashCode()
     }
+
+    @Nested
+    inner class Reductions {
+        @Test
+        fun `should reduce to lowest terms all with values`() {
+            val measure = 2.bars + (5 over 2).foos
+            val reduction = measure.lowestTerms(Bars, Foos)
+
+            reduction shouldBe listOf(3.bars, (1 over 2).foos)
+        }
+
+        @Test
+        fun `should reduce to lowest terms with some zeroes`() {
+            val measure = 2.bars
+            val reduction = measure.lowestTerms(Bars, Foos)
+
+            reduction shouldBe listOf(2.bars, 0.foos)
+        }
+    }
 }
 
 // Main system, units, and measures for tests
@@ -126,13 +147,14 @@ val Int.foos get() = (this over 1).foos
 val Long.foos get() = (this over 1).foos
 val FixedBigRational.foos get() = Foos.new(this)
 
-object Bars : MetasyntacticLength<Bars>("bar", TWO) {
-    override fun new(value: FixedBigRational) = Bar(value)
-    override fun format(value: FixedBigRational) = "$value bars"
-}
+class Bar private constructor(value: FixedBigRational) :
+    Measure<Metasyntactic, Bars>(Bars, value) {
 
-class Bar(value: FixedBigRational) :
-    Measure<Metasyntactic, Bars>(Bars, value)
+    companion object Bars : MetasyntacticLength<Bars>("bar", TWO) {
+        override fun new(value: FixedBigRational) = Bar(value)
+        override fun format(value: FixedBigRational) = "$value bars"
+    }
+}
 
 val Int.bars get() = (this over 1).bars
 val Long.bars get() = (this over 1).bars
