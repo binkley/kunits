@@ -9,7 +9,7 @@ import hm.binkley.math.fixed.over
 
 sealed class FFFTime<U : FFFTime<U>>(
     name: String,
-    fortnights: FixedBigRational
+    fortnights: FixedBigRational,
 ) : Time<FFF, U>(FFF, name, fortnights)
 
 object Fortnights : FFFTime<Fortnights>("fortnight", ONE) {
@@ -22,4 +22,4 @@ class Fortnight(value: FixedBigRational) :
 
 val Int.fortnights get() = (this over 1).fortnights
 val Long.fortnights get() = (this over 1).fortnights
-val FixedBigRational.fortnights get() = Fortnight(this)
+val FixedBigRational.fortnights get() = Fortnights.new(this)

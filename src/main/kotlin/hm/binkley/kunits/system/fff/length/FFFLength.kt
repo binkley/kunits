@@ -22,4 +22,4 @@ class Furlong(value: FixedBigRational) :
 
 val Int.furlongs get() = (this over 1).furlongs
 val Long.furlongs get() = (this over 1).furlongs
-val FixedBigRational.furlongs get() = Furlong(this)
+val FixedBigRational.furlongs get() = Furlongs.new(this)

@@ -21,4 +21,4 @@ class Firkin(value: FixedBigRational) : Measure<FFF, Firkins>(Firkins, value)
 
 val Int.firkins get() = (this over 1).firkins
 val Long.firkins get() = (this over 1).firkins
-val FixedBigRational.firkins get() = Firkin(this)
+val FixedBigRational.firkins get() = Firkins.new(this)

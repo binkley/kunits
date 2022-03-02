@@ -22,7 +22,7 @@ class Smoot(value: FixedBigRational) :
 
 val Int.smoots get() = (this over 1).smoots
 val Long.smoots get() = (this over 1).smoots
-val FixedBigRational.smoots get() = Smoot(this)
+val FixedBigRational.smoots get() = Smoots.new(this)
 
 object Ears : MITLength<Ears>("ear", 3 over 67) {
     override fun new(value: FixedBigRational) = Ear(value)
@@ -34,4 +34,4 @@ class Ear(value: FixedBigRational) :
 
 val Int.ears get() = (this over 1).ears
 val Long.ears get() = (this over 1).ears
-val FixedBigRational.ears get() = Ear(this)
+val FixedBigRational.ears get() = Ears.new(this)

@@ -100,22 +100,29 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     val value: FixedBigRational,
 ) {
     /**
+     * Converts this measure into units of [other] within this system of
+     * units.
+     *
+     * @param V the units for [other]
+     * @param other the target units
+     */
+    infix fun <V : Units<S, V>> into(other: V) = into(other) { it }
+
+    /**
      * Converts this measure into units of [other] in a different [System].
      *
      * Use [conversion] when moving between systems of units.
      * It takes the [value] of this measurement expressed in base units for
      * [U], and returns a new measurement value in base units for [V].
-     * The default conversion leaves the input unchanged, suitable for
-     * converting units within [S].
      *
      * @param T the system of units for [other]
      * @param V the units for [other]
-     * @param other the target units of measure
+     * @param other the target units
      * @param conversion the conversion basis between [unit] and [other]
      */
     fun <T : System<T>, V : Units<T, V>> into(
         other: V,
-        conversion: (FixedBigRational) -> FixedBigRational = { it },
+        conversion: (FixedBigRational) -> FixedBigRational,
     ) = other.new(conversion(value * unit.basis) / other.basis)
 
     override fun equals(other: Any?) = this === other ||

@@ -91,28 +91,30 @@ variables_](https://en.wikipedia.org/wiki/Metasyntactic_variable) (`foo`,
 `bar`, and ilk):
 
 ```kotlin
-object Metasyntactic : System<Metasyntactic>()
+sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
+  name: String,
+  foos: FixedBigRational,
+) : Length<Metasyntactic, U>(Metasyntactic, name, foos)
 
-sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
-    name: String,
-    bars: FixedBigRational,
-) : Lengths<Metasyntactic, U>(Metasyntactic, name, bars)
-
-object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
-    override fun new(value: FixedBigRational) = Foo(value)
-    override fun format(value: FixedBigRational) = "$value foos"
+object Foos : MetasyntacticLength<Foos>("foo", ONE) {
+  override fun new(value: FixedBigRational) = Foo(value)
+  override fun format(value: FixedBigRational) = "$value foos"
 }
 
-class Foo(value: FixedBigRational) : Measure<Metasyntactic, Foos>(Foos, value)
+class Foo(value: FixedBigRational) :
+  Measure<Metasyntactic, Foos>(Foos, value)
 
-inline val Int.foos get() = toBigRational().foos
-inline val Long.foos get() = toBigRational().foos
-inline val FixedBigRational.foos get() = Foo(this)
-val Measure<Metasyntactic, *>.foos get() = to(Foos)
+val Int.foos get() = toBigRational().foos
+val Long.foos get() = toBigRational().foos
+val FixedBigRational.foos get() = Foo(this)
+```
+For convenience, systems of units may provide conversions to other systems:
+```kotlin
+
 ```
 
-The code relies heavily on `Int` and [`FixedBigRational`](#kotlin-rational)
-for representing measurements, and conversion ratios between units.
+The code uses [`FixedBigRational`](#kotlin-rational) for measurement values 
+and converting between units.
 
 ### Problems
 
@@ -120,39 +122,42 @@ for representing measurements, and conversion ratios between units.
 
 There are too many options on what "nice" Kotlin syntactic sugar looks 
 like.  The most "natural English" approach might be:
-```
+```kotlin
 2.feet in Inches // *not* valid Kotlin
 ```
 However, this is a compilation failure as the "in" needs to be "\`in\`" since 
 `in` is a keyword.
 
 Another is:
-```
+```kotlin
 2.feet to Inches
 ```
 This works, but is confusing in context of the `to` function for creating 
 a `Pair` instance.
 
 Note both of the above are also more verbose in some situations, as in:
-```
+```kotlin
 24.inches shouldBe (2.feet to Inches)
 ```
 This needs parentheses so that `2.feet` does not bind more tightly to the 
 left-hand `shouldBe` infix function than to the right-hand `to` infix 
 function.
 
-Another is just skip syntactic sugar:
-```
-Feet(2).convertTo(Inches)
+Another is to just skip syntactic sugar:
+```kotlin
+Feet(2).into(Inches)
 ```
 This loses the pleasantness of Kotlin, and might as well be Java (with a 
 `new` keyword added for that language).
 
-A compromise is to chain extension properties, which pleases no one:
+The chosen compromise is to use `into` instead of `to`:
+```kotlin
+2.feet into Inches
 ```
-2.feet.inches
+And also works when converting between systems of units:
+```kotlin
+2.feet into Smoots
 ```
-And this violates what extension properties are for.
 
 #### Inline
 

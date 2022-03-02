@@ -1,23 +1,25 @@
 package hm.binkley.kunits
 
 import hm.binkley.kunits.system.english.English
-import hm.binkley.kunits.system.english.length.Inches
-import hm.binkley.kunits.system.english.length.Yards
-import hm.binkley.kunits.system.english.length.barleycorns
-import hm.binkley.kunits.system.english.length.feet
-import hm.binkley.kunits.system.english.length.hands
-import hm.binkley.kunits.system.english.length.inches
-import hm.binkley.kunits.system.english.length.lines
-import hm.binkley.kunits.system.english.length.sticks
-import hm.binkley.kunits.system.english.length.yards
 import hm.binkley.kunits.system.english.intoFFF
+import hm.binkley.kunits.system.english.length.Barleycorns
+import hm.binkley.kunits.system.english.length.Feet
+import hm.binkley.kunits.system.english.length.Hands
+import hm.binkley.kunits.system.english.length.Inches
+import hm.binkley.kunits.system.english.length.Lines
+import hm.binkley.kunits.system.english.length.Sticks
+import hm.binkley.kunits.system.english.length.Yards
+import hm.binkley.kunits.system.english.length.lines
+import hm.binkley.kunits.system.english.length.yards
+import hm.binkley.kunits.system.english.weight.Drams
+import hm.binkley.kunits.system.english.weight.Ounces
+import hm.binkley.kunits.system.english.weight.Pounds
+import hm.binkley.kunits.system.english.weight.Stone
 import hm.binkley.kunits.system.english.weight.drams
 import hm.binkley.kunits.system.english.weight.ounces
-import hm.binkley.kunits.system.english.weight.pounds
-import hm.binkley.kunits.system.english.weight.stone
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.fff.intoEnglish
+import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.mit.MIT
 import hm.binkley.kunits.system.mit.intoEnglish
 import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
@@ -30,15 +32,17 @@ fun main() {
 
     println(+m1)
     println(-m1)
-    println(m1.lines)
-    println(m1.barleycorns)
+    println(m1 into Lines)
+    println(m1 into Barleycorns)
     println(m1 + m1)
-    println(m1 + m1.barleycorns)
-    println(m1.hands - m1)
+    println(m1 + (m1 into Barleycorns))
+    println((m1 into Hands) - m1)
     println(m1 * 3)
     println(m1 / 3)
-    println(m1.inches.sticks)
-    println((m1.yards + m1.feet - m1.barleycorns).hands)
+    println(m1 into Inches into Sticks)
+    println(
+        ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
+    )
 
     println()
     println("== AVOIRDUPOIS WEIGHTS")
@@ -46,15 +50,17 @@ fun main() {
 
     println(+m2)
     println(-m2)
-    println(m2.drams)
-    println(m2.ounces)
+    println(m2 into Drams)
+    println(m2 into Ounces)
     println(m2 + m2)
     println(m2 + 1.ounces)
-    println(m2.pounds - m2)
+    println((m2 into Pounds) - m2)
     println(m2 * 4)
     println(m2 / 4)
-    println(m2.pounds.stone)
-    println((m2.stone + m2.pounds - m2.ounces).drams)
+    println(m2 into Pounds into Stone)
+    println(
+        ((m2 into Stone) + (m2 into Pounds) - (m2 into Ounces)) into Drams
+    )
 
     println()
     println("== CONVERSIONS")

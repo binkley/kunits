@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class FFFWeightTest {
     @Test
     fun `should convert`() {
-        1.firkins.into(Firkins) shouldBe 1L.firkins
+        1L.firkins shouldBe 1.firkins
     }
 
     @Test

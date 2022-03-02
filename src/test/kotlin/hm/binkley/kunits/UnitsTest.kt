@@ -1,26 +1,15 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.system.english.length.Inches
-import hm.binkley.kunits.system.english.length.Yards
-import hm.binkley.kunits.system.english.intoFFF
-import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.kunits.system.fff.intoEnglish
-import hm.binkley.kunits.system.mit.intoEnglish
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
 import hm.binkley.math.fixed.over
-import hm.binkley.math.fixed.toBigRational
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
 import java.lang.System.identityHashCode
-import hm.binkley.kunits.system.english.length.inches as englishInches
-import hm.binkley.kunits.system.english.length.yards as englishYards
-import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
-import hm.binkley.kunits.system.mit.length.smoots as mitSmoots
 
 internal class UnitsTest {
     @Test
@@ -62,15 +51,14 @@ internal class UnitsTest {
 
     @Test
     fun `should convert between units`() {
-        1.bars.foos shouldBe 2.foos
-        2L.foos.bars shouldBe 1L.bars
+        (1.bars into Foos) shouldBe 2.foos
+        (2L.foos into Bars) shouldBe 1L.bars
     }
 
     @Test
     fun `should convert between systems`() {
-        220.englishYards shouldBe 1.fffFurlongs.intoEnglish(Yards)
-        1.fffFurlongs shouldBe 220.englishYards.intoFFF(Furlongs)
-        67.englishInches shouldBe 1.mitSmoots.intoEnglish(Inches)
+        (1.foos intoMartian Groks) shouldBe 3.groks
+        (1.groks intoMetasyntactic Foos) shouldBe (1 over 3).foos
     }
 
     @Test
@@ -112,6 +100,11 @@ internal class UnitsTest {
 // Main system, units, and measures for tests
 object Metasyntactic : System<Metasyntactic>()
 
+infix fun <U : Length<Metasyntactic, U>, V : Length<Martian, V>>
+Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
+    it * (3 over 1)
+}
+
 sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
     name: String,
     foos: FixedBigRational,
@@ -125,10 +118,9 @@ object Foos : MetasyntacticLength<Foos>("foo", ONE) {
 class Foo(value: FixedBigRational) :
     Measure<Metasyntactic, Foos>(Foos, value)
 
-val Int.foos get() = toBigRational().foos
-val Long.foos get() = toBigRational().foos
-val FixedBigRational.foos get() = Foo(this)
-val Measure<Metasyntactic, *>.foos get() = into(Foos)
+val Int.foos get() = (this over 1).foos
+val Long.foos get() = (this over 1).foos
+val FixedBigRational.foos get() = Foos.new(this)
 
 object Bars : MetasyntacticLength<Bars>("bar", TWO) {
     override fun new(value: FixedBigRational) = Bar(value)
@@ -138,13 +130,17 @@ object Bars : MetasyntacticLength<Bars>("bar", TWO) {
 class Bar(value: FixedBigRational) :
     Measure<Metasyntactic, Bars>(Bars, value)
 
-val Int.bars get() = toBigRational().bars
-val Long.bars get() = toBigRational().bars
-val FixedBigRational.bars get() = Bar(this)
-val Measure<Metasyntactic, *>.bars get() = into(Bars)
+val Int.bars get() = (this over 1).bars
+val Long.bars get() = (this over 1).bars
+val FixedBigRational.bars get() = Bars.new(this)
 
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>()
+
+infix fun <U : Length<Martian, U>, V : Length<Metasyntactic, V>>
+Measure<Martian, U>.intoMetasyntactic(other: V) = into(other) {
+    it * (1 over 3)
+}
 
 sealed class MartianLength<U : MartianLength<U>>(
     name: String,
@@ -159,7 +155,5 @@ object Groks : MartianLength<Groks>("grok", ONE) {
 class Grok(value: FixedBigRational) :
     Measure<Martian, Groks>(Groks, value)
 
-val Int.groks get() = toBigRational().groks
-val Long.groks get() = toBigRational().groks
-val FixedBigRational.groks get() = Grok(this)
-val Measure<Martian, *>.groks get() = into(Groks)
+val Int.groks get() = (this over 1).groks
+val FixedBigRational.groks get() = Groks.new(this)
