@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.english.weight
 
-import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Weights
 import hm.binkley.kunits.system.english.English
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
@@ -10,9 +10,7 @@ import hm.binkley.math.fixed.over
 sealed class EnglishWeights<U : EnglishWeights<U>>(
     name: String,
     drams: FixedBigRational,
-) : Lengths<English, U>(
-    English, name, drams
-)
+) : Weights<English, U>(English, name, drams)
 
 object Grains : EnglishWeights<Grains>("grain", 256 over 7000) {
     override fun new(value: FixedBigRational) = Grain(value)

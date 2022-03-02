@@ -10,9 +10,7 @@ import hm.binkley.math.fixed.over
 sealed class FffLengths<U : FffLengths<U>>(
     name: String,
     furlongs: FixedBigRational
-) : Lengths<FFF, U>(
-    FFF, name, furlongs
-)
+) : Lengths<FFF, U>(FFF, name, furlongs)
 
 object Furlongs : FffLengths<Furlongs>("furlong", ONE) {
     override fun new(value: FixedBigRational) = Furlong(value)

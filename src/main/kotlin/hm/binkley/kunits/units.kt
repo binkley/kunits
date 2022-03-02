@@ -91,10 +91,15 @@ abstract class Weights<S : System<S>, U : Weights<S, U>>(
  * _measurement_ of that unit.
  */
 abstract class Measure<S : System<S>, U : Units<S, U>>(
+    /** Unit for [value]. */
     val unit: U,
+    /** Quantity of [unit]. */
     val value: FixedBigRational,
 ) {
-    /** Converts this measure into [other]'s units in the same [System]. */
+    /**
+     * Converts this measure into units of [other] within the same
+     * [System].
+     */
     fun <V : Units<S, V>> convertTo(other: V) =
         other.new(value * unit.base / other.base)
 

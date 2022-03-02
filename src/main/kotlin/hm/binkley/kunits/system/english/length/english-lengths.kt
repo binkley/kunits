@@ -10,9 +10,7 @@ import hm.binkley.math.fixed.over
 sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,
     lines: FixedBigRational,
-) : Lengths<English, U>(
-    English, name, lines
-)
+) : Lengths<English, U>(English, name, lines)
 
 object Lines : EnglishLengths<Lines>("line", ONE) {
     override fun new(value: FixedBigRational) = Line(value)

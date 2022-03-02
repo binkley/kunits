@@ -10,9 +10,7 @@ import hm.binkley.math.fixed.over
 sealed class MitLengths<U : MitLengths<U>>(
     name: String,
     smoots: FixedBigRational,
-) : Lengths<MIT, U>(
-    MIT, name, smoots
-)
+) : Lengths<MIT, U>(MIT, name, smoots)
 
 object Smoots : MitLengths<Smoots>("smoot", ONE) {
     override fun new(value: FixedBigRational) = Smoot(value)
