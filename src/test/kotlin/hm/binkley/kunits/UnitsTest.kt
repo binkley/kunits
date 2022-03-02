@@ -46,6 +46,7 @@ internal class UnitsTest {
 
     @Test
     fun `should divide`() {
+        3.foos / 4.bars shouldBe (3 over 8)
         3.foos / 3 shouldBe 1.foos
         3.foos / 3L shouldBe 1.foos
         3.foos / (3 over 1) shouldBe 1.foos

@@ -47,6 +47,11 @@ Measure<S, U>.times(factor: Int) = unit.new(value * factor)
 operator fun <S : System<S>, U : Units<S, U>>
 Int.times(factor: Measure<S, U>) = factor.unit.new(this * factor.value)
 
+/** Takes the ratio of two measures. */
+operator fun <S : System<S>, U : Units<S, U>, V : Units<S, V>>
+Measure<S, U>.div(denominator: Measure<S, V>): FixedBigRational =
+    (this into denominator.unit).value / denominator.value
+
 /** Scales down the measure. */
 operator fun <S : System<S>, U : Units<S, U>>
 Measure<S, U>.div(factor: FixedBigRational) = unit.new(value / factor)
