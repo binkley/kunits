@@ -8,6 +8,7 @@ import hm.binkley.math.fixed.over
 
 private val LINES_PER_SMOOT = (804 over 1)
 
+/** Tbe system of MIT units. */
 object MIT : System<MIT>()
 
 /** Converts lengths from MIT to English units. */

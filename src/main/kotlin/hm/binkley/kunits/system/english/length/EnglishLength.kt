@@ -7,6 +7,7 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
+/** The English units of length. */
 sealed class EnglishLength<U : EnglishLength<U>>(
     name: String,
     lines: FixedBigRational,

@@ -7,6 +7,7 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
+/** The furlong-firkin-fortnight units of time. */
 sealed class FFFTime<U : FFFTime<U>>(
     name: String,
     fortnights: FixedBigRational,

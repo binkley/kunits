@@ -7,6 +7,7 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
+/** The furlong-firkin-fortnight units of length. */
 sealed class FFFLength<U : FFFLength<U>>(
     name: String,
     furlongs: FixedBigRational

@@ -7,6 +7,7 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
+/** The English units of weight. */
 sealed class EnglishWeight<U : EnglishWeight<U>>(
     name: String,
     drams: FixedBigRational,

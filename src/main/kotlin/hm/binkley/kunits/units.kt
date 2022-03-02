@@ -13,6 +13,8 @@ import java.util.Objects.hash
  * Represents a system of units.
  *
  * See [FFF] for an example.
+ *
+ * @param S the system of units
  */
 abstract class System<S : System<S>> {
     /** Should be unique globally: automatically the simple class name. */
@@ -28,6 +30,9 @@ abstract class System<S : System<S>> {
  *
  * Do not use directly; rather, extend one of the groups of units such as
  * [Length], [Time], or [Weight].
+ *
+ * @param S the system of units
+ * @param U the units of measurement
  */
 abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Must be unique for each system. */
@@ -54,6 +59,9 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
  * See [FFFLength] and [Furlongs] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
  * _measurement_ of that unit.
+ *
+ * @param S the system of units
+ * @param U the units of measurement
  */
 abstract class Length<S : System<S>, U : Length<S, U>>(
     system: S,
@@ -65,6 +73,9 @@ abstract class Length<S : System<S>, U : Length<S, U>>(
  * Represents units of time within a [System].
  *
  * See [FFFTime] for an example.
+ *
+ * @param S the system of units
+ * @param U the units of measurement
  */
 abstract class Time<S : System<S>, U : Time<S, U>>(
     system: S,
@@ -76,6 +87,9 @@ abstract class Time<S : System<S>, U : Time<S, U>>(
  * Represents units of weight within a [System].
  *
  * See [FFFWeight] for an example.
+ *
+ * @param S the system of units
+ * @param U the units of measurement
  */
 abstract class Weight<S : System<S>, U : Weight<S, U>>(
     system: S,
@@ -90,8 +104,8 @@ abstract class Weight<S : System<S>, U : Weight<S, U>>(
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
  * _measurement_ of that unit.
  *
- * @param S the system of units for this measurement
- * @param U units for this measurement
+ * @param S the system of units
+ * @param U the units of measurement
  */
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     /** Unit for [value]. */

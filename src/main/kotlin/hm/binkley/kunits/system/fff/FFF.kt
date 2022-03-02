@@ -8,6 +8,7 @@ import hm.binkley.math.fixed.over
 
 private val FURLONGS_PER_LINE = (95_040 over 1)
 
+/** The system of furlong-firkin-fortnight units. */
 object FFF : System<FFF>()
 
 /** Converts lengths from FFF to English units. */

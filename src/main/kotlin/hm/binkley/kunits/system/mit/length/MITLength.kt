@@ -7,6 +7,7 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
+/** The MIT units of length. */
 sealed class MITLength<U : MITLength<U>>(
     name: String,
     smoots: FixedBigRational,
