@@ -9,4 +9,4 @@ private const val FURLONGS_PER_LINE = 95_040
 
 /** Converts lengths from English to FFF units. */
 fun <U : Length<English, U>, V : Length<FFF, V>>
-Measure<English, U>.toFFF(other: V) = into(other) { it / FURLONGS_PER_LINE }
+Measure<English, U>.intoFFF(other: V) = into(other) { it / FURLONGS_PER_LINE }

@@ -9,4 +9,4 @@ private const val LINES_PER_SMOOT = 804
 
 /** Converts lengths from MIT to English units. */
 fun <U : Length<MIT, U>, V : Length<English, V>>
-Measure<MIT, U>.toEnglish(other: V) = into(other) { it * LINES_PER_SMOOT }
+Measure<MIT, U>.intoEnglish(other: V) = into(other) { it * LINES_PER_SMOOT }

@@ -10,16 +10,16 @@ import hm.binkley.kunits.system.english.length.inches
 import hm.binkley.kunits.system.english.length.lines
 import hm.binkley.kunits.system.english.length.sticks
 import hm.binkley.kunits.system.english.length.yards
-import hm.binkley.kunits.system.english.toFFF
+import hm.binkley.kunits.system.english.intoFFF
 import hm.binkley.kunits.system.english.weight.drams
 import hm.binkley.kunits.system.english.weight.ounces
 import hm.binkley.kunits.system.english.weight.pounds
 import hm.binkley.kunits.system.english.weight.stone
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.kunits.system.fff.toEnglish
+import hm.binkley.kunits.system.fff.intoEnglish
 import hm.binkley.kunits.system.mit.MIT
-import hm.binkley.kunits.system.mit.toEnglish
+import hm.binkley.kunits.system.mit.intoEnglish
 import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 import hm.binkley.kunits.system.mit.length.smoots as mitSmoots
 
@@ -58,7 +58,7 @@ fun main() {
 
     println()
     println("== CONVERSIONS")
-    println("${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs.toEnglish(Yards)} IN $English")
-    println("${220.yards} IN $English IS ${220.yards.toFFF(Furlongs)} IN $FFF")
-    println("${1.mitSmoots} IN $MIT IS ${1.mitSmoots.toEnglish(Inches)} IN $English")
+    println("${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs.intoEnglish(Yards)} IN $English")
+    println("${220.yards} IN $English IS ${220.yards.intoFFF(Furlongs)} IN $FFF")
+    println("${1.mitSmoots} IN $MIT IS ${1.mitSmoots.intoEnglish(Inches)} IN $English")
 }
