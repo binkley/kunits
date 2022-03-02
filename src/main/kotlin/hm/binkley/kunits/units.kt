@@ -97,8 +97,7 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     val value: FixedBigRational,
 ) {
     /**
-     * Converts this measure into units of [other] within the same
-     * [System].
+     * Converts this measure into units of [other] within the same [System].
      */
     fun <V : Units<S, V>> convertTo(other: V) =
         other.new(value * unit.base / other.base)
