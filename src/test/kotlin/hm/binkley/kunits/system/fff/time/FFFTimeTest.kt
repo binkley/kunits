@@ -3,7 +3,7 @@ package hm.binkley.kunits.system.fff.time
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class FffTimesTest {
+internal class FFFTimeTest {
     @Test
     fun `should convert`() {
         1.fortnights.convertTo(Fortnights) shouldBe 1L.fortnights

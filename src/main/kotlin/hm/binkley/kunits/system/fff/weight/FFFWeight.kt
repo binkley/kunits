@@ -1,18 +1,18 @@
 package hm.binkley.kunits.system.fff.weight
 
 import hm.binkley.kunits.Measure
-import hm.binkley.kunits.Weights
+import hm.binkley.kunits.Weight
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
-sealed class FffWeights<U : FffWeights<U>>(
+sealed class FFFWeight<U : FFFWeight<U>>(
     name: String,
     firkins: FixedBigRational
-) : Weights<FFF, U>(FFF, name, firkins)
+) : Weight<FFF, U>(FFF, name, firkins)
 
-object Firkins : FffWeights<Firkins>("firkin", ONE) {
+object Firkins : FFFWeight<Firkins>("firkin", ONE) {
     override fun new(value: FixedBigRational) = Firkin(value)
     override fun format(value: FixedBigRational) = "$value fir"
 }

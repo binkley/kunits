@@ -1,18 +1,18 @@
 package hm.binkley.kunits.system.fff.time
 
 import hm.binkley.kunits.Measure
-import hm.binkley.kunits.Times
+import hm.binkley.kunits.Time
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
-sealed class FffTimes<U : FffTimes<U>>(
+sealed class FFFTime<U : FFFTime<U>>(
     name: String,
     fortnights: FixedBigRational
-) : Times<FFF, U>(FFF, name, fortnights)
+) : Time<FFF, U>(FFF, name, fortnights)
 
-object Fortnights : FffTimes<Fortnights>("fortnight", ONE) {
+object Fortnights : FFFTime<Fortnights>("fortnight", ONE) {
     override fun new(value: FixedBigRational) = Fortnight(value)
     override fun format(value: FixedBigRational) = "$value ftn"
 }

@@ -4,7 +4,7 @@ import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class EnglishLengthsTest {
+internal class EnglishLengthTest {
     @Test
     fun `should convert`() {
         1L.line shouldBe 1.lines

@@ -4,7 +4,7 @@ import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class MitLengthsTest {
+internal class MITLengthTest {
     @Test
     fun `should convert`() {
         1.smoots.convertTo(Ears) shouldBe (67 over 3).ears

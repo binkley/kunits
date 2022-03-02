@@ -112,12 +112,12 @@ internal class UnitsTest {
 // Main system, units, and measures for tests
 object Metasyntactic : System<Metasyntactic>()
 
-sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
+sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
     name: String,
     foos: FixedBigRational,
-) : Lengths<Metasyntactic, U>(Metasyntactic, name, foos)
+) : Length<Metasyntactic, U>(Metasyntactic, name, foos)
 
-object Foos : MetasyntacticLengths<Foos>("foo", ONE) {
+object Foos : MetasyntacticLength<Foos>("foo", ONE) {
     override fun new(value: FixedBigRational) = Foo(value)
     override fun format(value: FixedBigRational) = "$value foos"
 }
@@ -130,7 +130,7 @@ val Long.foos get() = toBigRational().foos
 val FixedBigRational.foos get() = Foo(this)
 val Measure<Metasyntactic, *>.foos get() = convertTo(Foos)
 
-object Bars : MetasyntacticLengths<Bars>("bar", TWO) {
+object Bars : MetasyntacticLength<Bars>("bar", TWO) {
     override fun new(value: FixedBigRational) = Bar(value)
     override fun format(value: FixedBigRational) = "$value bars"
 }
@@ -146,12 +146,12 @@ val Measure<Metasyntactic, *>.bars get() = convertTo(Bars)
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>()
 
-sealed class MartianLengths<U : MartianLengths<U>>(
+sealed class MartianLength<U : MartianLength<U>>(
     name: String,
     bars: FixedBigRational,
-) : Lengths<Martian, U>(Martian, name, bars)
+) : Length<Martian, U>(Martian, name, bars)
 
-object Groks : MartianLengths<Groks>("grok", ONE) {
+object Groks : MartianLength<Groks>("grok", ONE) {
     override fun new(value: FixedBigRational) = Grok(value)
     override fun format(value: FixedBigRational) = "$value groks"
 }

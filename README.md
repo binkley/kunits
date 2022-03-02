@@ -78,12 +78,12 @@ The top-level API represents:
   [`FixedBigRational`](#kotlin-rational)
 
 The code shows a generic pattern for implementing a Unit System with
-[English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/english-lengths.kt)
+[English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLength.kt)
 as the real world exemplar, and
-[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/fff-lengths.kt),
-[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/fff-times.kt),
+[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/FFFLength.kt),
+[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/FFFTime.kt),
 and
-[FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/fff-weights.kt),
+[FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/FFFWeight.kt),
 as a whimsical full system. The pattern can also be seen in
 [a test](src/test/kotlin/hm/binkley/kunits/UnitsTest.kt) based on
 [_metasyntactic

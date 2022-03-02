@@ -1,18 +1,18 @@
 package hm.binkley.kunits.system.english.weight
 
 import hm.binkley.kunits.Measure
-import hm.binkley.kunits.Weights
+import hm.binkley.kunits.Weight
 import hm.binkley.kunits.system.english.English
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
-sealed class EnglishWeights<U : EnglishWeights<U>>(
+sealed class EnglishWeight<U : EnglishWeight<U>>(
     name: String,
     drams: FixedBigRational,
-) : Weights<English, U>(English, name, drams)
+) : Weight<English, U>(English, name, drams)
 
-object Grains : EnglishWeights<Grains>("grain", 256 over 7000) {
+object Grains : EnglishWeight<Grains>("grain", 256 over 7000) {
     override fun new(value: FixedBigRational) = Grain(value)
     override fun format(value: FixedBigRational) = "$value gr"
 }
@@ -25,7 +25,7 @@ val Long.grains get() = (this over 1).grains
 val FixedBigRational.grains get() = Grain(this)
 val Measure<English, *>.grains get() = convertTo(Grains)
 
-object Drams : EnglishWeights<Drams>("dram", ONE) {
+object Drams : EnglishWeight<Drams>("dram", ONE) {
     override fun new(value: FixedBigRational) = Dram(value)
     override fun format(value: FixedBigRational) = "$value dr"
 }
@@ -38,7 +38,7 @@ val Long.drams get() = (this over 1).drams
 val FixedBigRational.drams get() = Dram(this)
 val Measure<English, *>.drams get() = convertTo(Drams)
 
-object Ounces : EnglishWeights<Ounces>("ounce", 16 over 1) {
+object Ounces : EnglishWeight<Ounces>("ounce", 16 over 1) {
     override fun new(value: FixedBigRational) = Ounce(value)
     override fun format(value: FixedBigRational) = "$value oz"
 }
@@ -51,7 +51,7 @@ val Long.ounces get() = (this over 1).ounces
 val FixedBigRational.ounces get() = Ounce(this)
 val Measure<English, *>.ounces get() = convertTo(Ounces)
 
-object Pounds : EnglishWeights<Pounds>("pound", 256 over 1) {
+object Pounds : EnglishWeight<Pounds>("pound", 256 over 1) {
     override fun new(value: FixedBigRational) = Pound(value)
     override fun format(value: FixedBigRational) = "$value lb"
 }
@@ -64,7 +64,7 @@ val Long.pounds get() = (this over 1).pounds
 val FixedBigRational.pounds get() = Pound(this)
 val Measure<English, *>.pounds get() = convertTo(Pounds)
 
-object Cloves : EnglishWeights<Cloves>("clove", 1_792 over 1) {
+object Cloves : EnglishWeight<Cloves>("clove", 1_792 over 1) {
     override fun new(value: FixedBigRational) = Clove(value)
     override fun format(value: FixedBigRational) = "$value cloves"
 }
@@ -77,7 +77,7 @@ val Long.cloves get() = (this over 1).cloves
 val FixedBigRational.cloves get() = Clove(this)
 val Measure<English, *>.cloves get() = convertTo(Cloves)
 
-object Stone : EnglishWeights<Stone>("stone", 3_584 over 1) {
+object Stone : EnglishWeight<Stone>("stone", 3_584 over 1) {
     override fun new(value: FixedBigRational) = Stone_(value)
     override fun format(value: FixedBigRational) = "$value st"
 }
@@ -91,7 +91,7 @@ val Long.stone get() = (this over 1).stone
 val FixedBigRational.stone get() = Stone_(this)
 val Measure<English, *>.stone get() = convertTo(Stone)
 
-object Tods : EnglishWeights<Tods>("tod", 7_168 over 1) {
+object Tods : EnglishWeight<Tods>("tod", 7_168 over 1) {
     override fun new(value: FixedBigRational) = Tod(value)
     override fun format(value: FixedBigRational) = "$value tods"
 }
@@ -104,7 +104,7 @@ val Long.tods get() = (this over 1).tods
 val FixedBigRational.tods get() = Tod(this)
 val Measure<English, *>.tods get() = convertTo(Tods)
 
-object Hundredweight : EnglishWeights<Hundredweight>(
+object Hundredweight : EnglishWeight<Hundredweight>(
     "hundredweight", 28_672 over 1
 ) {
     override fun new(value: FixedBigRational) = Hundredweight_(value)
@@ -120,7 +120,7 @@ val Long.hundredweight get() = (this over 1).hundredweight
 val FixedBigRational.hundredweight get() = Hundredweight_(this)
 val Measure<English, *>.hundredweight get() = convertTo(Hundredweight)
 
-object Tuns : EnglishWeights<Tuns>("tun", 573_440 over 1) {
+object Tuns : EnglishWeight<Tuns>("tun", 573_440 over 1) {
     override fun new(value: FixedBigRational) = Tun(value)
     override fun format(value: FixedBigRational) = "$value tuns"
 }

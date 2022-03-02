@@ -1,11 +1,11 @@
 package hm.binkley.kunits
 
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.kunits.system.fff.length.FffLengths
+import hm.binkley.kunits.system.fff.length.FFFLength
 import hm.binkley.kunits.system.fff.length.Furlong
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.kunits.system.fff.time.FffTimes
-import hm.binkley.kunits.system.fff.weight.FffWeights
+import hm.binkley.kunits.system.fff.time.FFFTime
+import hm.binkley.kunits.system.fff.weight.FFFWeight
 import hm.binkley.math.fixed.FixedBigRational
 import java.util.Objects.hash
 
@@ -27,7 +27,7 @@ abstract class System<S : System<S>> {
  * Represents units within a [System].
  *
  * Do not use directly; rather, extend one of the groups of units such as
- * [Lengths], [Times], or [Weights].
+ * [Length], [Time], or [Weight].
  */
 abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Must be unique for each system. */
@@ -51,11 +51,11 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
 /**
  * Represents units of length within a [System].
  *
- * See [FffLengths] and [Furlongs] for an example.
+ * See [FFFLength] and [Furlongs] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
  * _measurement_ of that unit.
  */
-abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
+abstract class Length<S : System<S>, U : Length<S, U>>(
     system: S,
     name: String,
     base: FixedBigRational,
@@ -64,9 +64,9 @@ abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
 /**
  * Represents units of time within a [System].
  *
- * See [FffTimes] for an example.
+ * See [FFFTime] for an example.
  */
-abstract class Times<S : System<S>, U : Times<S, U>>(
+abstract class Time<S : System<S>, U : Time<S, U>>(
     system: S,
     name: String,
     base: FixedBigRational,
@@ -75,9 +75,9 @@ abstract class Times<S : System<S>, U : Times<S, U>>(
 /**
  * Represents units of weight within a [System].
  *
- * See [FffWeights] for an example.
+ * See [FFFWeight] for an example.
  */
-abstract class Weights<S : System<S>, U : Weights<S, U>>(
+abstract class Weight<S : System<S>, U : Weight<S, U>>(
     system: S,
     name: String,
     base: FixedBigRational,

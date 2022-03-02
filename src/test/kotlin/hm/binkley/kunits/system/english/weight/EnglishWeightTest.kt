@@ -4,7 +4,7 @@ import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class EnglishWeightsTest {
+internal class EnglishWeightTest {
     @Test
     fun `should convert`() {
         1L.grains shouldBe 1.grains
