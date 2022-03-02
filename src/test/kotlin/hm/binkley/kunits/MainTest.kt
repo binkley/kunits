@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test
 internal class MainTest {
     @Test
     fun `should run`() {
-        tapSystemErrAndOutNormalized { main() } shouldBeAfterTrimming """
+        tapSystemErrAndOutNormalized { main() } shouldBeAfterTrimming
+            """
 == ENGLISH LENGTHS
 120 lines
 -120 lines
@@ -37,8 +38,11 @@ internal class MainTest {
 == CONVERSIONS
 1 fur IN Furlong-Firkin-Fortnight IS 220 yd IN English
 220 yd IN English IS 1 fur IN Furlong-Firkin-Fortnight
-1 sm IN MIT IS 67" IN English            
-        """
+1 sm IN MIT IS 67" IN English
+
+== REDUCTIONS
+64" IS [5', 4"]
+"""
     }
 }
 

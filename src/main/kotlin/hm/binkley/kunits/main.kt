@@ -9,6 +9,8 @@ import hm.binkley.kunits.system.english.length.Inch.Inches
 import hm.binkley.kunits.system.english.length.Line.Lines
 import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.kunits.system.english.length.Yards
+import hm.binkley.kunits.system.english.length.feet
+import hm.binkley.kunits.system.english.length.inches
 import hm.binkley.kunits.system.english.length.lines
 import hm.binkley.kunits.system.english.length.yards
 import hm.binkley.kunits.system.english.weight.Dram.Drams
@@ -67,4 +69,9 @@ fun main() {
     println("${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs.intoEnglish(Yards)} IN $English")
     println("${220.yards} IN $English IS ${220.yards.intoFFF(Furlongs)} IN $FFF")
     println("${1.mitSmoots} IN $MIT IS ${1.mitSmoots.intoEnglish(Inches)} IN $English")
+
+    println()
+    println("== REDUCTIONS")
+    val m3 = (5.feet + 4.inches) into Inches
+    println("$m3 IS ${m3.lowestTerms(Feet, Inches)}")
 }
