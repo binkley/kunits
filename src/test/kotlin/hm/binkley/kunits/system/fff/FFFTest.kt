@@ -9,7 +9,7 @@ import hm.binkley.kunits.system.english.length.furlongs as englishFurlongs
 internal class FFFTest {
     @Test
     fun `should pretty print`() {
-        "$FFF" shouldBe "FFF"
+        "$FFF" shouldBe "Furlong-Firkin-Fortnight"
     }
 
     @Test

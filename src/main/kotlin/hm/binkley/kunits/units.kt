@@ -16,10 +16,10 @@ import java.util.Objects.hash
  *
  * @param S the system of units
  */
-abstract class System<S : System<S>> {
-    /** The name for this system of units: the simple class name. */
-    val name: String = this::class.simpleName!!
-
+abstract class System<S : System<S>>(
+    /** The name for this system of units. */
+    val name: String,
+) {
     // Systems are singleton objects, so no point to defining equals/hashCode
 
     /** Presents this system as [name]. */

@@ -35,8 +35,8 @@ internal class MainTest {
 300 dr
 
 == CONVERSIONS
-1 fur IN FFF IS 220 yd IN English
-220 yd IN English IS 1 fur IN FFF
+1 fur IN Furlong-Firkin-Fortnight IS 220 yd IN English
+220 yd IN English IS 1 fur IN Furlong-Firkin-Fortnight
 1 sm IN MIT IS 67" IN English            
         """
     }

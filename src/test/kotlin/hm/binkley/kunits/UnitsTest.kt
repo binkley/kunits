@@ -100,7 +100,7 @@ internal class UnitsTest {
 }
 
 // Main system, units, and measures for tests
-object Metasyntactic : System<Metasyntactic>()
+object Metasyntactic : System<Metasyntactic>("Metasyntactic")
 
 infix fun <U : Length<Metasyntactic, U>, V : Length<Martian, V>>
 Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
@@ -138,7 +138,7 @@ val Long.bars get() = (this over 1).bars
 val FixedBigRational.bars get() = Bars.new(this)
 
 // Alternate system, units, and measures for tests
-object Martian : System<Martian>()
+object Martian : System<Martian>("Martian")
 
 infix fun <U : Length<Martian, U>, V : Length<Metasyntactic, V>>
 Measure<Martian, U>.intoMetasyntactic(other: V) = into(other) {

@@ -9,7 +9,7 @@ import hm.binkley.math.fixed.over
 private val LINES_PER_FURLONG = 1 over 95_040
 
 /** The system of English units. */
-object English : System<English>()
+object English : System<English>("English")
 
 /** Converts lengths from English to FFF units. */
 infix fun <U : Length<English, U>, V : Length<FFF, V>>

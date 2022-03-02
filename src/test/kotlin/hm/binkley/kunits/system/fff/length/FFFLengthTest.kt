@@ -11,7 +11,7 @@ internal class FFFLengthTest {
 
     @Test
     fun `should pretty print`() {
-        "$Furlongs" shouldBe "FFF furlong"
+        "$Furlongs" shouldBe "Furlong-Firkin-Fortnight furlong"
         "${1.furlongs}" shouldBe "1 fur"
     }
 }
