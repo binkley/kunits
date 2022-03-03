@@ -51,11 +51,10 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
  */
 fun <S : System<S>>
 Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
+    // Pre-populate with nulls so that we can write in any order
     val reduceTo = MutableList<Measure<S, *>?>(units.size) { null }
 
-    val descendingIndexed = units
-        .mapIndexed { index, unit -> index to unit }
-        .sortedByDescending { it.second }
+    val descendingIndexed = units.sortedDescendingIndexed()
     var current = this
     descendingIndexed.forEach { (index, unit) ->
         val valueToReduce = current.value * current.unit.basis / unit.basis
@@ -70,3 +69,10 @@ Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
 
     return reduceTo.map { it!! } // Restore to non-nullable
 }
+
+/**
+ * Sorts the array element-wise descending, each entry with an attached
+ * index of the ordering in the original array.
+ */
+private fun <T : Comparable<T>> Array<T>.sortedDescendingIndexed() =
+    mapIndexed { index, it -> index to it }.sortedByDescending { it.second }
