@@ -29,6 +29,7 @@ import hm.binkley.kunits.system.usd.denomination.Nickel.Nickels
 import hm.binkley.kunits.system.usd.denomination.Penny.Pennies
 import hm.binkley.kunits.system.usd.denomination.Quarter.Quarters
 import hm.binkley.kunits.system.usd.denomination.dollars
+import hm.binkley.kunits.system.usd.denomination.format
 import hm.binkley.kunits.system.usd.denomination.pennies
 import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 import hm.binkley.kunits.system.mit.length.smoots as mitSmoots
@@ -76,13 +77,16 @@ fun main() {
     val smootInInches = 1.mitSmoots.intoEnglish(Inches)
     println("${1.mitSmoots} IN $MIT IS $smootInInches IN $English")
     println("$smootInInches IS ${smootInInches.into(Feet, Inches)}")
+
+    println()
+    println("== MONEY")
     val m4 = 4.dollars + 33.pennies
     val coins = m4.into(
         DollarCoins, HalfDollars, Quarters, Dimes, Nickels, Pennies
     )
-    val format = "%.2f".format(m4.value.toDouble())
     val coinCount = coins.map { it.value }.sumOf { it.toInt() }
-    println(
-        "\$$format MAKES CHANGE IN $coinCount COINS AS ${coins.joinToString(", ")}"
-    )
+    println("${m4.format()} MAKES CHANGE IN $coinCount COINS AS:")
+    coins.forEach { println("- $it (${it.format()})") }
+    val recheckM4 = coins.fold(0.dollars) { sum, next -> sum + next }
+    println("WHICH SUMS TO ${recheckM4.format()}")
 }

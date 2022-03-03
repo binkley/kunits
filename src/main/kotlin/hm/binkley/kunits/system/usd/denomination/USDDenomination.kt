@@ -2,6 +2,7 @@ package hm.binkley.kunits.system.usd.denomination
 
 import hm.binkley.kunits.Denomination
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.into
 import hm.binkley.kunits.system.usd.USD
 import hm.binkley.kunits.system.usd.denomination.Dime.Dimes
 import hm.binkley.kunits.system.usd.denomination.Dollar.Dollars
@@ -21,12 +22,18 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TEN
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
 import hm.binkley.math.fixed.over
+import java.text.NumberFormat
+import java.util.Locale.US
 
 /** The USD denominations. */
 sealed class USDDenomination<U : USDDenomination<U>>(
     name: String,
     dollars: FixedBigRational,
 ) : Denomination<USD, U>(USD, name, dollars)
+
+/** Formats USD money following US locale rules.  Example: "$4.33". */
+fun Measure<USD, *>.format(): String = NumberFormat.getCurrencyInstance(US)
+    .format((this into Dollars).value.toBigDecimal())
 
 class HundredDollar private constructor(value: FixedBigRational) :
     Measure<USD, HundredDollars>(HundredDollars, value) {

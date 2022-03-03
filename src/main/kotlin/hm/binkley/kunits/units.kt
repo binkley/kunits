@@ -6,6 +6,7 @@ import hm.binkley.kunits.system.fff.length.Furlong
 import hm.binkley.kunits.system.fff.length.Furlongs
 import hm.binkley.kunits.system.fff.time.FFFTime
 import hm.binkley.kunits.system.fff.weight.FFFWeight
+import hm.binkley.kunits.system.usd.denomination.USDDenomination
 import hm.binkley.math.fixed.FixedBigRational
 import java.util.Objects.hash
 
@@ -36,7 +37,7 @@ abstract class System<S : System<S>>(
  * and kilometers have a basis of 1,000.
  *
  * Do not use directly; rather, extend one of the groups of units such as
- * [Length], [Time], or [Weight].
+ * [Length], [Time], [Weight] or [Denomination].
  *
  * @param S the system of units
  * @param U the units of measurement
@@ -53,6 +54,8 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
      * Creates a new measure from the given [value].
      *
      * @param value the amount of this unit
+     *
+     * @todo Avoid casting: teach new to return specific M measure type
      */
     abstract fun new(value: FixedBigRational): Measure<S, U>
 
@@ -150,9 +153,9 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     override fun toString() = unit.format(value)
 
     override fun equals(other: Any?) = this === other ||
-        other is Measure<*, *> &&
-        unit == other.unit &&
-        value == other.value
+            other is Measure<*, *> &&
+            unit == other.unit &&
+            value == other.value
 
     override fun hashCode() = hash(unit, value)
 }
