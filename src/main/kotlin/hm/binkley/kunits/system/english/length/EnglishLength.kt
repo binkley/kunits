@@ -37,7 +37,7 @@ class Line private constructor(value: FixedBigRational) :
 }
 
 val Int.lines get() = (this over 1).lines
-val Long.line get() = (this over 1).lines
+val Long.lines get() = (this over 1).lines
 val FixedBigRational.lines get() = Lines.new(this)
 
 class Barleycorn private constructor(value: FixedBigRational) :
