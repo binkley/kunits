@@ -17,12 +17,12 @@ M.unaryMinus(): M = unit.new(-value) as M
 /** Adds the two measures using _left_ measure for units. */
 operator fun <S : System<S>, U : Units<S, U>, M : Measure<S, U>>
 M.plus(other: Measure<S, *>): M =
-    unit.new(value + other.into(unit).value) as M
+    unit.new(value + (other into unit).value) as M
 
 /** Subtracts the two measures using _left_ measure for units. */
 operator fun <S : System<S>, U : Units<S, U>, M : Measure<S, U>>
 M.minus(other: Measure<S, *>): M =
-    unit.new(value - other.into(unit).value) as M
+    unit.new(value - (other into unit).value) as M
 
 /** Scales up the measure. */
 operator fun <S : System<S>, U : Units<S, U>, M : Measure<S, U>>
