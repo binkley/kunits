@@ -52,7 +52,7 @@ Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
     val reduceTo = arrayOfNulls<Measure<S, *>?>(units.size)
 
     val descendingIndexed = units
-        .mapIndexed { index, unit -> index to unit } // TODO: Simpler
+        .mapIndexed { index, unit -> index to unit }
         .sortedByDescending { it.second }
     var current = this
     descendingIndexed.forEach { (index, unit) ->
