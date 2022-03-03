@@ -39,8 +39,6 @@ internal class MainTest {
 1 fur IN Furlong-Firkin-Fortnight IS 220 yd IN English
 220 yd IN English IS 1 fur IN Furlong-Firkin-Fortnight
 1 sm IN MIT IS 67" IN English
-
-== REDUCTIONS
 64" IS [5', 4"]
 """
     }

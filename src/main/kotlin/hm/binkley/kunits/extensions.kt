@@ -38,7 +38,7 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
 ) = other.new(convertByBases(other, conversion))
 
 /**
- * Reduces this measure to lowest terms for [units], from most significant
+ * Converts this measure into lowest terms for [units], from most significant
  * unit to least significant.
  * Example: `64.inches.reduceTo(Feet, Inches)` is the list of `5.feet` and
  * `4.inches`.
@@ -51,24 +51,24 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
  * @return the reduced measures in the same order as [units]
  */
 fun <S : System<S>>
-Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
+Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
     // Pre-populate with nulls so that we may write in any order
-    val reduceTo = MutableList<Measure<S, *>?>(units.size) { null }
+    val into = MutableList<Measure<S, *>?>(units.size) { null }
 
     val descendingIndexed = units.sortedDescendingIndexed()
     var current = this
     descendingIndexed.forEach { (inputIndex, unit) ->
         val valueToReduce = current.convertByBases(unit) { it }
         val (reduced, remainder) = valueToReduce.divideAndRemainder(ONE)
-        reduceTo[inputIndex] = unit.new(reduced)
+        into[inputIndex] = unit.new(reduced)
         current = unit.new(remainder)
     }
 
     // Tack any left over into the least significant unit
     val leastIndex = descendingIndexed.last().first
-    reduceTo[leastIndex] = reduceTo[leastIndex]!! + current
+    into[leastIndex] = into[leastIndex]!! + current
 
-    return reduceTo.toNonNullableList()
+    return into.toNonNullableList()
 }
 
 private fun Measure<*, *>.convertByBases(

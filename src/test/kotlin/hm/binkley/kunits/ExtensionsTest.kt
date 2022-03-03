@@ -25,27 +25,27 @@ internal class ExtensionsTest {
     @Nested
     inner class Reductions {
         @Test
-        fun `should reduce to lowest terms all with values`() {
+        fun `should convert into lowest terms all with values`() {
             val measure = 7.baz + 2.bar + (5 over 2).foo
-            val reduction = measure.reduceTo(Baz, Bar, Foo)
+            val lowestTerms = measure.into(Baz, Bar, Foo)
 
-            reduction shouldBe listOf(8.baz, 1.bar, (1 over 2).foo)
+            lowestTerms shouldBe listOf(8.baz, 1.bar, (1 over 2).foo)
         }
 
         @Test
-        fun `should reduce to lowest terms with some zeroes`() {
+        fun `should convert into lowest terms with some zeroes`() {
             val measure = 1.bar
-            val reduction = measure.reduceTo(Baz, Bar, Foo)
+            val lowestTerms = measure.into(Baz, Bar, Foo)
 
-            reduction shouldBe listOf(0.baz, 1.bar, 0.foo)
+            lowestTerms shouldBe listOf(0.baz, 1.bar, 0.foo)
         }
 
         @Test
-        fun `should reduce and preserve unit input ordering`() {
+        fun `should convert into and preserve unit input ordering`() {
             val measure = 7.baz + 2.bar + (5 over 2).foo
-            val reduction = measure.reduceTo(Foo, Baz, Bar)
+            val lowestTerms = measure.into(Foo, Baz, Bar)
 
-            reduction shouldBe listOf((1 over 2).foo, 8.baz, 1.bar)
+            lowestTerms shouldBe listOf((1 over 2).foo, 8.baz, 1.bar)
         }
     }
 }
