@@ -117,6 +117,20 @@ abstract class Weight<S : System<S>, U : Weight<S, U>>(
 ) : Units<S, U>(system, name, basis)
 
 /**
+ * Represents units of coinage or currency within a [System].
+ *
+ * See [USDDenomination] for an example.
+ *
+ * @param S the system of units
+ * @param U the units of measurement
+ */
+abstract class Denomination<S : System<S>, U : Denomination<S, U>>(
+    system: S,
+    name: String,
+    basis: FixedBigRational,
+) : Units<S, U>(system, name, basis)
+
+/**
  * Represents measurements of a unit within a [System].
  *
  * See [Furlong] for an example.
