@@ -48,7 +48,7 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     val name: String,
     /** Amount of 1 unit expressed in base units. */
     internal val basis: FixedBigRational,
-) {
+) : Comparable<Units<S, *>> {
     /**
      * Creates a new measure from the given [value].
      *
@@ -62,6 +62,9 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
      * @param value the amount of this unit
      */
     abstract fun format(value: FixedBigRational): String
+
+    /** Orders units by their [basis]. */
+    override fun compareTo(other: Units<S, *>) = basis.compareTo(other.basis)
 
     // Units are singleton objects, so no point to defining equals/hashCode
 

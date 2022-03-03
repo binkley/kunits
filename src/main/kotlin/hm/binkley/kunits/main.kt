@@ -73,5 +73,5 @@ fun main() {
     println()
     println("== REDUCTIONS")
     val m3 = (5.feet + 4.inches) into Inches
-    println("$m3 IS ${m3.lowestTerms(Feet, Inches)}")
+    println("$m3 IS ${m3.reduceTo(Feet, Inches)}")
 }

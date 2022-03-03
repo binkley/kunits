@@ -1,9 +1,12 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.Bar.Bars
-import hm.binkley.kunits.Foo.Foos
+import hm.binkley.kunits.Bar.Bar
+import hm.binkley.kunits.Baz.Baz
+import hm.binkley.kunits.Foo.Foo
 import hm.binkley.kunits.Grok.Groks
 import hm.binkley.math.fixed.FixedBigRational
+import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
 import hm.binkley.math.fixed.over
 
 // Main system, units, and measures for tests
@@ -16,40 +19,47 @@ Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
 
 sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
     name: String,
-    foos: FixedBigRational,
-) : Length<Metasyntactic, U>(Metasyntactic, name, foos)
+    foo: FixedBigRational,
+) : Length<Metasyntactic, U>(Metasyntactic, name, foo)
 
 class Foo private constructor(value: FixedBigRational) :
-    Measure<Metasyntactic, Foos>(Foos, value) {
+    Measure<Metasyntactic, Foo>(Foo, value) {
 
-    companion object Foos : MetasyntacticLength<Foos>(
-        "foo",
-        FixedBigRational.ONE
-    ) {
+    companion object Foo : MetasyntacticLength<Foo>("foo", ONE) {
         override fun new(value: FixedBigRational) = Foo(value)
-        override fun format(value: FixedBigRational) = "$value foos"
+        override fun format(value: FixedBigRational) = "$value foo"
     }
 }
 
-val Int.foos get() = (this over 1).foos
-val Long.foos get() = (this over 1).foos
-val FixedBigRational.foos get() = Foos.new(this)
+val Int.foo get() = (this over 1).foo
+val Long.foo get() = (this over 1).foo
+val FixedBigRational.foo get() = Foo.new(this)
 
 class Bar private constructor(value: FixedBigRational) :
-    Measure<Metasyntactic, Bars>(Bars, value) {
+    Measure<Metasyntactic, Bar>(Bar, value) {
 
-    companion object Bars : MetasyntacticLength<Bars>(
-        "bar",
-        FixedBigRational.TWO
-    ) {
+    companion object Bar : MetasyntacticLength<Bar>("bar", TWO) {
         override fun new(value: FixedBigRational) = Bar(value)
-        override fun format(value: FixedBigRational) = "$value bars"
+        override fun format(value: FixedBigRational) = "$value bar"
     }
 }
 
-val Int.bars get() = (this over 1).bars
-val Long.bars get() = (this over 1).bars
-val FixedBigRational.bars get() = Bars.new(this)
+val Int.bar get() = (this over 1).bar
+val Long.bar get() = (this over 1).bar
+val FixedBigRational.bar get() = Bar.new(this)
+
+class Baz private constructor(value: FixedBigRational) :
+    Measure<Metasyntactic, Baz>(Baz, value) {
+
+    companion object Baz : MetasyntacticLength<Baz>("baz", (4 over 1)) {
+        override fun new(value: FixedBigRational) = Baz(value)
+        override fun format(value: FixedBigRational) = "$value baz"
+    }
+}
+
+val Int.baz get() = (this over 1).baz
+val Long.baz get() = (this over 1).baz
+val FixedBigRational.baz get() = Baz.new(this)
 
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>("Martian")
@@ -61,16 +71,13 @@ Measure<Martian, U>.intoMetasyntactic(other: V) = into(other) {
 
 sealed class MartianLength<U : MartianLength<U>>(
     name: String,
-    bars: FixedBigRational,
-) : Length<Martian, U>(Martian, name, bars)
+    bar: FixedBigRational,
+) : Length<Martian, U>(Martian, name, bar)
 
 class Grok private constructor(value: FixedBigRational) :
     Measure<Martian, Groks>(Groks, value) {
 
-    companion object Groks : MartianLength<Groks>(
-        "grok",
-        FixedBigRational.ONE
-    ) {
+    companion object Groks : MartianLength<Groks>("grok", ONE) {
         override fun new(value: FixedBigRational) = Grok(value)
         override fun format(value: FixedBigRational) = "$value groks"
     }

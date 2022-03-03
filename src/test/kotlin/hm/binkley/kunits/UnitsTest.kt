@@ -1,8 +1,10 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.Foo.Foos
+import hm.binkley.kunits.Bar.Bar
+import hm.binkley.kunits.Foo.Foo
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.comparables.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
@@ -12,35 +14,40 @@ internal class UnitsTest {
     @Test
     fun `should pretty print`() {
         "$Metasyntactic" shouldBe "Metasyntactic"
-        "$Foos" shouldBe "Metasyntactic foo"
-        "${1.foos}" shouldBe "1 foos"
+        "$Foo" shouldBe "Metasyntactic foo"
+        "${1.foo}" shouldBe "1 foo"
     }
 
     @Test
     fun `should be named`() {
         Metasyntactic.name shouldBe "Metasyntactic"
-        Foos.name shouldBe "foo"
+        Foo.name shouldBe "foo"
     }
 
     @Test
     fun `should be part of a system`() {
-        Foos.system shouldBe Metasyntactic
+        Foo.system shouldBe Metasyntactic
+    }
+
+    @Test
+    fun `should have an ordering`() {
+        Foo shouldBeLessThan Bar
     }
 
     @Suppress("ReplaceCallWithBinaryOperator")
     @Test
     fun `should equate`() {
-        val measure = 1.foos
+        val measure = 1.foo
         measure.equals(measure).shouldBeTrue()
         measure.equals(this).shouldBeFalse()
         measure.equals(1.groks).shouldBeFalse()
-        measure.equals(1.bars).shouldBeFalse()
-        measure.equals(2.foos).shouldBeFalse()
+        measure.equals(1.bar).shouldBeFalse()
+        measure.equals(2.foo).shouldBeFalse()
     }
 
     @Test
     fun `should hash`() {
-        val measure = 1.foos
+        val measure = 1.foo
         identityHashCode(measure) shouldNotBe measure.hashCode()
     }
 }

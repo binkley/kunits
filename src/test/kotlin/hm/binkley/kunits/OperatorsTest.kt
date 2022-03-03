@@ -7,39 +7,39 @@ import org.junit.jupiter.api.Test
 internal class OperatorsTest {
     @Test
     fun `should posite`() {
-        +(1L.foos) shouldBe (+1).foos
+        +(1L.foo) shouldBe (+1).foo
     }
 
     @Test
     fun `should negate`() {
-        -(1.foos) shouldBe (-1L).foos
+        -(1.foo) shouldBe (-1L).foo
     }
 
     @Test
     fun `should add`() {
-        1.foos + 2.foos shouldBe 3.foos
+        1.foo + 2.foo shouldBe 3.foo
     }
 
     @Test
     fun `should subtract`() {
-        3.foos - 2.foos shouldBe 1.foos
+        3.foo - 2.foo shouldBe 1.foo
     }
 
     @Test
     fun `should multiply`() {
-        1.foos * 3 shouldBe 3.foos
-        3 * 1.foos shouldBe 3.foos
-        1.foos * 3L shouldBe 3.foos
-        3L * 1.foos shouldBe 3.foos
-        1.foos * (3 over 1) shouldBe 3.foos
-        (3 over 1) * 1.foos shouldBe 3.foos
+        1.foo * 3 shouldBe 3.foo
+        3 * 1.foo shouldBe 3.foo
+        1.foo * 3L shouldBe 3.foo
+        3L * 1.foo shouldBe 3.foo
+        1.foo * (3 over 1) shouldBe 3.foo
+        (3 over 1) * 1.foo shouldBe 3.foo
     }
 
     @Test
     fun `should divide`() {
-        3.foos / 4.bars shouldBe (3 over 8)
-        3.foos / 3 shouldBe 1.foos
-        3.foos / 3L shouldBe 1.foos
-        3.foos / (3 over 1) shouldBe 1.foos
+        3.foo / 4.bar shouldBe (3 over 8)
+        3.foo / 3 shouldBe 1.foo
+        3.foo / 3L shouldBe 1.foo
+        3.foo / (3 over 1) shouldBe 1.foo
     }
 }

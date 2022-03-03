@@ -24,13 +24,13 @@ Measure<S, *>.into(other: V) = into(other) { it }
  * system of units.
  *
  * Use [conversion] when moving between systems of units.
- * It takes the [value] of this measurement expressed in base units for
- * [U], and returns a new measurement value in base units for [V].
+ * It takes the value of this measurement expressed in base units, and
+ * returns a new measurement value in base units for [V].
  *
  * @param T the system of units for [other]
  * @param V the units for [other]
  * @param other the target units
- * @param conversion the conversion basis between [unit] and [other]
+ * @param conversion convert bases of the two units
  */
 fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
     other: V,
@@ -43,20 +43,28 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
  * and `4.inches`.
  *
  * @param S the system of units
- * @param bigToSmall are the units in descending order
+ * @param units reduce this measure to these units
+ *
+ * @return the reduced measures in the same order as [units]
  */
 fun <S : System<S>>
-Measure<S, *>.lowestTerms(vararg bigToSmall: Units<S, *>):
-    List<Measure<S, *>> {
-    val lowestTerms = ArrayList<Measure<S, *>>(bigToSmall.size)
-    var current: Measure<S, *> = this
-    for (unit in bigToSmall) {
-        val currentInUnit = current.value * current.unit.basis / unit.basis
-        val (wholeRatio, remainder) = currentInUnit.divideAndRemainder(ONE)
-        lowestTerms += unit.new(wholeRatio)
+Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
+    val reduceTo = arrayOfNulls<Measure<S, *>?>(units.size)
+
+    val descendingIndexed = units
+        .mapIndexed { index, unit -> index to unit } // TODO: Simpler
+        .sortedByDescending { it.second }
+    var current = this
+    descendingIndexed.forEach { (index, unit) ->
+        val valueToReduce = current.value * current.unit.basis / unit.basis
+        val (reduced, remainder) = valueToReduce.divideAndRemainder(ONE)
+        reduceTo[index] = unit.new(reduced)
         current = unit.new(remainder)
     }
-    // Tack any left over into the last (smallest) unit
-    lowestTerms[lowestTerms.lastIndex] = lowestTerms.last() + current
-    return lowestTerms
+
+    // Tack any left over into the smallest unit
+    val indexOfSmallest = descendingIndexed.last().first
+    reduceTo[indexOfSmallest] = reduceTo[indexOfSmallest]!! + current
+
+    return reduceTo.toList().map { it!! }
 }
