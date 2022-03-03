@@ -39,7 +39,8 @@ internal class MainTest {
 1 fur IN Furlong-Firkin-Fortnight IS 220 yd IN English
 220 yd IN English IS 1 fur IN Furlong-Firkin-Fortnight
 1 sm IN MIT IS 67" IN English
-64" IS [5', 4"]
+67" IS [5', 7"]
+$4.33 MAKES CHANGE IN 9 COINS AS 4 100¢, 0 50¢, 1 25¢, 0 10¢, 1 5¢, 3 1¢
 """
     }
 }
