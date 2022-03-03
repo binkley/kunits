@@ -39,8 +39,10 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
 
 /**
  * Reduces this measure to the lowest terms for [units].
- * Example: `64.inches.lowestTerms(Feet, Inches)` is the list of `5.feet`
- * and `4.inches`.
+ * Example: `64.inches.reduceTo(Feet, Inches)` is the list of `5.feet` and
+ * `4.inches`.
+ * Note: `64.inches.reduceTo(Inches, Feet)` is the list of `4.inches` and
+ * `5.feet following the order of units provided.
  *
  * @param S the system of units
  * @param units reduce this measure to these units
@@ -49,7 +51,7 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
  */
 fun <S : System<S>>
 Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
-    val reduceTo = arrayOfNulls<Measure<S, *>?>(units.size)
+    val reduceTo = MutableList<Measure<S, *>?>(units.size) { null }
 
     val descendingIndexed = units
         .mapIndexed { index, unit -> index to unit }
@@ -66,5 +68,5 @@ Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
     val indexOfSmallest = descendingIndexed.last().first
     reduceTo[indexOfSmallest] = reduceTo[indexOfSmallest]!! + current
 
-    return reduceTo.map { it!! }
+    return reduceTo.map { it!! } // Restore to non-nullable
 }
