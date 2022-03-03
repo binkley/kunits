@@ -35,10 +35,11 @@ Measure<S, *>.into(other: V) = into(other) { it }
 fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
     other: V,
     conversion: (FixedBigRational) -> FixedBigRational,
-) = other.new(conversion(value * unit.basis) / other.basis)
+) = other.new(convertByBases(other, conversion))
 
 /**
- * Reduces this measure to the lowest terms for [units].
+ * Reduces this measure to lowest terms for [units], from most significant
+ * unit to least significant.
  * Example: `64.inches.reduceTo(Feet, Inches)` is the list of `5.feet` and
  * `4.inches`.
  * Note: `64.inches.reduceTo(Inches, Feet)` is the list of `4.inches` and
@@ -51,24 +52,29 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
  */
 fun <S : System<S>>
 Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
-    // Pre-populate with nulls so that we can write in any order
+    // Pre-populate with nulls so that we may write in any order
     val reduceTo = MutableList<Measure<S, *>?>(units.size) { null }
 
     val descendingIndexed = units.sortedDescendingIndexed()
     var current = this
-    descendingIndexed.forEach { (index, unit) ->
-        val valueToReduce = current.value * current.unit.basis / unit.basis
+    descendingIndexed.forEach { (inputIndex, unit) ->
+        val valueToReduce = current.convertByBases(unit) { it }
         val (reduced, remainder) = valueToReduce.divideAndRemainder(ONE)
-        reduceTo[index] = unit.new(reduced)
+        reduceTo[inputIndex] = unit.new(reduced)
         current = unit.new(remainder)
     }
 
-    // Tack any left over into the smallest unit
-    val indexOfSmallest = descendingIndexed.last().first
-    reduceTo[indexOfSmallest] = reduceTo[indexOfSmallest]!! + current
+    // Tack any left over into the least significant unit
+    val leastIndex = descendingIndexed.last().first
+    reduceTo[leastIndex] = reduceTo[leastIndex]!! + current
 
-    return reduceTo.map { it!! } // Restore to non-nullable
+    return reduceTo.toNonNullableList()
 }
+
+private fun Measure<*, *>.convertByBases(
+    other: Units<*, *>,
+    conversion: (FixedBigRational) -> FixedBigRational,
+) = conversion(value * unit.basis) / other.basis
 
 /**
  * Sorts the array element-wise descending, each entry with an attached
@@ -76,3 +82,5 @@ Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
  */
 private fun <T : Comparable<T>> Array<T>.sortedDescendingIndexed() =
     mapIndexed { index, it -> index to it }.sortedByDescending { it.second }
+
+private fun <T> Collection<T?>.toNonNullableList() = map { it!! }
