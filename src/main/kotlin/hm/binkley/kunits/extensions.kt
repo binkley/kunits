@@ -66,5 +66,5 @@ Measure<S, *>.reduceTo(vararg units: Units<S, *>): List<Measure<S, *>> {
     val indexOfSmallest = descendingIndexed.last().first
     reduceTo[indexOfSmallest] = reduceTo[indexOfSmallest]!! + current
 
-    return reduceTo.toList().map { it!! }
+    return reduceTo.map { it!! }
 }
