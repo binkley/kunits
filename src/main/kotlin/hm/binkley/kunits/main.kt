@@ -28,9 +28,9 @@ import hm.binkley.kunits.system.usd.denomination.HalfDollar.HalfDollars
 import hm.binkley.kunits.system.usd.denomination.Nickel.Nickels
 import hm.binkley.kunits.system.usd.denomination.Penny.Pennies
 import hm.binkley.kunits.system.usd.denomination.Quarter.Quarters
+import hm.binkley.kunits.system.usd.denomination.cents
 import hm.binkley.kunits.system.usd.denomination.dollars
 import hm.binkley.kunits.system.usd.denomination.format
-import hm.binkley.kunits.system.usd.denomination.pennies
 import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 import hm.binkley.kunits.system.mit.length.smoots as mitSmoots
 
@@ -72,15 +72,15 @@ fun main() {
 
     println()
     println("== CONVERSIONS")
-    println("${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs.intoEnglish(Yards)} IN $English")
-    println("${220.yards} IN $English IS ${220.yards.intoFFF(Furlongs)} IN $FFF")
-    val smootInInches = 1.mitSmoots.intoEnglish(Inches)
+    println("${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English")
+    println("${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN $FFF")
+    val smootInInches = 1.mitSmoots intoEnglish Inches
     println("${1.mitSmoots} IN $MIT IS $smootInInches IN $English")
     println("$smootInInches IS ${smootInInches.into(Feet, Inches)}")
 
     println()
     println("== MONEY")
-    val m4 = 4.dollars + 33.pennies
+    val m4 = 4.dollars + 33.cents
     val coins = m4.into(
         DollarCoins, HalfDollars, Quarters, Dimes, Nickels, Pennies
     )

@@ -65,4 +65,11 @@ internal class USDDenominationsTest {
         "$HundredDollar" shouldBe "USD hundred dollar bill"
         "${1.hundredDollars}" shouldBe "1 \$100"
     }
+
+    @Test
+    fun `should alias pennies as cents`() {
+        (33 over 1).cents shouldBe 33.pennies
+        33L.cents shouldBe 33.pennies
+        33.cents shouldBe 33.pennies
+    }
 }

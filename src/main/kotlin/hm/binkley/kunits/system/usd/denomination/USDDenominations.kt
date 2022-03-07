@@ -214,3 +214,7 @@ class Penny private constructor(value: FixedBigRational) :
 val FixedBigRational.pennies get() = Pennies.new(this)
 val Long.pennies get() = (this over 1).pennies
 val Int.pennies get() = (this over 1).pennies
+// Common alias for pennies, eg, "4.dollars + 33.cents"
+val FixedBigRational.cents get() = pennies
+val Long.cents get() = pennies
+val Int.cents get() = pennies
