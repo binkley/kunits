@@ -4,7 +4,7 @@ import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
 import hm.binkley.kunits.Grok.Groks
-import hm.binkley.kunits.Willi.Willis
+import hm.binkley.kunits.Spam.Spams
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
@@ -62,6 +62,24 @@ val FixedBigRational.baz get() = Baz.new(this)
 val Long.baz get() = (this over 1).baz
 val Int.baz get() = (this over 1).baz
 
+sealed class MetasyntacticWeights<U : MetasyntacticWeights<U>>(
+    name: String,
+    bar: FixedBigRational,
+) : Weights<Metasyntactic, U>(Metasyntactic, name, bar)
+
+class Spam private constructor(value: FixedBigRational) :
+    Measure<Metasyntactic, Spams>(Spams, value) {
+
+    companion object Spams : MetasyntacticWeights<Spams>("spam", ONE) {
+        override fun new(value: FixedBigRational) = Spam(value)
+        override fun format(value: FixedBigRational) = "$value spams"
+    }
+}
+
+val FixedBigRational.spams get() = Spams.new(this)
+val Long.spams get() = (this over 1).spams
+val Int.spams get() = (this over 1).spams
+
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>("Martian")
 
@@ -87,21 +105,3 @@ class Grok private constructor(value: FixedBigRational) :
 val FixedBigRational.groks get() = Groks.new(this)
 val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
-
-sealed class MartianWeights<U : MartianWeights<U>>(
-    name: String,
-    bar: FixedBigRational,
-) : Weights<Martian, U>(Martian, name, bar)
-
-class Willi private constructor(value: FixedBigRational) :
-    Measure<Martian, Willis>(Willis, value) {
-
-    companion object Willis : MartianWeights<Willis>("willi", ONE) {
-        override fun new(value: FixedBigRational) = Willi(value)
-        override fun format(value: FixedBigRational) = "$value willis"
-    }
-}
-
-val FixedBigRational.willis get() = Willis.new(this)
-val Long.willis get() = (this over 1).willis
-val Int.willis get() = (this over 1).willis

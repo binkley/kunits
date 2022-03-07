@@ -4,7 +4,7 @@ import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
 import hm.binkley.kunits.Grok.Groks
-import hm.binkley.kunits.Willi.Willis
+import hm.binkley.kunits.Spam.Spams
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Nested
@@ -27,9 +27,9 @@ internal class ExtensionsTest {
     @Test
     fun `should not convert between different types of unit is broken`() {
         // 1.foo into Willis -- does not compile: good
-        // 1.groks.into(Bar, Foo) -- does not compile: good
-        1.groks into Willis // compiles: bad
-        1.groks.into(Groks, Willis) // compiles: bad
+        // 1.groks.into(Baz, Bar, Foo) -- does not compile: good
+        1.foo into Spams // compiles: bad
+        1.foo.into(Bar, Spams) // compiles: bad
     }
 
     @Nested
