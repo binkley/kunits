@@ -37,10 +37,10 @@ fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
 
 /**
  * Converts this measure into lowest terms for [units], from most significant
- * unit to least significant.
- * Example: `64.inches.reduceTo(Feet, Inches)` is the list of `5.feet` and
+ * unit to least significant, returning the same order as [units].
+ * Example: `64.inches.into(Feet, Inches)` is the list of `5.feet` and
  * `4.inches`.
- * Note: `64.inches.reduceTo(Inches, Feet)` is the list of `4.inches` and
+ * Note: `64.inches.into(Inches, Feet)` is the list of `4.inches` and
  * `5.feet following the order of units provided.
  *
  * @param S the system of units
