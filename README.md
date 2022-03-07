@@ -110,9 +110,9 @@ val Int.groks get() = (this over 1).groks
 ```
 For convenience, systems of units may provide conversions to other systems:
 ```kotlin
-infix fun <U : Length<Metasyntactic, U>, V : Length<Martian, V>>
-        Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
-  it * (3 over 1)
+infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
+Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
+    it * (3 over 1)
 }
 ```
 

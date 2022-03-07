@@ -13,7 +13,7 @@ import hm.binkley.math.fixed.over
 // Main system, units, and measures for tests
 object Metasyntactic : System<Metasyntactic>("Metasyntactic")
 
-infix fun <U : Lengths<Metasyntactic, U>, V : Lengths<Martian, V>>
+infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
 Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
     it * (3 over 1)
 }
@@ -83,7 +83,7 @@ val Int.spams get() = (this over 1).spams
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>("Martian")
 
-infix fun <U : Lengths<Martian, U>, V : Lengths<Metasyntactic, V>>
+infix fun <U : MartianLengths<U>, V : MetasyntacticLengths<V>>
 Measure<Martian, U>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
 }
