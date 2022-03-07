@@ -148,7 +148,11 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     val unit: U,
     /** Amount of [unit]. */
     val value: FixedBigRational,
-) {
+) : Comparable<Measure<S, *>> {
+    /** Compares to [other] in this units of measure. */
+    override fun compareTo(other: Measure<S, *>) =
+        value.compareTo((other into unit).value)
+
     /** Presents this measure as [Units.format] of [value]. */
     override fun toString() = unit.format(value)
 

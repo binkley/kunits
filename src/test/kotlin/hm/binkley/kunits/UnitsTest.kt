@@ -32,6 +32,7 @@ internal class UnitsTest {
     @Test
     fun `should have an ordering`() {
         Foo shouldBeLessThan Bar
+        1.foo shouldBeLessThan 1.bar
     }
 
     @Suppress("ReplaceCallWithBinaryOperator")
