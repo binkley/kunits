@@ -71,9 +71,9 @@ additions, subtraction, multiplication, and division.
 
 The top-level API represents:
 
-- [`Units`](src/main/kotlin/hm/binkley/kunits/units.kt) representing units of
+- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing units of
   measurement in the abstract with no quantities
-- [`Measure`](src/main/kotlin/hm/binkley/kunits/units.kt) representing
+- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing
   measurements in the concrete of a given unit with a quantity expressed as a
   [`FixedBigRational`](#kotlin-rational)
 
