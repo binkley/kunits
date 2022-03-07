@@ -39,6 +39,8 @@ internal class UnitsTest {
     fun `should equate`() {
         val measure = 1.foo
         measure.equals(measure).shouldBeTrue()
+        measure.equals(1.foo).shouldBeTrue()
+        measure.equals(null).shouldBeFalse()
         measure.equals(this).shouldBeFalse()
         measure.equals(1.groks).shouldBeFalse()
         measure.equals(1.bar).shouldBeFalse()
@@ -48,6 +50,9 @@ internal class UnitsTest {
     @Test
     fun `should hash`() {
         val measure = 1.foo
-        identityHashCode(measure) shouldNotBe measure.hashCode()
+        val hash = measure.hashCode()
+        hash shouldBe 1.foo.hashCode()
+        hash shouldNotBe identityHashCode(measure)
+        hash shouldNotBe 1.bar.hashCode()
     }
 }

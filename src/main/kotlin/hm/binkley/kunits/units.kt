@@ -153,9 +153,9 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     override fun toString() = unit.format(value)
 
     override fun equals(other: Any?) = this === other ||
-            other is Measure<*, *> &&
-            unit == other.unit &&
-            value == other.value
+        other is Measure<*, *> &&
+        unit == other.unit &&
+        value == other.value
 
     override fun hashCode() = hash(unit, value)
 }
