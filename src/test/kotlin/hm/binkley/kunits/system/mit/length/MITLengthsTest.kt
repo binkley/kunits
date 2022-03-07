@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import hm.binkley.kunits.into
 
-internal class MITLengthTest {
+internal class MITLengthsTest {
     @Test
     fun `should convert`() {
         1L.ears shouldBe 1.ears

@@ -12,20 +12,20 @@ import hm.binkley.math.fixed.over
 // Main system, units, and measures for tests
 object Metasyntactic : System<Metasyntactic>("Metasyntactic")
 
-infix fun <U : Length<Metasyntactic, U>, V : Length<Martian, V>>
+infix fun <U : Lengths<Metasyntactic, U>, V : Lengths<Martian, V>>
 Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
     it * (3 over 1)
 }
 
-sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
+sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
     name: String,
     foo: FixedBigRational,
-) : Length<Metasyntactic, U>(Metasyntactic, name, foo)
+) : Lengths<Metasyntactic, U>(Metasyntactic, name, foo)
 
 class Foo private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Foo>(Foo, value) {
 
-    companion object Foo : MetasyntacticLength<Foo>("foo", ONE) {
+    companion object Foo : MetasyntacticLengths<Foo>("foo", ONE) {
         override fun new(value: FixedBigRational) = Foo(value)
         override fun format(value: FixedBigRational) = "$value foo"
     }
@@ -38,7 +38,7 @@ val FixedBigRational.foo get() = Foo.new(this)
 class Bar private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Bar>(Bar, value) {
 
-    companion object Bar : MetasyntacticLength<Bar>("bar", TWO) {
+    companion object Bar : MetasyntacticLengths<Bar>("bar", TWO) {
         override fun new(value: FixedBigRational) = Bar(value)
         override fun format(value: FixedBigRational) = "$value bar"
     }
@@ -51,7 +51,7 @@ val FixedBigRational.bar get() = Bar.new(this)
 class Baz private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Baz>(Baz, value) {
 
-    companion object Baz : MetasyntacticLength<Baz>("baz", (4 over 1)) {
+    companion object Baz : MetasyntacticLengths<Baz>("baz", (4 over 1)) {
         override fun new(value: FixedBigRational) = Baz(value)
         override fun format(value: FixedBigRational) = "$value baz"
     }
@@ -64,20 +64,20 @@ val FixedBigRational.baz get() = Baz.new(this)
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>("Martian")
 
-infix fun <U : Length<Martian, U>, V : Length<Metasyntactic, V>>
+infix fun <U : Lengths<Martian, U>, V : Lengths<Metasyntactic, V>>
 Measure<Martian, U>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
 }
 
-sealed class MartianLength<U : MartianLength<U>>(
+sealed class MartianLengths<U : MartianLengths<U>>(
     name: String,
     bar: FixedBigRational,
-) : Length<Martian, U>(Martian, name, bar)
+) : Lengths<Martian, U>(Martian, name, bar)
 
 class Grok private constructor(value: FixedBigRational) :
     Measure<Martian, Groks>(Groks, value) {
 
-    companion object Groks : MartianLength<Groks>("grok", ONE) {
+    companion object Groks : MartianLengths<Groks>("grok", ONE) {
         override fun new(value: FixedBigRational) = Grok(value)
         override fun format(value: FixedBigRational) = "$value groks"
     }

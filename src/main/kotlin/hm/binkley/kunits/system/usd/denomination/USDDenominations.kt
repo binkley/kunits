@@ -1,6 +1,6 @@
 package hm.binkley.kunits.system.usd.denomination
 
-import hm.binkley.kunits.Denomination
+import hm.binkley.kunits.Denominations
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.into
 import hm.binkley.kunits.system.usd.USD
@@ -26,10 +26,10 @@ import java.text.NumberFormat
 import java.util.Locale.US
 
 /** The USD denominations. */
-sealed class USDDenomination<U : USDDenomination<U>>(
+sealed class USDDenominations<U : USDDenominations<U>>(
     name: String,
     dollars: FixedBigRational,
-) : Denomination<USD, U>(USD, name, dollars)
+) : Denominations<USD, U>(USD, name, dollars)
 
 /** Formats USD money following US locale rules.  Example: "$4.33". */
 fun Measure<USD, *>.format(): String = NumberFormat.getCurrencyInstance(US)
@@ -39,7 +39,7 @@ class HundredDollar private constructor(value: FixedBigRational) :
     Measure<USD, HundredDollars>(HundredDollars, value) {
 
     companion object HundredDollars :
-        USDDenomination<HundredDollars>("hundred dollar bill", (100 over 1)) {
+        USDDenominations<HundredDollars>("hundred dollar bill", (100 over 1)) {
         override fun new(value: FixedBigRational) = HundredDollar(value)
         override fun format(value: FixedBigRational) = "$value \$100"
     }
@@ -53,7 +53,7 @@ class FiftyDollar private constructor(value: FixedBigRational) :
     Measure<USD, FiftyDollars>(FiftyDollars, value) {
 
     companion object FiftyDollars :
-        USDDenomination<FiftyDollars>("fifty dollar bill", (50 over 1)) {
+        USDDenominations<FiftyDollars>("fifty dollar bill", (50 over 1)) {
         override fun new(value: FixedBigRational) = FiftyDollar(value)
         override fun format(value: FixedBigRational) = "$value \$50"
     }
@@ -67,7 +67,7 @@ class TwentyDollar private constructor(value: FixedBigRational) :
     Measure<USD, TwentyDollars>(TwentyDollars, value) {
 
     companion object TwentyDollars :
-        USDDenomination<TwentyDollars>("twenty dollar bill", (20 over 1)) {
+        USDDenominations<TwentyDollars>("twenty dollar bill", (20 over 1)) {
         override fun new(value: FixedBigRational) = TwentyDollar(value)
         override fun format(value: FixedBigRational) = "$value \$20"
     }
@@ -81,7 +81,7 @@ class TenDollar private constructor(value: FixedBigRational) :
     Measure<USD, TenDollars>(TenDollars, value) {
 
     companion object TenDollars :
-        USDDenomination<TenDollars>("ten dollar bill", TEN) {
+        USDDenominations<TenDollars>("ten dollar bill", TEN) {
         override fun new(value: FixedBigRational) = TenDollar(value)
         override fun format(value: FixedBigRational) = "$value \$10"
     }
@@ -95,7 +95,7 @@ class FiveDollar private constructor(value: FixedBigRational) :
     Measure<USD, FiveDollars>(FiveDollars, value) {
 
     companion object FiveDollars :
-        USDDenomination<FiveDollars>("five dollar bill", (5 over 1)) {
+        USDDenominations<FiveDollars>("five dollar bill", (5 over 1)) {
         override fun new(value: FixedBigRational) = FiveDollar(value)
         override fun format(value: FixedBigRational) = "$value \$5"
     }
@@ -109,7 +109,7 @@ class TwoDollar private constructor(value: FixedBigRational) :
     Measure<USD, TwoDollars>(TwoDollars, value) {
 
     companion object TwoDollars :
-        USDDenomination<TwoDollars>("two dollar bill", TWO) {
+        USDDenominations<TwoDollars>("two dollar bill", TWO) {
         override fun new(value: FixedBigRational) = TwoDollar(value)
         override fun format(value: FixedBigRational) = "$value \$2"
     }
@@ -122,7 +122,7 @@ val FixedBigRational.twoDollars get() = TwoDollars.new(this)
 class Dollar private constructor(value: FixedBigRational) :
     Measure<USD, Dollars>(Dollars, value) {
 
-    companion object Dollars : USDDenomination<Dollars>("dollar bill", ONE) {
+    companion object Dollars : USDDenominations<Dollars>("dollar bill", ONE) {
         override fun new(value: FixedBigRational) = Dollar(value)
         override fun format(value: FixedBigRational) = "$value \$1"
     }
@@ -136,7 +136,7 @@ class DollarCoin private constructor(value: FixedBigRational) :
     Measure<USD, DollarCoins>(DollarCoins, value) {
 
     companion object DollarCoins :
-        USDDenomination<DollarCoins>("dollar coin", ONE) {
+        USDDenominations<DollarCoins>("dollar coin", ONE) {
         override fun new(value: FixedBigRational) = DollarCoin(value)
         override fun format(value: FixedBigRational) = "$value 100¢"
     }
@@ -150,7 +150,7 @@ class HalfDollar private constructor(value: FixedBigRational) :
     Measure<USD, HalfDollars>(HalfDollars, value) {
 
     companion object HalfDollars :
-        USDDenomination<HalfDollars>("half dollar", (1 over 2)) {
+        USDDenominations<HalfDollars>("half dollar", (1 over 2)) {
         override fun new(value: FixedBigRational) = HalfDollar(value)
         override fun format(value: FixedBigRational) = "$value 50¢"
     }
@@ -164,7 +164,7 @@ class Quarter private constructor(value: FixedBigRational) :
     Measure<USD, Quarters>(Quarters, value) {
 
     companion object Quarters :
-        USDDenomination<Quarters>("quarter", (1 over 4)) {
+        USDDenominations<Quarters>("quarter", (1 over 4)) {
         override fun new(value: FixedBigRational) = Quarter(value)
         override fun format(value: FixedBigRational) = "$value 25¢"
     }
@@ -177,7 +177,7 @@ val FixedBigRational.quarters get() = Quarters.new(this)
 class Dime private constructor(value: FixedBigRational) :
     Measure<USD, Dimes>(Dimes, value) {
 
-    companion object Dimes : USDDenomination<Dimes>("dime", (1 over 10)) {
+    companion object Dimes : USDDenominations<Dimes>("dime", (1 over 10)) {
         override fun new(value: FixedBigRational) = Dime(value)
         override fun format(value: FixedBigRational) = "$value 10¢"
     }
@@ -191,7 +191,7 @@ class Nickel private constructor(value: FixedBigRational) :
     Measure<USD, Nickels>(Nickels, value) {
 
     companion object Nickels :
-        USDDenomination<Nickels>("nickel", (1 over 20)) {
+        USDDenominations<Nickels>("nickel", (1 over 20)) {
         override fun new(value: FixedBigRational) = Nickel(value)
         override fun format(value: FixedBigRational) = "$value 5¢"
     }
@@ -205,7 +205,7 @@ class Penny private constructor(value: FixedBigRational) :
     Measure<USD, Pennies>(Pennies, value) {
 
     companion object Pennies :
-        USDDenomination<Pennies>("penny", (1 over 100)) {
+        USDDenominations<Pennies>("penny", (1 over 100)) {
         override fun new(value: FixedBigRational) = Penny(value)
         override fun format(value: FixedBigRational) = "$value 1¢"
     }

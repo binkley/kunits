@@ -1,12 +1,12 @@
 package hm.binkley.kunits
 
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.kunits.system.fff.length.FFFLength
+import hm.binkley.kunits.system.fff.length.FFFLengths
 import hm.binkley.kunits.system.fff.length.Furlong
 import hm.binkley.kunits.system.fff.length.Furlongs
-import hm.binkley.kunits.system.fff.time.FFFTime
-import hm.binkley.kunits.system.fff.weight.FFFWeight
-import hm.binkley.kunits.system.usd.denomination.USDDenomination
+import hm.binkley.kunits.system.fff.time.FFFTimes
+import hm.binkley.kunits.system.fff.weight.FFFWeights
+import hm.binkley.kunits.system.usd.denomination.USDDenominations
 import hm.binkley.math.fixed.FixedBigRational
 import java.util.Objects.hash
 
@@ -37,7 +37,7 @@ abstract class System<S : System<S>>(
  * and kilometers have a basis of 1,000.
  *
  * Do not use directly; rather, extend one of the groups of units such as
- * [Length], [Time], [Weight] or [Denomination].
+ * [Lengths], [Times], [Weights] or [Denominations].
  *
  * @param S the system of units
  * @param U the units of measurement
@@ -78,14 +78,14 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
 /**
  * Represents units of length within a [System].
  *
- * See [FFFLength] and [Furlongs] for an example.
+ * See [FFFLengths] and [Furlongs] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
  * _measurement_ of that unit.
  *
  * @param S the system of units
  * @param U the units of measurement
  */
-abstract class Length<S : System<S>, U : Length<S, U>>(
+abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
     system: S,
     name: String,
     basis: FixedBigRational,
@@ -94,12 +94,12 @@ abstract class Length<S : System<S>, U : Length<S, U>>(
 /**
  * Represents units of time within a [System].
  *
- * See [FFFTime] for an example.
+ * See [FFFTimes] for an example.
  *
  * @param S the system of units
  * @param U the units of measurement
  */
-abstract class Time<S : System<S>, U : Time<S, U>>(
+abstract class Times<S : System<S>, U : Times<S, U>>(
     system: S,
     name: String,
     basis: FixedBigRational,
@@ -108,12 +108,12 @@ abstract class Time<S : System<S>, U : Time<S, U>>(
 /**
  * Represents units of weight within a [System].
  *
- * See [FFFWeight] for an example.
+ * See [FFFWeights] for an example.
  *
  * @param S the system of units
  * @param U the units of measurement
  */
-abstract class Weight<S : System<S>, U : Weight<S, U>>(
+abstract class Weights<S : System<S>, U : Weights<S, U>>(
     system: S,
     name: String,
     basis: FixedBigRational,
@@ -122,12 +122,12 @@ abstract class Weight<S : System<S>, U : Weight<S, U>>(
 /**
  * Represents units of coinage or currency within a [System].
  *
- * See [USDDenomination] for an example.
+ * See [USDDenominations] for an example.
  *
  * @param S the system of units
  * @param U the units of measurement
  */
-abstract class Denomination<S : System<S>, U : Denomination<S, U>>(
+abstract class Denominations<S : System<S>, U : Denominations<S, U>>(
     system: S,
     name: String,
     basis: FixedBigRational,

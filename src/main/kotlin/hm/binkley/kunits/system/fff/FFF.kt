@@ -1,6 +1,6 @@
 package hm.binkley.kunits.system.fff
 
-import hm.binkley.kunits.Length
+import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.System
 import hm.binkley.kunits.into
@@ -13,5 +13,5 @@ private val FURLONGS_PER_LINE = (95_040 over 1)
 object FFF : System<FFF>("Furlong-Firkin-Fortnight")
 
 /** Converts lengths from FFF into English units. */
-infix fun <V : Length<English, V>>
+infix fun <V : Lengths<English, V>>
 Measure<FFF, *>.intoEnglish(other: V) = into(other) { it * FURLONGS_PER_LINE }

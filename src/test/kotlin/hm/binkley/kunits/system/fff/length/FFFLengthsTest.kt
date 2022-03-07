@@ -3,7 +3,7 @@ package hm.binkley.kunits.system.fff.length
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class FFFLengthTest {
+internal class FFFLengthsTest {
     @Test
     fun `should convert`() {
         1L.furlongs shouldBe 1.furlongs

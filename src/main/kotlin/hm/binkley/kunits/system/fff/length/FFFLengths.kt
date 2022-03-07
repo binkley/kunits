@@ -1,6 +1,6 @@
 package hm.binkley.kunits.system.fff.length
 
-import hm.binkley.kunits.Length
+import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.math.fixed.FixedBigRational
@@ -8,12 +8,12 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
 /** The furlong-firkin-fortnight units of length. */
-sealed class FFFLength<U : FFFLength<U>>(
+sealed class FFFLengths<U : FFFLengths<U>>(
     name: String,
     furlongs: FixedBigRational
-) : Length<FFF, U>(FFF, name, furlongs)
+) : Lengths<FFF, U>(FFF, name, furlongs)
 
-object Furlongs : FFFLength<Furlongs>("furlong", ONE) {
+object Furlongs : FFFLengths<Furlongs>("furlong", ONE) {
     override fun new(value: FixedBigRational) = Furlong(value)
     override fun format(value: FixedBigRational) = "$value fur"
 }

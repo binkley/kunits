@@ -18,7 +18,7 @@ import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class USDDenominationTest {
+internal class USDDenominationsTest {
     @Test
     fun `should convert`() {
         1L.pennies shouldBe 1.pennies

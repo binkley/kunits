@@ -18,7 +18,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import hm.binkley.kunits.into
 
-internal class EnglishLengthTest {
+internal class EnglishLengthsTest {
     @Test
     fun `should convert`() {
         1L.lines shouldBe 1.lines

@@ -1,6 +1,6 @@
 package hm.binkley.kunits.system.mit
 
-import hm.binkley.kunits.Length
+import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.System
 import hm.binkley.kunits.into
@@ -13,5 +13,5 @@ private val LINES_PER_SMOOT = (804 over 1)
 object MIT : System<MIT>("MIT")
 
 /** Converts lengths from MIT into English units. */
-infix fun <V : Length<English, V>>
+infix fun <V : Lengths<English, V>>
 Measure<MIT, *>.intoEnglish(other: V) = into(other) { it * LINES_PER_SMOOT }
