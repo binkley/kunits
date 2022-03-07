@@ -13,8 +13,6 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
  * @param S the system of units
  * @param V the units for [other]
  * @param other the target units
- *
- * @todo Nothing syntactically prevents converting feet into pounds
  */
 infix fun <S : System<S>, V : Units<S, V>>
 Measure<S, *>.into(other: V) = into(other) { it }

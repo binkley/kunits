@@ -7,7 +7,6 @@ import hm.binkley.kunits.Grok.Groks
 import hm.binkley.kunits.Willi.Willis
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -24,13 +23,9 @@ internal class ExtensionsTest {
         (1.groks intoMetasyntactic Foo) shouldBe (1 over 3).foo
     }
 
+    /** @todo Nothing syntactically prevents converting feet into pounds */
     @Test
-    @Disabled("Uncomment the code to see compile-time errors")
-    fun `should not convert between different types of unit`() {
-        /*
-        1.foo.into(Willi)
-        1.foo into Willis
-         */
+    fun `should not convert between different types of unit is broken`() {
         1.groks into Willis // Should not compile :(
     }
 
