@@ -144,18 +144,28 @@ abstract class Denomination<S : System<S>, U : Denomination<S, U>>(
  * @param U the units of measurement
  */
 abstract class Measure<S : System<S>, U : Units<S, U>>(
-    /** Unit for [value]. */
+    /** Unit of measure. */
     val unit: U,
-    /** Amount of [unit]. */
+    /** Number of [unit]s. */
     val value: FixedBigRational,
 ) : Comparable<Measure<S, *>> {
-    /** Compares to [other] in this units of measure. */
+    /** Compares to [other] in the [U] units of measure. */
     override fun compareTo(other: Measure<S, *>) =
         value.compareTo((other into unit).value)
 
     /** Presents this measure as [Units.format] of [value]. */
     override fun toString() = unit.format(value)
 
+    /**
+     * To use `==`, convert the sides of the comparison to a common unit of
+     * measure.
+     * Example: `1.foo == (1.bar in Foo)`.
+     *
+     * *NB* &mdash; in Kotlin you cannot say `1.foo == 1.bar` as the left and
+     * right sides are different types, and will not compile.
+     * (You can, however, say `!(1.foo < 1.bar) && !(1.foo > 1.bar)` which
+     * is mathematically equivalent though in convenient.)
+     */
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *> &&
         unit == other.unit &&
