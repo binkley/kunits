@@ -77,39 +77,36 @@ The top-level API represents:
   measurements in the concrete of a given unit with a quantity expressed as a
   [`FixedBigRational`](#kotlin-rational)
 
-The code shows a generic pattern for implementing a Unit System with
+The code shows a general pattern implementing a Unit System.
 [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
-as the real world exemplar, and
+is the real world exemplar, and
 [FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/FFFLengths.kt),
 [FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/FFFTimes.kt),
 and
 [FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/FFFWeights.kt),
-as a whimsical full system. The pattern can also be seen in
-[a test](src/test/kotlin/hm/binkley/kunits/UnitsTest.kt) based on
-[_metasyntactic
-variables_](https://en.wikipedia.org/wiki/Metasyntactic_variable) (`foo`,
-`bar`, and ilk):
+are a whimsical full system. The pattern can also be seen in
+[systems for testing](src/test/kotlin/hm/binkley/kunits/test-systems.kt):
 
 ```kotlin
-object Metasyntactic : System<Metasyntactic>()
+object Martian : System<Martian>("Martian")
 
-sealed class MetasyntacticLength<U : MetasyntacticLength<U>>(
+sealed class MartianLengths<U : MartianLengths<U>>(
   name: String,
-  foos: FixedBigRational,
-) : Length<Metasyntactic, U>(Metasyntactic, name, foos)
+  bar: FixedBigRational,
+) : Lengths<Martian, U>(Martian, name, bar)
 
-class Foo private constructor(value: FixedBigRational) :
-  Measure<Metasyntactic, Foos>(Foos, value) {
+class Grok private constructor(value: FixedBigRational) :
+  Measure<Martian, Groks>(Groks, value) {
 
-  companion object Foos : MetasyntacticLength<Foos>("foo", ONE) {
-    override fun new(value: FixedBigRational) = Foo(value)
-    override fun format(value: FixedBigRational) = "$value foos"
+  companion object Groks : MartianLengths<Groks>("grok", ONE) {
+    override fun new(value: FixedBigRational) = Grok(value)
+    override fun format(value: FixedBigRational) = "$value groks"
   }
 }
 
-val Int.foos get() = (this over 1).foos
-val Long.foos get() = (this over 1).foos
-val FixedBigRational.foos get() = Foos.new(this)
+val FixedBigRational.groks get() = Groks.new(this)
+val Long.groks get() = (this over 1).groks
+val Int.groks get() = (this over 1).groks
 ```
 For convenience, systems of units may provide conversions to other systems:
 ```kotlin
