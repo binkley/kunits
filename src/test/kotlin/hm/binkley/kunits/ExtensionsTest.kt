@@ -26,6 +26,7 @@ internal class ExtensionsTest {
     /** @todo Nothing syntactically prevents converting feet into pounds */
     @Test
     fun `should not convert between different types of unit is broken`() {
+        // 1.foo into Willis -- does not compile: good
         1.groks into Willis // Should not compile :(
     }
 

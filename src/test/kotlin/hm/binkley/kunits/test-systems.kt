@@ -96,7 +96,7 @@ sealed class MartianWeights<U : MartianWeights<U>>(
 class Willi private constructor(value: FixedBigRational) :
     Measure<Martian, Willis>(Willis, value) {
 
-    companion object Willis : MartianLengths<Willis>("willi", ONE) {
+    companion object Willis : MartianWeights<Willis>("willi", ONE) {
         override fun new(value: FixedBigRational) = Willi(value)
         override fun format(value: FixedBigRational) = "$value willis"
     }
