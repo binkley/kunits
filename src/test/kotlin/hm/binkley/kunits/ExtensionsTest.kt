@@ -4,8 +4,10 @@ import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
 import hm.binkley.kunits.Grok.Groks
+import hm.binkley.kunits.Willi.Willis
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -20,6 +22,16 @@ internal class ExtensionsTest {
     fun `should convert between systems`() {
         (1.foo intoMartian Groks) shouldBe 3.groks
         (1.groks intoMetasyntactic Foo) shouldBe (1 over 3).foo
+    }
+
+    @Test
+    @Disabled("Uncomment the code to see compile-time errors")
+    fun `should not convert between different types of unit`() {
+        /*
+        1.foo.into(Willi)
+        1.foo into Willis
+         */
+        1.groks into Willis // Should not compile :(
     }
 
     @Nested

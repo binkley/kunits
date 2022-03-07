@@ -4,6 +4,7 @@ import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
 import hm.binkley.kunits.Grok.Groks
+import hm.binkley.kunits.Willi.Willis
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
@@ -86,3 +87,21 @@ class Grok private constructor(value: FixedBigRational) :
 val FixedBigRational.groks get() = Groks.new(this)
 val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
+
+sealed class MartianWeights<U : MartianWeights<U>>(
+    name: String,
+    bar: FixedBigRational,
+) : Weights<Martian, U>(Martian, name, bar)
+
+class Willi private constructor(value: FixedBigRational) :
+    Measure<Martian, Willis>(Willis, value) {
+
+    companion object Willis : MartianLengths<Willis>("willi", ONE) {
+        override fun new(value: FixedBigRational) = Willi(value)
+        override fun format(value: FixedBigRational) = "$value willis"
+    }
+}
+
+val FixedBigRational.willis get() = Willis.new(this)
+val Long.willis get() = (this over 1).willis
+val Int.willis get() = (this over 1).willis
