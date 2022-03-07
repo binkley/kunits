@@ -31,9 +31,9 @@ class Foo private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.foo get() = (this over 1).foo
-val Long.foo get() = (this over 1).foo
 val FixedBigRational.foo get() = Foo.new(this)
+val Long.foo get() = (this over 1).foo
+val Int.foo get() = (this over 1).foo
 
 class Bar private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Bar>(Bar, value) {
@@ -44,9 +44,9 @@ class Bar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.bar get() = (this over 1).bar
-val Long.bar get() = (this over 1).bar
 val FixedBigRational.bar get() = Bar.new(this)
+val Long.bar get() = (this over 1).bar
+val Int.bar get() = (this over 1).bar
 
 class Baz private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Baz>(Baz, value) {
@@ -57,9 +57,9 @@ class Baz private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.baz get() = (this over 1).baz
-val Long.baz get() = (this over 1).baz
 val FixedBigRational.baz get() = Baz.new(this)
+val Long.baz get() = (this over 1).baz
+val Int.baz get() = (this over 1).baz
 
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>("Martian")
@@ -83,5 +83,6 @@ class Grok private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.groks get() = (this over 1).groks
 val FixedBigRational.groks get() = Groks.new(this)
+val Long.groks get() = (this over 1).groks
+val Int.groks get() = (this over 1).groks

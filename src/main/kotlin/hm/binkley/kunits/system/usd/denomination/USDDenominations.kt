@@ -45,9 +45,9 @@ class HundredDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.hundredDollars get() = (this over 1).hundredDollars
-val Long.hundredDollars get() = (this over 1).hundredDollars
 val FixedBigRational.hundredDollars get() = HundredDollars.new(this)
+val Long.hundredDollars get() = (this over 1).hundredDollars
+val Int.hundredDollars get() = (this over 1).hundredDollars
 
 class FiftyDollar private constructor(value: FixedBigRational) :
     Measure<USD, FiftyDollars>(FiftyDollars, value) {
@@ -59,9 +59,9 @@ class FiftyDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.fiftyDollars get() = (this over 1).fiftyDollars
-val Long.fiftyDollars get() = (this over 1).fiftyDollars
 val FixedBigRational.fiftyDollars get() = FiftyDollars.new(this)
+val Long.fiftyDollars get() = (this over 1).fiftyDollars
+val Int.fiftyDollars get() = (this over 1).fiftyDollars
 
 class TwentyDollar private constructor(value: FixedBigRational) :
     Measure<USD, TwentyDollars>(TwentyDollars, value) {
@@ -73,9 +73,9 @@ class TwentyDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.twentyDollars get() = (this over 1).twentyDollars
-val Long.twentyDollars get() = (this over 1).twentyDollars
 val FixedBigRational.twentyDollars get() = TwentyDollars.new(this)
+val Long.twentyDollars get() = (this over 1).twentyDollars
+val Int.twentyDollars get() = (this over 1).twentyDollars
 
 class TenDollar private constructor(value: FixedBigRational) :
     Measure<USD, TenDollars>(TenDollars, value) {
@@ -87,9 +87,9 @@ class TenDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.tenDollars get() = (this over 1).tenDollars
-val Long.tenDollars get() = (this over 1).tenDollars
 val FixedBigRational.tenDollars get() = TenDollars.new(this)
+val Long.tenDollars get() = (this over 1).tenDollars
+val Int.tenDollars get() = (this over 1).tenDollars
 
 class FiveDollar private constructor(value: FixedBigRational) :
     Measure<USD, FiveDollars>(FiveDollars, value) {
@@ -101,9 +101,9 @@ class FiveDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.fiveDollars get() = (this over 1).fiveDollars
-val Long.fiveDollars get() = (this over 1).fiveDollars
 val FixedBigRational.fiveDollars get() = FiveDollars.new(this)
+val Long.fiveDollars get() = (this over 1).fiveDollars
+val Int.fiveDollars get() = (this over 1).fiveDollars
 
 class TwoDollar private constructor(value: FixedBigRational) :
     Measure<USD, TwoDollars>(TwoDollars, value) {
@@ -115,9 +115,9 @@ class TwoDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.twoDollars get() = (this over 1).twoDollars
-val Long.twoDollars get() = (this over 1).twoDollars
 val FixedBigRational.twoDollars get() = TwoDollars.new(this)
+val Long.twoDollars get() = (this over 1).twoDollars
+val Int.twoDollars get() = (this over 1).twoDollars
 
 class Dollar private constructor(value: FixedBigRational) :
     Measure<USD, Dollars>(Dollars, value) {
@@ -128,9 +128,9 @@ class Dollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.dollars get() = (this over 1).dollars
-val Long.dollars get() = (this over 1).dollars
 val FixedBigRational.dollars get() = Dollars.new(this)
+val Long.dollars get() = (this over 1).dollars
+val Int.dollars get() = (this over 1).dollars
 
 class DollarCoin private constructor(value: FixedBigRational) :
     Measure<USD, DollarCoins>(DollarCoins, value) {
@@ -142,9 +142,9 @@ class DollarCoin private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.dollarCoins get() = (this over 1).dollarCoins
-val Long.dollarCoins get() = (this over 1).dollarCoins
 val FixedBigRational.dollarCoins get() = DollarCoins.new(this)
+val Long.dollarCoins get() = (this over 1).dollarCoins
+val Int.dollarCoins get() = (this over 1).dollarCoins
 
 class HalfDollar private constructor(value: FixedBigRational) :
     Measure<USD, HalfDollars>(HalfDollars, value) {
@@ -156,9 +156,9 @@ class HalfDollar private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.halfDollars get() = (this over 1).halfDollars
-val Long.halfDollars get() = (this over 1).halfDollars
 val FixedBigRational.halfDollars get() = HalfDollars.new(this)
+val Long.halfDollars get() = (this over 1).halfDollars
+val Int.halfDollars get() = (this over 1).halfDollars
 
 class Quarter private constructor(value: FixedBigRational) :
     Measure<USD, Quarters>(Quarters, value) {
@@ -170,9 +170,9 @@ class Quarter private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.quarters get() = (this over 1).quarters
-val Long.quarters get() = (this over 1).quarters
 val FixedBigRational.quarters get() = Quarters.new(this)
+val Long.quarters get() = (this over 1).quarters
+val Int.quarters get() = (this over 1).quarters
 
 class Dime private constructor(value: FixedBigRational) :
     Measure<USD, Dimes>(Dimes, value) {
@@ -183,9 +183,9 @@ class Dime private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.dimes get() = (this over 1).dimes
-val Long.dimes get() = (this over 1).dimes
 val FixedBigRational.dimes get() = Dimes.new(this)
+val Long.dimes get() = (this over 1).dimes
+val Int.dimes get() = (this over 1).dimes
 
 class Nickel private constructor(value: FixedBigRational) :
     Measure<USD, Nickels>(Nickels, value) {
@@ -197,9 +197,9 @@ class Nickel private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.nickels get() = (this over 1).nickels
-val Long.nickels get() = (this over 1).nickels
 val FixedBigRational.nickels get() = Nickels.new(this)
+val Long.nickels get() = (this over 1).nickels
+val Int.nickels get() = (this over 1).nickels
 
 class Penny private constructor(value: FixedBigRational) :
     Measure<USD, Pennies>(Pennies, value) {
@@ -211,6 +211,6 @@ class Penny private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.pennies get() = (this over 1).pennies
-val Long.pennies get() = (this over 1).pennies
 val FixedBigRational.pennies get() = Pennies.new(this)
+val Long.pennies get() = (this over 1).pennies
+val Int.pennies get() = (this over 1).pennies

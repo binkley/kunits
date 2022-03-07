@@ -31,9 +31,9 @@ class Grain private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.grains get() = (this over 1).grains
-val Long.grains get() = (this over 1).grains
 val FixedBigRational.grains get() = Grains.new(this)
+val Long.grains get() = (this over 1).grains
+val Int.grains get() = (this over 1).grains
 
 class Dram private constructor(value: FixedBigRational) :
     Measure<English, Drams>(Drams, value) {
@@ -44,9 +44,9 @@ class Dram private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.drams get() = (this over 1).drams
-val Long.drams get() = (this over 1).drams
 val FixedBigRational.drams get() = Drams.new(this)
+val Long.drams get() = (this over 1).drams
+val Int.drams get() = (this over 1).drams
 
 class Ounce private constructor(value: FixedBigRational) :
     Measure<English, Ounces>(Ounces, value) {
@@ -57,9 +57,9 @@ class Ounce private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.ounces get() = (this over 1).ounces
-val Long.ounces get() = (this over 1).ounces
 val FixedBigRational.ounces get() = Ounces.new(this)
+val Long.ounces get() = (this over 1).ounces
+val Int.ounces get() = (this over 1).ounces
 
 class Pound private constructor(value: FixedBigRational) :
     Measure<English, Pounds>(Pounds, value) {
@@ -70,9 +70,9 @@ class Pound private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.pounds get() = (this over 1).pounds
-val Long.pounds get() = (this over 1).pounds
 val FixedBigRational.pounds get() = Pounds.new(this)
+val Long.pounds get() = (this over 1).pounds
+val Int.pounds get() = (this over 1).pounds
 
 class Clove private constructor(value: FixedBigRational) :
     Measure<English, Cloves>(Cloves, value) {
@@ -83,9 +83,9 @@ class Clove private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.cloves get() = (this over 1).cloves
-val Long.cloves get() = (this over 1).cloves
 val FixedBigRational.cloves get() = Cloves.new(this)
+val Long.cloves get() = (this over 1).cloves
+val Int.cloves get() = (this over 1).cloves
 
 class Stone private constructor(value: FixedBigRational) :
     Measure<English, Stone>(Stone, value) {
@@ -96,9 +96,9 @@ class Stone private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.stone get() = (this over 1).stone
-val Long.stone get() = (this over 1).stone
 val FixedBigRational.stone get() = Stone.new(this)
+val Long.stone get() = (this over 1).stone
+val Int.stone get() = (this over 1).stone
 
 class Tod private constructor(value: FixedBigRational) :
     Measure<English, Tods>(Tods, value) {
@@ -109,9 +109,9 @@ class Tod private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.tods get() = (this over 1).tods
-val Long.tods get() = (this over 1).tods
 val FixedBigRational.tods get() = Tods.new(this)
+val Long.tods get() = (this over 1).tods
+val Int.tods get() = (this over 1).tods
 
 class Hundredweight private constructor(value: FixedBigRational) :
     Measure<English, Hundredweight>(Hundredweight, value) {
@@ -124,9 +124,9 @@ class Hundredweight private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.hundredweight get() = (this over 1).hundredweight
-val Long.hundredweight get() = (this over 1).hundredweight
 val FixedBigRational.hundredweight get() = Hundredweight.new(this)
+val Long.hundredweight get() = (this over 1).hundredweight
+val Int.hundredweight get() = (this over 1).hundredweight
 
 class Tun private constructor(value: FixedBigRational) :
     Measure<English, Tuns>(Tuns, value) {
@@ -137,6 +137,6 @@ class Tun private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.tuns get() = (this over 1).tuns
-val Long.tuns get() = (this over 1).tuns
 val FixedBigRational.tuns get() = Tuns.new(this)
+val Long.tuns get() = (this over 1).tuns
+val Int.tuns get() = (this over 1).tuns

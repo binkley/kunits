@@ -24,9 +24,9 @@ class Smoot private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.smoots get() = (this over 1).smoots
-val Long.smoots get() = (this over 1).smoots
 val FixedBigRational.smoots get() = Smoots.new(this)
+val Long.smoots get() = (this over 1).smoots
+val Int.smoots get() = (this over 1).smoots
 
 class Ear(value: FixedBigRational) :
     Measure<MIT, Ears>(Ears, value) {
@@ -37,6 +37,6 @@ class Ear(value: FixedBigRational) :
     }
 }
 
-val Int.ears get() = (this over 1).ears
-val Long.ears get() = (this over 1).ears
 val FixedBigRational.ears get() = Ears.new(this)
+val Long.ears get() = (this over 1).ears
+val Int.ears get() = (this over 1).ears

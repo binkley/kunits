@@ -23,6 +23,6 @@ class Fortnight private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.fortnights get() = (this over 1).fortnights
-val Long.fortnights get() = (this over 1).fortnights
 val FixedBigRational.fortnights get() = Fortnights.new(this)
+val Long.fortnights get() = (this over 1).fortnights
+val Int.fortnights get() = (this over 1).fortnights

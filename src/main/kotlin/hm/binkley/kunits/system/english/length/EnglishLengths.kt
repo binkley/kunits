@@ -37,9 +37,9 @@ class Line private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.lines get() = (this over 1).lines
-val Long.lines get() = (this over 1).lines
 val FixedBigRational.lines get() = Lines.new(this)
+val Long.lines get() = (this over 1).lines
+val Int.lines get() = (this over 1).lines
 
 class Barleycorn private constructor(value: FixedBigRational) :
     Measure<English, Barleycorns>(Barleycorns, value) {
@@ -51,9 +51,9 @@ class Barleycorn private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.barleycorns get() = (this over 1).barleycorns
-val Long.barleycorns get() = (this over 1).barleycorns
 val FixedBigRational.barleycorns get() = Barleycorns.new(this)
+val Long.barleycorns get() = (this over 1).barleycorns
+val Int.barleycorns get() = (this over 1).barleycorns
 
 class Inch private constructor(value: FixedBigRational) :
     Measure<English, Inches>(Inches, value) {
@@ -64,9 +64,9 @@ class Inch private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.inches get() = (this over 1).inches
-val Long.inches get() = (this over 1).inches
 val FixedBigRational.inches get() = Inches.new(this)
+val Long.inches get() = (this over 1).inches
+val Int.inches get() = (this over 1).inches
 
 class Stick private constructor(value: FixedBigRational) :
     Measure<English, Sticks>(Sticks, value) {
@@ -80,9 +80,9 @@ class Stick private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.sticks get() = (this over 1).sticks
-val Long.sticks get() = (this over 1).sticks
 val FixedBigRational.sticks get() = Sticks.new(this)
+val Long.sticks get() = (this over 1).sticks
+val Int.sticks get() = (this over 1).sticks
 
 class Hand private constructor(value: FixedBigRational) :
     Measure<English, Hands>(Hands, value) {
@@ -93,9 +93,9 @@ class Hand private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.hands get() = (this over 1).hands
-val Long.hands get() = (this over 1).hands
 val FixedBigRational.hands get() = Hands.new(this)
+val Long.hands get() = (this over 1).hands
+val Int.hands get() = (this over 1).hands
 
 class Shaftment private constructor(value: FixedBigRational) :
     Measure<English, Shaftments>(Shaftments, value) {
@@ -107,9 +107,9 @@ class Shaftment private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.shaftments get() = (this over 1).shaftments
-val Long.shaftments get() = (this over 1).shaftments
 val FixedBigRational.shaftments get() = Shaftments.new(this)
+val Long.shaftments get() = (this over 1).shaftments
+val Int.shaftments get() = (this over 1).shaftments
 
 class Link private constructor(value: FixedBigRational) :
     Measure<English, Links>(Links, value) {
@@ -120,9 +120,9 @@ class Link private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.links get() = (this over 1).links
-val Long.links get() = (this over 1).links
 val FixedBigRational.links get() = Links.new(this)
+val Long.links get() = (this over 1).links
+val Int.links get() = (this over 1).links
 
 class Foot private constructor(value: FixedBigRational) :
     Measure<English, Feet>(Feet, value) {
@@ -133,9 +133,9 @@ class Foot private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.feet get() = (this over 1).feet
-val Long.feet get() = (this over 1).feet
 val FixedBigRational.feet get() = Feet.new(this)
+val Long.feet get() = (this over 1).feet
+val Int.feet get() = (this over 1).feet
 
 class Yard(value: FixedBigRational) :
     Measure<English, Yards>(Yards, value) {
@@ -145,9 +145,9 @@ class Yard(value: FixedBigRational) :
     }
 }
 
-val Int.yards get() = (this over 1).yards
-val Long.yards get() = (this over 1).yards
 val FixedBigRational.yards get() = Yards.new(this)
+val Long.yards get() = (this over 1).yards
+val Int.yards get() = (this over 1).yards
 
 class Ell private constructor(value: FixedBigRational) :
     Measure<English, Ells>(Ells, value) {
@@ -158,9 +158,9 @@ class Ell private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.ells get() = (this over 1).ells
-val Long.ells get() = (this over 1).ells
 val FixedBigRational.ells get() = Ells.new(this)
+val Long.ells get() = (this over 1).ells
+val Int.ells get() = (this over 1).ells
 
 class Rod private constructor(value: FixedBigRational) :
     Measure<English, Rods>(Rods, value) {
@@ -171,9 +171,9 @@ class Rod private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.rods get() = (this over 1).rods
-val Long.rods get() = (this over 1).rods
 val FixedBigRational.rods get() = Rods.new(this)
+val Long.rods get() = (this over 1).rods
+val Int.rods get() = (this over 1).rods
 
 class Chain private constructor(value: FixedBigRational) :
     Measure<English, Chains>(Chains, value) {
@@ -184,9 +184,9 @@ class Chain private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.chains get() = (this over 1).chains
-val Long.chains get() = (this over 1).chains
 val FixedBigRational.chains get() = Chains.new(this)
+val Long.chains get() = (this over 1).chains
+val Int.chains get() = (this over 1).chains
 
 class Furlong private constructor(value: FixedBigRational) :
     Measure<English, Furlongs>(Furlongs, value) {
@@ -198,9 +198,9 @@ class Furlong private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.furlongs get() = (this over 1).furlongs
-val Long.furlongs get() = (this over 1).furlongs
 val FixedBigRational.furlongs get() = Furlongs.new(this)
+val Long.furlongs get() = (this over 1).furlongs
+val Int.furlongs get() = (this over 1).furlongs
 
 class Mile private constructor(value: FixedBigRational) :
     Measure<English, Miles>(Miles, value) {
@@ -211,9 +211,9 @@ class Mile private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.miles get() = (this over 1).miles
-val Long.miles get() = (this over 1).miles
 val FixedBigRational.miles get() = Miles.new(this)
+val Long.miles get() = (this over 1).miles
+val Int.miles get() = (this over 1).miles
 
 class League private constructor(value: FixedBigRational) :
     Measure<English, Leagues>(Leagues, value) {
@@ -225,6 +225,6 @@ class League private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.leagues get() = (this over 1).leagues
-val Long.leagues get() = (this over 1).leagues
 val FixedBigRational.leagues get() = Leagues.new(this)
+val Long.leagues get() = (this over 1).leagues
+val Int.leagues get() = (this over 1).leagues

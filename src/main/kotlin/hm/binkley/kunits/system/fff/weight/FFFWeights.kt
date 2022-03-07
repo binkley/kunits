@@ -23,6 +23,6 @@ class Firkin private constructor(value: FixedBigRational) :
     }
 }
 
-val Int.firkins get() = (this over 1).firkins
-val Long.firkins get() = (this over 1).firkins
 val FixedBigRational.firkins get() = Firkins.new(this)
+val Long.firkins get() = (this over 1).firkins
+val Int.firkins get() = (this over 1).firkins
