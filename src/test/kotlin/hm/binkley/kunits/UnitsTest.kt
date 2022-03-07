@@ -55,5 +55,6 @@ internal class UnitsTest {
         hash shouldBe 1.foo.hashCode()
         hash shouldNotBe identityHashCode(measure)
         hash shouldNotBe 1.bar.hashCode()
+        hash shouldNotBe 2.foo.hashCode()
     }
 }
