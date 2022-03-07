@@ -27,7 +27,9 @@ internal class ExtensionsTest {
     @Test
     fun `should not convert between different types of unit is broken`() {
         // 1.foo into Willis -- does not compile: good
-        1.groks into Willis // Should not compile :(
+        // 1.groks.into(Bar, Foo) -- does not compile: good
+        1.groks into Willis // compiles: bad
+        1.groks.into(Groks, Willis) // compiles: bad
     }
 
     @Nested
