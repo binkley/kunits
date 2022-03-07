@@ -1,5 +1,6 @@
 package hm.binkley.kunits.system.english.length
 
+import hm.binkley.kunits.into
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Chain.Chains
 import hm.binkley.kunits.system.english.length.Ell.Ells
@@ -16,7 +17,6 @@ import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import hm.binkley.kunits.into
 
 internal class EnglishLengthsTest {
     @Test
@@ -29,7 +29,7 @@ internal class EnglishLengthsTest {
         1L.shaftments shouldBe ((3 over 2).hands into Shaftments)
         1L.links shouldBe ((33 over 25).shaftments into Links)
         1L.feet shouldBe ((50 over 33).links into Feet)
-        1L.yards shouldBe (3.feet into Yards)
+        1L.yards shouldBe (3.feet into Yard)
         1L.ells shouldBe ((5 over 4).yards into Ells)
         1L.rods shouldBe ((22 over 5).ells into Rods)
         1L.chains shouldBe (4.rods into Chains)
@@ -55,11 +55,11 @@ internal class EnglishLengthsTest {
         "${1.hands}" shouldBe "1 hh"
         "$Shaftment" shouldBe "English shaftment"
         "${1.shaftments}" shouldBe "1 shaftments"
-        "$Links" shouldBe "English link"
+        "$Link" shouldBe "English link"
         "${1.links}" shouldBe "1 links"
         "$Foot" shouldBe "English foot"
         "${1.feet}" shouldBe "1'"
-        "$Yards" shouldBe "English yard"
+        "$Yard" shouldBe "English yard"
         "${1.yards}" shouldBe "1 yd"
         "$Ell" shouldBe "English ells"
         "${1.ells}" shouldBe "1 ells"

@@ -1,10 +1,9 @@
 package hm.binkley.kunits.system.mit.length
 
-import hm.binkley.kunits.system.mit.length.Smoot.Smoots
+import hm.binkley.kunits.into
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import hm.binkley.kunits.into
 
 internal class MITLengthsTest {
     @Test
@@ -15,9 +14,9 @@ internal class MITLengthsTest {
 
     @Test
     fun `should pretty print`() {
-        "$Smoots" shouldBe "MIT smoot"
+        "$Smoot" shouldBe "MIT smoot"
         "${1.smoots}" shouldBe "1 sm"
-        "$Ears" shouldBe "MIT ear"
+        "$Ear" shouldBe "MIT ear"
         "${1.ears}" shouldBe "1 ears"
     }
 }

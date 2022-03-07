@@ -17,7 +17,7 @@ sealed class FFFTimes<U : FFFTimes<U>>(
 class Fortnight private constructor(value: FixedBigRational) :
     Measure<FFF, Fortnights>(Fortnights, value) {
 
-    object Fortnights : FFFTimes<Fortnights>("fortnight", ONE) {
+    companion object Fortnights : FFFTimes<Fortnights>("fortnight", ONE) {
         override fun new(value: FixedBigRational) = Fortnight(value)
         override fun format(value: FixedBigRational) = "$value ftn"
     }

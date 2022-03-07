@@ -3,6 +3,7 @@ package hm.binkley.kunits.system.mit.length
 import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.system.mit.MIT
+import hm.binkley.kunits.system.mit.length.Ear.Ears
 import hm.binkley.kunits.system.mit.length.Smoot.Smoots
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
@@ -27,13 +28,14 @@ val Int.smoots get() = (this over 1).smoots
 val Long.smoots get() = (this over 1).smoots
 val FixedBigRational.smoots get() = Smoots.new(this)
 
-object Ears : MITLengths<Ears>("ear", 3 over 67) {
-    override fun new(value: FixedBigRational) = Ear(value)
-    override fun format(value: FixedBigRational) = "$value ears"
-}
-
 class Ear(value: FixedBigRational) :
-    Measure<MIT, Ears>(Ears, value)
+    Measure<MIT, Ears>(Ears, value) {
+
+    companion object Ears : MITLengths<Ears>("ear", 3 over 67) {
+        override fun new(value: FixedBigRational) = Ear(value)
+        override fun format(value: FixedBigRational) = "$value ears"
+    }
+}
 
 val Int.ears get() = (this over 1).ears
 val Long.ears get() = (this over 1).ears

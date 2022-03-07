@@ -17,6 +17,7 @@ import hm.binkley.kunits.system.english.length.Mile.Miles
 import hm.binkley.kunits.system.english.length.Rod.Rods
 import hm.binkley.kunits.system.english.length.Shaftment.Shaftments
 import hm.binkley.kunits.system.english.length.Stick.Sticks
+import hm.binkley.kunits.system.english.length.Yard.Yards
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
@@ -136,13 +137,13 @@ val Int.feet get() = (this over 1).feet
 val Long.feet get() = (this over 1).feet
 val FixedBigRational.feet get() = Feet.new(this)
 
-object Yards : EnglishLengths<Yards>("yard", 432 over 1) {
-    override fun new(value: FixedBigRational) = Yard(value)
-    override fun format(value: FixedBigRational) = "$value yd"
-}
-
 class Yard(value: FixedBigRational) :
-    Measure<English, Yards>(Yards, value)
+    Measure<English, Yards>(Yards, value) {
+    companion object Yards : EnglishLengths<Yards>("yard", 432 over 1) {
+        override fun new(value: FixedBigRational) = Yard(value)
+        override fun format(value: FixedBigRational) = "$value yd"
+    }
+}
 
 val Int.yards get() = (this over 1).yards
 val Long.yards get() = (this over 1).yards

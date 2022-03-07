@@ -3,7 +3,7 @@ package hm.binkley.kunits
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.length.FFFLengths
 import hm.binkley.kunits.system.fff.length.Furlong
-import hm.binkley.kunits.system.fff.length.Furlongs
+import hm.binkley.kunits.system.fff.length.Furlong.Furlongs
 import hm.binkley.kunits.system.fff.time.FFFTimes
 import hm.binkley.kunits.system.fff.weight.FFFWeights
 import hm.binkley.kunits.system.usd.denomination.USDDenominations
@@ -134,7 +134,7 @@ abstract class Denominations<S : System<S>, U : Denominations<S, U>>(
 ) : Units<S, U>(system, name, basis)
 
 /**
- * Represents measurements of a unit within a [System].
+ * Represents a [quantity] of a [unit] within a [System].
  *
  * See [Furlong] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
