@@ -33,7 +33,7 @@ sealed class USDDenomination<U : USDDenomination<U>>(
 
 /** Formats USD money following US locale rules.  Example: "$4.33". */
 fun Measure<USD, *>.format(): String = NumberFormat.getCurrencyInstance(US)
-    .format((this into Dollars).value.toBigDecimal())
+    .format((this into Dollars).quantity.toBigDecimal())
 
 class HundredDollar private constructor(value: FixedBigRational) :
     Measure<USD, HundredDollars>(HundredDollars, value) {

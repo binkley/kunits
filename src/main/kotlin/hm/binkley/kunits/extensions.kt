@@ -74,7 +74,7 @@ Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
 private fun Measure<*, *>.convertByBases(
     other: Units<*, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
-) = conversion(value * unit.basis) / other.basis
+) = conversion(quantity * unit.basis) / other.basis
 
 /**
  * Sorts the array element-wise descending, each entry with an attached

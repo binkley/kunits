@@ -147,14 +147,14 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     /** Unit of measure. */
     val unit: U,
     /** Number of [unit]s. */
-    val value: FixedBigRational,
+    val quantity: FixedBigRational,
 ) : Comparable<Measure<S, *>> {
     /** Compares to [other] in the [U] units of measure. */
     override fun compareTo(other: Measure<S, *>) =
-        value.compareTo((other into unit).value)
+        quantity.compareTo((other into unit).quantity)
 
-    /** Presents this measure as [Units.format] of [value]. */
-    override fun toString() = unit.format(value)
+    /** Presents this measure as [Units.format] of [quantity]. */
+    override fun toString() = unit.format(quantity)
 
     /**
      * To use `==`, convert the sides of the comparison to a common unit of
@@ -169,7 +169,7 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *> &&
         unit == other.unit &&
-        value == other.value
+        quantity == other.quantity
 
-    override fun hashCode() = hash(unit, value)
+    override fun hashCode() = hash(unit, quantity)
 }
