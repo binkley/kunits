@@ -90,6 +90,7 @@ val Int.cloves get() = (this over 1).cloves
 class Stone private constructor(value: FixedBigRational) :
     Measure<English, Stone>(Stone, value) {
 
+    /** Note: The plural of "stone" is "stone" when describing weight. */
     companion object Stone : EnglishWeights<Stone>("stone", 3_584 over 1) {
         override fun new(value: FixedBigRational) = Stone(value)
         override fun format(value: FixedBigRational) = "$value st"
@@ -116,6 +117,10 @@ val Int.tods get() = (this over 1).tods
 class Hundredweight private constructor(value: FixedBigRational) :
     Measure<English, Hundredweight>(Hundredweight, value) {
 
+    /**
+     * Note: The plural of "hundredweight" is "hundredweight" when
+     * describing weight.
+     */
     companion object Hundredweight : EnglishWeights<Hundredweight>(
         "hundredweight", 28_672 over 1
     ) {
