@@ -39,6 +39,8 @@ $ ./batect build
 $ ./batect run
 ```
 
+Test coverage is 100% for lines and branches (and no ignored code).
+
 ### Systems of units
 
 * English
@@ -61,13 +63,7 @@ This code targets JDK 17.
 
 ## Design
 
-KUnits provides abstractions for representing systems of units in Kotlin, and
-one the examplar of quirkiness, traditional
-[_English units_](https://en.wikipedia.org/wiki/English_units).
-
-Include are the usual simple arithmetic operations.
-
-The top-level API represents:
+### API
 
 - [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing a
   system of units
@@ -75,31 +71,36 @@ The top-level API represents:
 - `Measure` representing concrete quantities
   ([`FixedBigRational`](#kotlin-rational)) of a unit
 
-There are specializations of `Units` for units of the same kind:
+Included for `Measure` are the usual simple arithmetic operations.
+
+Specializations of `Units` for units of the same kind:
 
 - `Lengths`
 - `Times`
 - `Weights`
 - `Denominations`
 
-Of note is
-[English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
-showing the complex relationships among traditional English units.
 
-A whimsical, but real complete system of units is
-[Furlong-Firking-Fortnight](https://en.wikipedia.org/wiki/FFF_system):
+The exemplar of quirkiness is traditional
+[_English units_](https://en.wikipedia.org/wiki/English_units):
+
+- [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
+- [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
+
+A real but whimsical complete system of units is
+[Furlong-Firkin-Fortnight](https://en.wikipedia.org/wiki/FFF_system):
 
 - [FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/FFFLengths.kt)
 - [FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/FFFTimes.kt)
 - [FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/FFFWeights.kt)
 
-And a whimsical testing-only systems and units:
+Unreal and whimsical systems of units for testing:
 
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt)
 - `Martian`
 
-Here the source for `Martian` showing the minimal code needed to set up a
-new system of units:
+Below is the source of the `Martian` system of units showing the minimal 
+code needed for setting up a system of units:
 
 ```kotlin
 object Martian : System<Martian>("Martian")
@@ -158,7 +159,7 @@ a `Pair` instance.
 Note both of the above are also more verbose in some situations, as in:
 
 ```kotlin
-24.inches shouldBe (2.feet to Inches)
+(2.feet to Inches) shouldBe 24.inches
 ```
 
 This needs parentheses so that `2.feet` does not bind more tightly to the
@@ -174,27 +175,25 @@ Feet(2).into(Inches)
 This loses the pleasantness of Kotlin, and might as well be Java (with a
 `new` keyword added for that language).
 
-The chosen compromise is to use `into` instead of `in` or `to`:
+The chosen compromise is to use `into` instead of `in` or `to`, and accept 
+the verbosity of chaining infix functions:
 
 ```kotlin
 2.feet into Inches
+(2.feet into Inches) shouldBe 24.inches
 ```
 
 #### Inline
 
-The trivial extension properties for converting `Int` (and other numeric
-types) to English Units could be `inline`. However [_Kotlin inline
+The trivial extension properties for converting `Int`, `Long`, and 
+`FixedBigRational` into units could be `inline`. However, [_Kotlin inline
 functions are not marked as
-covered_](https://github.com/jacoco/jacoco/issues/654) causes code
-coverage to fail.
+covered_](https://github.com/jacoco/jacoco/issues/654) lowers test coverage.
 
-Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
-`inline` is removed for now, until JaCoCo resolves this issue. In hindsight,
-one wishes `inline` were an annotation rather than a keyword: it should be a
-compiler hint, not a command, and the compiler should inline automatically, as
-it makes sense, without the programmer being explicit.
+Following [_The Rules_](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
+`inline` is removed for now, until JaCoCo resolves this issue.
 
-#### Mixing compile errors with runtime errors
+#### Mixing compile errors with runtime errors for the same problem
 
 Incompatible unit conversions are inconsistent. The two cases are:
 
