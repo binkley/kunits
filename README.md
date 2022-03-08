@@ -57,118 +57,135 @@ KUnits, install locally from the `kotlin-rational-2.1.1` tag.
 
 ### Platform
 
-The code passed tests on JDK 11, and 13-15 (12 was not tested).
+This code targets JDK 17.
 
 ## Design
 
 KUnits provides abstractions for representing systems of units in Kotlin, and
-one quirky example,
-[_English units_](https://en.wikipedia.org/wiki/English_units).  (Contrast
-traditional English units with
-[_Imperial units_](https://www.britannica.com/topic/Imperial-unit).)
+one the examplar of quirkiness, traditional
+[_English units_](https://en.wikipedia.org/wiki/English_units).
 
-This abstraction provides the usual arithmetic operations amongst units, _eg_,
-additions, subtraction, multiplication, and division.
+Include are the usual simple arithmetic operations.
 
 The top-level API represents:
 
-- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing units of
-  measurement in the abstract with no quantities
-- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing
-  measurements in the concrete of a given unit with a quantity expressed as a
-  [`FixedBigRational`](#kotlin-rational)
+- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing a
+  system of units
+- `Units` representing units of measurement
+- `Measure` representing concrete quantities
+  ([`FixedBigRational`](#kotlin-rational)) of a unit
 
-The code shows a general pattern implementing a Unit System.
+There are specializations of `Units` for units of the same kind:
+
+- `Lengths`
+- `Times`
+- `Weights`
+- `Denominations`
+
+Of note is
 [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
-is the real world exemplar, and
-[FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/FFFLengths.kt),
-[FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/FFFTimes.kt),
-and
-[FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/FFFWeights.kt),
-are a whimsical full system. The pattern can also be seen in
-[systems for testing](src/test/kotlin/hm/binkley/kunits/test-systems.kt):
+showing the complex relationships among traditional English units.
+
+A whimsical, but real complete system of units is
+[Furlong-Firking-Fortnight](https://en.wikipedia.org/wiki/FFF_system):
+
+- [FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/FFFLengths.kt)
+- [FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/FFFTimes.kt)
+- [FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/FFFWeights.kt)
+
+And a whimsical testing-only systems and units:
+
+- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt)
+- `Martian`
+
+Here the source for `Martian` showing the minimal code needed to set up a
+new system of units:
 
 ```kotlin
 object Martian : System<Martian>("Martian")
 
 sealed class MartianLengths<U : MartianLengths<U>>(
-  name: String,
-  bar: FixedBigRational,
+    name: String,
+    bar: FixedBigRational,
 ) : Lengths<Martian, U>(Martian, name, bar)
 
 class Grok private constructor(value: FixedBigRational) :
-  Measure<Martian, Groks>(Groks, value) {
+    Measure<Martian, Groks>(Groks, value) {
 
-  companion object Groks : MartianLengths<Groks>("grok", ONE) {
-    override fun new(value: FixedBigRational) = Grok(value)
-    override fun format(value: FixedBigRational) = "$value groks"
-  }
+    companion object Groks : MartianLengths<Groks>("grok", ONE) {
+        override fun new(value: FixedBigRational) = Grok(value)
+        override fun format(value: FixedBigRational) = "$value groks"
+    }
 }
 
 val FixedBigRational.groks get() = Groks.new(this)
 val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
 ```
+
 For convenience, systems of units may provide conversions to other systems:
+
 ```kotlin
 infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
-Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
-    it * (3 over 1)
-}
+        Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
+        it * (3 over 1)
+    }
 ```
-
-The code uses [`FixedBigRational`](#kotlin-rational) for measurement values 
-and converting between units.
 
 ### Problems
 
 #### Syntactic sugar
 
-There are too many options on what "nice" Kotlin syntactic sugar looks 
-like.  The most "natural English" approach might be:
+There are too many options on what "nice" Kotlin syntactic sugar looks
+like. The most "natural English" approach might be:
+
 ```kotlin
 2.feet in Inches // *not* valid Kotlin
 ```
-However, this is a compilation failure as the "in" needs to be "\`in\`" since 
+
+However, this is a compilation failure as the "in" needs to be "\`in\`" since
 `in` is a keyword.
 
 Another is:
+
 ```kotlin
 2.feet to Inches
 ```
-This works, but is confusing in context of the `to` function for creating 
+
+This works, but is confusing in context of the `to` function for creating
 a `Pair` instance.
 
 Note both of the above are also more verbose in some situations, as in:
+
 ```kotlin
 24.inches shouldBe (2.feet to Inches)
 ```
-This needs parentheses so that `2.feet` does not bind more tightly to the 
-left-hand `shouldBe` infix function than to the right-hand `to` infix 
+
+This needs parentheses so that `2.feet` does not bind more tightly to the
+left-hand `shouldBe` infix function than to the right-hand `to` infix
 function.
 
 Another is to just skip syntactic sugar:
+
 ```kotlin
 Feet(2).into(Inches)
 ```
-This loses the pleasantness of Kotlin, and might as well be Java (with a 
+
+This loses the pleasantness of Kotlin, and might as well be Java (with a
 `new` keyword added for that language).
 
-The chosen compromise is to use `into` instead of `to`:
+The chosen compromise is to use `into` instead of `in` or `to`:
+
 ```kotlin
 2.feet into Inches
-```
-And also works when converting between systems of units:
-```kotlin
-2.feet into Smoots
 ```
 
 #### Inline
 
-The trivial extension properties for converting `Int` (and other numeric 
-types) to English Units could be `inline`. However [_Kotlin inline 
+The trivial extension properties for converting `Int` (and other numeric
+types) to English Units could be `inline`. However [_Kotlin inline
 functions are not marked as
-covered_](https://github.com/jacoco/jacoco/issues/654) causes code 
+covered_](https://github.com/jacoco/jacoco/issues/654) causes code
 coverage to fail.
 
 Following [the rules](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
@@ -179,24 +196,30 @@ it makes sense, without the programmer being explicit.
 
 #### Mixing compile errors with runtime errors
 
-Incompatible unit conversions are inconsistent.  The two cases are:
+Incompatible unit conversions are inconsistent. The two cases are:
 
-1. Converting between units of the same kind (say, lengths) between 
-   different systems of units without providing a conversion function between 
-   the systems
-2. Converting between units of different kinds (say, lengths and weights) 
-   for the same system of units
+1. Converting between units of different kinds (say, lengths and weights) in
+   the same system of units
+2. Converting between units of the same kind (say, lengths) but in different
+   systems of units
 
 Behavior:
 
-* Ideal &mdash; incompatible conversions to not compile
-* Suboptimal &mdash; 
+* Ideal &mdash; incompatible conversions do not compile
+* Actual &mdash; conversions between systems with `into` do not compile (use
+  a dedicated function such as
+  [`intoEnglish`](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt)), and
+  conversions within a system for units of different kinds (_eg_, lengths
+  to weights) raises a runtime exception
 
 ```kotlin
-1.groks into Spams // -- does not compile: good
-1.groks.into(Bar, Foo) // -- does not compile: good
-1.foo into Spams // compiles: bad, but throws exception at runtime
-1.foo.into(Bar, Spams) // compiles: bad throws exception at runtime
+// Compiles but raises exception: both are English units but of different 
+// kinds:
+1.foot into Pounds
+// Does not compile: both are lengths, but of different systems:
+1.smoot into Inches
+// This would both compile and run successfully:
+1.smoot intoEnglish Inches
 ```
 
 ## Reading
