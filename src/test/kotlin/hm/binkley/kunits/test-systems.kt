@@ -1,16 +1,29 @@
 package hm.binkley.kunits
 
+import hm.binkley.kunits.Alice.Alices
 import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
+import hm.binkley.kunits.Fred.Freds
 import hm.binkley.kunits.Grok.Groks
 import hm.binkley.kunits.Spam.Spams
+import hm.binkley.kunits.Toto.Totos
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
 import hm.binkley.math.fixed.over
 
-// Main system, units, and measures for tests
+/**
+ * System of units for testing named after metasyntactic variables:
+ * - [MetasyntacticLengths]: foo, bar, baz ("C")
+ * - [MetasyntacticTimes]: spam, ham, eggs (Python)
+ * - [MetasyntacticWeights]: fred, barney (British)
+ * - [MetasyntacticDenominations]: alice, bob (Security)
+ * - [MetasyntacticShoeSizes]: toto, titi, tata (French)
+ *
+ * See https://foldoc.org/metasyntactic+variable and
+ * https://en.wikipedia.org/wiki/Metasyntactic_variable
+ */
 object Metasyntactic : System<Metasyntactic>("Metasyntactic")
 
 infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
@@ -62,15 +75,15 @@ val FixedBigRational.baz get() = Baz.new(this)
 val Long.baz get() = (this over 1).baz
 val Int.baz get() = (this over 1).baz
 
-sealed class MetasyntacticWeights<U : MetasyntacticWeights<U>>(
+sealed class MetasyntacticTimes<U : MetasyntacticTimes<U>>(
     name: String,
-    bar: FixedBigRational,
-) : Weights<Metasyntactic, U>(Metasyntactic, name, bar)
+    spams: FixedBigRational,
+) : Times<Metasyntactic, U>(Metasyntactic, name, spams)
 
 class Spam private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Spams>(Spams, value) {
 
-    companion object Spams : MetasyntacticWeights<Spams>("spam", ONE) {
+    companion object Spams : MetasyntacticTimes<Spams>("spam", ONE) {
         override fun new(value: FixedBigRational) = Spam(value)
         override fun format(value: FixedBigRational) = "$value spams"
     }
@@ -79,6 +92,63 @@ class Spam private constructor(value: FixedBigRational) :
 val FixedBigRational.spams get() = Spams.new(this)
 val Long.spams get() = (this over 1).spams
 val Int.spams get() = (this over 1).spams
+
+sealed class MetasyntacticWeights<U : MetasyntacticWeights<U>>(
+    name: String,
+    freds: FixedBigRational,
+) : Weights<Metasyntactic, U>(Metasyntactic, name, freds)
+
+class Fred private constructor(value: FixedBigRational) :
+    Measure<Metasyntactic, Freds>(Freds, value) {
+
+    companion object Freds : MetasyntacticWeights<Freds>("fred", ONE) {
+        override fun new(value: FixedBigRational) = Fred(value)
+        override fun format(value: FixedBigRational) = "$value freds"
+    }
+}
+
+val FixedBigRational.freds get() = Freds.new(this)
+val Long.freds get() = (this over 1).freds
+val Int.freds get() = (this over 1).freds
+
+sealed class MetasyntacticDenominations<U : MetasyntacticDenominations<U>>(
+    name: String,
+    alices: FixedBigRational,
+) : Denominations<Metasyntactic, U>(Metasyntactic, name, alices)
+
+class Alice private constructor(value: FixedBigRational) :
+    Measure<Metasyntactic, Alices>(Alices, value) {
+
+    companion object Alices : MetasyntacticDenominations<Alices>(
+        "alice",
+        ONE,
+    ) {
+        override fun new(value: FixedBigRational) = Alice(value)
+        override fun format(value: FixedBigRational) = "$value bobs"
+    }
+}
+
+val FixedBigRational.alices get() = Alices.new(this)
+val Long.alices get() = (this over 1).alices
+val Int.alices get() = (this over 1).alices
+
+sealed class MetasyntacticShoeSizes<U : MetasyntacticShoeSizes<U>>(
+    name: String,
+    totos: FixedBigRational,
+) : Units<Metasyntactic, U>(Metasyntactic, name, totos)
+
+class Toto private constructor(value: FixedBigRational) :
+    Measure<Metasyntactic, Totos>(Totos, value) {
+
+    companion object Totos : MetasyntacticShoeSizes<Totos>("toto", ONE) {
+        override fun new(value: FixedBigRational) = Toto(value)
+        override fun format(value: FixedBigRational) = "$value totos"
+    }
+}
+
+val FixedBigRational.totos get() = Totos.new(this)
+val Long.totos get() = (this over 1).totos
+val Int.totos get() = (this over 1).totos
 
 // Alternate system, units, and measures for tests
 object Martian : System<Martian>("Martian")

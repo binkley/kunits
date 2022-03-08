@@ -1,11 +1,14 @@
 package hm.binkley.kunits
 
+import hm.binkley.kunits.Alice.Alices
 import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
+import hm.binkley.kunits.Fred.Freds
 import hm.binkley.kunits.Grok.Groks
 import hm.binkley.kunits.Spam.Spams
 import hm.binkley.math.fixed.over
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -23,13 +26,35 @@ internal class ExtensionsTest {
         (1.groks intoMetasyntactic Foo) shouldBe (1 over 3).foo
     }
 
+    @Test
+    fun `should not convert between different systems of units`() {
+        // Uncomment to see that these do not compile
+        // 1.groks into Spams
+        // 1.groks.into(Bar, Foo)
+    }
+
     /** @todo Nothing syntactically prevents converting feet into pounds */
     @Test
-    fun `should not convert between different types of unit is broken`() {
-        // 1.foo into Willis -- does not compile: good
-        // 1.groks.into(Baz, Bar, Foo) -- does not compile: good
-        1.foo into Spams // compiles: bad
-        1.foo.into(Bar, Spams) // compiles: bad
+    fun `should not convert between different types of unit is suboptimal`() {
+        shouldThrow<IllegalArgumentException> {
+            1.foo into Spams
+        }
+        shouldThrow<IllegalArgumentException> {
+            1.spams into Freds
+        }
+        shouldThrow<IllegalArgumentException> {
+            1.freds into Alices
+        }
+        shouldThrow<IllegalArgumentException> {
+            1.alices into Foo
+        }
+    }
+
+    @Test
+    fun `should catch missing branch when checking conversion kinds`() {
+        shouldThrow<NotImplementedError> {
+            1.totos into Foo
+        }
     }
 
     @Nested

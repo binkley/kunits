@@ -44,6 +44,7 @@ $ ./batect run
 * English
 * FFF
 * MIT
+* USD
 
 ### Kotlin rational
 
@@ -176,10 +177,27 @@ one wishes `inline` were an annotation rather than a keyword: it should be a
 compiler hint, not a command, and the compiler should inline automatically, as
 it makes sense, without the programmer being explicit.
 
-#### Gaps
+#### Mixing compile errors with runtime errors
 
-The code has not yet explored conversions between systems of units, _eg_,
-between metric and English units.
+Incompatible unit conversions are inconsistent.  The two cases are:
+
+1. Converting between units of the same kind (say, lengths) between 
+   different systems of units without providing a conversion function between 
+   the systems
+2. Converting between units of different kinds (say, lengths and weights) 
+   for the same system of units
+
+Behavior:
+
+* Ideal &mdash; incompatible conversions to not compile
+* Suboptimal &mdash; 
+
+```kotlin
+1.groks into Spams // -- does not compile: good
+1.groks.into(Bar, Foo) // -- does not compile: good
+1.foo into Spams // compiles: bad, but throws exception at runtime
+1.foo.into(Bar, Spams) // compiles: bad throws exception at runtime
+```
 
 ## Reading
 
