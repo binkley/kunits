@@ -72,11 +72,11 @@ Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
 private fun Measure<*, *>.convertByBases(
     other: Units<*, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
-): FixedBigRational {
-    if (!unit.related(other)) throw IllegalArgumentException(
-        "Inconvertible units: $unit vs $other"
+): FixedBigRational = with(unit) {
+    if (!related(other)) throw IllegalArgumentException(
+        "Inconvertible units: $other is not related to ${kind.simpleName}"
     )
-    return conversion(quantity * unit.basis) / other.basis
+    return conversion(quantity * basis) / other.basis
 }
 
 private fun Units<*, *>.related(other: Units<*, *>) = kind == other.kind
