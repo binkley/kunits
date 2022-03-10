@@ -14,12 +14,13 @@ sealed class FFFWeights<U : FFFWeights<U>>(
     firkins: FixedBigRational,
 ) : Weights<FFF, U>(FFF, name, firkins)
 
-class Firkin private constructor(value: FixedBigRational) :
-    Measure<FFF, Firkins>(Firkins, value) {
-
-    companion object Firkins : FFFWeights<Firkins>("firkin", ONE) {
-        override fun new(value: FixedBigRational) = Firkin(value)
-        override fun format(value: FixedBigRational) = "$value fir"
+class Firkin private constructor(quantity: FixedBigRational) :
+    Measure<FFF, Firkins>(Firkins, quantity) {
+    companion object Firkins : FFFWeights<Firkins>(
+        "firkin", ONE
+    ) {
+        override fun new(quantity: FixedBigRational) = Firkin(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity fir"
     }
 }
 

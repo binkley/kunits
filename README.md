@@ -111,10 +111,11 @@ sealed class MartianLengths<U : MartianLengths<U>>(
     bar: FixedBigRational,
 ) : Lengths<Martian, U>(Martian, name, bar)
 
-class Grok private constructor(value: FixedBigRational) :
-    Measure<Martian, Groks>(Groks, value) {
-
-    companion object Groks : MartianLengths<Groks>("grok", ONE) {
+class Grok private constructor(quantity: FixedBigRational) :
+    Measure<Martian, Groks>(Groks, quantity) {
+    companion object Groks : MartianLengths<Groks>(
+        "grok", ONE
+    ) {
         override fun new(value: FixedBigRational) = Grok(value)
         override fun format(value: FixedBigRational) = "$value groks"
     }

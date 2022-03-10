@@ -28,12 +28,13 @@ sealed class EnglishLengths<U : EnglishLengths<U>>(
     lines: FixedBigRational,
 ) : Lengths<English, U>(English, name, lines)
 
-class Line private constructor(value: FixedBigRational) :
-    Measure<English, Lines>(Lines, value) {
-
-    companion object Lines : EnglishLengths<Lines>("line", ONE) {
-        override fun new(value: FixedBigRational) = Line(value)
-        override fun format(value: FixedBigRational) = "$value lines"
+class Line private constructor(quantity: FixedBigRational) :
+    Measure<English, Lines>(Lines, quantity) {
+    companion object Lines : EnglishLengths<Lines>(
+        "line", ONE
+    ) {
+        override fun new(quantity: FixedBigRational) = Line(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity lines"
     }
 }
 
@@ -41,13 +42,13 @@ val FixedBigRational.lines get() = Lines.new(this)
 val Long.lines get() = (this over 1).lines
 val Int.lines get() = (this over 1).lines
 
-class Barleycorn private constructor(value: FixedBigRational) :
-    Measure<English, Barleycorns>(Barleycorns, value) {
-
-    companion object Barleycorns :
-        EnglishLengths<Barleycorns>("barleycorn", 4 over 1) {
-        override fun new(value: FixedBigRational) = Barleycorn(value)
-        override fun format(value: FixedBigRational) = "$value Bc"
+class Barleycorn private constructor(quantity: FixedBigRational) :
+    Measure<English, Barleycorns>(Barleycorns, quantity) {
+    companion object Barleycorns : EnglishLengths<Barleycorns>(
+        "barleycorn", 4 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Barleycorn(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity Bc"
     }
 }
 
@@ -55,12 +56,13 @@ val FixedBigRational.barleycorns get() = Barleycorns.new(this)
 val Long.barleycorns get() = (this over 1).barleycorns
 val Int.barleycorns get() = (this over 1).barleycorns
 
-class Inch private constructor(value: FixedBigRational) :
-    Measure<English, Inches>(Inches, value) {
-
-    companion object Inches : EnglishLengths<Inches>("inch", (12 over 1)) {
-        override fun new(value: FixedBigRational) = Inch(value)
-        override fun format(value: FixedBigRational) = "$value\""
+class Inch private constructor(quantity: FixedBigRational) :
+    Measure<English, Inches>(Inches, quantity) {
+    companion object Inches : EnglishLengths<Inches>(
+        "inch", 12 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Inch(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity\""
     }
 }
 
@@ -68,14 +70,15 @@ val FixedBigRational.inches get() = Inches.new(this)
 val Long.inches get() = (this over 1).inches
 val Int.inches get() = (this over 1).inches
 
-class Stick private constructor(value: FixedBigRational) :
-    Measure<English, Sticks>(Sticks, value) {
-
-    companion object Sticks : EnglishLengths<Sticks>("stick", 24 over 1) {
-        override fun new(value: FixedBigRational) = Stick(value)
-        override fun format(value: FixedBigRational) = when (value) {
+class Stick private constructor(quantity: FixedBigRational) :
+    Measure<English, Sticks>(Sticks, quantity) {
+    companion object Sticks : EnglishLengths<Sticks>(
+        "stick", 24 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Stick(quantity)
+        override fun format(quantity: FixedBigRational) = when (quantity) {
             ONE -> "1 stick"
-            else -> "$value sticks"
+            else -> "$quantity sticks"
         }
     }
 }
@@ -84,12 +87,13 @@ val FixedBigRational.sticks get() = Sticks.new(this)
 val Long.sticks get() = (this over 1).sticks
 val Int.sticks get() = (this over 1).sticks
 
-class Hand private constructor(value: FixedBigRational) :
-    Measure<English, Hands>(Hands, value) {
-
-    companion object Hands : EnglishLengths<Hands>("hand", 48 over 1) {
-        override fun new(value: FixedBigRational) = Hand(value)
-        override fun format(value: FixedBigRational) = "$value hh"
+class Hand private constructor(quantity: FixedBigRational) :
+    Measure<English, Hands>(Hands, quantity) {
+    companion object Hands : EnglishLengths<Hands>(
+        "hand", 48 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Hand(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity hh"
     }
 }
 
@@ -97,13 +101,14 @@ val FixedBigRational.hands get() = Hands.new(this)
 val Long.hands get() = (this over 1).hands
 val Int.hands get() = (this over 1).hands
 
-class Shaftment private constructor(value: FixedBigRational) :
-    Measure<English, Shaftments>(Shaftments, value) {
-
-    companion object Shaftments :
-        EnglishLengths<Shaftments>("shaftment", 72 over 1) {
-        override fun new(value: FixedBigRational) = Shaftment(value)
-        override fun format(value: FixedBigRational) = "$value shaftments"
+class Shaftment private constructor(quantity: FixedBigRational) :
+    Measure<English, Shaftments>(Shaftments, quantity) {
+    companion object Shaftments : EnglishLengths<Shaftments>(
+        "shaftment", 72 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Shaftment(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity shaftments"
     }
 }
 
@@ -111,12 +116,13 @@ val FixedBigRational.shaftments get() = Shaftments.new(this)
 val Long.shaftments get() = (this over 1).shaftments
 val Int.shaftments get() = (this over 1).shaftments
 
-class Link private constructor(value: FixedBigRational) :
-    Measure<English, Links>(Links, value) {
-
-    companion object Links : EnglishLengths<Links>("link", 2_376 over 25) {
-        override fun new(value: FixedBigRational) = Link(value)
-        override fun format(value: FixedBigRational) = "$value links"
+class Link private constructor(quantity: FixedBigRational) :
+    Measure<English, Links>(Links, quantity) {
+    companion object Links : EnglishLengths<Links>(
+        "link", 2_376 over 25
+    ) {
+        override fun new(quantity: FixedBigRational) = Link(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity links"
     }
 }
 
@@ -124,12 +130,13 @@ val FixedBigRational.links get() = Links.new(this)
 val Long.links get() = (this over 1).links
 val Int.links get() = (this over 1).links
 
-class Foot private constructor(value: FixedBigRational) :
-    Measure<English, Feet>(Feet, value) {
-
-    companion object Feet : EnglishLengths<Feet>("foot", 144 over 1) {
-        override fun new(value: FixedBigRational) = Foot(value)
-        override fun format(value: FixedBigRational) = "$value'"
+class Foot private constructor(quantity: FixedBigRational) :
+    Measure<English, Feet>(Feet, quantity) {
+    companion object Feet : EnglishLengths<Feet>(
+        "foot", 144 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Foot(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity'"
     }
 }
 
@@ -137,11 +144,13 @@ val FixedBigRational.feet get() = Feet.new(this)
 val Long.feet get() = (this over 1).feet
 val Int.feet get() = (this over 1).feet
 
-class Yard(value: FixedBigRational) :
-    Measure<English, Yards>(Yards, value) {
-    companion object Yards : EnglishLengths<Yards>("yard", 432 over 1) {
-        override fun new(value: FixedBigRational) = Yard(value)
-        override fun format(value: FixedBigRational) = "$value yd"
+class Yard(quantity: FixedBigRational) :
+    Measure<English, Yards>(Yards, quantity) {
+    companion object Yards : EnglishLengths<Yards>(
+        "yard", 432 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Yard(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity yd"
     }
 }
 
@@ -149,12 +158,13 @@ val FixedBigRational.yards get() = Yards.new(this)
 val Long.yards get() = (this over 1).yards
 val Int.yards get() = (this over 1).yards
 
-class Ell private constructor(value: FixedBigRational) :
-    Measure<English, Ells>(Ells, value) {
-
-    companion object Ells : EnglishLengths<Ells>("ells", 540 over 1) {
-        override fun new(value: FixedBigRational) = Ell(value)
-        override fun format(value: FixedBigRational) = "$value ells"
+class Ell private constructor(quantity: FixedBigRational) :
+    Measure<English, Ells>(Ells, quantity) {
+    companion object Ells : EnglishLengths<Ells>(
+        "ells", 540 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Ell(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity ells"
     }
 }
 
@@ -162,12 +172,13 @@ val FixedBigRational.ells get() = Ells.new(this)
 val Long.ells get() = (this over 1).ells
 val Int.ells get() = (this over 1).ells
 
-class Rod private constructor(value: FixedBigRational) :
-    Measure<English, Rods>(Rods, value) {
-
-    companion object Rods : EnglishLengths<Rods>("rod", 2_376 over 1) {
-        override fun new(value: FixedBigRational) = Rod(value)
-        override fun format(value: FixedBigRational) = "$value rods"
+class Rod private constructor(quantity: FixedBigRational) :
+    Measure<English, Rods>(Rods, quantity) {
+    companion object Rods : EnglishLengths<Rods>(
+        "rod", 2_376 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Rod(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity rods"
     }
 }
 
@@ -175,12 +186,13 @@ val FixedBigRational.rods get() = Rods.new(this)
 val Long.rods get() = (this over 1).rods
 val Int.rods get() = (this over 1).rods
 
-class Chain private constructor(value: FixedBigRational) :
-    Measure<English, Chains>(Chains, value) {
-
-    companion object Chains : EnglishLengths<Chains>("chain", 9_504 over 1) {
-        override fun new(value: FixedBigRational) = Chain(value)
-        override fun format(value: FixedBigRational) = "$value ch"
+class Chain private constructor(quantity: FixedBigRational) :
+    Measure<English, Chains>(Chains, quantity) {
+    companion object Chains : EnglishLengths<Chains>(
+        "chain", 9_504 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Chain(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity ch"
     }
 }
 
@@ -188,13 +200,13 @@ val FixedBigRational.chains get() = Chains.new(this)
 val Long.chains get() = (this over 1).chains
 val Int.chains get() = (this over 1).chains
 
-class Furlong private constructor(value: FixedBigRational) :
-    Measure<English, Furlongs>(Furlongs, value) {
-
-    companion object Furlongs :
-        EnglishLengths<Furlongs>("furlong", 95_040 over 1) {
-        override fun new(value: FixedBigRational) = Furlong(value)
-        override fun format(value: FixedBigRational) = "$value fur"
+class Furlong private constructor(quantity: FixedBigRational) :
+    Measure<English, Furlongs>(Furlongs, quantity) {
+    companion object Furlongs : EnglishLengths<Furlongs>(
+        "furlong", 95_040 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Furlong(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity fur"
     }
 }
 
@@ -202,12 +214,13 @@ val FixedBigRational.furlongs get() = Furlongs.new(this)
 val Long.furlongs get() = (this over 1).furlongs
 val Int.furlongs get() = (this over 1).furlongs
 
-class Mile private constructor(value: FixedBigRational) :
-    Measure<English, Miles>(Miles, value) {
-
-    companion object Miles : EnglishLengths<Miles>("mile", 760_320 over 1) {
-        override fun new(value: FixedBigRational) = Mile(value)
-        override fun format(value: FixedBigRational) = "$value mi"
+class Mile private constructor(quantity: FixedBigRational) :
+    Measure<English, Miles>(Miles, quantity) {
+    companion object Miles : EnglishLengths<Miles>(
+        "mile", 760_320 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = Mile(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity mi"
     }
 }
 
@@ -215,13 +228,13 @@ val FixedBigRational.miles get() = Miles.new(this)
 val Long.miles get() = (this over 1).miles
 val Int.miles get() = (this over 1).miles
 
-class League private constructor(value: FixedBigRational) :
-    Measure<English, Leagues>(Leagues, value) {
-
-    companion object Leagues :
-        EnglishLengths<Leagues>("league", 2_280_960 over 1) {
-        override fun new(value: FixedBigRational) = League(value)
-        override fun format(value: FixedBigRational) = "$value lea"
+class League private constructor(quantity: FixedBigRational) :
+    Measure<English, Leagues>(Leagues, quantity) {
+    companion object Leagues : EnglishLengths<Leagues>(
+        "league", 2_280_960 over 1
+    ) {
+        override fun new(quantity: FixedBigRational) = League(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity lea"
     }
 }
 

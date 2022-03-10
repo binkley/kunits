@@ -14,12 +14,13 @@ sealed class FFFLengths<U : FFFLengths<U>>(
     furlongs: FixedBigRational,
 ) : Lengths<FFF, U>(FFF, name, furlongs)
 
-class Furlong(value: FixedBigRational) :
-    Measure<FFF, Furlongs>(Furlongs, value) {
-
-    companion object Furlongs : FFFLengths<Furlongs>("furlong", ONE) {
-        override fun new(value: FixedBigRational) = Furlong(value)
-        override fun format(value: FixedBigRational) = "$value fur"
+class Furlong(quantity: FixedBigRational) :
+    Measure<FFF, Furlongs>(Furlongs, quantity) {
+    companion object Furlongs : FFFLengths<Furlongs>(
+        "furlong", ONE
+    ) {
+        override fun new(quantity: FixedBigRational) = Furlong(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity fur"
     }
 }
 

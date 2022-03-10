@@ -14,12 +14,13 @@ sealed class FFFTimes<U : FFFTimes<U>>(
     fortnights: FixedBigRational,
 ) : Times<FFF, U>(FFF, name, fortnights)
 
-class Fortnight private constructor(value: FixedBigRational) :
-    Measure<FFF, Fortnights>(Fortnights, value) {
-
-    companion object Fortnights : FFFTimes<Fortnights>("fortnight", ONE) {
-        override fun new(value: FixedBigRational) = Fortnight(value)
-        override fun format(value: FixedBigRational) = "$value ftn"
+class Fortnight private constructor(quantity: FixedBigRational) :
+    Measure<FFF, Fortnights>(Fortnights, quantity) {
+    companion object Fortnights : FFFTimes<Fortnights>(
+        "fortnight", ONE
+    ) {
+        override fun new(quantity: FixedBigRational) = Fortnight(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity ftn"
     }
 }
 

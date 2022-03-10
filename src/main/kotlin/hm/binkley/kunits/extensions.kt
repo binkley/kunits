@@ -56,8 +56,8 @@ Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
     val descendingIndexed = units.sortedDescendingIndexed()
     var current = this
     descendingIndexed.forEach { (inputIndex, unit) ->
-        val valueToReduce = current.convertByBases(unit) { it }
-        val (reduced, remainder) = valueToReduce.divideAndRemainder(ONE)
+        val quantityToReduce = current.convertByBases(unit) { it }
+        val (reduced, remainder) = quantityToReduce.divideAndRemainder(ONE)
         into[inputIndex] = unit.new(reduced)
         current = unit.new(remainder)
     }
