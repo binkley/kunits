@@ -49,8 +49,8 @@ internal class EnglishLengthsTest {
         "$Inch" shouldBe "English inch"
         "${1.inches}" shouldBe "1\""
         "$Stick" shouldBe "English stick"
-        "${1.sticks}" shouldBe "1 stick"
-        "${2.sticks}" shouldBe "2 sticks"
+        "${1.sticks}" shouldBe "1 stick" // Smarter formatting
+        "${2.sticks}" shouldBe "2 sticks" // Smarter formatting
         "$Hand" shouldBe "English hand"
         "${1.hands}" shouldBe "1 hh"
         "$Shaftment" shouldBe "English shaftment"
