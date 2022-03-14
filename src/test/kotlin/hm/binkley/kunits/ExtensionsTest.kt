@@ -33,7 +33,7 @@ internal class ExtensionsTest {
         // 1.groks.into(Bar, Foo)
     }
 
-    /** @todo Nothing syntactically prevents converting feet into pounds */
+    /** @todo Fix to be a compile error rather than runtime */
     @Test
     fun `should not convert between different types of unit is suboptimal`() {
         shouldThrow<IllegalArgumentException> {

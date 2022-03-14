@@ -41,7 +41,6 @@ internal class EnglishLengthsTest {
 
     @Test
     fun `should pretty print`() {
-        // TODO: How to cope with multi-language for singular vs plural?
         "$Line" shouldBe "English line"
         "${1.lines}" shouldBe "1 lines"
         "$Barleycorn" shouldBe "English barleycorn"
