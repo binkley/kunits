@@ -35,7 +35,7 @@ internal class ExtensionsTest {
 
     /** @todo Fix to be a compile error rather than runtime */
     @Test
-    fun `should not convert between different types of unit is suboptimal`() {
+    fun `should not convert between different kinds of unit is suboptimal`() {
         shouldThrow<IllegalArgumentException> {
             1.foo into Spams
         }

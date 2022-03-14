@@ -33,7 +33,7 @@ Measure<S, *>.into(other: V) = into(other) { it }
 fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
     other: V,
     conversion: (FixedBigRational) -> FixedBigRational,
-) = other.new(convertByBases(other, conversion))
+) = other.new(convertBases(other, conversion))
 
 /**
  * Converts this measure into lowest terms for [units], from most significant
@@ -56,7 +56,7 @@ Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
     val descendingIndexed = units.sortedDescendingIndexed()
     var current = this
     descendingIndexed.forEach { (inputIndex, unit) ->
-        val quantityToReduce = current.convertByBases(unit) { it }
+        val quantityToReduce = current.convertBases(unit) { it }
         val (reduced, remainder) = quantityToReduce.divideAndRemainder(ONE)
         into[inputIndex] = unit.new(reduced)
         current = unit.new(remainder)
@@ -69,7 +69,7 @@ Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
     return into.toNonNullableList()
 }
 
-private fun Measure<*, *>.convertByBases(
+private fun Measure<*, *>.convertBases(
     other: Units<*, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
 ): FixedBigRational = with(unit) {

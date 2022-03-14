@@ -48,4 +48,4 @@ jobs:
         run: ./batect build
 
       - name: Execute run script
-        run: ./batect run
+        run: ./batect demo
