@@ -14,6 +14,7 @@ sealed class FFFWeights<U : FFFWeights<U>>(
     firkins: FixedBigRational,
 ) : Weights<FFF, U>(FFF, name, firkins)
 
+/** One firkin (weight) is the mass of one firkin (volume) of water. */
 class Firkin private constructor(quantity: FixedBigRational) :
     Measure<FFF, Firkins>(Firkins, quantity) {
     companion object Firkins : FFFWeights<Firkins>(
