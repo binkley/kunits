@@ -30,7 +30,8 @@ Measure<S, *>.into(other: V) = into(other) { it }
  * @param other the target units
  * @param conversion convert bases of the two units
  */
-fun <T : System<T>, V : Units<T, V>> Measure<*, *>.into(
+fun <T : System<T>, V : Units<T, V>>
+Measure<*, *>.into(
     other: V,
     conversion: (FixedBigRational) -> FixedBigRational,
 ) = other.new(convertBases(other, conversion))
