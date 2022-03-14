@@ -86,6 +86,7 @@ The exemplar of quirkiness is traditional
 [_English units_](https://en.wikipedia.org/wiki/English_units):
 
 - [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
+- [English units of time](src/main/kotlin/hm/binkley/kunits/system/english/time/EnglishTimes.kt)
 - [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
 
 A real but whimsical complete system of units is
