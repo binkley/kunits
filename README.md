@@ -13,9 +13,10 @@ Units of measurement in Kotlin
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
 [![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 
-This project covers mostly silly units: Metric is uninteresting except that
-being based on base 10, it is not representable by binary computers; the
-French revolutionaries overlooked that.
+This project covers historical, fantasy, or whimsical units: Metric is
+uninteresting except that being based on base 10, it is not representable
+by binary computers; the French revolutionaries overlooked that.
+USD is provided as a practical example.
 
 * [Build](#build)
 * [Design](#design)
@@ -31,15 +32,14 @@ The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
 offered as a means to reproduce locally what CI does.
 
 ```
-# With Maven
 $ ./mvnw clean verify
 $ ./run
-# With Batect
+# Or:
 $ ./batect build
-$ ./batect run
+$ ./batect demo
 ```
 
-Test coverage is 100% for lines and branches (and no ignored code).
+Test coverage is 100% for lines, branches, and instructions.
 
 ### Systems of units
 
@@ -66,10 +66,10 @@ This code targets JDK 17.
 
 ### API
 
-- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt) representing a
+- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt) represents a
   system of units
-- `Units` representing units of measurement
-- `Measure` representing concrete quantities
+- `Units` represents units of measurement
+- `Measure` represents concrete quantities
   ([`FixedBigRational`](#kotlin-rational)) of a unit
 
 Included for `Measure` are the usual simple arithmetic operations.
@@ -89,14 +89,7 @@ The exemplar of quirkiness is traditional
 - [English units of time](src/main/kotlin/hm/binkley/kunits/system/english/time/EnglishTimes.kt)
 - [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
 
-A real but whimsical complete system of units is
-[Furlong-Firkin-Fortnight](https://en.wikipedia.org/wiki/FFF_system):
-
-- [FFF units of length](src/main/kotlin/hm/binkley/kunits/system/fff/length/FFFLengths.kt)
-- [FFF units of time](src/main/kotlin/hm/binkley/kunits/system/fff/time/FFFTimes.kt)
-- [FFF units of weight](src/main/kotlin/hm/binkley/kunits/system/fff/weight/FFFWeights.kt)
-
-Unreal and whimsical systems of units for testing:
+Unreal systems of units for testing:
 
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt)
 - `Martian`
@@ -131,60 +124,68 @@ For convenience, systems of units may provide conversions to other systems:
 
 ```kotlin
 infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
-        Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
-        it * (3 over 1)
-    }
+Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
+    it * (3 over 1)
+}
 ```
 
 ### Problems
 
 #### Syntactic sugar
 
-There are too many options on what "nice" Kotlin syntactic sugar looks
-like. The most "natural English" approach might be:
+> _Syntactic sugar causes cancer of the semicolon._<br/>
+> &mdash; Alan J. Perlis
+
+There are too many options for "nice" Kotlin syntactic sugar.
+The most "natural English" approach might be:
 
 ```kotlin
 2.feet in Inches // *not* valid Kotlin
 ```
 
 However, this is a compilation failure as the "in" needs to be "\`in\`" since
-`in` is a keyword.
+`in` is a keyword in Kotlin.
 
-Another is:
+Another might be:
 
 ```kotlin
 2.feet to Inches
 ```
 
-This works, but is confusing in context of the `to` function for creating
-a `Pair` instance.
+However, overloads the universal `to` function for creating `Pair`s.
 
-Note both of the above are also more verbose in some situations, as in:
-
-```kotlin
-(2.feet to Inches) shouldBe 24.inches
-```
-
-This needs parentheses so that `2.feet` does not bind more tightly to the
-left-hand `shouldBe` infix function than to the right-hand `to` infix
-function.
-
-Another is to just skip syntactic sugar:
-
-```kotlin
-Feet(2).into(Inches)
-```
-
-This loses the pleasantness of Kotlin, and might as well be Java (with a
-`new` keyword added for that language).
-
-The chosen compromise is to use `into` instead of `in` or `to`, and accept 
-the verbosity of chaining infix functions:
+The chosen compromise is an infix `into` function.
 
 ```kotlin
 2.feet into Inches
 (2.feet into Inches) shouldBe 24.inches
 ```
+
+Though infix functions do not chain nicely:
+
+```kotlin
+2.feet into Inches shouldBe 24.inches
+```
+
+More readable is:
+
+```kotlin
+(2.feet into Inches) shouldBe 24.inches
+```
+
+And parentheses are required for correct binding order in some cases:
+
+```kotlin
+24.inches shouldBe (2.feet into Inches)
+```
+
+One may skip syntactic sugar altogether:
+
+```kotlin
+Feet(2).into(Inches)
+```
+
+At the cost of losing some pleasantness of Kotlin.
 
 #### Inline
 
@@ -235,6 +236,7 @@ Behavior:
   Measures_](http://home.clara.net/brianp/quickref.html)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
+* [_metasyntactic variable_](https://foldoc.org/metasyntactic+variable)
 * [_Physikal_](https://github.com/Tenkiv/Physikal)
 * [_PostCSS Imperial_](https://github.com/sebdeckers/postcss-imperial)
 * [_Smoot_](https://en.wikipedia.org/wiki/Smoot)
