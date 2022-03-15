@@ -18,6 +18,10 @@ uninteresting except that being based on base 10, it is not representable
 by binary computers; the French revolutionaries overlooked that.
 USD is provided as a practical example.
 
+The project is a demonstration of the power (and limits) of generics in
+Kotlin, and writing a clean DSL.
+It is also fun.
+
 * [Build](#build)
 * [Design](#design)
 * [Problems](#problems)
