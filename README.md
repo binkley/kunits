@@ -19,7 +19,8 @@ by binary computers; the French revolutionaries overlooked that.
 USD is provided as a practical example.
 
 The project is a demonstration of the power (and limits) of generics in
-Kotlin, and writing a clean DSL.
+Kotlin, and writing a clean DSL: see
+[`main.kt`](src/main/kotlin/hm/binkley/kunits/main.kt).
 It is also fun.
 
 * [Build](#build)
