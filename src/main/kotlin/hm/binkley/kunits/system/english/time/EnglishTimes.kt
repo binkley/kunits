@@ -94,6 +94,9 @@ class Point private constructor(quantity: FixedBigRational) :
 val FixedBigRational.points get() = Points.new(this)
 val Long.points get() = (this over 1).points
 val Int.points get() = (this over 1).points
+val FixedBigRational.pricks get() = points
+val Long.pricks get() = points
+val Int.pricks get() = points
 
 class Mileway private constructor(quantity: FixedBigRational) :
     Measure<English, Mileways>(Mileways, quantity) {

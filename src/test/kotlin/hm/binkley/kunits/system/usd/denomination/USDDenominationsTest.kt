@@ -21,6 +21,8 @@ internal class USDDenominationsTest {
     @Test
     fun `should convert`() {
         1L.pennies shouldBe 1.pennies
+        1L.cents shouldBe 1.pennies
+        (3 over 1).cents shouldBe 3.pennies
         1L.nickels shouldBe (5.pennies into Nickels)
         1L.dimes shouldBe (2.nickels into Dimes)
         1L.quarters shouldBe ((5 over 2).dimes into Quarters)
@@ -40,6 +42,7 @@ internal class USDDenominationsTest {
     fun `should pretty print`() {
         "$Penny" shouldBe "USD penny"
         "${1.pennies}" shouldBe "1 1¢"
+        "${1.cents}" shouldBe "1 1¢"
         "$Nickel" shouldBe "USD nickel"
         "${1.nickels}" shouldBe "1 5¢"
         "$Dime" shouldBe "USD dime"
@@ -64,12 +67,5 @@ internal class USDDenominationsTest {
         "${1.fiftyDollars}" shouldBe "1 \$50"
         "$HundredDollar" shouldBe "USD hundred dollar bill"
         "${1.hundredDollars}" shouldBe "1 \$100"
-    }
-
-    @Test
-    fun `should alias pennies as cents`() {
-        (33 over 1).cents shouldBe 33.pennies
-        33L.cents shouldBe 33.pennies
-        33.cents shouldBe 33.pennies
     }
 }

@@ -23,6 +23,8 @@ internal class EnglishTimesTest {
         1L.minutes shouldBe (60.seconds into Minutes)
         1L.moments shouldBe ((3 over 2).minutes into Moments)
         1L.points shouldBe (10.moments into Points)
+        1L.pricks shouldBe 1.points
+        (3 over 1).pricks shouldBe 3.points
         1L.mileways shouldBe ((4 over 3).points into Mileways)
         1L.hours shouldBe (3.mileways into Hours)
         1L.quadrants shouldBe (6.hours into Quadrants)
@@ -44,6 +46,7 @@ internal class EnglishTimesTest {
         "${1.moments}" shouldBe "1 moments"
         "$Point" shouldBe "English point"
         "${1.points}" shouldBe "1 points"
+        "${1.pricks}" shouldBe "1 points"
         "$Mileway" shouldBe "English mileway"
         "${1.mileways}" shouldBe "1 mileways"
         "$Hour" shouldBe "English hour"
