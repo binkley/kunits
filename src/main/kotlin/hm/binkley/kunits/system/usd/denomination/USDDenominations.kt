@@ -41,7 +41,7 @@ class HundredDollar private constructor(quantity: FixedBigRational) :
         "hundred dollar bill", 100 over 1
     ) {
         override fun new(quantity: FixedBigRational) = HundredDollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$100"
+        override fun format(quantity: FixedBigRational) = "$quantity $100"
     }
 }
 
@@ -55,7 +55,7 @@ class FiftyDollar private constructor(quantity: FixedBigRational) :
         "fifty dollar bill", 50 over 1
     ) {
         override fun new(quantity: FixedBigRational) = FiftyDollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$50"
+        override fun format(quantity: FixedBigRational) = "$quantity $50"
     }
 }
 
@@ -69,7 +69,7 @@ class TwentyDollar private constructor(quantity: FixedBigRational) :
         "twenty dollar bill", 20 over 1
     ) {
         override fun new(quantity: FixedBigRational) = TwentyDollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$20"
+        override fun format(quantity: FixedBigRational) = "$quantity $20"
     }
 }
 
@@ -83,7 +83,7 @@ class TenDollar private constructor(quantity: FixedBigRational) :
         "ten dollar bill", TEN
     ) {
         override fun new(quantity: FixedBigRational) = TenDollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$10"
+        override fun format(quantity: FixedBigRational) = "$quantity $10"
     }
 }
 
@@ -97,7 +97,7 @@ class FiveDollar private constructor(quantity: FixedBigRational) :
         "five dollar bill", 5 over 1
     ) {
         override fun new(quantity: FixedBigRational) = FiveDollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$5"
+        override fun format(quantity: FixedBigRational) = "$quantity $5"
     }
 }
 
@@ -111,7 +111,7 @@ class TwoDollar private constructor(quantity: FixedBigRational) :
         "two dollar bill", TWO
     ) {
         override fun new(quantity: FixedBigRational) = TwoDollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$2"
+        override fun format(quantity: FixedBigRational) = "$quantity $2"
     }
 }
 
@@ -125,7 +125,7 @@ class Dollar private constructor(quantity: FixedBigRational) :
         "dollar bill", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Dollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity \$1"
+        override fun format(quantity: FixedBigRational) = "$quantity $1"
     }
 }
 

@@ -49,14 +49,14 @@ internal class MainTest {
 300 dr
 
 == USD DENOMINATIONS
-${'$'}4.33 MAKES CHANGE IN 9 COINS AS:
-- 4 100¢ (${'$'}4.00)
-- 0 50¢ (${'$'}0.00)
-- 1 25¢ (${'$'}0.25)
-- 0 10¢ (${'$'}0.00)
-- 1 5¢ (${'$'}0.05)
-- 3 1¢ (${'$'}0.03)
-WHICH SUMS TO ${'$'}4.33
+$4.33 MAKES CHANGE IN 9 COINS AS:
+- 4 100¢ ($4.00)
+- 0 50¢ ($0.00)
+- 1 25¢ ($0.25)
+- 0 10¢ ($0.00)
+- 1 5¢ ($0.05)
+- 3 1¢ ($0.03)
+WHICH SUMS TO $4.33
 
 == CONVERSIONS
 1 fur IN Furlong-Firkin-Fortnight IS 220 yd IN English
