@@ -1,3 +1,10 @@
+// Quinzième and ilk
+@file:Suppress(
+    "ClassName",
+    "NonAsciiCharacters",
+    "ObjectPropertyName",
+)
+
 package hm.binkley.kunits.system.english.time
 
 import hm.binkley.kunits.Measure
