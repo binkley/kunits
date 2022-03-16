@@ -74,45 +74,45 @@ This code targets JDK 17.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L40)
+  [`120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L52)
 - From `Long`s:
-  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L57)
+  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L86)
 - From `FixedBigRational`s:
-  [`(12_345 over 3).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L65)
+  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L69)
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L41)
+  [`+m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L53)
 - Negation:
-  [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L42)
+  [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L54)
 - Addition:
-  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L107)
+  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L103)
 - Subtraction:
-  [`((m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L47)
+  [`((m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L59)
 - Multiplication:
-  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L73)
+  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L77)
 - Division:
-  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L74)
+  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L78)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L86)
+  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L90)
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108)
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L104)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L101)
+  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L117)
 
 #### Pretty printing
 
 - Default formatting:
-  [`"${1.smoots} IN $MIT IS $smootInInches IN
-  $English"`](src/main/kotlin/hm/binkley/kunits/main.kt#L102)
+  [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
+  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L116)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L113)
+  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L109)
 
 ### API
 
