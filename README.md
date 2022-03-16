@@ -25,7 +25,7 @@ It is also fun.
 
 * [Build](#build)
 * [Design](#design)
-* [Problems](#problems)
+* [Considerations](#considerations)
 * [Kotlin rational](#kotlin-rational)
 * [Reading](#reading)
 
@@ -69,6 +69,52 @@ This code targets JDK 17.
 
 ## Design
 
+### DSL
+
+#### Creating measures of units
+
+- From `Int`s:
+  [`1.feet`](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt#L145)
+- From `Long`s:
+  [`2L.feet`](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt#L144)
+- From `FixedBigRational`s:
+  [`(3 over 2).feet`](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt#L143)
+
+#### Arithmetic
+
+- Idempotency:
+  [`+m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L41)
+- Negation:
+  [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L42)
+- Addition:
+  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L83)
+- Subtraction:
+  [`(120.lines into Hands) -
+  120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L47)
+- Multiplication:
+  [`300.drams * 3`](src/main/kotlin/hm/binkley/kunits/main.kt#L66)
+- Division:
+  [`300.drams / 3`](src/main/kotlin/hm/binkley/kunits/main.kt#L67)
+
+#### Converting measures into other units
+
+- Between units of the same kind within a system:
+  [`300.drams into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L62)
+- Into multiple other units of the same kind within a system:
+  [`433.cents.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L84)
+- Between units of the same kind between different systems:
+  [`1.smoots intoEnglish Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L77)
+
+#### Pretty printing
+
+- Default formatting:
+  [`println("${1.smoots} IN $MIT IS $smootInInches IN
+  $English")`](src/main/kotlin/hm/binkley/kunits/main.kt#L78)
+- Custom formatting:
+  [`coins.forEach { println("- $it (${it.format()})")
+  }`](src/main/kotlin/hm/binkley/kunits/main.kt#L89)
+
 ### API
 
 - [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L13) represents a
@@ -86,7 +132,6 @@ Specializations of `Units` for units of the same kind:
 - [`Times`](src/main/kotlin/hm/binkley/kunits/Units.kt#L94)
 - [`Weights`](src/main/kotlin/hm/binkley/kunits/Units.kt#L108)
 - [`Denominations`](src/main/kotlin/hm/binkley/kunits/Units.kt#L122)
-
 
 The exemplar of quirkiness is traditional
 [_English units_](https://en.wikipedia.org/wiki/English_units):
@@ -132,7 +177,7 @@ val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
 ```
 
-For convenience, systems of units may provide [conversions into other 
+For convenience, systems of units may provide [conversions into other
 systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L29):
 
 ```kotlin
@@ -142,13 +187,13 @@ Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
 }
 ```
 
-Typically, the base type for units of measure (`MartialLengths`, above) is 
+Typically, the base type for units of measure (`MartialLengths`, above) is
 `sealed` as there is a known, fixed number of units.
 However,
 [`OtherDnDDenominations`](src/main/kotlin/hm/binkley/kunits/system/dnd/denomination/other/OtherDnDDenominations.kt)
 is an example of extending a system of units.
 
-### Problems
+### Considerations
 
 #### Syntactic sugar
 
