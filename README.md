@@ -213,9 +213,12 @@ At the cost of losing some pleasantness of Kotlin.
 #### Inline
 
 The trivial extension properties for converting `Int`, `Long`, and 
-`FixedBigRational` into units could be `inline`. However, [_Kotlin inline
-functions are not marked as
-covered_](https://github.com/jacoco/jacoco/issues/654) lowers test coverage.
+`FixedBigRational` into units could be `inline` (as well as several others). 
+However, JaCoCo's [_Kotlin inline functions are not marked as
+covered_](https://github.com/jacoco/jacoco/issues/654) lowers test coverage,
+and Kover's [_Feature request: Equivalent Maven
+plugin_](https://github.com/Kotlin/kotlinx-kover/issues/51) does not support 
+Maven.
 
 Following [_The Rules_](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
 `inline` is removed for now, until JaCoCo resolves this issue.
