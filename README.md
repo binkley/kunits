@@ -279,7 +279,10 @@ Behavior:
 * Ideal &mdash; incompatible conversions do not compile
 * Actual &mdash; conversions between systems with `into` do not compile (use
   a dedicated function such as
-  [`intoEnglish`](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt)), and
+  [`intoEnglish`] for
+  [lengths](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L21)),
+  [times](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L25)), and
+  [weights](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L29)),
   conversions within a system for units of different kinds (_eg_, lengths
   to weights) raises a runtime exception
 
