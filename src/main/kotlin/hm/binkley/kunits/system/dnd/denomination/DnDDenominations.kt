@@ -14,7 +14,7 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.TEN
 import hm.binkley.math.fixed.over
 
 /** The D&D coinage. */
-sealed class DnDDenominations<U : DnDDenominations<U>>(
+abstract class DnDDenominations<U : DnDDenominations<U>>(
     name: String,
     copperPieces: FixedBigRational,
 ) : Denominations<DnD, U>(DnD, name, copperPieces)
