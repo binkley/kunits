@@ -310,6 +310,5 @@ Behavior:
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
 * [_metasyntactic variable_](https://foldoc.org/metasyntactic+variable)
 * [_Physikal_](https://github.com/Tenkiv/Physikal)
-* [_PostCSS Imperial_](https://github.com/sebdeckers/postcss-imperial)
 * [_Smoot_](https://en.wikipedia.org/wiki/Smoot)
 * [_Units &amp; Systems of Units_](https://www.sizes.com/units/)
