@@ -134,6 +134,12 @@ Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
 }
 ```
 
+Typically, the base type for units of measure (`MartialLengths`, above) is 
+`sealed` as there is a known, fixed number of units.
+However,
+[`OtherDnDDenominations`](src/main/kotlin/hm/binkley/kunits/system/dnd/denomination/other/OtherDnDDenominations.kt)
+is an example of extending a system of units.
+
 ### Problems
 
 #### Syntactic sugar
