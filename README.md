@@ -279,26 +279,27 @@ Behavior:
 * Ideal &mdash; incompatible conversions do not compile
 * Actual &mdash; conversions between systems with `into` do not compile (use
   a dedicated function such as
-  [`intoEnglish`] for
-  [lengths](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L21)),
-  [times](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L25)), and
-  [weights](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L29)),
+  `intoEnglish` for
+  [lengths](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L21),
+  [times](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L25), and
+  [weights](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L29));
   conversions within a system for units of different kinds (_eg_, lengths
   to weights) raises a runtime exception
 
 ```kotlin
 // Compiles but raises exception: both are English units but of different 
 // kinds:
-1.foot into Pounds
+1.feet into Pounds
 // Does not compile: both are lengths, but of different systems:
-1.smoot into Inches
+1.smoots into Inches
 // This would both compile and run successfully:
-1.smoot intoEnglish Inches
+1.smoots intoEnglish Inches
 ```
 
 ## Reading
 
-* [_10 Little-Known Units of Time](https://www.mentalfloss.com/article/60080/10-little-known-units-time)
+* [_10 Little-Known Units of
+  Time_](https://www.mentalfloss.com/article/60080/10-little-known-units-time)
 * [_Avoirdupois system_](https://en.wikipedia.org/wiki/Avoirdupois_system)
 * [_Chart showing the relationships of distance
   measures_](https://en.wikipedia.org/wiki/English_units#/media/File:English_Length_Units_Graph.svg)
