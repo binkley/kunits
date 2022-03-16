@@ -11,11 +11,10 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
  * for the same systems of units).
  *
  * @param S the system of units
- * @param V the units for [other]
  * @param other the target units
  */
-infix fun <S : System<S>, V : Units<S, V>>
-Measure<S, *>.into(other: V) = into(other) { it }
+infix fun <S : System<S>>
+Measure<S, *>.into(other: Units<S, *>) = into(other) { it }
 
 /**
  * Converts this measure into units of [other] for a (possibly) different
@@ -23,16 +22,15 @@ Measure<S, *>.into(other: V) = into(other) { it }
  *
  * Use [conversion] when moving between systems of units.
  * It takes the value of this measure expressed in base units, and returns
- * a new measure value in base units for [V].
+ * a new measure value in base units for [other].
  *
  * @param T the system of units for [other]
- * @param V the units for [other]
  * @param other the target units
  * @param conversion convert bases of the two units
  */
-fun <T : System<T>, V : Units<T, V>>
+fun <T : System<T>>
 Measure<*, *>.into(
-    other: V,
+    other: Units<T, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
 ) = other.new(convertBases(other, conversion))
 
