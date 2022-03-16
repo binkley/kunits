@@ -148,10 +148,8 @@ Unreal systems of units for testing:
 TODO: Unclear it is a good idea to use line numbers in links: means keeping
 this file and code source in sync more than already the case.
 -->
-Below is the source of the
-[`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L157)
-system of units showing the minimal code needed for setting up a system of 
-units:
+Below is the source for the Martian system of units showing the minimal 
+code needed for setting up a system of units:
 
 ```kotlin
 object Martian : System<Martian>("Martian")
