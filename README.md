@@ -71,20 +71,21 @@ This code targets JDK 17.
 
 ### API
 
-- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt) represents a
+- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L13) represents a
   system of units
-- `Units` represents units of measurement
-- `Measure` represents concrete quantities
-  ([`FixedBigRational`](#kotlin-rational)) of a unit
+- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L30) represents 
+  units of measurement
+- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L136) represents 
+  concrete quantities ([`FixedBigRational`](#kotlin-rational)) of a unit
 
 Included for `Measure` are the usual simple arithmetic operations.
 
 Specializations of `Units` for units of the same kind:
 
-- `Lengths`
-- `Times`
-- `Weights`
-- `Denominations`
+- [`Lengths`](src/main/kotlin/hm/binkley/kunits/Units.kt#L78)
+- [`Times`](src/main/kotlin/hm/binkley/kunits/Units.kt#L94)
+- [`Weights`](src/main/kotlin/hm/binkley/kunits/Units.kt#L108)
+- [`Denominations`](src/main/kotlin/hm/binkley/kunits/Units.kt#L122)
 
 
 The exemplar of quirkiness is traditional
@@ -96,11 +97,17 @@ The exemplar of quirkiness is traditional
 
 Unreal systems of units for testing:
 
-- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt)
-- `Martian`
+- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L16)
+- [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L157)
 
-Below is the source of the `Martian` system of units showing the minimal 
-code needed for setting up a system of units:
+<!---
+TODO: Unclear it is a good idea to use line numbers in links: means keeping
+this file and code source in sync more than already the case.
+-->
+Below is the source of the
+[`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L157)
+system of units showing the minimal code needed for setting up a system of 
+units:
 
 ```kotlin
 object Martian : System<Martian>("Martian")
@@ -125,7 +132,8 @@ val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
 ```
 
-For convenience, systems of units may provide conversions to other systems:
+For convenience, systems of units may provide [conversions into other 
+systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L29):
 
 ```kotlin
 infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
@@ -165,7 +173,11 @@ Another might be:
 
 However, overloads the universal `to` function for creating `Pair`s.
 
-The chosen compromise is an infix `into` function.
+The chosen compromise is an infix
+[`into`](src/main/kotlin/hm/binkley/kunits/extensions.kt#L7) function, 
+and a more general version for [conversions into other
+systems](src/main/kotlin/hm/binkley/kunits/extensions.kt#L20) for the same 
+kind of unit.
 
 ```kotlin
 2.feet into Inches

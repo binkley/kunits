@@ -154,7 +154,7 @@ val FixedBigRational.totos get() = Totos.new(this)
 val Long.totos get() = (this over 1).totos
 val Int.totos get() = (this over 1).totos
 
-// Alternate system, units, and measures for tests
+/** Alternate system, units, and measures for tests. */
 object Martian : System<Martian>("Martian")
 
 infix fun <U : MartianLengths<U>, V : MetasyntacticLengths<V>>
