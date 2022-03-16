@@ -22,8 +22,8 @@ Measure<S, *>.into(other: V) = into(other) { it }
  * system of units.
  *
  * Use [conversion] when moving between systems of units.
- * It takes the value of this measurement expressed in base units, and
- * returns a new measurement value in base units for [V].
+ * It takes the value of this measure expressed in base units, and returns
+ * a new measure value in base units for [V].
  *
  * @param T the system of units for [other]
  * @param V the units for [other]

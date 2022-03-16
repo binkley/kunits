@@ -40,7 +40,7 @@ abstract class System<S : System<S>>(
  * [Lengths], [Times], [Weights] or [Denominations].
  *
  * @param S the system of units
- * @param U the units of measurement
+ * @param U the units of measure
  */
 abstract class Units<S : System<S>, U : Units<S, U>>(
     /** The system of units for this unit. */
@@ -80,10 +80,10 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
  *
  * See [FFFLengths] and [Furlongs] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
- * _measurement_ of that unit.
+ * _measure_ of that unit.
  *
  * @param S the system of units
- * @param U the units of measurement
+ * @param U the units of measure
  */
 abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
     system: S,
@@ -97,7 +97,7 @@ abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
  * See [FFFTimes] for an example.
  *
  * @param S the system of units
- * @param U the units of measurement
+ * @param U the units of measure
  */
 abstract class Times<S : System<S>, U : Times<S, U>>(
     system: S,
@@ -111,7 +111,7 @@ abstract class Times<S : System<S>, U : Times<S, U>>(
  * See [FFFWeights] for an example.
  *
  * @param S the system of units
- * @param U the units of measurement
+ * @param U the units of measure
  */
 abstract class Weights<S : System<S>, U : Weights<S, U>>(
     system: S,
@@ -125,7 +125,7 @@ abstract class Weights<S : System<S>, U : Weights<S, U>>(
  * See [USDDenominations] for an example.
  *
  * @param S the system of units
- * @param U the units of measurement
+ * @param U the units of measure
  */
 abstract class Denominations<S : System<S>, U : Denominations<S, U>>(
     system: S,
@@ -138,10 +138,10 @@ abstract class Denominations<S : System<S>, U : Denominations<S, U>>(
  *
  * See [Furlong] for an example.
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
- * _measurement_ of that unit.
+ * quantity of that unit.
  *
  * @param S the system of units
- * @param U the units of measurement
+ * @param U the units of measure
  */
 abstract class Measure<S : System<S>, U : Units<S, U>>(
     /** Unit of measure. */

@@ -4,7 +4,7 @@
 
 # KUnits
 
-Units of measurement in Kotlin
+Units of measure in Kotlin
 
 <img src="./images/kunits.png" alt="KUnits" align="right" width="20%"/>
 
@@ -119,9 +119,9 @@ This code targets JDK 17.
 - [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L13) represents a
   system of units
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L30) represents 
-  units of measurement
+  units of measure
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L136) represents 
-  concrete quantities ([`FixedBigRational`](#kotlin-rational)) of a unit
+  concrete unit quantities ([`FixedBigRational`](#kotlin-rational))
 
 Included for `Measure` are the usual simple arithmetic operations.
 
