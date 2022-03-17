@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.fff.length
 
-import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.length.Furlong.Furlongs
 import hm.binkley.math.fixed.FixedBigRational
@@ -12,7 +12,7 @@ import hm.binkley.math.fixed.over
 sealed class FFFLengths<U : FFFLengths<U>>(
     name: String,
     furlongs: FixedBigRational,
-) : Lengths<FFF, U>(FFF, name, furlongs)
+) : Units<FFF, U>(FFF, name, furlongs)
 
 class Furlong(quantity: FixedBigRational) :
     Measure<FFF, Furlongs>(Furlongs, quantity) {

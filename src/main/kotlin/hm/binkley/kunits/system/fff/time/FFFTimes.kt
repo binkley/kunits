@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.fff.time
 
 import hm.binkley.kunits.Measure
-import hm.binkley.kunits.Times
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.time.Fortnight.Fortnights
 import hm.binkley.math.fixed.FixedBigRational
@@ -12,7 +12,7 @@ import hm.binkley.math.fixed.over
 sealed class FFFTimes<U : FFFTimes<U>>(
     name: String,
     fortnights: FixedBigRational,
-) : Times<FFF, U>(FFF, name, fortnights)
+) : Units<FFF, U>(FFF, name, fortnights)
 
 class Fortnight private constructor(quantity: FixedBigRational) :
     Measure<FFF, Fortnights>(Fortnights, quantity) {

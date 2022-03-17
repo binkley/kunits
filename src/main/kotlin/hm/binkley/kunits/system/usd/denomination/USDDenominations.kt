@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.usd.denomination
 
-import hm.binkley.kunits.Denominations
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.into
 import hm.binkley.kunits.system.usd.USD
 import hm.binkley.kunits.system.usd.denomination.Dime.Dimes
@@ -29,7 +29,7 @@ import java.util.Locale.US
 sealed class USDDenominations<U : USDDenominations<U>>(
     name: String,
     dollars: FixedBigRational,
-) : Denominations<USD, U>(USD, name, dollars)
+) : Units<USD, U>(USD, name, dollars)
 
 /** Formats USD money following US locale rules.  Example: "$4.33". */
 fun Measure<USD, *>.format(): String = NumberFormat.getCurrencyInstance(US)

@@ -1,12 +1,8 @@
 package hm.binkley.kunits
 
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.kunits.system.fff.length.FFFLengths
 import hm.binkley.kunits.system.fff.length.Furlong
 import hm.binkley.kunits.system.fff.length.Furlong.Furlongs
-import hm.binkley.kunits.system.fff.time.FFFTimes
-import hm.binkley.kunits.system.fff.weight.FFFWeights
-import hm.binkley.kunits.system.usd.denomination.USDDenominations
 import hm.binkley.math.fixed.FixedBigRational
 import java.util.Objects.hash
 
@@ -35,9 +31,6 @@ abstract class System<S : System<S>>(
  * Conversion between units uses the basis in calculations.
  * Example: the meter is the base unit of length in a Metric system of units,
  * and kilometers have a basis of 1,000.
- *
- * Do not use directly; rather, extend one of the groups of units such as
- * [Lengths], [Times], [Weights] or [Denominations].
  *
  * @param S the system of units
  * @param U the units of measure
@@ -74,64 +67,6 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     /** Presents this unit as "[system] [name]". */
     override fun toString() = "$system $name"
 }
-
-/**
- * Represents units of length within a [System].
- *
- * See [FFFLengths] and [Furlongs] for an example.
- * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
- * _measure_ of that unit.
- *
- * @param S the system of units
- * @param U the units of measure
- */
-abstract class Lengths<S : System<S>, U : Lengths<S, U>>(
-    system: S,
-    name: String,
-    basis: FixedBigRational,
-) : Units<S, U>(system, name, basis)
-
-/**
- * Represents units of time within a [System].
- *
- * See [FFFTimes] for an example.
- *
- * @param S the system of units
- * @param U the units of measure
- */
-abstract class Times<S : System<S>, U : Times<S, U>>(
-    system: S,
-    name: String,
-    basis: FixedBigRational,
-) : Units<S, U>(system, name, basis)
-
-/**
- * Represents units of weight within a [System].
- *
- * See [FFFWeights] for an example.
- *
- * @param S the system of units
- * @param U the units of measure
- */
-abstract class Weights<S : System<S>, U : Weights<S, U>>(
-    system: S,
-    name: String,
-    basis: FixedBigRational,
-) : Units<S, U>(system, name, basis)
-
-/**
- * Represents units of coinage or currency within a [System].
- *
- * See [USDDenominations] for an example.
- *
- * @param S the system of units
- * @param U the units of measure
- */
-abstract class Denominations<S : System<S>, U : Denominations<S, U>>(
-    system: S,
-    name: String,
-    basis: FixedBigRational,
-) : Units<S, U>(system, name, basis)
 
 /**
  * Represents a [quantity] of a [unit] within a [System].

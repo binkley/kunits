@@ -10,6 +10,7 @@ import hm.binkley.kunits.Spam.Spams
 import hm.binkley.math.fixed.over
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -34,6 +35,7 @@ internal class ExtensionsTest {
     }
 
     /** @todo Fix to be a compile error rather than runtime */
+    @Disabled("COMMENT OUT CODE")
     @Test
     fun `should not convert between different kinds of unit is suboptimal`() {
         shouldThrow<IllegalArgumentException> {
@@ -50,6 +52,7 @@ internal class ExtensionsTest {
         }
     }
 
+    @Disabled("COMMENT OUT CODE")
     @Test
     fun `should catch missing branch when checking conversion kinds`() {
         shouldThrow<NotImplementedError> {

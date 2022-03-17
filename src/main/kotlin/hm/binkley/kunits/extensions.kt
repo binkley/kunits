@@ -71,23 +71,7 @@ Measure<S, *>.into(vararg units: Units<S, *>): List<Measure<S, *>> {
 private fun Measure<*, *>.convertBases(
     other: Units<*, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
-): FixedBigRational = with(unit) {
-    if (!related(other)) throw IllegalArgumentException(
-        "Inconvertible units: $other is not related to ${kind.simpleName}"
-    )
-    return conversion(quantity * basis) / other.basis
-}
-
-private fun Units<*, *>.related(other: Units<*, *>) = kind == other.kind
-
-private val Units<*, *>.kind
-    get() = when (this) {
-        is Lengths -> Lengths::class
-        is Times -> Times::class
-        is Weights -> Weights::class
-        is Denominations -> Denominations::class
-        else -> TODO("Add branch for ${this::class}")
-    }
+) = conversion(quantity * unit.basis) / other.basis
 
 /**
  * Sorts the array element-wise descending, each entry with an attached

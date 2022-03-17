@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.english.length
 
-import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Chain.Chains
@@ -26,7 +26,7 @@ import hm.binkley.math.fixed.over
 sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,
     lines: FixedBigRational,
-) : Lengths<English, U>(English, name, lines)
+) : Units<English, U>(English, name, lines)
 
 class Line private constructor(quantity: FixedBigRational) :
     Measure<English, Lines>(Lines, quantity) {

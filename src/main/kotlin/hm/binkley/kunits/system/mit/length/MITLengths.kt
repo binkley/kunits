@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.mit.length
 
-import hm.binkley.kunits.Lengths
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.mit.MIT
 import hm.binkley.kunits.system.mit.length.Ear.Ears
 import hm.binkley.kunits.system.mit.length.Smoot.Smoots
@@ -13,7 +13,7 @@ import hm.binkley.math.fixed.over
 sealed class MITLengths<U : MITLengths<U>>(
     name: String,
     smoots: FixedBigRational,
-) : Lengths<MIT, U>(MIT, name, smoots)
+) : Units<MIT, U>(MIT, name, smoots)
 
 class Smoot private constructor(quantity: FixedBigRational) :
     Measure<MIT, Smoots>(Smoots, quantity) {

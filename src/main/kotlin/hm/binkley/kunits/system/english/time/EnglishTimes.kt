@@ -8,7 +8,7 @@
 package hm.binkley.kunits.system.english.time
 
 import hm.binkley.kunits.Measure
-import hm.binkley.kunits.Times
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.time.Atom.Atoms
 import hm.binkley.kunits.system.english.time.Day.Days
@@ -29,7 +29,7 @@ import hm.binkley.math.fixed.over
 sealed class EnglishTimes<U : EnglishTimes<U>>(
     name: String,
     seconds: FixedBigRational,
-) : Times<English, U>(English, name, seconds)
+) : Units<English, U>(English, name, seconds)
 
 class Atom private constructor(quantity: FixedBigRational) :
     Measure<English, Atoms>(Atoms, quantity) {

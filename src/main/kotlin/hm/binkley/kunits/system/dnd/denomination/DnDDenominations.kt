@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.dnd.denomination
 
-import hm.binkley.kunits.Denominations
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.dnd.DnD
 import hm.binkley.kunits.system.dnd.denomination.Copper.CopperPieces
 import hm.binkley.kunits.system.dnd.denomination.Electrum.ElectrumPieces
@@ -17,7 +17,7 @@ import hm.binkley.math.fixed.over
 abstract class DnDDenominations<U : DnDDenominations<U>>(
     name: String,
     copperPieces: FixedBigRational,
-) : Denominations<DnD, U>(DnD, name, copperPieces)
+) : Units<DnD, U>(DnD, name, copperPieces)
 
 class Copper private constructor(quantity: FixedBigRational) :
     Measure<DnD, CopperPieces>(CopperPieces, quantity) {

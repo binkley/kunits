@@ -34,7 +34,7 @@ Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
 sealed class MetasyntacticLengths<U : MetasyntacticLengths<U>>(
     name: String,
     foo: FixedBigRational,
-) : Lengths<Metasyntactic, U>(Metasyntactic, name, foo)
+) : Units<Metasyntactic, U>(Metasyntactic, name, foo)
 
 class Foo private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Foo>(Foo, value) {
@@ -81,7 +81,7 @@ val Int.baz get() = (this over 1).baz
 sealed class MetasyntacticTimes<U : MetasyntacticTimes<U>>(
     name: String,
     spams: FixedBigRational,
-) : Times<Metasyntactic, U>(Metasyntactic, name, spams)
+) : Units<Metasyntactic, U>(Metasyntactic, name, spams)
 
 class Spam private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Spams>(Spams, value) {
@@ -100,7 +100,7 @@ val Int.spams get() = (this over 1).spams
 sealed class MetasyntacticWeights<U : MetasyntacticWeights<U>>(
     name: String,
     freds: FixedBigRational,
-) : Weights<Metasyntactic, U>(Metasyntactic, name, freds)
+) : Units<Metasyntactic, U>(Metasyntactic, name, freds)
 
 class Fred private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Freds>(Freds, value) {
@@ -119,7 +119,7 @@ val Int.freds get() = (this over 1).freds
 sealed class MetasyntacticDenominations<U : MetasyntacticDenominations<U>>(
     name: String,
     alices: FixedBigRational,
-) : Denominations<Metasyntactic, U>(Metasyntactic, name, alices)
+) : Units<Metasyntactic, U>(Metasyntactic, name, alices)
 
 class Alice private constructor(value: FixedBigRational) :
     Measure<Metasyntactic, Alices>(Alices, value) {
@@ -165,7 +165,7 @@ Measure<Martian, U>.intoMetasyntactic(other: V) = into(other) {
 sealed class MartianLengths<U : MartianLengths<U>>(
     name: String,
     bar: FixedBigRational,
-) : Lengths<Martian, U>(Martian, name, bar)
+) : Units<Martian, U>(Martian, name, bar)
 
 class Grok private constructor(value: FixedBigRational) :
     Measure<Martian, Groks>(Groks, value) {

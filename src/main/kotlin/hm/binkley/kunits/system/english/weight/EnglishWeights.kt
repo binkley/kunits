@@ -1,7 +1,7 @@
 package hm.binkley.kunits.system.english.weight
 
 import hm.binkley.kunits.Measure
-import hm.binkley.kunits.Weights
+import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.weight.Clove.Cloves
 import hm.binkley.kunits.system.english.weight.Dram.Drams
@@ -20,7 +20,7 @@ import hm.binkley.math.fixed.over
 sealed class EnglishWeights<U : EnglishWeights<U>>(
     name: String,
     drams: FixedBigRational,
-) : Weights<English, U>(English, name, drams)
+) : Units<English, U>(English, name, drams)
 
 class Grain private constructor(quantity: FixedBigRational) :
     Measure<English, Grains>(Grains, quantity) {
