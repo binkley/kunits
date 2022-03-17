@@ -1,7 +1,6 @@
 package hm.binkley.kunits.system.dnd.denomination.other
 
-import hm.binkley.kunits.Measure
-import hm.binkley.kunits.system.dnd.DnD
+import hm.binkley.kunits.system.dnd.denomination.DnDDenomination
 import hm.binkley.kunits.system.dnd.denomination.DnDDenominations
 import hm.binkley.kunits.system.dnd.denomination.other.Mithral.MithralPieces
 import hm.binkley.math.fixed.FixedBigRational
@@ -14,7 +13,7 @@ abstract class OtherDnDDenominations<U : OtherDnDDenominations<U>>(
 ) : DnDDenominations<U>(name, mithralPieces)
 
 class Mithral private constructor(quantity: FixedBigRational) :
-    Measure<DnD, MithralPieces>(MithralPieces, quantity) {
+    DnDDenomination<MithralPieces>(MithralPieces, quantity) {
     companion object MithralPieces : OtherDnDDenominations<MithralPieces>(
         "mithral piece", 10_000 over 1
     ) {

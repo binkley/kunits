@@ -11,7 +11,7 @@ internal class FFFTimesTest {
 
     @Test
     fun `should pretty print`() {
-        "$Fortnight" shouldBe "Furlong-Firkin-Fortnight fortnight"
+        "$Fortnight" shouldBe "Furlong-Firkin-Fortnight time: fortnight"
         "${1.fortnights}" shouldBe "1 ftn"
     }
 }

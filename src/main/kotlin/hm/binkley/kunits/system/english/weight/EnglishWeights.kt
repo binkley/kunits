@@ -2,6 +2,7 @@ package hm.binkley.kunits.system.english.weight
 
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
+import hm.binkley.kunits.Weight
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.weight.Clove.Cloves
 import hm.binkley.kunits.system.english.weight.Dram.Drams
@@ -20,10 +21,10 @@ import hm.binkley.math.fixed.over
 sealed class EnglishWeights<U : EnglishWeights<U>>(
     name: String,
     drams: FixedBigRational,
-) : Units<English, U>(English, name, drams)
+) : Units<English, Weight, U>(English, Weight, name, drams)
 
 class Grain private constructor(quantity: FixedBigRational) :
-    Measure<English, Grains>(Grains, quantity) {
+    Measure<English, Weight, Grains>(Grains, quantity) {
     companion object Grains : EnglishWeights<Grains>(
         "grain", 256 over 7000
     ) {
@@ -37,7 +38,7 @@ val Long.grains get() = (this over 1).grains
 val Int.grains get() = (this over 1).grains
 
 class Dram private constructor(quantity: FixedBigRational) :
-    Measure<English, Drams>(Drams, quantity) {
+    Measure<English, Weight, Drams>(Drams, quantity) {
     companion object Drams : EnglishWeights<Drams>(
         "dram", ONE
     ) {
@@ -51,7 +52,7 @@ val Long.drams get() = (this over 1).drams
 val Int.drams get() = (this over 1).drams
 
 class Ounce private constructor(quantity: FixedBigRational) :
-    Measure<English, Ounces>(Ounces, quantity) {
+    Measure<English, Weight, Ounces>(Ounces, quantity) {
     companion object Ounces : EnglishWeights<Ounces>(
         "ounce", 16 over 1
     ) {
@@ -65,7 +66,7 @@ val Long.ounces get() = (this over 1).ounces
 val Int.ounces get() = (this over 1).ounces
 
 class Pound private constructor(quantity: FixedBigRational) :
-    Measure<English, Pounds>(Pounds, quantity) {
+    Measure<English, Weight, Pounds>(Pounds, quantity) {
     companion object Pounds : EnglishWeights<Pounds>(
         "pound", 256 over 1
     ) {
@@ -79,7 +80,7 @@ val Long.pounds get() = (this over 1).pounds
 val Int.pounds get() = (this over 1).pounds
 
 class Clove private constructor(quantity: FixedBigRational) :
-    Measure<English, Cloves>(Cloves, quantity) {
+    Measure<English, Weight, Cloves>(Cloves, quantity) {
     companion object Cloves : EnglishWeights<Cloves>(
         "clove", 1_792 over 1
     ) {
@@ -93,7 +94,7 @@ val Long.cloves get() = (this over 1).cloves
 val Int.cloves get() = (this over 1).cloves
 
 class Stone private constructor(quantity: FixedBigRational) :
-    Measure<English, Stone>(Stone, quantity) {
+    Measure<English, Weight, Stone>(Stone, quantity) {
     /** Note: The plural of "stone" is "stone" when describing weight. */
     companion object Stone : EnglishWeights<Stone>(
         "stone", 3_584 over 1
@@ -108,7 +109,7 @@ val Long.stone get() = (this over 1).stone
 val Int.stone get() = (this over 1).stone
 
 class Tod private constructor(quantity: FixedBigRational) :
-    Measure<English, Tods>(Tods, quantity) {
+    Measure<English, Weight, Tods>(Tods, quantity) {
     companion object Tods : EnglishWeights<Tods>(
         "tod", 7_168 over 1
     ) {
@@ -122,7 +123,7 @@ val Long.tods get() = (this over 1).tods
 val Int.tods get() = (this over 1).tods
 
 class Hundredweight private constructor(quantity: FixedBigRational) :
-    Measure<English, Hundredweight>(Hundredweight, quantity) {
+    Measure<English, Weight, Hundredweight>(Hundredweight, quantity) {
     /**
      * Note: The plural of "hundredweight" is "hundredweight" when
      * describing weight.
@@ -140,7 +141,7 @@ val Long.hundredweight get() = (this over 1).hundredweight
 val Int.hundredweight get() = (this over 1).hundredweight
 
 class Tun private constructor(quantity: FixedBigRational) :
-    Measure<English, Tuns>(Tuns, quantity) {
+    Measure<English, Weight, Tuns>(Tuns, quantity) {
     companion object Tuns : EnglishWeights<Tuns>(
         "tun", 573_440 over 1
     ) {

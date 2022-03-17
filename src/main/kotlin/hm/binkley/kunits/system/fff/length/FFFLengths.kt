@@ -1,5 +1,6 @@
 package hm.binkley.kunits.system.fff.length
 
+import hm.binkley.kunits.Length
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.fff.FFF
@@ -12,10 +13,15 @@ import hm.binkley.math.fixed.over
 sealed class FFFLengths<U : FFFLengths<U>>(
     name: String,
     furlongs: FixedBigRational,
-) : Units<FFF, U>(FFF, name, furlongs)
+) : Units<FFF, Length, U>(FFF, Length, name, furlongs)
+
+sealed class FFFLength<U : FFFLengths<U>>(
+    unit: U,
+    quantity: FixedBigRational,
+) : Measure<FFF, Length, U>(unit, quantity)
 
 class Furlong(quantity: FixedBigRational) :
-    Measure<FFF, Furlongs>(Furlongs, quantity) {
+    FFFLength<Furlongs>(Furlongs, quantity) {
     companion object Furlongs : FFFLengths<Furlongs>(
         "furlong", ONE
     ) {

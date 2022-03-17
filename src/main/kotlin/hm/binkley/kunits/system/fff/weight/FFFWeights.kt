@@ -2,6 +2,7 @@ package hm.binkley.kunits.system.fff.weight
 
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
+import hm.binkley.kunits.Weight
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.weight.Firkin.Firkins
 import hm.binkley.math.fixed.FixedBigRational
@@ -12,11 +13,11 @@ import hm.binkley.math.fixed.over
 sealed class FFFWeights<U : FFFWeights<U>>(
     name: String,
     firkins: FixedBigRational,
-) : Units<FFF, U>(FFF, name, firkins)
+) : Units<FFF, Weight, U>(FFF, Weight, name, firkins)
 
 /** One firkin (weight) is the mass of one firkin (volume) of water. */
 class Firkin private constructor(quantity: FixedBigRational) :
-    Measure<FFF, Firkins>(Firkins, quantity) {
+    Measure<FFF, Weight, Firkins>(Firkins, quantity) {
     companion object Firkins : FFFWeights<Firkins>(
         "firkin", ONE
     ) {

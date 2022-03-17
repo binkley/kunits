@@ -14,7 +14,7 @@ internal class OtherDnDDenominationsTest {
 
     @Test
     fun `should pretty print`() {
-        "$MithralPieces" shouldBe "D&D mithral piece"
+        "$MithralPieces" shouldBe "D&D denomination: mithral piece"
         "${1.mithral}" shouldBe "1 mp"
     }
 }

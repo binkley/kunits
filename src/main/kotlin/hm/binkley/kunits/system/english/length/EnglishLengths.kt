@@ -1,5 +1,6 @@
 package hm.binkley.kunits.system.english.length
 
+import hm.binkley.kunits.Length
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
@@ -26,10 +27,10 @@ import hm.binkley.math.fixed.over
 sealed class EnglishLengths<U : EnglishLengths<U>>(
     name: String,
     lines: FixedBigRational,
-) : Units<English, U>(English, name, lines)
+) : Units<English, Length, U>(English, Length, name, lines)
 
 class Line private constructor(quantity: FixedBigRational) :
-    Measure<English, Lines>(Lines, quantity) {
+    Measure<English, Length, Lines>(Lines, quantity) {
     companion object Lines : EnglishLengths<Lines>(
         "line", ONE
     ) {
@@ -43,7 +44,7 @@ val Long.lines get() = (this over 1).lines
 val Int.lines get() = (this over 1).lines
 
 class Barleycorn private constructor(quantity: FixedBigRational) :
-    Measure<English, Barleycorns>(Barleycorns, quantity) {
+    Measure<English, Length, Barleycorns>(Barleycorns, quantity) {
     companion object Barleycorns : EnglishLengths<Barleycorns>(
         "barleycorn", 4 over 1
     ) {
@@ -57,7 +58,7 @@ val Long.barleycorns get() = (this over 1).barleycorns
 val Int.barleycorns get() = (this over 1).barleycorns
 
 class Inch private constructor(quantity: FixedBigRational) :
-    Measure<English, Inches>(Inches, quantity) {
+    Measure<English, Length, Inches>(Inches, quantity) {
     companion object Inches : EnglishLengths<Inches>(
         "inch", 12 over 1
     ) {
@@ -71,7 +72,7 @@ val Long.inches get() = (this over 1).inches
 val Int.inches get() = (this over 1).inches
 
 class Stick private constructor(quantity: FixedBigRational) :
-    Measure<English, Sticks>(Sticks, quantity) {
+    Measure<English, Length, Sticks>(Sticks, quantity) {
     companion object Sticks : EnglishLengths<Sticks>(
         "stick", 24 over 1
     ) {
@@ -88,7 +89,7 @@ val Long.sticks get() = (this over 1).sticks
 val Int.sticks get() = (this over 1).sticks
 
 class Hand private constructor(quantity: FixedBigRational) :
-    Measure<English, Hands>(Hands, quantity) {
+    Measure<English, Length, Hands>(Hands, quantity) {
     companion object Hands : EnglishLengths<Hands>(
         "hand", 48 over 1
     ) {
@@ -102,7 +103,7 @@ val Long.hands get() = (this over 1).hands
 val Int.hands get() = (this over 1).hands
 
 class Shaftment private constructor(quantity: FixedBigRational) :
-    Measure<English, Shaftments>(Shaftments, quantity) {
+    Measure<English, Length, Shaftments>(Shaftments, quantity) {
     companion object Shaftments : EnglishLengths<Shaftments>(
         "shaftment", 72 over 1
     ) {
@@ -117,7 +118,7 @@ val Long.shaftments get() = (this over 1).shaftments
 val Int.shaftments get() = (this over 1).shaftments
 
 class Link private constructor(quantity: FixedBigRational) :
-    Measure<English, Links>(Links, quantity) {
+    Measure<English, Length, Links>(Links, quantity) {
     companion object Links : EnglishLengths<Links>(
         "link", 2_376 over 25
     ) {
@@ -131,7 +132,7 @@ val Long.links get() = (this over 1).links
 val Int.links get() = (this over 1).links
 
 class Foot private constructor(quantity: FixedBigRational) :
-    Measure<English, Feet>(Feet, quantity) {
+    Measure<English, Length, Feet>(Feet, quantity) {
     companion object Feet : EnglishLengths<Feet>(
         "foot", 144 over 1
     ) {
@@ -145,7 +146,7 @@ val Long.feet get() = (this over 1).feet
 val Int.feet get() = (this over 1).feet
 
 class Yard(quantity: FixedBigRational) :
-    Measure<English, Yards>(Yards, quantity) {
+    Measure<English, Length, Yards>(Yards, quantity) {
     companion object Yards : EnglishLengths<Yards>(
         "yard", 432 over 1
     ) {
@@ -159,7 +160,7 @@ val Long.yards get() = (this over 1).yards
 val Int.yards get() = (this over 1).yards
 
 class Ell private constructor(quantity: FixedBigRational) :
-    Measure<English, Ells>(Ells, quantity) {
+    Measure<English, Length, Ells>(Ells, quantity) {
     companion object Ells : EnglishLengths<Ells>(
         "ells", 540 over 1
     ) {
@@ -173,7 +174,7 @@ val Long.ells get() = (this over 1).ells
 val Int.ells get() = (this over 1).ells
 
 class Rod private constructor(quantity: FixedBigRational) :
-    Measure<English, Rods>(Rods, quantity) {
+    Measure<English, Length, Rods>(Rods, quantity) {
     companion object Rods : EnglishLengths<Rods>(
         "rod", 2_376 over 1
     ) {
@@ -187,7 +188,7 @@ val Long.rods get() = (this over 1).rods
 val Int.rods get() = (this over 1).rods
 
 class Chain private constructor(quantity: FixedBigRational) :
-    Measure<English, Chains>(Chains, quantity) {
+    Measure<English, Length, Chains>(Chains, quantity) {
     companion object Chains : EnglishLengths<Chains>(
         "chain", 9_504 over 1
     ) {
@@ -201,7 +202,7 @@ val Long.chains get() = (this over 1).chains
 val Int.chains get() = (this over 1).chains
 
 class Furlong private constructor(quantity: FixedBigRational) :
-    Measure<English, Furlongs>(Furlongs, quantity) {
+    Measure<English, Length, Furlongs>(Furlongs, quantity) {
     companion object Furlongs : EnglishLengths<Furlongs>(
         "furlong", 95_040 over 1
     ) {
@@ -215,7 +216,7 @@ val Long.furlongs get() = (this over 1).furlongs
 val Int.furlongs get() = (this over 1).furlongs
 
 class Mile private constructor(quantity: FixedBigRational) :
-    Measure<English, Miles>(Miles, quantity) {
+    Measure<English, Length, Miles>(Miles, quantity) {
     companion object Miles : EnglishLengths<Miles>(
         "mile", 760_320 over 1
     ) {
@@ -229,7 +230,7 @@ val Long.miles get() = (this over 1).miles
 val Int.miles get() = (this over 1).miles
 
 class League private constructor(quantity: FixedBigRational) :
-    Measure<English, Leagues>(Leagues, quantity) {
+    Measure<English, Length, Leagues>(Leagues, quantity) {
     companion object Leagues : EnglishLengths<Leagues>(
         "league", 2_280_960 over 1
     ) {

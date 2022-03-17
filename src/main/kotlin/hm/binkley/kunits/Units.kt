@@ -23,6 +23,25 @@ abstract class System<S : System<S>>(
     override fun toString() = name
 }
 
+/** Represents kinds for [Units]. */
+sealed class Kind(
+    val name: String
+) {
+    override fun toString() = name
+}
+
+/** Type token for units of length. */
+object Length : Kind("length")
+
+/** Type token for units of time. */
+object Time : Kind("time")
+
+/** Type token for units of weight. */
+object Weight : Kind("weight")
+
+/** Type token for units of denomination. */
+object Denomination : Kind("denomination")
+
 /**
  * Represents units within a [System].
  *
@@ -33,16 +52,19 @@ abstract class System<S : System<S>>(
  * and kilometers have a basis of 1,000.
  *
  * @param S the system of units
+ * @param K the kind of units
  * @param U the units of measure
  */
-abstract class Units<S : System<S>, U : Units<S, U>>(
+abstract class Units<S : System<S>, K : Kind, U : Units<S, K, U>>(
     /** The system of units for this unit. */
     val system: S,
+    /** The kind of units. */
+    val kind: K,
     /** Must be unique for each unit within [system]. */
     val name: String,
     /** Amount of 1 unit expressed in base units. */
     internal val basis: FixedBigRational,
-) : Comparable<Units<S, *>> {
+) : Comparable<Units<S, K, *>> {
     /**
      * Creates a new measure from the given [quantity].
      *
@@ -50,7 +72,7 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
      *
      * @todo Avoid casting: teach new to return specific M measure type
      */
-    abstract fun new(quantity: FixedBigRational): Measure<S, U>
+    abstract fun new(quantity: FixedBigRational): Measure<S, K, U>
 
     /**
      * Presents the calling measure suitable for humans.
@@ -60,12 +82,13 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
     abstract fun format(quantity: FixedBigRational): String
 
     /** Orders units by their [basis]. */
-    override fun compareTo(other: Units<S, *>) = basis.compareTo(other.basis)
+    override fun compareTo(other: Units<S, K, *>) =
+        basis.compareTo(other.basis)
 
     // Units are singleton objects, so no point to defining equals/hashCode
 
     /** Presents this unit as "[system] [name]". */
-    override fun toString() = "$system $name"
+    override fun toString() = "$system $kind: $name"
 }
 
 /**
@@ -76,16 +99,17 @@ abstract class Units<S : System<S>, U : Units<S, U>>(
  * quantity of that unit.
  *
  * @param S the system of units
+ * @param K the kind of units
  * @param U the units of measure
  */
-abstract class Measure<S : System<S>, U : Units<S, U>>(
+abstract class Measure<S : System<S>, K : Kind, U : Units<S, K, U>>(
     /** Unit of measure. */
     val unit: U,
     /** Number of [unit]s. */
     val quantity: FixedBigRational,
-) : Comparable<Measure<S, *>> {
+) : Comparable<Measure<S, K, *>> {
     /** Compares to [other] in the [U] units of measure. */
-    override fun compareTo(other: Measure<S, *>) =
+    override fun compareTo(other: Measure<S, K, *>) =
         quantity.compareTo((other into unit).quantity)
 
     /** Presents this measure as [Units.format] of [quantity]. */
@@ -102,7 +126,7 @@ abstract class Measure<S : System<S>, U : Units<S, U>>(
      * is mathematically equivalent though in convenient.)
      */
     override fun equals(other: Any?) = this === other ||
-        other is Measure<*, *> &&
+        other is Measure<*, *, *> &&
         unit == other.unit &&
         quantity == other.quantity
 

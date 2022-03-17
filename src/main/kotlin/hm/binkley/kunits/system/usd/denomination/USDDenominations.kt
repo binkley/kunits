@@ -1,5 +1,6 @@
 package hm.binkley.kunits.system.usd.denomination
 
+import hm.binkley.kunits.Denomination
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.into
@@ -29,14 +30,15 @@ import java.util.Locale.US
 sealed class USDDenominations<U : USDDenominations<U>>(
     name: String,
     dollars: FixedBigRational,
-) : Units<USD, U>(USD, name, dollars)
+) : Units<USD, Denomination, U>(USD, Denomination, name, dollars)
 
 /** Formats USD money following US locale rules.  Example: "$4.33". */
-fun Measure<USD, *>.format(): String = NumberFormat.getCurrencyInstance(US)
-    .format((this into Dollars).quantity.toBigDecimal())
+fun Measure<USD, Denomination, *>.format(): String =
+    NumberFormat.getCurrencyInstance(US)
+        .format((this into Dollars).quantity.toBigDecimal())
 
 class HundredDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, HundredDollars>(HundredDollars, quantity) {
+    Measure<USD, Denomination, HundredDollars>(HundredDollars, quantity) {
     companion object HundredDollars : USDDenominations<HundredDollars>(
         "hundred dollar bill", 100 over 1
     ) {
@@ -50,7 +52,7 @@ val Long.hundredDollars get() = (this over 1).hundredDollars
 val Int.hundredDollars get() = (this over 1).hundredDollars
 
 class FiftyDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, FiftyDollars>(FiftyDollars, quantity) {
+    Measure<USD, Denomination, FiftyDollars>(FiftyDollars, quantity) {
     companion object FiftyDollars : USDDenominations<FiftyDollars>(
         "fifty dollar bill", 50 over 1
     ) {
@@ -64,7 +66,7 @@ val Long.fiftyDollars get() = (this over 1).fiftyDollars
 val Int.fiftyDollars get() = (this over 1).fiftyDollars
 
 class TwentyDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, TwentyDollars>(TwentyDollars, quantity) {
+    Measure<USD, Denomination, TwentyDollars>(TwentyDollars, quantity) {
     companion object TwentyDollars : USDDenominations<TwentyDollars>(
         "twenty dollar bill", 20 over 1
     ) {
@@ -78,7 +80,7 @@ val Long.twentyDollars get() = (this over 1).twentyDollars
 val Int.twentyDollars get() = (this over 1).twentyDollars
 
 class TenDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, TenDollars>(TenDollars, quantity) {
+    Measure<USD, Denomination, TenDollars>(TenDollars, quantity) {
     companion object TenDollars : USDDenominations<TenDollars>(
         "ten dollar bill", TEN
     ) {
@@ -92,7 +94,7 @@ val Long.tenDollars get() = (this over 1).tenDollars
 val Int.tenDollars get() = (this over 1).tenDollars
 
 class FiveDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, FiveDollars>(FiveDollars, quantity) {
+    Measure<USD, Denomination, FiveDollars>(FiveDollars, quantity) {
     companion object FiveDollars : USDDenominations<FiveDollars>(
         "five dollar bill", 5 over 1
     ) {
@@ -106,7 +108,7 @@ val Long.fiveDollars get() = (this over 1).fiveDollars
 val Int.fiveDollars get() = (this over 1).fiveDollars
 
 class TwoDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, TwoDollars>(TwoDollars, quantity) {
+    Measure<USD, Denomination, TwoDollars>(TwoDollars, quantity) {
     companion object TwoDollars : USDDenominations<TwoDollars>(
         "two dollar bill", TWO
     ) {
@@ -120,7 +122,7 @@ val Long.twoDollars get() = (this over 1).twoDollars
 val Int.twoDollars get() = (this over 1).twoDollars
 
 class Dollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, Dollars>(Dollars, quantity) {
+    Measure<USD, Denomination, Dollars>(Dollars, quantity) {
     companion object Dollars : USDDenominations<Dollars>(
         "dollar bill", ONE
     ) {
@@ -134,7 +136,7 @@ val Long.dollars get() = (this over 1).dollars
 val Int.dollars get() = (this over 1).dollars
 
 class DollarCoin private constructor(quantity: FixedBigRational) :
-    Measure<USD, DollarCoins>(DollarCoins, quantity) {
+    Measure<USD, Denomination, DollarCoins>(DollarCoins, quantity) {
     companion object DollarCoins : USDDenominations<DollarCoins>(
         "dollar coin", ONE
     ) {
@@ -148,7 +150,7 @@ val Long.dollarCoins get() = (this over 1).dollarCoins
 val Int.dollarCoins get() = (this over 1).dollarCoins
 
 class HalfDollar private constructor(quantity: FixedBigRational) :
-    Measure<USD, HalfDollars>(HalfDollars, quantity) {
+    Measure<USD, Denomination, HalfDollars>(HalfDollars, quantity) {
     companion object HalfDollars : USDDenominations<HalfDollars>(
         "half dollar", 1 over 2
     ) {
@@ -162,7 +164,7 @@ val Long.halfDollars get() = (this over 1).halfDollars
 val Int.halfDollars get() = (this over 1).halfDollars
 
 class Quarter private constructor(quantity: FixedBigRational) :
-    Measure<USD, Quarters>(Quarters, quantity) {
+    Measure<USD, Denomination, Quarters>(Quarters, quantity) {
     companion object Quarters : USDDenominations<Quarters>(
         "quarter", 1 over 4
     ) {
@@ -176,7 +178,7 @@ val Long.quarters get() = (this over 1).quarters
 val Int.quarters get() = (this over 1).quarters
 
 class Dime private constructor(quantity: FixedBigRational) :
-    Measure<USD, Dimes>(Dimes, quantity) {
+    Measure<USD, Denomination, Dimes>(Dimes, quantity) {
     companion object Dimes : USDDenominations<Dimes>(
         "dime", 1 over 10
     ) {
@@ -190,7 +192,7 @@ val Long.dimes get() = (this over 1).dimes
 val Int.dimes get() = (this over 1).dimes
 
 class Nickel private constructor(quantity: FixedBigRational) :
-    Measure<USD, Nickels>(Nickels, quantity) {
+    Measure<USD, Denomination, Nickels>(Nickels, quantity) {
     companion object Nickels : USDDenominations<Nickels>(
         "nickel", 1 over 20
     ) {
@@ -204,7 +206,7 @@ val Long.nickels get() = (this over 1).nickels
 val Int.nickels get() = (this over 1).nickels
 
 class Penny private constructor(quantity: FixedBigRational) :
-    Measure<USD, Pennies>(Pennies, quantity) {
+    Measure<USD, Denomination, Pennies>(Pennies, quantity) {
     companion object Pennies : USDDenominations<Pennies>(
         "penny", 1 over 100
     ) {

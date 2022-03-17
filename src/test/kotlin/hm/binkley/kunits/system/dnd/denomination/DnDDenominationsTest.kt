@@ -21,15 +21,15 @@ internal class DnDDenominationsTest {
 
     @Test
     fun `should pretty print`() {
-        "$CopperPieces" shouldBe "D&D copper piece"
+        "$CopperPieces" shouldBe "D&D denomination: copper piece"
         "${1.copper}" shouldBe "1 cp"
-        "$SilverPieces" shouldBe "D&D silver piece"
+        "$SilverPieces" shouldBe "D&D denomination: silver piece"
         "${1.silver}" shouldBe "1 sp"
-        "$ElectrumPieces" shouldBe "D&D electrum piece"
+        "$ElectrumPieces" shouldBe "D&D denomination: electrum piece"
         "${1.electrum}" shouldBe "1 ep"
-        "$GoldPieces" shouldBe "D&D gold piece"
+        "$GoldPieces" shouldBe "D&D denomination: gold piece"
         "${1.gold}" shouldBe "1 gp"
-        "$PlatinumPieces" shouldBe "D&D platinum piece"
+        "$PlatinumPieces" shouldBe "D&D denomination: platinum piece"
         "${1.platinum}" shouldBe "1 pp"
     }
 }

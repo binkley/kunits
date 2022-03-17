@@ -1,11 +1,11 @@
 package hm.binkley.kunits.system.english
 
+import hm.binkley.kunits.Length
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.System
+import hm.binkley.kunits.Time
+import hm.binkley.kunits.Weight
 import hm.binkley.kunits.into
-import hm.binkley.kunits.system.english.length.EnglishLengths
-import hm.binkley.kunits.system.english.time.EnglishTimes
-import hm.binkley.kunits.system.english.weight.EnglishWeights
 import hm.binkley.kunits.system.fff.length.FFFLengths
 import hm.binkley.kunits.system.fff.time.FFFTimes
 import hm.binkley.kunits.system.fff.weight.FFFWeights
@@ -19,13 +19,19 @@ private val FIRKINS_PER_DRAM = 1 over 23_040
 object English : System<English>("English")
 
 /** Converts lengths from English into FFF units. */
-infix fun <U : EnglishLengths<U>, V : FFFLengths<V>>
-Measure<English, U>.intoFFF(other: V) = into(other) { it * FURLONGS_PER_LINE }
+infix fun <V : FFFLengths<V>>
+Measure<English, Length, *>.intoFFF(other: V) = into(other) {
+    it * FURLONGS_PER_LINE
+}
 
 /** Converts lengths from English into FFF units. */
-infix fun <U : EnglishTimes<U>, V : FFFTimes<V>>
-Measure<English, U>.intoFFF(other: V) = into(other) { it * FORTNIGHTS_PER_SECOND }
+infix fun <V : FFFTimes<V>>
+Measure<English, Time, *>.intoFFF(other: V) = into(other) {
+    it * FORTNIGHTS_PER_SECOND
+}
 
 /** Converts lengths from English into FFF units. */
-infix fun <U : EnglishWeights<U>, V : FFFWeights<V>>
-Measure<English, U>.intoFFF(other: V) = into(other) { it * FIRKINS_PER_DRAM }
+infix fun <V : FFFWeights<V>>
+Measure<English, Weight, *>.intoFFF(other: V) = into(other) {
+    it * FIRKINS_PER_DRAM
+}

@@ -28,23 +28,23 @@ internal class EnglishWeightsTest {
 
     @Test
     fun `should pretty print`() {
-        "$Grain" shouldBe "English grain"
+        "$Grain" shouldBe "English weight: grain"
         "${1.grains}" shouldBe "1 gr"
-        "$Dram" shouldBe "English dram"
+        "$Dram" shouldBe "English weight: dram"
         "${1.drams}" shouldBe "1 dr"
-        "$Ounce" shouldBe "English ounce"
+        "$Ounce" shouldBe "English weight: ounce"
         "${1.ounces}" shouldBe "1 oz"
-        "$Pound" shouldBe "English pound"
+        "$Pound" shouldBe "English weight: pound"
         "${1.pounds}" shouldBe "1 lb"
-        "$Clove" shouldBe "English clove"
+        "$Clove" shouldBe "English weight: clove"
         "${1.cloves}" shouldBe "1 cloves"
-        "$Stone" shouldBe "English stone"
+        "$Stone" shouldBe "English weight: stone"
         "${1.stone}" shouldBe "1 st"
-        "$Tod" shouldBe "English tod"
+        "$Tod" shouldBe "English weight: tod"
         "${1.tods}" shouldBe "1 tods"
-        "$Hundredweight" shouldBe "English hundredweight"
+        "$Hundredweight" shouldBe "English weight: hundredweight"
         "${1.hundredweight}" shouldBe "1 cwt"
-        "$Tun" shouldBe "English tun"
+        "$Tun" shouldBe "English weight: tun"
         "${1.tuns}" shouldBe "1 tuns"
     }
 }

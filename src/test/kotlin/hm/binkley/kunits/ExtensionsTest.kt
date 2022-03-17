@@ -1,16 +1,11 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.Alice.Alices
 import hm.binkley.kunits.Bar.Bar
 import hm.binkley.kunits.Baz.Baz
 import hm.binkley.kunits.Foo.Foo
-import hm.binkley.kunits.Fred.Freds
 import hm.binkley.kunits.Grok.Groks
-import hm.binkley.kunits.Spam.Spams
 import hm.binkley.math.fixed.over
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -34,30 +29,13 @@ internal class ExtensionsTest {
         // 1.groks.into(Bar, Foo)
     }
 
-    /** @todo Fix to be a compile error rather than runtime */
-    @Disabled("COMMENT OUT CODE")
     @Test
     fun `should not convert between different kinds of unit is suboptimal`() {
-        shouldThrow<IllegalArgumentException> {
-            1.foo into Spams
-        }
-        shouldThrow<IllegalArgumentException> {
-            1.spams into Freds
-        }
-        shouldThrow<IllegalArgumentException> {
-            1.freds into Alices
-        }
-        shouldThrow<IllegalArgumentException> {
-            1.alices into Foo
-        }
-    }
-
-    @Disabled("COMMENT OUT CODE")
-    @Test
-    fun `should catch missing branch when checking conversion kinds`() {
-        shouldThrow<NotImplementedError> {
-            1.totos into Foo
-        }
+        // Uncomment to see that these do not compile
+        // 1.foo into Spams
+        // 1.spams into Freds
+        // 1.freds into Alices
+        // 1.alices into Foo
     }
 
     @Nested

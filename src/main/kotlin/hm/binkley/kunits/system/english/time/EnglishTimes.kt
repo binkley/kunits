@@ -8,6 +8,7 @@
 package hm.binkley.kunits.system.english.time
 
 import hm.binkley.kunits.Measure
+import hm.binkley.kunits.Time
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.time.Atom.Atoms
@@ -29,10 +30,15 @@ import hm.binkley.math.fixed.over
 sealed class EnglishTimes<U : EnglishTimes<U>>(
     name: String,
     seconds: FixedBigRational,
-) : Units<English, U>(English, name, seconds)
+) : Units<English, Time, U>(English, Time, name, seconds)
+
+sealed class EnglishTime<U : EnglishTimes<U>>(
+    unit: U,
+    quantity: FixedBigRational,
+) : Measure<English, Time, U>(unit, quantity)
 
 class Atom private constructor(quantity: FixedBigRational) :
-    Measure<English, Atoms>(Atoms, quantity) {
+    EnglishTime<Atoms>(Atoms, quantity) {
     companion object Atoms : EnglishTimes<Atoms>(
         "atom", (15 over 94)
     ) {
@@ -46,7 +52,7 @@ val Long.atoms get() = (this over 1).atoms
 val Int.atoms get() = (this over 1).atoms
 
 class Second private constructor(quantity: FixedBigRational) :
-    Measure<English, Seconds>(Seconds, quantity) {
+    EnglishTime<Seconds>(Seconds, quantity) {
     companion object Seconds : EnglishTimes<Seconds>(
         "second", ONE
     ) {
@@ -60,7 +66,7 @@ val Long.seconds get() = (this over 1).seconds
 val Int.seconds get() = (this over 1).seconds
 
 class Minute private constructor(quantity: FixedBigRational) :
-    Measure<English, Minutes>(Minutes, quantity) {
+    EnglishTime<Minutes>(Minutes, quantity) {
     companion object Minutes : EnglishTimes<Minutes>(
         "minute", (60 over 1)
     ) {
@@ -74,7 +80,7 @@ val Long.minutes get() = (this over 1).minutes
 val Int.minutes get() = (this over 1).minutes
 
 class Moment private constructor(quantity: FixedBigRational) :
-    Measure<English, Moments>(Moments, quantity) {
+    EnglishTime<Moments>(Moments, quantity) {
     companion object Moments : EnglishTimes<Moments>(
         "moment", (90 over 1)
     ) {
@@ -89,7 +95,7 @@ val Int.moments get() = (this over 1).moments
 
 /** Also known as a "prick". */
 class Point private constructor(quantity: FixedBigRational) :
-    Measure<English, Points>(Points, quantity) {
+    EnglishTime<Points>(Points, quantity) {
     companion object Points : EnglishTimes<Points>(
         "point", (900 over 1)
     ) {
@@ -106,7 +112,7 @@ val Long.pricks get() = points
 val Int.pricks get() = points
 
 class Mileway private constructor(quantity: FixedBigRational) :
-    Measure<English, Mileways>(Mileways, quantity) {
+    EnglishTime<Mileways>(Mileways, quantity) {
     companion object Mileways : EnglishTimes<Mileways>(
         "mileway", (1_200 over 1)
     ) {
@@ -120,7 +126,7 @@ val Long.mileways get() = (this over 1).mileways
 val Int.mileways get() = (this over 1).mileways
 
 class Hour private constructor(quantity: FixedBigRational) :
-    Measure<English, Hours>(Hours, quantity) {
+    EnglishTime<Hours>(Hours, quantity) {
     companion object Hours : EnglishTimes<Hours>(
         "hour", (3_600 over 1)
     ) {
@@ -134,7 +140,7 @@ val Long.hours get() = (this over 1).hours
 val Int.hours get() = (this over 1).hours
 
 class Quadrant private constructor(quantity: FixedBigRational) :
-    Measure<English, Quadrants>(Quadrants, quantity) {
+    EnglishTime<Quadrants>(Quadrants, quantity) {
     companion object Quadrants : EnglishTimes<Quadrants>(
         "quadrant", (21_600 over 1)
     ) {
@@ -149,7 +155,7 @@ val Long.quadrants get() = (this over 1).quadrants
 val Int.quadrants get() = (this over 1).quadrants
 
 class Day private constructor(quantity: FixedBigRational) :
-    Measure<English, Days>(Days, quantity) {
+    EnglishTime<Days>(Days, quantity) {
     companion object Days : EnglishTimes<Days>(
         "day", (86_400 over 1)
     ) {
@@ -163,7 +169,7 @@ val Long.days get() = (this over 1).days
 val Int.days get() = (this over 1).days
 
 class Week private constructor(quantity: FixedBigRational) :
-    Measure<English, Weeks>(Weeks, quantity) {
+    EnglishTime<Weeks>(Weeks, quantity) {
     companion object Weeks : EnglishTimes<Weeks>(
         "week", (604_800 over 1)
     ) {
@@ -177,7 +183,7 @@ val Long.weeks get() = (this over 1).weeks
 val Int.weeks get() = (this over 1).weeks
 
 class Fortnight private constructor(quantity: FixedBigRational) :
-    Measure<English, Fortnights>(Fortnights, quantity) {
+    EnglishTime<Fortnights>(Fortnights, quantity) {
     companion object Fortnights : EnglishTimes<Fortnights>(
         "fortnight", (1_209_600 over 1)
     ) {
@@ -192,7 +198,7 @@ val Long.fortnights get() = (this over 1).fortnights
 val Int.fortnights get() = (this over 1).fortnights
 
 class Quinzième private constructor(quantity: FixedBigRational) :
-    Measure<English, Quinzièmes>(Quinzièmes, quantity) {
+    EnglishTime<Quinzièmes>(Quinzièmes, quantity) {
     companion object Quinzièmes : EnglishTimes<Quinzièmes>(
         "quinzième", (1_296_000 over 1)
     ) {

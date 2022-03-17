@@ -14,14 +14,23 @@ internal class UnitsTest {
     @Test
     fun `should pretty print`() {
         "$Metasyntactic" shouldBe "Metasyntactic"
-        "$Foo" shouldBe "Metasyntactic foo"
+        "$Foo" shouldBe "Metasyntactic length: foo"
         "${1.foo}" shouldBe "1 foo"
     }
 
     @Test
     fun `should be named`() {
+        Length.name shouldBe "length"
+        Time.name shouldBe "time"
+        Weight.name shouldBe "weight"
+        Denomination.name shouldBe "denomination"
         Metasyntactic.name shouldBe "Metasyntactic"
         Foo.name shouldBe "foo"
+    }
+
+    @Test
+    fun `should have a kind of units`() {
+        Foo.kind shouldBe Length
     }
 
     @Test

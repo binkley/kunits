@@ -14,9 +14,9 @@ internal class MITLengthsTest {
 
     @Test
     fun `should pretty print`() {
-        "$Smoot" shouldBe "MIT smoot"
+        "$Smoot" shouldBe "MIT length: smoot"
         "${1.smoots}" shouldBe "1 sm"
-        "$Ear" shouldBe "MIT ear"
+        "$Ear" shouldBe "MIT length: ear"
         "${1.ears}" shouldBe "1 ears"
     }
 }
