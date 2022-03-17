@@ -10,19 +10,25 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
 /** The furlong-firkin-fortnight units of length. */
-sealed class FFFLengths<U : FFFLengths<U>>(
+sealed class FFFLengths<
+    U : FFFLengths<U, M>,
+    M : FFFLength<U, M>,
+    >(
     name: String,
     furlongs: FixedBigRational,
-) : Units<FFF, Length, U>(FFF, Length, name, furlongs)
+) : Units<FFF, Length, U, M>(FFF, Length, name, furlongs)
 
-sealed class FFFLength<U : FFFLengths<U>>(
+sealed class FFFLength<
+    U : FFFLengths<U, M>,
+    M : FFFLength<U, M>,
+    >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<FFF, Length, U>(unit, quantity)
+) : Measure<FFF, Length, U, M>(unit, quantity)
 
 class Furlong(quantity: FixedBigRational) :
-    FFFLength<Furlongs>(Furlongs, quantity) {
-    companion object Furlongs : FFFLengths<Furlongs>(
+    FFFLength<Furlongs, Furlong>(Furlongs, quantity) {
+    companion object Furlongs : FFFLengths<Furlongs, Furlong>(
         "furlong", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Furlong(quantity)

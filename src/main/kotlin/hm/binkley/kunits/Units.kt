@@ -55,7 +55,12 @@ object Denomination : Kind("denomination")
  * @param K the kind of units
  * @param U the units of measure
  */
-abstract class Units<S : System<S>, K : Kind, U : Units<S, K, U>>(
+abstract class Units<
+    S : System<S>,
+    K : Kind,
+    U : Units<S, K, U, M>,
+    M : Measure<S, K, U, M>
+    >(
     /** The system of units for this unit. */
     val system: S,
     /** The kind of units. */
@@ -64,15 +69,13 @@ abstract class Units<S : System<S>, K : Kind, U : Units<S, K, U>>(
     val name: String,
     /** Amount of 1 unit expressed in base units. */
     internal val basis: FixedBigRational,
-) : Comparable<Units<S, K, *>> {
+) : Comparable<Units<S, K, *, *>> {
     /**
      * Creates a new measure from the given [quantity].
      *
      * @param quantity the amount of this unit
-     *
-     * @todo Avoid casting: teach new to return specific M measure type
      */
-    abstract fun new(quantity: FixedBigRational): Measure<S, K, U>
+    abstract fun new(quantity: FixedBigRational): M
 
     /**
      * Presents the calling measure suitable for humans.
@@ -82,7 +85,7 @@ abstract class Units<S : System<S>, K : Kind, U : Units<S, K, U>>(
     abstract fun format(quantity: FixedBigRational): String
 
     /** Orders units by their [basis]. */
-    override fun compareTo(other: Units<S, K, *>) =
+    override fun compareTo(other: Units<S, K, *, *>) =
         basis.compareTo(other.basis)
 
     // Units are singleton objects, so no point to defining equals/hashCode
@@ -102,14 +105,19 @@ abstract class Units<S : System<S>, K : Kind, U : Units<S, K, U>>(
  * @param K the kind of units
  * @param U the units of measure
  */
-abstract class Measure<S : System<S>, K : Kind, U : Units<S, K, U>>(
+abstract class Measure<
+    S : System<S>,
+    K : Kind,
+    U : Units<S, K, U, M>,
+    M : Measure<S, K, U, M>,
+    >(
     /** Unit of measure. */
     val unit: U,
     /** Number of [unit]s. */
     val quantity: FixedBigRational,
-) : Comparable<Measure<S, K, *>> {
+) : Comparable<Measure<S, K, *, *>> {
     /** Compares to [other] in the [U] units of measure. */
-    override fun compareTo(other: Measure<S, K, *>) =
+    override fun compareTo(other: Measure<S, K, *, *>) =
         quantity.compareTo((other into unit).quantity)
 
     /** Presents this measure as [Units.format] of [quantity]. */
@@ -126,7 +134,7 @@ abstract class Measure<S : System<S>, K : Kind, U : Units<S, K, U>>(
      * is mathematically equivalent though in convenient.)
      */
     override fun equals(other: Any?) = this === other ||
-        other is Measure<*, *, *> &&
+        other is Measure<*, *, *, *> &&
         unit == other.unit &&
         quantity == other.quantity
 

@@ -26,7 +26,7 @@ import hm.binkley.kunits.system.english.time.seconds
 import hm.binkley.kunits.system.english.weight.Dram.Drams
 import hm.binkley.kunits.system.english.weight.Ounce.Ounces
 import hm.binkley.kunits.system.english.weight.Pound.Pounds
-import hm.binkley.kunits.system.english.weight.Stone.Stone
+import hm.binkley.kunits.system.english.weight.StoneMeasure.Stone
 import hm.binkley.kunits.system.english.weight.drams
 import hm.binkley.kunits.system.english.weight.ounces
 import hm.binkley.kunits.system.fff.FFF

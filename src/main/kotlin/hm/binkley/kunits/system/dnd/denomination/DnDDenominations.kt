@@ -15,19 +15,25 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.TEN
 import hm.binkley.math.fixed.over
 
 /** The D&D coinage. */
-abstract class DnDDenominations<U : DnDDenominations<U>>(
+abstract class DnDDenominations<
+    U : Units<DnD, Denomination, U, M>,
+    M : Measure<DnD, Denomination, U, M>,
+    >(
     name: String,
     copperPieces: FixedBigRational,
-) : Units<DnD, Denomination, U>(DnD, Denomination, name, copperPieces)
+) : Units<DnD, Denomination, U, M>(DnD, Denomination, name, copperPieces)
 
-abstract class DnDDenomination<U : DnDDenominations<U>>(
+abstract class DnDDenomination<
+    U : Units<DnD, Denomination, U, M>,
+    M : Measure<DnD, Denomination, U, M>,
+    >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<DnD, Denomination, U>(unit, quantity)
+) : Measure<DnD, Denomination, U, M>(unit, quantity)
 
 class Copper private constructor(quantity: FixedBigRational) :
-    DnDDenomination<CopperPieces>(CopperPieces, quantity) {
-    companion object CopperPieces : DnDDenominations<CopperPieces>(
+    DnDDenomination<CopperPieces, Copper>(CopperPieces, quantity) {
+    companion object CopperPieces : DnDDenominations<CopperPieces, Copper>(
         "copper piece", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Copper(quantity)
@@ -40,8 +46,8 @@ val Long.copper get() = (this over 1).copper
 val Int.copper get() = (this over 1).copper
 
 class Silver private constructor(quantity: FixedBigRational) :
-    DnDDenomination<SilverPieces>(SilverPieces, quantity) {
-    companion object SilverPieces : DnDDenominations<SilverPieces>(
+    DnDDenomination<SilverPieces, Silver>(SilverPieces, quantity) {
+    companion object SilverPieces : DnDDenominations<SilverPieces, Silver>(
         "silver piece", TEN
     ) {
         override fun new(quantity: FixedBigRational) = Silver(quantity)
@@ -54,8 +60,8 @@ val Long.silver get() = (this over 1).silver
 val Int.silver get() = (this over 1).silver
 
 class Electrum private constructor(quantity: FixedBigRational) :
-    DnDDenomination<ElectrumPieces>(ElectrumPieces, quantity) {
-    companion object ElectrumPieces : DnDDenominations<ElectrumPieces>(
+    DnDDenomination<ElectrumPieces, Electrum>(ElectrumPieces, quantity) {
+    companion object ElectrumPieces : DnDDenominations<ElectrumPieces, Electrum>(
         "electrum piece", 50 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Electrum(quantity)
@@ -68,8 +74,8 @@ val Long.electrum get() = (this over 1).electrum
 val Int.electrum get() = (this over 1).electrum
 
 class Gold private constructor(quantity: FixedBigRational) :
-    DnDDenomination<GoldPieces>(GoldPieces, quantity) {
-    companion object GoldPieces : DnDDenominations<GoldPieces>(
+    DnDDenomination<GoldPieces, Gold>(GoldPieces, quantity) {
+    companion object GoldPieces : DnDDenominations<GoldPieces, Gold>(
         "gold piece", 100 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Gold(quantity)
@@ -82,8 +88,8 @@ val Long.gold get() = (this over 1).gold
 val Int.gold get() = (this over 1).gold
 
 class Platinum private constructor(quantity: FixedBigRational) :
-    DnDDenomination<PlatinumPieces>(PlatinumPieces, quantity) {
-    companion object PlatinumPieces : DnDDenominations<PlatinumPieces>(
+    DnDDenomination<PlatinumPieces, Platinum>(PlatinumPieces, quantity) {
+    companion object PlatinumPieces : DnDDenominations<PlatinumPieces, Platinum>(
         "platinum piece", 1_000 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Platinum(quantity)

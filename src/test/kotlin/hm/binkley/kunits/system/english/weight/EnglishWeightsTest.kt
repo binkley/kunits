@@ -3,8 +3,10 @@ package hm.binkley.kunits.system.english.weight
 import hm.binkley.kunits.into
 import hm.binkley.kunits.system.english.weight.Clove.Cloves
 import hm.binkley.kunits.system.english.weight.Dram.Drams
+import hm.binkley.kunits.system.english.weight.HundredweightMeasure.Hundredweight
 import hm.binkley.kunits.system.english.weight.Ounce.Ounces
 import hm.binkley.kunits.system.english.weight.Pound.Pounds
+import hm.binkley.kunits.system.english.weight.StoneMeasure.Stone
 import hm.binkley.kunits.system.english.weight.Tod.Tods
 import hm.binkley.kunits.system.english.weight.Tun.Tuns
 import hm.binkley.math.fixed.over

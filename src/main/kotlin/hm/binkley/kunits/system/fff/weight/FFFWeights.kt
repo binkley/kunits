@@ -10,15 +10,26 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
 /** The furlong-firkin-fortnight units of weight. */
-sealed class FFFWeights<U : FFFWeights<U>>(
+sealed class FFFWeights<
+    U : FFFWeights<U, M>,
+    M : FFFWeight<U, M>,
+    >(
     name: String,
-    firkins: FixedBigRational,
-) : Units<FFF, Weight, U>(FFF, Weight, name, firkins)
+    furlongs: FixedBigRational,
+) : Units<FFF, Weight, U, M>(FFF, Weight, name, furlongs)
 
-/** One firkin (weight) is the mass of one firkin (volume) of water. */
+sealed class FFFWeight<
+    U : FFFWeights<U, M>,
+    M : FFFWeight<U, M>,
+    >(
+    unit: U,
+    quantity: FixedBigRational,
+) : Measure<FFF, Weight, U, M>(unit, quantity)
+
+/** One firkin (weight) is the weight of one firkin (volume) of water. */
 class Firkin private constructor(quantity: FixedBigRational) :
-    Measure<FFF, Weight, Firkins>(Firkins, quantity) {
-    companion object Firkins : FFFWeights<Firkins>(
+    FFFWeight<Firkins, Firkin>(Firkins, quantity) {
+    companion object Firkins : FFFWeights<Firkins, Firkin>(
         "firkin", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Firkin(quantity)

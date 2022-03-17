@@ -1,7 +1,5 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.Bar.Bar
-import hm.binkley.kunits.Foo.Foo
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.comparables.shouldBeLessThan
@@ -14,7 +12,7 @@ internal class UnitsTest {
     @Test
     fun `should pretty print`() {
         "$Metasyntactic" shouldBe "Metasyntactic"
-        "$Foo" shouldBe "Metasyntactic length: foo"
+        "$FooMeasure" shouldBe "Metasyntactic length: foo"
         "${1.foo}" shouldBe "1 foo"
     }
 
@@ -25,22 +23,22 @@ internal class UnitsTest {
         Weight.name shouldBe "weight"
         Denomination.name shouldBe "denomination"
         Metasyntactic.name shouldBe "Metasyntactic"
-        Foo.name shouldBe "foo"
+        FooMeasure.name shouldBe "foo"
     }
 
     @Test
     fun `should have a kind of units`() {
-        Foo.kind shouldBe Length
+        FooMeasure.kind shouldBe Length
     }
 
     @Test
     fun `should be part of a system`() {
-        Foo.system shouldBe Metasyntactic
+        FooMeasure.system shouldBe Metasyntactic
     }
 
     @Test
     fun `should have an ordering`() {
-        Foo shouldBeLessThan Bar
+        FooMeasure shouldBeLessThan BarMeasure
         1.foo shouldBeLessThan 1.bar
     }
 

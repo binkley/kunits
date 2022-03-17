@@ -14,8 +14,13 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
  * @param K the kind of units
  * @param other the target units
  */
-infix fun <S : System<S>, K : Kind>
-Measure<S, K, *>.into(other: Units<S, K, *>) = into(other) { it }
+infix fun <
+    S : System<S>,
+    K : Kind,
+    V : Units<S, K, V, N>,
+    N : Measure<S, K, V, N>,
+    >
+Measure<S, K, *, *>.into(other: Units<S, K, V, N>): N = into(other) { it }
 
 /**
  * Converts this measure into units of [other] for a (possibly) different
@@ -31,11 +36,17 @@ Measure<S, K, *>.into(other: Units<S, K, *>) = into(other) { it }
  * @param other the target units
  * @param conversion convert bases of the two units
  */
-fun <S : System<S>, K : Kind, T : System<T>>
-Measure<S, K, *>.into(
-    other: Units<T, K, *>,
+fun <
+    S : System<S>,
+    K : Kind,
+    T : System<T>,
+    V : Units<T, K, V, N>,
+    N : Measure<T, K, V, N>,
+    >
+Measure<S, K, *, *>.into(
+    other: Units<T, K, V, N>,
     conversion: (FixedBigRational) -> FixedBigRational,
-) = other.new(convertByBases(other, conversion))
+): N = other.new(convertByBases(other, conversion))
 
 /**
  * Converts this measure into lowest terms for [units], from most significant
@@ -50,30 +61,37 @@ Measure<S, K, *>.into(
  * @param units reduce this measure to these units
  *
  * @return the reduced measures in the same order as [units]
+ *
+ * @todo Tighten generics bounds within the function body
  */
 fun <S : System<S>, K : Kind>
-Measure<S, K, *>.into(vararg units: Units<S, K, *>): List<Measure<S, K, *>> {
+Measure<S, K, *, *>.into(
+    vararg units: Units<S, K, *, *>
+): List<Measure<S, K, *, *>> {
     // Pre-populate with nulls so that we may write in any order
-    val into = MutableList<Measure<S, K, *>?>(units.size) { null }
+    val into = MutableList<Measure<*, *, *, *>?>(units.size) { null }
 
     val descendingIndexed = units.sortedDescendingIndexed()
-    var current = this
+    var current: Measure<*, *, *, *> = this
     descendingIndexed.forEach { (inputIndex, unit) ->
-        val quantityToReduce = current.convertByBases(unit) { it }
-        val (reduced, remainder) = quantityToReduce.divideAndRemainder(ONE)
-        into[inputIndex] = unit.new(reduced)
+        val valueToReduce = current.convertByBases(unit) { it }
+        val (whole, remainder) = valueToReduce.wholeNumberAndRemainder()
+        into[inputIndex] = unit.new(whole)
         current = unit.new(remainder)
     }
 
     // Tack any left over into the least significant unit
     val leastIndex = descendingIndexed.last().first
-    into[leastIndex] = into[leastIndex]!! + current
+    val least = into[leastIndex]!!
+    // TODO: Reuse `+` operator
+    into[leastIndex] = least.unit.new(least.quantity + current.quantity)
 
-    return into.toNonNullableList()
+    @Suppress("UNCHECKED_CAST")
+    return into.toNonNullableList() as List<Measure<S, K, *, *>>
 }
 
-private fun Measure<*, *, *>.convertByBases(
-    other: Units<*, *, *>,
+private fun Measure<*, *, *, *>.convertByBases(
+    other: Units<*, *, *, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
 ) = conversion(quantity * unit.basis) / other.basis
 
@@ -85,3 +103,7 @@ private fun <T : Comparable<T>> Array<T>.sortedDescendingIndexed() =
     mapIndexed { index, it -> index to it }.sortedByDescending { it.second }
 
 private fun <T> Collection<T?>.toNonNullableList() = map { it!! }
+
+private fun FixedBigRational.wholeNumberAndRemainder():
+    Pair<FixedBigRational, FixedBigRational> =
+    divideAndRemainder(ONE)

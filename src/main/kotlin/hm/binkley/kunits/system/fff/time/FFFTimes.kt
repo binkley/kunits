@@ -10,19 +10,25 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
 /** The furlong-firkin-fortnight units of time. */
-sealed class FFFTimes<U : FFFTimes<U>>(
+sealed class FFFTimes<
+    U : FFFTimes<U, M>,
+    M : FFFTime<U, M>,
+    >(
     name: String,
     fortnights: FixedBigRational,
-) : Units<FFF, Time, U>(FFF, Time, name, fortnights)
+) : Units<FFF, Time, U, M>(FFF, Time, name, fortnights)
 
-sealed class FFFTime<U : FFFTimes<U>>(
+sealed class FFFTime<
+    U : FFFTimes<U, M>,
+    M : FFFTime<U, M>,
+    >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<FFF, Time, U>(unit, quantity)
+) : Measure<FFF, Time, U, M>(unit, quantity)
 
 class Fortnight private constructor(quantity: FixedBigRational) :
-    FFFTime<Fortnights>(Fortnights, quantity) {
-    companion object Fortnights : FFFTimes<Fortnights>(
+    FFFTime<Fortnights, Fortnight>(Fortnights, quantity) {
+    companion object Fortnights : FFFTimes<Fortnights, Fortnight>(
         "fortnight", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Fortnight(quantity)

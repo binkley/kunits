@@ -7,14 +7,9 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.over
 
 /** Example of adding to existing units of measure. */
-abstract class OtherDnDDenominations<U : OtherDnDDenominations<U>>(
-    name: String,
-    mithralPieces: FixedBigRational,
-) : DnDDenominations<U>(name, mithralPieces)
-
 class Mithral private constructor(quantity: FixedBigRational) :
-    DnDDenomination<MithralPieces>(MithralPieces, quantity) {
-    companion object MithralPieces : OtherDnDDenominations<MithralPieces>(
+    DnDDenomination<MithralPieces, Mithral>(MithralPieces, quantity) {
+    companion object MithralPieces : DnDDenominations<MithralPieces, Mithral>(
         "mithral piece", 10_000 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Mithral(quantity)
