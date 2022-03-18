@@ -60,8 +60,8 @@ This library depends on
 [`kotlin-rational`](https://github.com/binkley/kotlin-rational) for
 representing big rationals.
 
-Presently there is no published dependency for `kotlin-rational`. To build
-KUnits, install locally from the `kotlin-rational-2.1.1` tag.
+Presently there is no published dependency for `kotlin-rational`.
+To build KUnits, install locally from the `kotlin-rational-2.1.1` tag.
 
 ### Platform
 
@@ -74,63 +74,58 @@ This code targets JDK 17.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L52)
+  [`120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L53)
 - From `Long`s:
-  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L86)
+  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L87)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L69)
+  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L70)
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L53)
+  [`+m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L54)
 - Negation:
-  [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L54)
+  [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L55)
 - Addition:
-  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L103)
+  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L104)
 - Subtraction:
-  [`((m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L59)
+  [`((m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L60)
 - Multiplication:
-  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L77)
+  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L78)
 - Division:
-  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L78)
+  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L79)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L90)
+  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L91)
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L104)
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L105)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L117)
+  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L118)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L116)
+  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L117)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L109)
+  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L110)
 
 ### API
 
-- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L13) represents a
+- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L10) represents a
   system of units
-- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L30) represents 
+- [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L26) represents a
+  kinds of units
+- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
   units of measure
-- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L136) represents 
+- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents 
   concrete unit quantities ([`FixedBigRational`](#kotlin-rational))
 
 Included for `Measure` are the usual simple arithmetic operations.
-
-Specializations of `Units` for units of the same kind:
-
-- [`Lengths`](src/main/kotlin/hm/binkley/kunits/Units.kt#L78)
-- [`Times`](src/main/kotlin/hm/binkley/kunits/Units.kt#L94)
-- [`Weights`](src/main/kotlin/hm/binkley/kunits/Units.kt#L108)
-- [`Denominations`](src/main/kotlin/hm/binkley/kunits/Units.kt#L122)
 
 The exemplar of quirkiness is traditional
 [_English units_](https://en.wikipedia.org/wiki/English_units):
@@ -142,7 +137,7 @@ The exemplar of quirkiness is traditional
 Unreal systems of units for testing:
 
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L16)
-- [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L157)
+- [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L136)
 
 <!---
 TODO: Unclear it is a good idea to use line numbers in links: means keeping
@@ -154,19 +149,14 @@ code needed for setting up a system of units:
 ```kotlin
 object Martian : System<Martian>("Martian")
 
-sealed class MartianLengths<U : MartianLengths<U>>(
-    name: String,
-    bar: FixedBigRational,
-) : Lengths<Martian, U>(Martian, name, bar)
-
-class Grok private constructor(quantity: FixedBigRational) :
-    Measure<Martian, Groks>(Groks, quantity) {
-    companion object Groks : MartianLengths<Groks>(
-        "grok", ONE
-    ) {
-        override fun new(value: FixedBigRational) = Grok(value)
-        override fun format(value: FixedBigRational) = "$value groks"
-    }
+class Grok private constructor(value: FixedBigRational) :
+  Measure<Martian, Length, Groks, Grok>(Groks, value) {
+  companion object Groks : Units<Martian, Length, Groks, Grok>(
+    Martian, Length, "grok", ONE
+  ) {
+    override fun new(quantity: FixedBigRational) = Grok(quantity)
+    override fun format(quantity: FixedBigRational) = "$quantity groks"
+  }
 }
 
 val FixedBigRational.groks get() = Groks.new(this)
@@ -175,12 +165,15 @@ val Int.groks get() = (this over 1).groks
 ```
 
 For convenience, systems of units may provide [conversions into other
-systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L29):
+systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L28):
 
 ```kotlin
-infix fun <U : MetasyntacticLengths<U>, V : MartianLengths<V>>
-Measure<Metasyntactic, U>.intoMartian(other: V) = into(other) {
-    it * (3 over 1)
+infix fun <
+    V : Units<Metasyntactic, Length, V, N>,
+    N : Measure<Metasyntactic, Length, V, N>,
+    >
+Measure<Martian, Length, *, *>.intoMetasyntactic(other: V) = into(other) {
+    it * (1 over 3)
 }
 ```
 
@@ -216,9 +209,9 @@ Another might be:
 However, overloads the universal `to` function for creating `Pair`s.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/extensions.kt#L7) function, 
+[`into`](src/main/kotlin/hm/binkley/kunits/extensions.kt#L8) function, 
 and a more general version for [conversions into other
-systems](src/main/kotlin/hm/binkley/kunits/extensions.kt#L20) for the same 
+systems](src/main/kotlin/hm/binkley/kunits/extensions.kt#L26) for the same 
 kind of unit.
 
 ```kotlin
@@ -276,19 +269,11 @@ Incompatible unit conversions are inconsistent. The two cases are:
 
 Behavior:
 
-* Ideal &mdash; incompatible conversions do not compile
-* Actual &mdash; conversions between systems with `into` do not compile (use
-  a dedicated function such as
-  `intoEnglish` for
-  [lengths](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L21),
-  [times](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L25), and
-  [weights](src/main/kotlin/hm/binkley/kunits/system/fff/FFF.kt#L29));
-  conversions within a system for units of different kinds (_eg_, lengths
-  to weights) raises a runtime exception
+* Operations between incompatible units do not compile.  For example, you 
+  cannot convert feet into pounds.
 
 ```kotlin
-// Compiles but raises exception: both are English units but of different 
-// kinds:
+// Does not compile: feet and pounds are different kinds of units
 1.feet into Pounds
 // Does not compile: both are lengths, but of different systems:
 1.smoots into Inches
