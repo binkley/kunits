@@ -24,7 +24,7 @@ abstract class System<S : System<S>>(
 }
 
 /** Represents kinds for [Units]. */
-sealed class Kind(
+abstract class Kind(
     val name: String
 ) {
     override fun toString() = name

@@ -137,7 +137,7 @@ The exemplar of quirkiness is traditional
 Unreal systems of units for testing:
 
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L16)
-- [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L136)
+- [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L217)
 
 <!---
 TODO: Unclear it is a good idea to use line numbers in links: means keeping
@@ -182,6 +182,10 @@ Typically, the base type for units of measure (`MartialLengths`, above) is
 However,
 [`OtherDnDDenominations`](src/main/kotlin/hm/binkley/kunits/system/dnd/denomination/other/OtherDnDDenominations.kt)
 is an example of extending a system of units.
+
+Also, see
+[`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L185) for an 
+example of creating new kinds of units.
 
 ### Considerations
 
