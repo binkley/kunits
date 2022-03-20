@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2214
+
+export PS4='+${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]:+${FUNCNAME[0]}():} '
+
+set -e
+set -u
+set -o pipefail
+
+readonly progname="${0##*/}"
+
+function print-help() {
+    cat <<EOH
+Usage: $progname [OPTIONS] [-- ARGUMENTS]
+Checks code coverage and optionally opens the report.
+
+OPTIONS:
+  -m, --with-mutation   also check mutation coverage
+  -o, --open-report     open the coverage report in a web browser
+  -h, --help            print this help and exit
+
+ARGUMENTS:
+  All arguments are passed to ./mvnw as options.  The "--" is mandatory.
+EOH
+}
+
+function bad-option() {
+    local opt="$1"
+
+    cat <<EOM
+$progname: invalid option -- '$opt'
+Try '$progname --help' for more information.
+EOM
+}
+
+targets='clean test jacoco:report jacoco:check'
+open=false
+while getopts :hmo-: opt; do
+    [[ $opt == - ]] && opt=${OPTARG%%=*} OPTARG=${OPTARG#*=}
+    case $opt in
+    h | help)
+        print-help
+        exit 0
+        ;;
+    m | with-mutation) targets='clean verify' ;;
+    o | open-report) open=true ;;
+    *)
+        bad-option "$OPTARG"
+        exit 2
+        ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+# shellcheck disable=SC2086
+./mvnw "$@" $targets
+
+for f in target/jacoco.exec target/site/jacoco/index.html; do
+    [[ -f "$f" ]] || {
+        echo "$progname: $f: No such file or directory" >&2
+        exit 1
+    }
+done
+
+$open && cd target/site/jacoco && open index.html || true

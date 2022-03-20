@@ -54,6 +54,10 @@
     <properties>
         <!-- @formatter:off -->
         <buildplan-maven-plugin.version>1.5</buildplan-maven-plugin.version>
+        <coverage.branches>100</coverage.branches>
+        <coverage.instructions>100</coverage.instructions>
+        <coverage.lines>100</coverage.lines>
+        <coverage.mutation>97</coverage.mutation>
         <detekt-maven-plugin.version>1.19.1</detekt-maven-plugin.version>
         <dokka.version>1.6.10</dokka.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
@@ -76,6 +80,8 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <owasp.skip>false</owasp.skip>
+        <pitest-junit5-plugin.version>0.15</pitest-junit5-plugin.version>
+        <pitest-maven.version>1.7.4</pitest-maven.version>
         <project.build.sourceEncoding>${java.charset}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
         <system-lambda.version>1.2.1</system-lambda.version>
@@ -299,6 +305,35 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest-maven.version}</version>
+                <configuration>
+<!--                    <avoidCallsTo>-->
+<!--                        <avoidCallsTo>kotlin.jvm.internal</avoidCallsTo>-->
+<!--                    </avoidCallsTo>-->
+                    <exportLineCoverage>true</exportLineCoverage>
+                    <mutationThreshold>${coverage.mutation}</mutationThreshold>
+                    <timestampedReports>false</timestampedReports>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>mutation-testing</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>${pitest-junit5-plugin.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.dokka</groupId>
