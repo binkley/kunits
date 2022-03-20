@@ -33,7 +33,7 @@ Try '$progname --help' for more information.
 EOM
 }
 
-targets='clean test jacoco:report jacoco:check'
+mutation=false
 open=false
 while getopts :hmo-: opt; do
     [[ $opt == - ]] && opt=${OPTARG%%=*} OPTARG=${OPTARG#*=}
@@ -42,7 +42,7 @@ while getopts :hmo-: opt; do
         print-help
         exit 0
         ;;
-    m | with-mutation) targets='clean verify' ;;
+    m | with-mutation) mutation=true ;;
     o | open-report) open=true ;;
     *)
         bad-option "$OPTARG"
@@ -52,6 +52,7 @@ while getopts :hmo-: opt; do
 done
 shift $((OPTIND - 1))
 
+$mutation && targets='clean verify' || targets='clean test jacoco:report jacoco:check'
 # shellcheck disable=SC2086
 ./mvnw "$@" $targets
 
@@ -62,4 +63,5 @@ for f in target/jacoco.exec target/site/jacoco/index.html; do
     }
 done
 
-$open && cd target/site/jacoco && open index.html || true
+$open && (cd target/site/jacoco && open index.html) || true
+$open && $mutation && (cd target/pit-reports && open index.html) || true

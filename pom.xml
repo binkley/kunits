@@ -57,7 +57,7 @@
         <coverage.branches>100</coverage.branches>
         <coverage.instructions>100</coverage.instructions>
         <coverage.lines>100</coverage.lines>
-        <coverage.mutation>97</coverage.mutation>
+        <coverage.mutation>99</coverage.mutation>
         <detekt-maven-plugin.version>1.19.1</detekt-maven-plugin.version>
         <dokka.version>1.6.10</dokka.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
@@ -311,9 +311,9 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>${pitest-maven.version}</version>
                 <configuration>
-<!--                    <avoidCallsTo>-->
-<!--                        <avoidCallsTo>kotlin.jvm.internal</avoidCallsTo>-->
-<!--                    </avoidCallsTo>-->
+                    <avoidCallsTo>
+                        <avoidCallsTo>kotlin.jvm.internal</avoidCallsTo>
+                    </avoidCallsTo>
                     <exportLineCoverage>true</exportLineCoverage>
                     <mutationThreshold>${coverage.mutation}</mutationThreshold>
                     <timestampedReports>false</timestampedReports>
