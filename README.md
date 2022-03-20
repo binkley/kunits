@@ -214,9 +214,8 @@ However, overloads the universal `to` function for creating `Pair`s.
 
 The chosen compromise is an infix
 [`into`](src/main/kotlin/hm/binkley/kunits/extensions.kt#L8) function, 
-and a more general version for [conversions into other
-systems](src/main/kotlin/hm/binkley/kunits/extensions.kt#L26) for the same 
-kind of unit.
+and a more general version for [conversions into unit units of the same 
+kind in another system](src/main/kotlin/hm/binkley/kunits/extensions.kt#L26).
 
 ```kotlin
 2.feet into Inches

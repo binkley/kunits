@@ -54,19 +54,36 @@ Measure<S, K, *, *>.into(
  * Example: `64.inches.into(Feet, Inches)` is the list of `5.feet` and
  * `4.inches`.
  * Note: `64.inches.into(Inches, Feet)` is the list of `4.inches` and
- * `5.feet following the order of units provided.
+ * `5.feet following the order of units as provided.
  *
  * @param S the system of units
  * @param K the kind of units
  * @param units reduce this measure to these units
  *
  * @return the reduced measures in the same order as [units]
- *
- * @todo Tighten generics bounds within the function body
  */
 fun <S : System<S>, K : Kind>
 Measure<S, K, *, *>.into(
     vararg units: Units<S, K, *, *>
+): List<Measure<S, K, *, *>> = into(units.toList())
+
+/**
+ * Converts this measure into lowest terms for [units], from most significant
+ * unit to least significant, returning the same order as [units].
+ * Example: `64.inches.into(listOf(Feet, Inches))` is the list of `5.feet` and
+ * `4.inches`.
+ * Note: `64.inches.into(listOf(Inches, Feet))` is the list of `4.inches` and
+ * `5.feet following the order of units as provided.
+ *
+ * @param S the system of units
+ * @param K the kind of units
+ * @param units reduce this measure to these units
+ *
+ * @return the reduced measures in the same order as [units]
+ */
+fun <S : System<S>, K : Kind>
+Measure<S, K, *, *>.into(
+    units: List<Units<S, K, *, *>>
 ): List<Measure<S, K, *, *>> {
     // Pre-populate with nulls so that we may write in any order
     val into = MutableList<Measure<*, *, *, *>?>(units.size) { null }
@@ -99,7 +116,7 @@ private fun Measure<*, *, *, *>.convertByBases(
  * Sorts the array element-wise descending, each entry with an attached
  * index of the ordering in the original array.
  */
-private fun <T : Comparable<T>> Array<T>.sortedDescendingIndexed() =
+private fun <T : Comparable<T>> List<T>.sortedDescendingIndexed() =
     mapIndexed { index, it -> index to it }.sortedByDescending { it.second }
 
 private fun <T> Collection<T?>.toNonNullableList() = map { it!! }
