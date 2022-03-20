@@ -49,8 +49,9 @@ Measure<S, K, *, *>.into(
 ): N = other.new(convertByBases(other, conversion))
 
 /**
- * Converts this measure into lowest terms for [units], from most significant
- * unit to least significant, returning the same order as [units].
+ * Converts this measure into lowest terms for [restOfUnits] from the most
+ * significant unit to the least significant, returning the same order as
+ * [firstUnit] and [restOfUnits].
  * Example: `64.inches.into(Feet, Inches)` is the list of `5.feet` and
  * `4.inches`.
  * Note: `64.inches.into(Inches, Feet)` is the list of `4.inches` and
@@ -58,14 +59,20 @@ Measure<S, K, *, *>.into(
  *
  * @param S the system of units
  * @param K the kind of units
- * @param units reduce this measure to these units
+ * @param firstUnit the first measure to reduce to
+ * @param restOfUnits the rest of the units to reduce to
  *
- * @return the reduced measures in the same order as [units]
+ * @return the reduced measures in the same order as [firstUnit] then
+ * [restOfUnits]
  */
 fun <S : System<S>, K : Kind>
 Measure<S, K, *, *>.into(
-    vararg units: Units<S, K, *, *>
-): List<Measure<S, K, *, *>> = into(units.toList())
+    firstUnit: Units<S, K, *, *>,
+    vararg restOfUnits: Units<S, K, *, *>
+): List<Measure<S, K, *, *>> = with(restOfUnits.toMutableList()) {
+    add(0, firstUnit)
+    into(this)
+}
 
 /**
  * Converts this measure into lowest terms for [units], from most significant
@@ -74,6 +81,8 @@ Measure<S, K, *, *>.into(
  * `4.inches`.
  * Note: `64.inches.into(listOf(Inches, Feet))` is the list of `4.inches` and
  * `5.feet following the order of units as provided.
+ *
+ * This function raises an exception if there are no units.
  *
  * @param S the system of units
  * @param K the kind of units
@@ -85,6 +94,8 @@ fun <S : System<S>, K : Kind>
 Measure<S, K, *, *>.into(
     units: List<Units<S, K, *, *>>
 ): List<Measure<S, K, *, *>> {
+    if (units.isEmpty()) throw IllegalArgumentException("No units")
+
     // Pre-populate with nulls so that we may write in any order
     val into = MutableList<Measure<*, *, *, *>?>(units.size) { null }
 

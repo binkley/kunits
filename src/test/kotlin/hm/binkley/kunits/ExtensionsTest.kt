@@ -4,6 +4,7 @@ import hm.binkley.kunits.BarMeasure.Bar
 import hm.binkley.kunits.BazMeasure.Baz
 import hm.binkley.kunits.Grok.Groks
 import hm.binkley.math.fixed.over
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -61,6 +62,16 @@ internal class ExtensionsTest {
             val lowestTerms = measure.into(FooMeasure, Baz, Bar)
 
             lowestTerms shouldBe listOf((1 over 2).foo, 8.baz, 1.bar)
+        }
+
+        @Test
+        fun `should not convert into no units`() {
+            val measure = 7.baz + 2.bar + (5 over 2).foo
+            // Uncomment to see that this does not compile
+            // measure.into()
+            shouldThrow<IllegalArgumentException> {
+                measure.into(emptyList())
+            }
         }
     }
 }
