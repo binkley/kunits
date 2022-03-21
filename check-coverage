@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2214
 
 export PS4='+${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]:+${FUNCNAME[0]}():} '
 
@@ -35,6 +34,7 @@ EOM
 
 mutation=false
 open=false
+# shellcheck disable=SC2214
 while getopts :hmo-: opt; do
     [[ $opt == - ]] && opt=${OPTARG%%=*} OPTARG=${OPTARG#*=}
     case $opt in
@@ -63,5 +63,9 @@ for f in target/jacoco.exec target/site/jacoco/index.html; do
     }
 done
 
-$open && (cd target/site/jacoco && open index.html) || true
-$open && $mutation && (cd target/pit-reports && open index.html) || true
+if $open; then
+    (cd target/site/jacoco && open index.html)
+    if $mutation; then
+        (cd target/pit-reports && open index.html)
+    fi
+fi
