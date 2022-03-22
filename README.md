@@ -118,9 +118,9 @@ This code targets JDK 17.
 
 ### API
 
-- [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L26) represents a
+- [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L9) represents a
   kinds of units
-- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L10) represents a
+- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L29) represents a
   system of units
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
   units of measure
@@ -215,9 +215,9 @@ Another might be:
 However, this overloads the universal `to` function for creating `Pair`s.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/extensions.kt#L8) function, 
+[`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L8) function, 
 and a more general version for [conversions into unit units of the same 
-kind in another system](src/main/kotlin/hm/binkley/kunits/extensions.kt#L26).
+kind in another system](src/main/kotlin/hm/binkley/kunits/conversions.kt#L26).
 
 ```kotlin
 2.feet into Inches
