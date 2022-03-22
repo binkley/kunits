@@ -12,6 +12,8 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
  *
  * @param S the source system of units
  * @param K the kind of units
+ * @param V the units of [N]
+ * @param N the measurement type of [V]
  * @param other the target units
  */
 infix fun <
@@ -33,6 +35,8 @@ Measure<S, K, *, *>.into(other: Units<S, K, V, N>): N = into(other) { it }
  * @param S the source system of units
  * @param K the kind of units
  * @param T the target system of units
+ * @param V the units of [N]
+ * @param N the measurement type of [V]
  * @param other the target units
  * @param conversion convert bases of the two units
  */

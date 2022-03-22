@@ -53,7 +53,8 @@ object Denomination : Kind("denomination")
  *
  * @param S the system of units
  * @param K the kind of units
- * @param U the units of measure
+ * @param U the units of [M]
+ * @param M the measurement type of [U]
  */
 abstract class Units<
     S : System<S>,
@@ -103,7 +104,8 @@ abstract class Units<
  *
  * @param S the system of units
  * @param K the kind of units
- * @param U the units of measure
+ * @param U the units of [M]
+ * @param M the measurement type of [U]
  */
 abstract class Measure<
     S : System<S>,
@@ -113,7 +115,7 @@ abstract class Measure<
     >(
     /** Unit of measure. */
     val unit: U,
-    /** Number of [unit]s. */
+    /** Quantity of [unit]s. */
     val quantity: FixedBigRational,
 ) : Comparable<Measure<S, K, *, *>> {
     /** Compares to [other] in the [U] units of measure. */
