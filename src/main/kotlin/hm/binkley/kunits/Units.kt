@@ -23,7 +23,7 @@ abstract class System<S : System<S>>(
     override fun toString() = name
 }
 
-/** Represents kinds for [Units]. */
+/** Represents kinds of [Units]. */
 abstract class Kind(
     val name: String
 ) {
@@ -45,8 +45,7 @@ object Denomination : Kind("denomination")
 /**
  * Represents units within a [System].
  *
- * For each kind of system of units (length, weight, time), there is one unit
- * called the "base" with a [basis] of 1.
+ * For each kind of system of units, there is a base unit with a [basis] of 1.
  * Conversion between units uses the basis in calculations.
  * Example: the meter is the base unit of length in a Metric system of units,
  * and kilometers have a basis of 1,000.
@@ -72,7 +71,7 @@ abstract class Units<
     internal val basis: FixedBigRational,
 ) : Comparable<Units<S, K, *, *>> {
     /**
-     * Creates a new measure from the given [quantity].
+     * Creates a new measure of this unit with the given [quantity].
      *
      * @param quantity the amount of this unit
      */
@@ -85,7 +84,7 @@ abstract class Units<
      */
     abstract fun format(quantity: FixedBigRational): String
 
-    /** Orders units by their [basis]. */
+    /** Compares to [other] in this kind of system of units. */
     override fun compareTo(other: Units<S, K, *, *>) =
         basis.compareTo(other.basis)
 
@@ -133,7 +132,7 @@ abstract class Measure<
      * *NB* &mdash; in Kotlin you cannot say `1.foo == 1.bar` as the left and
      * right sides are different types, and will not compile.
      * (You can, however, say `!(1.foo < 1.bar) && !(1.foo > 1.bar)` which
-     * is mathematically equivalent though in convenient.)
+     * is mathematically equivalent though inconvenient.)
      */
     override fun equals(other: Any?) = this === other ||
         other is Measure<*, *, *, *> &&

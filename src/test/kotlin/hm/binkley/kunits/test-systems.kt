@@ -1,6 +1,6 @@
 package hm.binkley.kunits
 
-import hm.binkley.kunits.Alice.Alices
+import hm.binkley.kunits.Alice.Alicen
 import hm.binkley.kunits.BarMeasure.Bar
 import hm.binkley.kunits.BazMeasure.Baz
 import hm.binkley.kunits.FooMeasure.Foo
@@ -169,8 +169,8 @@ sealed class MetasyntacticDenomination<
 ) : Measure<Metasyntactic, Denomination, U, M>(units, quantity)
 
 class Alice private constructor(value: FixedBigRational) :
-    MetasyntacticDenomination<Alices, Alice>(Alices, value) {
-    companion object Alices : MetasyntacticDenominations<Alices, Alice>(
+    MetasyntacticDenomination<Alicen, Alice>(Alicen, value) {
+    companion object Alicen : MetasyntacticDenominations<Alicen, Alice>(
         "alice", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Alice(quantity)
@@ -178,9 +178,9 @@ class Alice private constructor(value: FixedBigRational) :
     }
 }
 
-val FixedBigRational.alices get() = Alices.new(this)
-val Long.alices get() = (this over 1).alices
-val Int.alices get() = (this over 1).alices
+val FixedBigRational.alicen get() = Alicen.new(this)
+val Long.alicen get() = (this over 1).alicen
+val Int.alicen get() = (this over 1).alicen
 
 object ShoeSize : Kind("shoe size")
 
