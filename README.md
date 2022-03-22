@@ -99,8 +99,8 @@ This code targets JDK 17.
 
 - Between units of the same kind within a system:
   [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L93), or as
-  shorthand,
-  [`m1 / Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62) 
+  shorthand, [`m1 /
+  Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62) 
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
   Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108)
