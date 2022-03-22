@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test
 internal class OtherDnDDenominationsTest {
     @Test
     fun `should convert`() {
-        1L.bronze shouldBe ((1 over 10).copper into Bronze)
-        1L.mithral shouldBe (10.platinum into Mithral)
-        1L.adamant shouldBe (10.mithral into Adamant)
+        1L.bronze shouldBe ((1 over 10).copper into BronzePieces)
+        1L.mithral shouldBe (10.platinum into MithralPieces)
+        1L.adamant shouldBe (10.mithral into AdamantPieces)
     }
 
     @Test
