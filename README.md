@@ -221,19 +221,22 @@ kind in another system](src/main/kotlin/hm/binkley/kunits/extensions.kt#L26).
 
 ```kotlin
 2.feet into Inches
-(2.feet into Inches) shouldBe 24.inches
 ```
 
 Though infix functions do not chain nicely:
 
 ```kotlin
-2.feet into Inches shouldBe 24.inches
+2.feet into Inches shouldBe 24.inches // what you expect
+2.feet shouldBe 24.inches into Feet // does not compile
 ```
 
 More readable is:
 
 ```kotlin
-(2.feet into Inches) shouldBe 24.inches
+(2.feet into Inches) shouldBe 24.inches // parentheses for readability
+2.feet shouldBe (24.inches into Feet) // parentheses needed to compile
+2.feet / Inches shouldBe 24.inches // operator binds more tightly than infix
+2.feet shouldBe 24.inches / Feet // compiles, but harder to read
 ```
 
 And parentheses are required for correct binding order in some cases:
