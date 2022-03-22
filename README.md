@@ -212,7 +212,7 @@ Another might be:
 2.feet to Inches
 ```
 
-However, overloads the universal `to` function for creating `Pair`s.
+However, this overloads the universal `to` function for creating `Pair`s.
 
 The chosen compromise is an infix
 [`into`](src/main/kotlin/hm/binkley/kunits/extensions.kt#L8) function, 
