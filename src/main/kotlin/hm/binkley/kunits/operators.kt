@@ -107,6 +107,19 @@ operator fun <
 Measure<S, K, *, *>.div(denominator: Measure<S, K, V, N>): FixedBigRational =
     (this into denominator.unit).quantity / denominator.quantity
 
+/**
+ * Expresses this measure into units of [denominator].
+ *
+ * @see [into]
+ */
+operator fun <
+    S : System<S>,
+    K : Kind,
+    V : Units<S, K, V, N>,
+    N : Measure<S, K, V, N>,
+    >
+Measure<S, K, *, *>.div(denominator: V): N = into(denominator)
+
 /** Scales down the measure. */
 operator fun <
     S : System<S>,

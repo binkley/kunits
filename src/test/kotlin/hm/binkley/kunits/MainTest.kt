@@ -18,6 +18,7 @@ internal class MainTest {
 240 lines
 0 hh
 360 lines
+30 Bc
 40 lines
 5 sticks
 5⁄2 hh
@@ -31,6 +32,7 @@ internal class MainTest {
 12585⁄4 sec
 0 quadrants
 12345 sec
+823⁄16 min
 12345⁄16 sec
 823⁄345600 quinzièmes
 12345⁄4 sec
@@ -44,6 +46,7 @@ internal class MainTest {
 316 dr
 0 lb
 1500 dr
+75⁄4 oz
 60 dr
 75⁄896 st
 300 dr

@@ -59,6 +59,7 @@ fun main() {
     println(m1 + (m1 into Barleycorns))
     println((m1 into Hands) - m1)
     println(m1 * 3)
+    println(m1 / Barleycorns)
     println(m1 / 3)
     println(m1 into Inches into Sticks)
     println(
@@ -76,6 +77,7 @@ fun main() {
     println(m2 + 1.minutes)
     println((m2 into Quadrants) - m2)
     println(m2 * 4)
+    println(m2 / Minutes)
     println(m2 / 4)
     println(m2 into Mileways into Quinzièmes)
     println(
@@ -93,6 +95,7 @@ fun main() {
     println(m3 + 1.ounces)
     println((m3 into Pounds) - m3)
     println(m3 * 5)
+    println(m3 / Ounces)
     println(m3 / 5)
     println(m3 into Pounds into Stone)
     println(

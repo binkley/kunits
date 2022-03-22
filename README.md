@@ -76,9 +76,9 @@ This code targets JDK 17.
 - From `Int`s:
   [`120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L53)
 - From `Long`s:
-  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L87)
+  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L89)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L70)
+  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L71)
 
 #### Arithmetic
 
@@ -87,32 +87,34 @@ This code targets JDK 17.
 - Negation:
   [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L55)
 - Addition:
-  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L104)
+  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L107)
 - Subtraction:
   [`((m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L60)
 - Multiplication:
-  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L78)
+  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L79)
 - Division:
-  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L79)
+  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L81)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L91)
+  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L93), or as
+  shorthand,
+  [`m1 / Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62) 
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L105)
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L118)
+  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L121)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L117)
+  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L120)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L110)
+  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L113)
 
 ### API
 
