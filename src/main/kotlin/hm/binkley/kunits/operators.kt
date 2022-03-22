@@ -13,7 +13,7 @@ operator fun <
     >
 M.unaryPlus(): M = this
 
-/** Returns the additive inverse of this measure. */
+/** Negates this measure. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -22,7 +22,7 @@ operator fun <
     >
 M.unaryMinus(): M = unit.new(-quantity)
 
-/** Adds the two measures using _left_ measure for units. */
+/** Adds the two measures in units of the _left_ side. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -32,7 +32,7 @@ operator fun <
 M.plus(other: Measure<S, K, *, *>): M =
     unit.new(quantity + (other into unit).quantity)
 
-/** Subtracts the two measures using _left_ measure for units. */
+/** Subtracts the two measures in units of the _left_ side. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -42,7 +42,7 @@ operator fun <
 M.minus(other: Measure<S, K, *, *>): M =
     unit.new(quantity - (other into unit).quantity)
 
-/** Scales up the measure. */
+/** Scales the measure by multiplication. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -51,7 +51,7 @@ operator fun <
     >
 M.times(factor: FixedBigRational): M = unit.new(quantity * factor)
 
-/** Scales up the measure. */
+/** Scales the measure by multiplication. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -61,7 +61,7 @@ operator fun <
 FixedBigRational.times(factor: M): M =
     factor.unit.new(this * factor.quantity)
 
-/** Scales up the measure. */
+/** Scales the measure by multiplication. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -70,7 +70,7 @@ operator fun <
     >
 M.times(factor: Long): M = unit.new(quantity * factor)
 
-/** Scales up the measure. */
+/** Scales the measure by multiplication. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -79,7 +79,7 @@ operator fun <
     >
 Long.times(factor: M): M = factor.unit.new(this * factor.quantity)
 
-/** Scales up the measure. */
+/** Scales the measure by multiplication. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -88,7 +88,7 @@ operator fun <
     >
 M.times(factor: Int): M = unit.new(quantity * factor)
 
-/** Scales up the measure. */
+/** Scales the measure by multiplication. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -97,7 +97,7 @@ operator fun <
     >
 Int.times(factor: M): M = factor.unit.new(this * factor.quantity)
 
-/** Takes the ratio of two measures in the same system of units. */
+/** Takes the ratio of two measures from the same system of units. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -108,7 +108,8 @@ Measure<S, K, *, *>.div(denominator: Measure<S, K, V, N>): FixedBigRational =
     (this into denominator.unit).quantity / denominator.quantity
 
 /**
- * Expresses this measure into units of [denominator].
+ * Expresses this measure in the units of [denominator], shorthand for
+ * `this into denominator`.
  *
  * @see [into]
  */
@@ -120,7 +121,7 @@ operator fun <
     >
 Measure<S, K, *, *>.div(denominator: V): N = into(denominator)
 
-/** Scales down the measure. */
+/** Scales the measure by division. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -129,7 +130,7 @@ operator fun <
     >
 M.div(factor: FixedBigRational): M = unit.new(quantity / factor)
 
-/** Scales down the measure. */
+/** Scales the measure by division. */
 operator fun <
     S : System<S>,
     K : Kind,
@@ -138,7 +139,7 @@ operator fun <
     >
 M.div(factor: Long): M = unit.new(quantity / factor)
 
-/** Scales down the measure. */
+/** Scales the measure by division. */
 operator fun <
     S : System<S>,
     K : Kind,
