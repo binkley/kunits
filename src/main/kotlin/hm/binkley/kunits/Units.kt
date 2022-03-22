@@ -6,23 +6,6 @@ import hm.binkley.kunits.system.fff.length.Furlong.Furlongs
 import hm.binkley.math.fixed.FixedBigRational
 import java.util.Objects.hash
 
-/**
- * Represents a system of units.
- *
- * See [FFF] for an example.
- *
- * @param S the system of units
- */
-abstract class System<S : System<S>>(
-    /** The name for this system of units. */
-    val name: String,
-) {
-    // Systems are singleton objects, so no point to defining equals/hashCode
-
-    /** Presents this system as [name]. */
-    override fun toString() = name
-}
-
 /** Represents kinds of [Units]. */
 abstract class Kind(
     val name: String
@@ -43,6 +26,23 @@ object Weight : Kind("weight")
 object Denomination : Kind("denomination")
 
 /**
+ * Represents a system of units.
+ *
+ * See [FFF] for an example.
+ *
+ * @param S the system of units
+ */
+abstract class System<S : System<S>>(
+    /** The name for this system of units. */
+    val name: String,
+) {
+    // Systems are singleton objects, so no point to defining equals/hashCode
+
+    /** Presents this system as [name]. */
+    override fun toString() = name
+}
+
+/**
  * Represents units within a [System].
  *
  * For each kind of system of units, there is a base unit with a [basis] of 1.
@@ -50,26 +50,26 @@ object Denomination : Kind("denomination")
  * Example: the meter is the base unit of length in a Metric system of units,
  * and kilometers have a basis of 1,000.
  *
- * @param S the system of units
  * @param K the kind of units
+ * @param S the system of units
  * @param U the units of [M]
  * @param M the measurement type of [U]
  */
 abstract class Units<
-    S : System<S>,
     K : Kind,
-    U : Units<S, K, U, M>,
-    M : Measure<S, K, U, M>
+    S : System<S>,
+    U : Units<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >(
-    /** The system of units for this unit. */
-    val system: S,
     /** The kind of units. */
     val kind: K,
+    /** The system of units for this unit. */
+    val system: S,
     /** Must be unique for each unit within [system]. */
     val name: String,
     /** Amount of 1 unit expressed in base units. */
     internal val basis: FixedBigRational,
-) : Comparable<Units<S, K, *, *>> {
+) : Comparable<Units<K, S, *, *>> {
     /**
      * Creates a new measure of this unit with the given [quantity].
      *
@@ -85,7 +85,7 @@ abstract class Units<
     abstract fun format(quantity: FixedBigRational): String
 
     /** Compares to [other] in this kind of system of units. */
-    override fun compareTo(other: Units<S, K, *, *>) =
+    override fun compareTo(other: Units<K, S, *, *>) =
         basis.compareTo(other.basis)
 
     // Units are singleton objects, so no point to defining equals/hashCode
@@ -101,24 +101,24 @@ abstract class Units<
  * Note the pairing: [Furlongs] defines the _unit_; [Furlong] defines a
  * quantity of that unit.
  *
- * @param S the system of units
  * @param K the kind of units
+ * @param S the system of units
  * @param U the units of [M]
  * @param M the measurement type of [U]
  */
 abstract class Measure<
-    S : System<S>,
     K : Kind,
-    U : Units<S, K, U, M>,
-    M : Measure<S, K, U, M>,
+    S : System<S>,
+    U : Units<K, S, U, M>,
+    M : Measure<K, S, U, M>,
     >(
     /** Unit of measure. */
     val unit: U,
     /** Quantity of [unit]s. */
     val quantity: FixedBigRational,
-) : Comparable<Measure<S, K, *, *>> {
+) : Comparable<Measure<K, S, *, *>> {
     /** Compares to [other] in the [U] units of measure. */
-    override fun compareTo(other: Measure<S, K, *, *>) =
+    override fun compareTo(other: Measure<K, S, *, *>) =
         quantity.compareTo((other into unit).quantity)
 
     /** Presents this measure as [Units.format] of [quantity]. */

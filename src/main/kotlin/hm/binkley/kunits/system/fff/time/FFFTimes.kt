@@ -16,7 +16,7 @@ sealed class FFFTimes<
     >(
     name: String,
     fortnights: FixedBigRational,
-) : Units<FFF, Time, U, M>(FFF, Time, name, fortnights)
+) : Units<Time, FFF, U, M>(Time, FFF, name, fortnights)
 
 sealed class FFFTime<
     U : FFFTimes<U, M>,
@@ -24,7 +24,7 @@ sealed class FFFTime<
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<FFF, Time, U, M>(unit, quantity)
+) : Measure<Time, FFF, U, M>(unit, quantity)
 
 class Fortnight private constructor(quantity: FixedBigRational) :
     FFFTime<Fortnights, Fortnight>(Fortnights, quantity) {

@@ -24,7 +24,7 @@ sealed class EnglishWeights<
     >(
     name: String,
     drams: FixedBigRational,
-) : Units<English, Weight, U, M>(English, Weight, name, drams)
+) : Units<Weight, English, U, M>(Weight, English, name, drams)
 
 sealed class EnglishWeight<
     U : EnglishWeights<U, M>,
@@ -32,7 +32,7 @@ sealed class EnglishWeight<
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<English, Weight, U, M>(unit, quantity)
+) : Measure<Weight, English, U, M>(unit, quantity)
 
 class Grain private constructor(quantity: FixedBigRational) :
     EnglishWeight<Grains, Grain>(Grains, quantity) {

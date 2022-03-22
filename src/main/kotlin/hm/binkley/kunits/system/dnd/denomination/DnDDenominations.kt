@@ -16,20 +16,20 @@ import hm.binkley.math.fixed.over
 
 /** The D&D coinage. */
 abstract class DnDDenominations<
-    U : Units<DnD, Denomination, U, M>,
-    M : Measure<DnD, Denomination, U, M>,
+    U : Units<Denomination, DnD, U, M>,
+    M : Measure<Denomination, DnD, U, M>,
     >(
     name: String,
     copperPieces: FixedBigRational,
-) : Units<DnD, Denomination, U, M>(DnD, Denomination, name, copperPieces)
+) : Units<Denomination, DnD, U, M>(Denomination, DnD, name, copperPieces)
 
 abstract class DnDDenomination<
-    U : Units<DnD, Denomination, U, M>,
-    M : Measure<DnD, Denomination, U, M>,
+    U : Units<Denomination, DnD, U, M>,
+    M : Measure<Denomination, DnD, U, M>,
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<DnD, Denomination, U, M>(unit, quantity)
+) : Measure<Denomination, DnD, U, M>(unit, quantity)
 
 class Copper private constructor(quantity: FixedBigRational) :
     DnDDenomination<CopperPieces, Copper>(CopperPieces, quantity) {

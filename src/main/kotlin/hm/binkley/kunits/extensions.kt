@@ -10,19 +10,20 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
  * Convenience for `measure.into(other) { it }` (no basis conversion
  * for the same systems of units).
  *
- * @param S the source system of units
  * @param K the kind of units
+ * @param S the source system of units
  * @param V the units of [N]
  * @param N the measurement type of [V]
  * @param other the target units
  */
 infix fun <
-    S : System<S>,
     K : Kind,
-    V : Units<S, K, V, N>,
-    N : Measure<S, K, V, N>,
+    S : System<S>,
+    V : Units<K, S, V, N>,
+    N : Measure<K, S, V, N>,
     >
-Measure<S, K, *, *>.into(other: Units<S, K, V, N>): N = into(other) { it }
+// TODO: `other: V`?
+Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
 
 /**
  * Converts this measure into units of [other] for a (possibly) different
@@ -32,8 +33,8 @@ Measure<S, K, *, *>.into(other: Units<S, K, V, N>): N = into(other) { it }
  * It takes the value of this measure expressed in base units, and returns
  * a new measure value in base units for [other].
  *
- * @param S the source system of units
  * @param K the kind of units
+ * @param S the source system of units
  * @param T the target system of units
  * @param V the units of [N]
  * @param N the measurement type of [V]
@@ -41,14 +42,14 @@ Measure<S, K, *, *>.into(other: Units<S, K, V, N>): N = into(other) { it }
  * @param conversion convert bases of the two units
  */
 fun <
-    S : System<S>,
     K : Kind,
+    S : System<S>,
     T : System<T>,
-    V : Units<T, K, V, N>,
-    N : Measure<T, K, V, N>,
+    V : Units<K, T, V, N>,
+    N : Measure<K, T, V, N>,
     >
-Measure<S, K, *, *>.into(
-    other: Units<T, K, V, N>,
+Measure<K, S, *, *>.into(
+    other: Units<K, T, V, N>,
     conversion: (FixedBigRational) -> FixedBigRational,
 ): N = other.new(convertByBases(other, conversion))
 
@@ -61,19 +62,19 @@ Measure<S, K, *, *>.into(
  * Note: `64.inches.into(Inches, Feet)` is the list of `4.inches` and
  * `5.feet following the order of units as provided.
  *
- * @param S the system of units
  * @param K the kind of units
+ * @param S the system of units
  * @param firstUnit the first measure to reduce to
  * @param restOfUnits the rest of the units to reduce to
  *
  * @return the reduced measures in the same order as [firstUnit] then
  * [restOfUnits]
  */
-fun <S : System<S>, K : Kind>
-Measure<S, K, *, *>.into(
-    firstUnit: Units<S, K, *, *>,
-    vararg restOfUnits: Units<S, K, *, *>
-): List<Measure<S, K, *, *>> = with(restOfUnits.toMutableList()) {
+fun <K : Kind, S : System<S>>
+Measure<K, S, *, *>.into(
+    firstUnit: Units<K, S, *, *>,
+    vararg restOfUnits: Units<K, S, *, *>
+): List<Measure<K, S, *, *>> = with(restOfUnits.toMutableList()) {
     add(0, firstUnit)
     into(this)
 }
@@ -88,16 +89,16 @@ Measure<S, K, *, *>.into(
  *
  * This function raises an exception if there are no units.
  *
- * @param S the system of units
  * @param K the kind of units
+ * @param S the system of units
  * @param units reduce this measure to these units
  *
  * @return the reduced measures in the same order as [units]
  */
-fun <S : System<S>, K : Kind>
-Measure<S, K, *, *>.into(
-    units: List<Units<S, K, *, *>>
-): List<Measure<S, K, *, *>> {
+fun <K : Kind, S : System<S>>
+Measure<K, S, *, *>.into(
+    units: List<Units<K, S, *, *>>
+): List<Measure<K, S, *, *>> {
     if (units.isEmpty()) throw IllegalArgumentException("No units")
 
     // Pre-populate with nulls so that we may write in any order
@@ -119,7 +120,7 @@ Measure<S, K, *, *>.into(
     into[leastIndex] = least.unit.new(least.quantity + current.quantity)
 
     @Suppress("UNCHECKED_CAST")
-    return into.toNonNullableList() as List<Measure<S, K, *, *>>
+    return into.toNonNullableList() as List<Measure<K, S, *, *>>
 }
 
 private fun Measure<*, *, *, *>.convertByBases(

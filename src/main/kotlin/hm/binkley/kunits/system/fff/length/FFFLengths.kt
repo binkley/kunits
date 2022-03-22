@@ -16,7 +16,7 @@ sealed class FFFLengths<
     >(
     name: String,
     furlongs: FixedBigRational,
-) : Units<FFF, Length, U, M>(FFF, Length, name, furlongs)
+) : Units<Length, FFF, U, M>(Length, FFF, name, furlongs)
 
 sealed class FFFLength<
     U : FFFLengths<U, M>,
@@ -24,7 +24,7 @@ sealed class FFFLength<
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<FFF, Length, U, M>(unit, quantity)
+) : Measure<Length, FFF, U, M>(unit, quantity)
 
 class Furlong(quantity: FixedBigRational) :
     FFFLength<Furlongs, Furlong>(Furlongs, quantity) {

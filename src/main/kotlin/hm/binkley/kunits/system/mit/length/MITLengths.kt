@@ -11,9 +11,9 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
 class Smoot private constructor(quantity: FixedBigRational) :
-    Measure<MIT, Length, Smoots, Smoot>(Smoots, quantity) {
-    companion object Smoots : Units<MIT, Length, Smoots, Smoot>(
-        MIT, Length, "smoot", ONE
+    Measure<Length, MIT, Smoots, Smoot>(Smoots, quantity) {
+    companion object Smoots : Units<Length, MIT, Smoots, Smoot>(
+        Length, MIT, "smoot", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Smoot(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity sm"
@@ -25,9 +25,9 @@ val Long.smoots get() = (this over 1).smoots
 val Int.smoots get() = (this over 1).smoots
 
 class Ear(quantity: FixedBigRational) :
-    Measure<MIT, Length, Ears, Ear>(Ears, quantity) {
-    companion object Ears : Units<MIT, Length, Ears, Ear>(
-        MIT, Length, "ear", 3 over 67
+    Measure<Length, MIT, Ears, Ear>(Ears, quantity) {
+    companion object Ears : Units<Length, MIT, Ears, Ear>(
+        Length, MIT, "ear", 3 over 67
     ) {
         override fun new(quantity: FixedBigRational) = Ear(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ears"

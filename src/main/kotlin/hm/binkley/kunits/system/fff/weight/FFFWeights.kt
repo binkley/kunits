@@ -16,7 +16,7 @@ sealed class FFFWeights<
     >(
     name: String,
     furlongs: FixedBigRational,
-) : Units<FFF, Weight, U, M>(FFF, Weight, name, furlongs)
+) : Units<Weight, FFF, U, M>(Weight, FFF, name, furlongs)
 
 sealed class FFFWeight<
     U : FFFWeights<U, M>,
@@ -24,7 +24,7 @@ sealed class FFFWeight<
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<FFF, Weight, U, M>(unit, quantity)
+) : Measure<Weight, FFF, U, M>(unit, quantity)
 
 /** One firkin (weight) is the weight of one firkin (volume) of water. */
 class Firkin private constructor(quantity: FixedBigRational) :

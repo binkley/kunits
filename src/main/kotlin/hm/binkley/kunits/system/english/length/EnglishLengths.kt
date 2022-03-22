@@ -30,7 +30,7 @@ sealed class EnglishLengths<
     >(
     name: String,
     lines: FixedBigRational,
-) : Units<English, Length, U, M>(English, Length, name, lines)
+) : Units<Length, English, U, M>(Length, English, name, lines)
 
 sealed class EnglishLength<
     U : EnglishLengths<U, M>,
@@ -38,7 +38,7 @@ sealed class EnglishLength<
     >(
     units: U,
     quantity: FixedBigRational,
-) : Measure<English, Length, U, M>(units, quantity)
+) : Measure<Length, English, U, M>(units, quantity)
 
 class Line private constructor(quantity: FixedBigRational) :
     EnglishLength<Lines, Line>(Lines, quantity) {

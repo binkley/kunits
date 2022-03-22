@@ -33,7 +33,7 @@ sealed class USDDenominations<
     >(
     name: String,
     dollars: FixedBigRational,
-) : Units<USD, Denomination, U, M>(USD, Denomination, name, dollars)
+) : Units<Denomination, USD, U, M>(Denomination, USD, name, dollars)
 
 sealed class USDDenomination<
     U : USDDenominations<U, M>,
@@ -41,10 +41,15 @@ sealed class USDDenomination<
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<USD, Denomination, U, M>(unit, quantity)
+) : Measure<Denomination, USD, U, M>(unit, quantity)
 
-/** Formats USD money following US locale rules.  Example: "$4.33". */
-fun Measure<USD, Denomination, *, *>.format(): String =
+/**
+ * Formats USD money following US locale rules.  Example: "$4.33".
+ *
+ * NB &mdash; use `Measure<Denomination, USD, *, *>` rather than
+ * `USDDenomination<*, *>` to better match generics using [into].
+ */
+fun Measure<Denomination, USD, *, *>.format(): String =
     NumberFormat.getCurrencyInstance(US)
         .format((this into Dollars).quantity.toBigDecimal())
 

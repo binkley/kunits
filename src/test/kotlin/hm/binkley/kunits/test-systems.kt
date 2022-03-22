@@ -27,8 +27,8 @@ import hm.binkley.math.fixed.over
 object Metasyntactic : System<Metasyntactic>("Metasyntactic")
 
 infix fun <
-    V : Units<Martian, Length, V, N>,
-    N : Measure<Martian, Length, V, N>,
+    V : Units<Length, Martian, V, N>,
+    N : Measure<Length, Martian, V, N>,
     >
 MetasyntacticLength<*, *>.intoMartian(other: V) = into(other) {
     it * (3 over 1)
@@ -40,7 +40,7 @@ sealed class MetasyntacticLengths<
     >(
     name: String,
     basis: FixedBigRational,
-) : Units<Metasyntactic, Length, U, M>(Metasyntactic, Length, name, basis)
+) : Units<Length, Metasyntactic, U, M>(Length, Metasyntactic, name, basis)
 
 sealed class MetasyntacticLength<
     U : MetasyntacticLengths<U, M>,
@@ -48,7 +48,7 @@ sealed class MetasyntacticLength<
     >(
     units: U,
     quantity: FixedBigRational,
-) : Measure<Metasyntactic, Length, U, M>(units, quantity)
+) : Measure<Length, Metasyntactic, U, M>(units, quantity)
 
 class FooMeasure private constructor(value: FixedBigRational) :
     MetasyntacticLength<Foo, FooMeasure>(Foo, value) {
@@ -98,7 +98,7 @@ sealed class MetasyntacticTimes<
     >(
     name: String,
     basis: FixedBigRational,
-) : Units<Metasyntactic, Time, U, M>(Metasyntactic, Time, name, basis)
+) : Units<Time, Metasyntactic, U, M>(Time, Metasyntactic, name, basis)
 
 sealed class MetasyntacticTime<
     U : MetasyntacticTimes<U, M>,
@@ -106,7 +106,7 @@ sealed class MetasyntacticTime<
     >(
     units: U,
     quantity: FixedBigRational,
-) : Measure<Metasyntactic, Time, U, M>(units, quantity)
+) : Measure<Time, Metasyntactic, U, M>(units, quantity)
 
 class Spam private constructor(value: FixedBigRational) :
     MetasyntacticTime<Spams, Spam>(Spams, value) {
@@ -128,7 +128,7 @@ sealed class MetasyntacticWeights<
     >(
     name: String,
     basis: FixedBigRational,
-) : Units<Metasyntactic, Weight, U, M>(Metasyntactic, Weight, name, basis)
+) : Units<Weight, Metasyntactic, U, M>(Weight, Metasyntactic, name, basis)
 
 sealed class MetasyntacticWeight<
     U : MetasyntacticWeights<U, M>,
@@ -136,7 +136,7 @@ sealed class MetasyntacticWeight<
     >(
     units: U,
     quantity: FixedBigRational,
-) : Measure<Metasyntactic, Weight, U, M>(units, quantity)
+) : Measure<Weight, Metasyntactic, U, M>(units, quantity)
 
 class Fred private constructor(value: FixedBigRational) :
     MetasyntacticWeight<Freds, Fred>(Freds, value) {
@@ -158,7 +158,7 @@ sealed class MetasyntacticDenominations<
     >(
     name: String,
     basis: FixedBigRational,
-) : Units<Metasyntactic, Denomination, U, M>(Metasyntactic, Denomination, name, basis)
+) : Units<Denomination, Metasyntactic, U, M>(Denomination, Metasyntactic, name, basis)
 
 sealed class MetasyntacticDenomination<
     U : MetasyntacticDenominations<U, M>,
@@ -166,7 +166,7 @@ sealed class MetasyntacticDenomination<
     >(
     units: U,
     quantity: FixedBigRational,
-) : Measure<Metasyntactic, Denomination, U, M>(units, quantity)
+) : Measure<Denomination, Metasyntactic, U, M>(units, quantity)
 
 class Alice private constructor(value: FixedBigRational) :
     MetasyntacticDenomination<Alicen, Alice>(Alicen, value) {
@@ -190,7 +190,7 @@ sealed class MetasyntacticShoeSizes<
     >(
     name: String,
     basis: FixedBigRational,
-) : Units<Metasyntactic, ShoeSize, U, M>(Metasyntactic, ShoeSize, name, basis)
+) : Units<ShoeSize, Metasyntactic, U, M>(ShoeSize, Metasyntactic, name, basis)
 
 sealed class MetasyntacticShoeSize<
     U : MetasyntacticShoeSizes<U, M>,
@@ -198,7 +198,7 @@ sealed class MetasyntacticShoeSize<
     >(
     units: U,
     quantity: FixedBigRational,
-) : Measure<Metasyntactic, ShoeSize, U, M>(units, quantity)
+) : Measure<ShoeSize, Metasyntactic, U, M>(units, quantity)
 
 class Toto private constructor(value: FixedBigRational) :
     MetasyntacticShoeSize<Totos, Toto>(Totos, value) {
@@ -218,17 +218,17 @@ val Int.totos get() = (this over 1).totos
 object Martian : System<Martian>("Martian")
 
 infix fun <
-    V : Units<Metasyntactic, Length, V, N>,
-    N : Measure<Metasyntactic, Length, V, N>,
+    V : Units<Length, Metasyntactic, V, N>,
+    N : Measure<Length, Metasyntactic, V, N>,
     >
-Measure<Martian, Length, *, *>.intoMetasyntactic(other: V) = into(other) {
+Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
 }
 
 class Grok private constructor(value: FixedBigRational) :
-    Measure<Martian, Length, Groks, Grok>(Groks, value) {
-    companion object Groks : Units<Martian, Length, Groks, Grok>(
-        Martian, Length, "grok", ONE
+    Measure<Length, Martian, Groks, Grok>(Groks, value) {
+    companion object Groks : Units<Length, Martian, Groks, Grok>(
+        Length, Martian, "grok", ONE
     ) {
         override fun new(quantity: FixedBigRational) = Grok(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity groks"

@@ -33,7 +33,7 @@ sealed class EnglishTimes<
     >(
     name: String,
     seconds: FixedBigRational,
-) : Units<English, Time, U, M>(English, Time, name, seconds)
+) : Units<Time, English, U, M>(Time, English, name, seconds)
 
 sealed class EnglishTime<
     U : EnglishTimes<U, M>,
@@ -41,7 +41,7 @@ sealed class EnglishTime<
     >(
     unit: U,
     quantity: FixedBigRational,
-) : Measure<English, Time, U, M>(unit, quantity)
+) : Measure<Time, English, U, M>(unit, quantity)
 
 class Atom private constructor(quantity: FixedBigRational) :
     EnglishTime<Atoms, Atom>(Atoms, quantity) {

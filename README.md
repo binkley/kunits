@@ -118,10 +118,10 @@ This code targets JDK 17.
 
 ### API
 
-- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L10) represents a
-  system of units
 - [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L26) represents a
   kinds of units
+- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L10) represents a
+  system of units
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
   units of measure
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents 
@@ -152,9 +152,9 @@ code needed for setting up a system of units:
 object Martian : System<Martian>("Martian")
 
 class Grok private constructor(value: FixedBigRational) :
-  Measure<Martian, Length, Groks, Grok>(Groks, value) {
-  companion object Groks : Units<Martian, Length, Groks, Grok>(
-    Martian, Length, "grok", ONE
+  Measure<Length, Martian, Groks, Grok>(Groks, value) {
+  companion object Groks : Units<Length, Martian, Groks, Grok>(
+    Length, Martian, "grok", ONE
   ) {
     override fun new(quantity: FixedBigRational) = Grok(quantity)
     override fun format(quantity: FixedBigRational) = "$quantity groks"
@@ -171,10 +171,10 @@ systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L28):
 
 ```kotlin
 infix fun <
-    V : Units<Metasyntactic, Length, V, N>,
-    N : Measure<Metasyntactic, Length, V, N>,
+    V : Units<Length, Metasyntactic, V, N>,
+    N : Measure<Length, Metasyntactic, V, N>,
     >
-Measure<Martian, Length, *, *>.intoMetasyntactic(other: V) = into(other) {
+Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
 }
 ```
