@@ -178,7 +178,7 @@ infix fun <
     V : Units<Length, Metasyntactic, V, N>,
     N : Measure<Length, Metasyntactic, V, N>,
     >
-// Specialize converting Martian units of length to Metasyntactice ones
+// Specialize converting Martian units of length to Metasyntactic ones
 // Elsewhere, define the reflexive `intoMartian` to reverse the conversion
 Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
@@ -189,7 +189,7 @@ Typically, the base type for units of measure (`MartialLengths`, above) is
 `sealed` as there is a known, fixed number of units.
 However,
 [`OtherDnDDenominations`](src/main/kotlin/hm/binkley/kunits/system/dnd/denomination/other/OtherDnDDenominations.kt)
-is an example of extending a system of units.
+is an example of extending a kind of units.
 
 Also, see
 [`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L185) for an 
