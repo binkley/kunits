@@ -125,7 +125,7 @@ This code targets JDK 17.
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
   units of measure
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents 
-  concrete unit quantities ([`FixedBigRational`](#kotlin-rational))
+  quantities of units
 
 Included for `Measure` are the usual simple arithmetic operations.
 
