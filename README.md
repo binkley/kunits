@@ -119,7 +119,7 @@ This code targets JDK 17.
 ### API
 
 - [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L9) represents a
-  kinds of units
+  kind of units
 - [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L29) represents a
   system of units
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
