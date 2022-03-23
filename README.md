@@ -89,7 +89,7 @@ This code targets JDK 17.
 - Addition:
   [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L107)
 - Subtraction:
-  [`((m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L60)
+  [`(m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L60)
 - Multiplication:
   [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L79)
 - Division:
