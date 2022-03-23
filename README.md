@@ -69,6 +69,10 @@ This code targets JDK 17.
 
 ## Design
 
+<!---
+TODO: Unclear it is a good idea to use line numbers in links: means keeping
+this file and code source in sync more than already the case.
+-->
 ### DSL
 
 #### Creating measures of units
@@ -141,18 +145,17 @@ Unreal systems of units for testing:
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L16)
 - [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L217)
 
-<!---
-TODO: Unclear it is a good idea to use line numbers in links: means keeping
-this file and code source in sync more than already the case.
--->
 Below is the source for the Martian system of units showing the minimal 
 code needed for setting up a system of units:
 
 ```kotlin
+// Define the Martian system of units, a singleton
 object Martian : System<Martian>("Martian")
 
 class Grok private constructor(value: FixedBigRational) :
+  // Grok is a measure of length in the Martian system
   Measure<Length, Martian, Groks, Grok>(Groks, value) {
+  // Groks are units measured as multiples of one grok
   companion object Groks : Units<Length, Martian, Groks, Grok>(
     Length, Martian, "grok", ONE
   ) {
@@ -161,6 +164,7 @@ class Grok private constructor(value: FixedBigRational) :
   }
 }
 
+// Factory extension properties for creating some quantity of groks
 val FixedBigRational.groks get() = Groks.new(this)
 val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
@@ -174,6 +178,8 @@ infix fun <
     V : Units<Length, Metasyntactic, V, N>,
     N : Measure<Length, Metasyntactic, V, N>,
     >
+// Specialize converting Martian units of length to Metasyntactice ones
+// Elsewhere, define the reflexive `intoMartian` to reverse the conversion
 Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
 }
