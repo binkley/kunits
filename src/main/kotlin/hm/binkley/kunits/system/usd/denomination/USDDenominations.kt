@@ -44,7 +44,8 @@ sealed class USDDenomination<
 ) : Measure<Denomination, USD, U, M>(unit, quantity)
 
 /**
- * Formats USD money following US locale rules.  Example: "$4.33".
+ * Formats USD money following US locale rules.
+ * Example: "$4.33".
  *
  * NB &mdash; use `Measure<Denomination, USD, *, *>` rather than
  * `USDDenomination<*, *>` to better match generics using [into].
