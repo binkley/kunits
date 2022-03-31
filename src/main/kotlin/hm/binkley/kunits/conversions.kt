@@ -108,7 +108,7 @@ Measure<K, S, *, *>.into(
     var current: Measure<*, *, *, *> = this
     descendingIndexed.forEach { (inputIndex, unit) ->
         val valueToReduce = current.convertByBases(unit) { it }
-        val (whole, remainder) = valueToReduce.wholeNumberAndRemainder()
+        val (whole, remainder) = valueToReduce.truncateAndRemainder()
         into[inputIndex] = unit.new(whole)
         current = unit.new(remainder)
     }
@@ -137,6 +137,6 @@ private fun <T : Comparable<T>> List<T>.sortedDescendingIndexed() =
 
 private fun <T> Collection<T?>.toNonNullableList() = map { it!! }
 
-private fun FixedBigRational.wholeNumberAndRemainder():
+private fun FixedBigRational.truncateAndRemainder():
     Pair<FixedBigRational, FixedBigRational> =
     divideAndRemainder(ONE)
