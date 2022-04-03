@@ -51,7 +51,7 @@ fun <
 Measure<K, S, *, *>.into(
     other: Units<K, T, V, N>,
     conversion: (FixedBigRational) -> FixedBigRational,
-): N = other.new(convertByBases(other, conversion))
+): N = other.new(convertBases(other, conversion))
 
 /**
  * Converts this measure into lowest terms for [restOfUnits] from the most
@@ -107,8 +107,8 @@ Measure<K, S, *, *>.into(
     val descendingIndexed = units.sortedDescendingIndexed()
     var current: Measure<*, *, *, *> = this
     descendingIndexed.forEach { (inputIndex, unit) ->
-        val valueToReduce = current.convertByBases(unit) { it }
-        val (whole, remainder) = valueToReduce.truncateAndRemainder()
+        val converted = current.convertBases(unit) { it }
+        val (whole, remainder) = converted.truncateAndRemainder()
         into[inputIndex] = unit.new(whole)
         current = unit.new(remainder)
     }
@@ -123,10 +123,10 @@ Measure<K, S, *, *>.into(
     return into.toNonNullableList() as List<Measure<K, S, *, *>>
 }
 
-private fun Measure<*, *, *, *>.convertByBases(
+private fun Measure<*, *, *, *>.convertBases(
     other: Units<*, *, *, *>,
     conversion: (FixedBigRational) -> FixedBigRational,
-) = conversion(quantity * unit.basis) / other.basis
+) = conversion(unit.basis * quantity) / other.basis
 
 /**
  * Sorts the array element-wise descending, each entry with an attached
@@ -138,5 +138,4 @@ private fun <T : Comparable<T>> List<T>.sortedDescendingIndexed() =
 private fun <T> Collection<T?>.toNonNullableList() = map { it!! }
 
 private fun FixedBigRational.truncateAndRemainder():
-    Pair<FixedBigRational, FixedBigRational> =
-    divideAndRemainder(ONE)
+    Pair<FixedBigRational, FixedBigRational> = divideAndRemainder(ONE)
