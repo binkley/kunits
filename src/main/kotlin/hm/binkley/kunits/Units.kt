@@ -8,7 +8,8 @@ import java.util.Objects.hash
 
 /** Represents kinds of [Units]. */
 abstract class Kind(
-    val name: String
+    /** Unique name for kinds of unit (_eg_, "length"). */
+    val name: String,
 ) {
     override fun toString() = name
 }

@@ -108,11 +108,17 @@ fun main() {
     val coins = m4.into(
         DollarCoins, HalfDollars, Quarters, Dimes, Nickels, Pennies
     )
+    val looseChange = listOf(
+        DollarCoins, HalfDollars, Quarters, Dimes, Nickels, Pennies
+    )
+    val alsoCoins = m4 % looseChange
+
     val coinCount = coins.map { it.quantity }.sumOf { it.toInt() }
     println("${m4.format()} MAKES CHANGE IN $coinCount COINS AS:")
     coins.forEach { println("- $it (${it.format()})") }
     val recheckM4 = coins.fold(0.dollars) { sum, next -> sum + next }
     println("WHICH SUMS TO ${recheckM4.format()}")
+    println("AND IS THE SAME AS $alsoCoins (${coins == alsoCoins})")
 
     println()
     println("== CONVERSIONS")

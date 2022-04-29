@@ -147,3 +147,16 @@ operator fun <
     M : Measure<K, S, U, M>,
     >
 M.div(factor: Int): M = unit.new(quantity / factor)
+
+/**
+ * Divides up the measure by [units].
+ *
+ * @todo An experiment, unlikely good API design
+ */
+operator fun <
+    K : Kind,
+    S : System<S>,
+    U : Units<K, S, U, M>,
+    M : Measure<K, S, U, M>,
+    >
+M.rem(units: List<Units<K, S, *, *>>): List<Measure<K, S, *, *>> = into(units)

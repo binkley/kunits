@@ -60,6 +60,7 @@ $4.33 MAKES CHANGE IN 9 COINS AS:
 - 1 5¢ ($0.05)
 - 3 1¢ ($0.03)
 WHICH SUMS TO $4.33
+AND IS THE SAME AS [4 100¢, 0 50¢, 1 25¢, 0 10¢, 1 5¢, 3 1¢] (true)
 
 == CONVERSIONS
 1 fur IN Furlong-Firkin-Fortnight IS 220 yd IN English
