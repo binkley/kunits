@@ -67,6 +67,9 @@ AND IS THE SAME AS [4 100¢, 0 50¢, 1 25¢, 0 10¢, 1 5¢, 3 1¢] (true)
 220 yd IN English IS 1 fur IN Furlong-Firkin-Fortnight
 1 sm IN MIT IS 67" IN English
 67" IS [5', 7"]
+
+== EXAMPLE: CLOCK ARITHMETIC
+377⁄4 min (94¼) IS [15 sec, 34 min, 1 hr] (377⁄240 hr)
             """
     }
 }

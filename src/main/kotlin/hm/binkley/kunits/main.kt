@@ -127,4 +127,9 @@ fun main() {
     val smootInInches = 1.smoots intoEnglish Inches
     println("${1.smoots} IN $MIT IS $smootInInches IN $English")
     println("$smootInInches IS ${smootInInches.into(Feet, Inches)}")
+
+    println()
+    println("== EXAMPLE: CLOCK ARITHMETIC")
+    val duration = (377 over 4).minutes // 94¼ minutes
+    println("$duration (94¼) IS ${duration.into(Seconds, Minutes, Hours)} (${duration into Hours})")
 }
