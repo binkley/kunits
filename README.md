@@ -110,15 +110,15 @@ this file and code source in sync more than already the case.
   Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L121)
+  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L127)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L120)
+  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L126)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L113)
+  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L118)
 
 ### API
 
