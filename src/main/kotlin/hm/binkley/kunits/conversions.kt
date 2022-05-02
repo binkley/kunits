@@ -22,7 +22,6 @@ infix fun <
     V : Units<K, S, V, N>,
     N : Measure<K, S, V, N>,
     >
-// TODO: `other: V`?
 Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
 
 /**
