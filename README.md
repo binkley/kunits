@@ -107,7 +107,8 @@ this file and code source in sync more than already the case.
   Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62) 
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108)
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108), or as shorthand,
+  [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/main.kt#L114)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
   Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L127)
