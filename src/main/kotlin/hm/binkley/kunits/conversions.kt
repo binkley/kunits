@@ -85,7 +85,7 @@ Measure<K, S, *, *>.into(
  * Example: `64.inches.into(listOf(Feet, Inches))` is the list of `5.feet` and
  * `4.inches`.
  * Note: `64.inches.into(listOf(Inches, Feet))` is the list of `4.inches` and
- * `5.feet following the order of units as provided.
+ * `5.feet` following the order of units as provided.
  *
  * This function raises an exception if there are no units.
  *
