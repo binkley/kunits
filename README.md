@@ -61,7 +61,7 @@ This library depends on
 representing big rationals.
 
 Presently there is no published dependency for `kotlin-rational`.
-To build KUnits, install locally from the `kotlin-rational-2.1.1` tag.
+To build KUnits, install locally from the `kotlin-rational-2.2.0` tag.
 
 ### Platform
 
