@@ -130,6 +130,6 @@ fun main() {
 
     println()
     println("== EXAMPLE: CLOCK ARITHMETIC")
-    val duration = (377 over 4).minutes // 94¼ minutes
+    val duration = 94.25.minutes // 94¼ minutes
     println("$duration (94¼) IS ${duration.into(Seconds, Minutes, Hours)} (${duration into Hours})")
 }

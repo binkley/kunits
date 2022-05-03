@@ -82,6 +82,7 @@ class Minute private constructor(quantity: FixedBigRational) :
 }
 
 val FixedBigRational.minutes get() = Minutes.new(this)
+val Double.minutes get() = (this over 1).minutes
 val Long.minutes get() = (this over 1).minutes
 val Int.minutes get() = (this over 1).minutes
 
