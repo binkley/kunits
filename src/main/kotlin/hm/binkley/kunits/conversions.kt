@@ -98,7 +98,7 @@ fun <K : Kind, S : System<S>>
 Measure<K, S, *, *>.into(
     units: List<Units<K, S, *, *>>
 ): List<Measure<K, S, *, *>> {
-    if (units.isEmpty()) throw IllegalArgumentException("No units")
+    require(units.isNotEmpty()) { "No units" }
 
     // Pre-populate with nulls so that we may write in any order
     val into = MutableList<Measure<*, *, *, *>?>(units.size) { null }
