@@ -1,8 +1,7 @@
 package hm.binkley.kunits
 
-import hm.binkley.math.divideAndRemainder
 import hm.binkley.math.fixed.FixedBigRational
-import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
+import hm.binkley.math.truncateAndRemainder
 
 /**
  * Converts this measure into units of [other] within the same system of
@@ -135,6 +134,3 @@ private fun <T : Comparable<T>> List<T>.sortedDescendingIndexed() =
     mapIndexed { index, it -> index to it }.sortedByDescending { it.second }
 
 private fun <T> Collection<T?>.toNonNullableList() = map { it!! }
-
-private fun FixedBigRational.truncateAndRemainder():
-    Pair<FixedBigRational, FixedBigRational> = divideAndRemainder(ONE)
