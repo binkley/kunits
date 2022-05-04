@@ -128,8 +128,8 @@ private fun Measure<*, *, *, *>.convertBases(
 ) = conversion(unit.basis * quantity) / other.basis
 
 /**
- * Sorts the array element-wise descending, each entry with an attached
- * index of the ordering in the original array.
+ * Sorts the array element-wise descending, each entry with an attached index
+ * of the ordering in the original list.
  */
 private fun <T : Comparable<T>> List<T>.sortedDescendingIndexed() =
     mapIndexed { index, it -> index to it }.sortedByDescending { it.second }
