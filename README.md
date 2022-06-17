@@ -124,13 +124,17 @@ this file and code source in sync more than already the case.
 ### API
 
 - [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L9) represents a
-  kind of units
+  kind of units (_eg_,
+  [`Length`](src/main/kotlin/hm/binkley/kunits/Units.kt#L18))
 - [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L29) represents a
-  system of units
+  system of units (_eg_,
+  [`English`](src/main/kotlin/hm/binkley/kunits/system/english/English.kt))
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
-  units of measure
+  units of measure (_eg_,
+  [`MetasyntacticLengths`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#37))
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents 
-  quantities of units
+  quantities of units (_eg_,
+  [`m1`](src/main/kotlin/hm/binkley/kunits/main.kt#53))
 
 Included for `Measure` are the usual simple arithmetic operations.
 
