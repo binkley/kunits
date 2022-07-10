@@ -71,7 +71,7 @@
         <kotlin.version>1.7.10</kotlin.version>
         <ktlint-maven-plugin.version>1.13.1</ktlint-maven-plugin.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
-        <maven-assembly-plugin.version>3.4.0</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.4.1</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
         <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
