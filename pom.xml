@@ -58,7 +58,7 @@
         <coverage.instructions>100</coverage.instructions>
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
-        <detekt-maven-plugin.version>1.20.0</detekt-maven-plugin.version>
+        <detekt-maven-plugin.version>1.21.0</detekt-maven-plugin.version>
         <dokka.version>1.7.10</dokka.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
