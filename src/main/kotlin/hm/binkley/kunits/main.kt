@@ -6,7 +6,6 @@ import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Foot.Feet
 import hm.binkley.kunits.system.english.length.Hand.Hands
 import hm.binkley.kunits.system.english.length.Inch.Inches
-import hm.binkley.kunits.system.english.length.Line
 import hm.binkley.kunits.system.english.length.Line.Lines
 import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.kunits.system.english.length.Yard.Yards
@@ -50,7 +49,7 @@ import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 /** Runs the demo. */
 fun main() {
     println("== ENGLISH LENGTHS")
-    val m1: Line = 120.lines
+    val m1 = 120.lines
     println(+m1)
     println(-m1)
     println(m1 into Lines)
