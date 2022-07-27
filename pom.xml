@@ -63,7 +63,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>17</jdk.version>
-        <junit.version>5.9.0-RC1</junit.version>
+        <junit.version>5.9.0</junit.version>
         <kotest.version>5.4.0</kotest.version>
         <kotlin-rational.version>kotlin-rational-2.2.0</kotlin-rational.version>
         <kotlin.code.style>official</kotlin.code.style>
