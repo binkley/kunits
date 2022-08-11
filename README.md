@@ -200,6 +200,16 @@ Also, see
 [`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L185) for an 
 example of creating new kinds of units.
 
+#### Use of generics
+
+Generic signatures pervade types and function signatures. The standard 
+ordering is:
+
+- `K` "kind" &mdash; is this length, weight, etc.
+- `S` "system" &dash; is this English units, etc.
+- `U` "unit" &dash; what unit is this?
+- `M` "measure" &dash; how many units?
+
 ### Considerations
 
 #### Syntactic sugar
