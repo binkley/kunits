@@ -317,14 +317,14 @@ Behavior:
 * [_Avoirdupois system_](https://en.wikipedia.org/wiki/Avoirdupois_system)
 * [_Chart showing the relationships of distance
   measures_](https://en.wikipedia.org/wiki/English_units#/media/File:English_Length_Units_Graph.svg)
+* [_English units_](https://en.wikipedia.org/wiki/English_units)
 * [_English Weights &amp;
   Measures_](http://home.clara.net/brianp/quickref.html)
-* [_English units_](https://en.wikipedia.org/wiki/English_units)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
 * [_metasyntactic variable_](https://foldoc.org/metasyntactic+variable)
 * [_Physikal_](https://github.com/Tenkiv/Physikal)
 * [_Smoot_](https://en.wikipedia.org/wiki/Smoot)
-* [_Units &amp; Systems of Units_](https://www.sizes.com/units/)
 * [_Units of Measurement -
   API_](https://unitsofmeasurement.github.io/unit-api/)
+* [_Units &amp; Systems of Units_](https://www.sizes.com/units/)
