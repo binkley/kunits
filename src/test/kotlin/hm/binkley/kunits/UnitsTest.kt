@@ -8,6 +8,7 @@ import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
 import java.lang.System.identityHashCode
 
+/** @todo How much of this is testing test code _vs_ production code? */
 internal class UnitsTest {
     @Test
     fun `should pretty print`() {
