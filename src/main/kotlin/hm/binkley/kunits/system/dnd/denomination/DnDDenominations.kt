@@ -14,7 +14,7 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TEN
 import hm.binkley.math.fixed.over
 
-/** The D&D coinage. */
+/** A D&D coinage. */
 abstract class DnDDenominations<
     U : Units<Denomination, DnD, U, M>,
     M : Measure<Denomination, DnD, U, M>,

@@ -8,7 +8,7 @@ import hm.binkley.kunits.system.dnd.denomination.other.Mithral.MithralPieces
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.over
 
-/** Example of adding to existing units of measure. */
+/** Examples of adding to existing units of measure. */
 
 class Bronze private constructor(quantity: FixedBigRational) :
     DnDDenomination<BronzePieces, Bronze>(BronzePieces, quantity) {
