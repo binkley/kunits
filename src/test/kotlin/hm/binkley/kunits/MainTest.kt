@@ -17,25 +17,25 @@ Change of lengths -> (lines to barleycorns) 30 Bc
 Adding like lengths -> (m1+m1) 240 lines
 Adding related lengths -> (lines+barleycorns) 240 lines
 Subtracting related lengths -> (hands-lines) 0 hh
-Scaling lengths -> (tripling) 360 lines
+Scaling length -> (tripling) 360 lines
 Change of lengths -> (lines to barleycorns) 30 Bc
-Scaling lengths -> (thirding) 40 lines
+Scaling length -> (thirding) 40 lines
 Change of lengths -> (multiple) 5 sticks
-Complex expression -> (yards + feet - barleycorns into hands) 5⁄2 hh
+Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
 
-== MEDIEVAL TIMES
-12345⁄4 sec
--12345⁄4 sec
-38681⁄2 atoms
-823⁄960 hr
-12345⁄2 sec
-12585⁄4 sec
-0 quadrants
-12345 sec
-823⁄16 min
-12345⁄16 sec
-823⁄345600 quinzièmes
-12345⁄4 sec
+== OUTDATED TIMES
+Positive time -> (+m2) 12345⁄4 sec
+Negative time -> (+m2) -12345⁄4 sec
+Change of times -> (no change) 12345⁄4 sec
+Change of times -> (seconds into hours) 823⁄960 hr
+Adding like times -> (m2+m2) 12345⁄2 sec
+Adding related times -> (seconds + minutes) 12585⁄4 sec
+Subtracting related times -> (quadrants-seconds) 0 quadrants
+Scaling time -> (quadrupling) 12345 sec
+Change of times -> (seconds to minutes) 823⁄16 min
+Scaling time -> (quartering) 12345⁄16 sec
+Change of times -> (multiple) 823⁄345600 quinzièmes
+Complex expression -> (minutes+days-weeks into seconds) 12345⁄4 sec
 
 == AVOIRDUPOIS WEIGHTS
 300 dr

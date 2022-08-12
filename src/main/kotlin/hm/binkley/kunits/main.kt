@@ -11,7 +11,6 @@ import hm.binkley.kunits.system.english.length.Stick.Sticks
 import hm.binkley.kunits.system.english.length.Yard.Yards
 import hm.binkley.kunits.system.english.length.lines
 import hm.binkley.kunits.system.english.length.yards
-import hm.binkley.kunits.system.english.time.Atom.Atoms
 import hm.binkley.kunits.system.english.time.Day.Days
 import hm.binkley.kunits.system.english.time.Hour.Hours
 import hm.binkley.kunits.system.english.time.Mileway.Mileways
@@ -55,46 +54,53 @@ fun main() {
     println("Change of lengths -> (no change) ${m1 into Lines}")
     println(
         "Change of lengths -> (lines to barleycorns) ${
-            m1 into Barleycorns
+        m1 into Barleycorns
         }"
     )
     println("Adding like lengths -> (m1+m1) ${m1 + m1}")
     println(
         "Adding related lengths -> (lines+barleycorns) ${
-            m1 + (m1 into Barleycorns)
+        m1 + (m1 into Barleycorns)
         }"
     )
     println(
         "Subtracting related lengths -> (hands-lines) ${
-            (m1 into Hands) - m1
+        (m1 into Hands) - m1
         }"
     )
-    println("Scaling lengths -> (tripling) ${m1 * 3}")
+    println("Scaling length -> (tripling) ${m1 * 3}")
     println("Change of lengths -> (lines to barleycorns) ${m1 / Barleycorns}")
-    println("Scaling lengths -> (thirding) ${m1 / 3}")
+    println("Scaling length -> (thirding) ${m1 / 3}")
     println("Change of lengths -> (multiple) ${m1 into Inches into Sticks}")
     println(
-        "Complex expression -> (yards + feet - barleycorns into hands) ${
-            ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
+        "Complex expression -> (yards+feet-barleycorns into hands) ${
+        ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
         }"
     )
 
     println()
-    println("== MEDIEVAL TIMES")
+    println("== OUTDATED TIMES")
     val m2 = (12_345 over 4).seconds
-    println(+m2)
-    println(-m2)
-    println(m2 into Atoms)
-    println(m2 into Hours)
-    println(m2 + m2)
-    println(m2 + 1.minutes)
-    println((m2 into Quadrants) - m2)
-    println(m2 * 4)
-    println(m2 / Minutes)
-    println(m2 / 4)
-    println(m2 into Mileways into Quinzièmes)
+    println("Positive time -> (+m2) ${+m2}")
+    println("Negative time -> (+m2) ${-m2}")
+    println("Change of times -> (no change) ${m2 into Seconds}")
+    println("Change of times -> (seconds into hours) ${m2 into Hours}")
+    println("Adding like times -> (m2+m2) ${m2 + m2}")
+    println("Adding related times -> (seconds + minutes) ${m2 + 1.minutes}")
     println(
-        ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into Seconds
+        "Subtracting related times -> (quadrants-seconds) ${
+        (m2 into Quadrants) - m2
+        }"
+    )
+    println("Scaling time -> (quadrupling) ${m2 * 4}")
+    println("Change of times -> (seconds to minutes) ${m2 / Minutes}")
+    println("Scaling time -> (quartering) ${m2 / 4}")
+    println("Change of times -> (multiple) ${m2 into Mileways into Quinzièmes}")
+    println(
+        "Complex expression -> (minutes+days-weeks into seconds) ${
+        ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into
+            Seconds
+        }"
     )
 
     println()
@@ -146,11 +152,7 @@ fun main() {
     val duration = 94.25.minutes // 94¼ minutes
     println(
         "$duration (94¼) IS ${
-            duration.into(
-                Seconds,
-                Minutes,
-                Hours
-            )
+        duration.into(Seconds, Minutes, Hours)
         } (${duration into Hours})"
     )
 }
