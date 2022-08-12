@@ -106,19 +106,25 @@ fun main() {
     println()
     println("== AVOIRDUPOIS WEIGHTS")
     val m3 = 300L.drams
-    println(+m3)
-    println(-m3)
-    println(m3 into Drams)
-    println(m3 into Ounces)
-    println(m3 + m3)
-    println(m3 + 1.ounces)
-    println((m3 into Pounds) - m3)
-    println(m3 * 5)
-    println(m3 / Ounces)
-    println(m3 / 5)
-    println(m3 into Pounds into Stone)
+    println("Positive weight -> (+m3) ${+m3}")
+    println("Negative weight -> (+m3) ${-m3}")
+    println("Change of weights -> (no change) ${m3 into Drams}")
+    println("Change of weights -> (drams into ounces) ${m3 into Ounces}")
+    println("Adding like weights -> (m3+m3) ${m3 + m3}")
+    println("Adding like weights -> (m3+1) ${m3 + 1.ounces}")
     println(
+        "Subtracting related weights -> (pounds-ounces) ${
+        (m3 into Pounds) - m3
+        })"
+    )
+    println("Scaling weight -> (quintupling) ${m3 * 5}")
+    println("Change of weights -> (drams to ounces) ${m3 / Ounces}")
+    println("Scaling weight -> (fifthing) ${m3 / 5}")
+    println("Change of weights -> (multiple) ${m3 into Pounds into Stone}")
+    println(
+        "Complex expression -> (stone+pounds-ounces into drams) ${
         ((m3 into Stone) + (m3 into Pounds) - (m3 into Ounces)) into Drams
+        }"
     )
 
     println()

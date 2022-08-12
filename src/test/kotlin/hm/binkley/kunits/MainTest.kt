@@ -38,18 +38,18 @@ Change of times -> (multiple) 823⁄345600 quinzièmes
 Complex expression -> (minutes+days-weeks into seconds) 12345⁄4 sec
 
 == AVOIRDUPOIS WEIGHTS
-300 dr
--300 dr
-300 dr
-75⁄4 oz
-600 dr
-316 dr
-0 lb
-1500 dr
-75⁄4 oz
-60 dr
-75⁄896 st
-300 dr
+Positive weight -> (+m3) 300 dr
+Negative weight -> (+m3) -300 dr
+Change of weights -> (no change) 300 dr
+Change of weights -> (drams into ounces) 75⁄4 oz
+Adding like weights -> (m3+m3) 600 dr
+Adding like weights -> (m3+1) 316 dr
+Subtracting related weights -> (pounds-ounces) 0 lb)
+Scaling weight -> (quintupling) 1500 dr
+Change of weights -> (drams to ounces) 75⁄4 oz
+Scaling weight -> (fifthing) 60 dr
+Change of weights -> (multiple) 75⁄896 st
+Complex expression -> (stone+pounds-ounces into drams) 300 dr
 
 == USD DENOMINATIONS
 $4.33 MAKES CHANGE IN 9 COINS AS:
