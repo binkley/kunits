@@ -98,8 +98,7 @@ fun main() {
     println("Change of times -> (multiple) ${m2 into Mileways into Quinzièmes}")
     println(
         "Complex expression -> (minutes+days-weeks into seconds) ${
-        ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into
-            Seconds
+        ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into Seconds
         }"
     )
 
