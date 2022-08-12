@@ -16,6 +16,8 @@ class Bronze private constructor(quantity: FixedBigRational) :
         "bronze piece", 1 over 10
     ) {
         override fun new(quantity: FixedBigRational) = Bronze(quantity)
+
+        /** @todo "bp" for bronze piece _vs "bp" for brass piece */
         override fun format(quantity: FixedBigRational) = "$quantity bp"
     }
 }
