@@ -244,7 +244,7 @@ Or consider:
 Unfortunately, `as` is an existing keyword for type casting.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L8) function, 
+[`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L6) function, 
 and a more general version for [conversions into unit units of the same 
 kind in another system](src/main/kotlin/hm/binkley/kunits/conversions.kt#L26).
 
