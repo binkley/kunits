@@ -235,6 +235,14 @@ Another might be:
 
 However, this overloads the universal `to` function for creating `Pair`s.
 
+Or consider:
+
+```kotlin
+2.feet as Inches
+```
+
+Unfortunately, `as` is an existing keyword for type casting.
+
 The chosen compromise is an infix
 [`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L8) function, 
 and a more general version for [conversions into unit units of the same 
