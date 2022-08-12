@@ -50,19 +50,33 @@ import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 fun main() {
     println("== ENGLISH LENGTHS")
     val m1 = 120.lines
-    println(+m1)
-    println(-m1)
-    println(m1 into Lines)
-    println(m1 into Barleycorns)
-    println(m1 + m1)
-    println(m1 + (m1 into Barleycorns))
-    println((m1 into Hands) - m1)
-    println(m1 * 3)
-    println(m1 / Barleycorns)
-    println(m1 / 3)
-    println(m1 into Inches into Sticks)
+    println("Positive length -> (+m1) ${+m1}")
+    println("Negative length -> (-m1) ${-m1}")
+    println("Change of lengths -> (no change) ${m1 into Lines}")
     println(
-        ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
+        "Change of lengths -> (lines to barleycorns) ${
+            m1 into Barleycorns
+        }"
+    )
+    println("Adding like lengths -> (m1+m1) ${m1 + m1}")
+    println(
+        "Adding related lengths -> (lines+barleycorns) ${
+            m1 + (m1 into Barleycorns)
+        }"
+    )
+    println(
+        "Subtracting related lengths -> (hands-lines) ${
+            (m1 into Hands) - m1
+        }"
+    )
+    println("Scaling lengths -> (tripling) ${m1 * 3}")
+    println("Change of lengths -> (lines to barleycorns) ${m1 / Barleycorns}")
+    println("Scaling lengths -> (thirding) ${m1 / 3}")
+    println("Change of lengths -> (multiple) ${m1 into Inches into Sticks}")
+    println(
+        "Complex expression -> (yards + feet - barleycorns into hands) ${
+            ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
+        }"
     )
 
     println()
@@ -130,5 +144,13 @@ fun main() {
     println()
     println("== EXAMPLE: CLOCK ARITHMETIC")
     val duration = 94.25.minutes // 94¼ minutes
-    println("$duration (94¼) IS ${duration.into(Seconds, Minutes, Hours)} (${duration into Hours})")
+    println(
+        "$duration (94¼) IS ${
+            duration.into(
+                Seconds,
+                Minutes,
+                Hours
+            )
+        } (${duration into Hours})"
+    )
 }

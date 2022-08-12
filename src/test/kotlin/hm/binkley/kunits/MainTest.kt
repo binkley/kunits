@@ -10,18 +10,18 @@ internal class MainTest {
         tapSystemErrAndOutNormalized { main() } shouldBeAfterTrimming
             """
 == ENGLISH LENGTHS
-120 lines
--120 lines
-120 lines
-30 Bc
-240 lines
-240 lines
-0 hh
-360 lines
-30 Bc
-40 lines
-5 sticks
-5⁄2 hh
+Positive length -> (+m1) 120 lines
+Negative length -> (-m1) -120 lines
+Change of lengths -> (no change) 120 lines
+Change of lengths -> (lines to barleycorns) 30 Bc
+Adding like lengths -> (m1+m1) 240 lines
+Adding related lengths -> (lines+barleycorns) 240 lines
+Subtracting related lengths -> (hands-lines) 0 hh
+Scaling lengths -> (tripling) 360 lines
+Change of lengths -> (lines to barleycorns) 30 Bc
+Scaling lengths -> (thirding) 40 lines
+Change of lengths -> (multiple) 5 sticks
+Complex expression -> (yards + feet - barleycorns into hands) 5⁄2 hh
 
 == MEDIEVAL TIMES
 12345⁄4 sec
