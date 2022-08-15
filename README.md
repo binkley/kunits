@@ -1,12 +1,14 @@
 <a href="LICENSE.md">
-<img src="./images/public-domain.png" alt="Public Domain" align="right"/>
+<img src="./images/public-domain.png" alt="Public Domain"
+align="right" width="10%"/>
 </a>
 
 # KUnits
 
 Units of measure in Kotlin
 
-<img src="./images/kunits.png" alt="KUnits" align="right" width="20%"/>
+<img src="./images/kunits.png" alt="KUnits"
+align="right" width="20%"/>
 
 [![build](https://github.com/binkley/kunits/workflows/build/badge.svg)](https://github.com/binkley/kunits/actions)
 [![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
@@ -19,7 +21,7 @@ by binary computers; the French revolutionaries overlooked that.
 USD is provided as a practical example.
 
 The project is a demonstration of the power (and limits) of generics in
-Kotlin, and writing a clean DSL: see
+Kotlin and in writing a clean DSL: see
 [`main.kt`](src/main/kotlin/hm/binkley/kunits/main.kt).
 It is also fun.
 
@@ -73,6 +75,7 @@ This code targets JDK 17.
 TODO: Unclear it is a good idea to use line numbers in links: means keeping
 this file and code source in sync more than already the case.
 -->
+
 ### DSL
 
 #### Creating measures of units
@@ -104,9 +107,9 @@ this file and code source in sync more than already the case.
 - Between units of the same kind within a system:
   [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L93), or as
   shorthand, [`m1 /
-  Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62) 
+  Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62)
 - Into multiple other units of the same kind within a system:
-  [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels, 
+  [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
   Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108), or as shorthand,
   [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/main.kt#L114)
 - Between units of the same kind between different systems:
@@ -129,10 +132,10 @@ this file and code source in sync more than already the case.
 - [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L29) represents a
   system of units (_eg_,
   [`English`](src/main/kotlin/hm/binkley/kunits/system/english/English.kt))
-- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents 
+- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents
   units of measure (_eg_,
   [`MetasyntacticLengths`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#37))
-- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents 
+- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents
   quantities of units (_eg_,
   [`m1`](src/main/kotlin/hm/binkley/kunits/main.kt#53))
 
@@ -150,7 +153,7 @@ Unreal systems of units for testing:
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L16)
 - [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L217)
 
-Below is the source for the Martian system of units showing the minimal 
+Below is the source for the Martian system of units showing the minimal
 code needed for setting up a system of units:
 
 ```kotlin
@@ -158,15 +161,15 @@ code needed for setting up a system of units:
 object Martian : System<Martian>("Martian")
 
 class Grok private constructor(value: FixedBigRational) :
-  // Grok is a measure of length in the Martian system
-  Measure<Length, Martian, Groks, Grok>(Groks, value) {
-  // Groks are units measured as multiples of one grok
-  companion object Groks : Units<Length, Martian, Groks, Grok>(
-    Length, Martian, "grok", ONE
-  ) {
-    override fun new(quantity: FixedBigRational) = Grok(quantity)
-    override fun format(quantity: FixedBigRational) = "$quantity groks"
-  }
+// Grok is a measure of length in the Martian system
+    Measure<Length, Martian, Groks, Grok>(Groks, value) {
+    // Groks are units measured as multiples of one grok
+    companion object Groks : Units<Length, Martian, Groks, Grok>(
+        Length, Martian, "grok", ONE
+    ) {
+        override fun new(quantity: FixedBigRational) = Grok(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity groks"
+    }
 }
 
 // Factory extension properties for creating some quantity of groks
@@ -180,14 +183,15 @@ systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L28):
 
 ```kotlin
 infix fun <
-    V : Units<Length, Metasyntactic, V, N>,
-    N : Measure<Length, Metasyntactic, V, N>,
-    >
+        V : Units<Length, Metasyntactic, V, N>,
+        N : Measure<Length, Metasyntactic, V, N>,
+        >
 // Specialize converting Martian units of length to Metasyntactic ones
 // Elsewhere, define the reflexive `intoMartian` to reverse the conversion
-Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
-    it * (1 over 3)
-}
+        Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) =
+    into(other) {
+        it * (1 over 3)
+    }
 ```
 
 Typically, the base type for units of measure (`MartialLengths`, above) is
@@ -197,12 +201,12 @@ However,
 is an example of extending a kind of units.
 
 Also, see
-[`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L185) for an 
+[`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L185) for an
 example of creating new kinds of units.
 
 #### Use of generics
 
-Generic signatures pervade types and function signatures. The standard 
+Generic signatures pervade types and function signatures. The standard
 ordering is:
 
 - `K` "kind" &mdash; is this length, weight, etc.
@@ -244,8 +248,8 @@ Or consider:
 Unfortunately, `as` is an existing keyword for type casting.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L6) function, 
-and a more general version for [conversions into unit units of the same 
+[`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L6) function,
+and a more general version for [conversions into unit units of the same
 kind in another system](src/main/kotlin/hm/binkley/kunits/conversions.kt#L26).
 
 ```kotlin
@@ -284,12 +288,12 @@ At the cost of losing some pleasantness of Kotlin.
 
 #### Inline
 
-The trivial extension properties for converting `Int`, `Long`, and 
-`FixedBigRational` into units could be `inline` (as well as several others). 
+The trivial extension properties for converting `Int`, `Long`, and
+`FixedBigRational` into units could be `inline` (as well as several others).
 However, JaCoCo's [_Kotlin inline functions are not marked as
 covered_](https://github.com/jacoco/jacoco/issues/654) lowers test coverage,
 and Kover's [_Feature request: Equivalent Maven
-plugin_](https://github.com/Kotlin/kotlinx-kover/issues/51) does not support 
+plugin_](https://github.com/Kotlin/kotlinx-kover/issues/51) does not support
 Maven.
 
 Following [_The Rules_](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
