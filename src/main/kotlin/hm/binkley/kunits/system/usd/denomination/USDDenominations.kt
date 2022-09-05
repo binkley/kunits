@@ -56,18 +56,18 @@ import java.util.Locale.US
 /** The USD denominations. */
 sealed class USDDenominations<
     U : USDDenominations<U, M>,
-    M : USDDenomination<U, M>,
+    M : USDDenomination<U, M>
     >(
     name: String,
-    dollars: FixedBigRational,
+    dollars: FixedBigRational
 ) : Units<Denomination, USD, U, M>(Denomination, USD, name, dollars)
 
 sealed class USDDenomination<
     U : USDDenominations<U, M>,
-    M : USDDenomination<U, M>,
+    M : USDDenomination<U, M>
     >(
     unit: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Denomination, USD, U, M>(unit, quantity)
 
 /**
@@ -84,7 +84,8 @@ fun Measure<Denomination, USD, *, *>.format(): String =
 class HundredDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<HundredDollars, HundredDollar>(HundredDollars, quantity) {
     companion object HundredDollars : USDDenominations<HundredDollars, HundredDollar>(
-        "hundred dollar bill", 100 over 1
+        "hundred dollar bill",
+        100 over 1
     ) {
         override fun new(quantity: FixedBigRational) = HundredDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $100"
@@ -98,7 +99,8 @@ val Int.hundredDollars get() = (this over 1).hundredDollars
 class FiftyDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<FiftyDollars, FiftyDollar>(FiftyDollars, quantity) {
     companion object FiftyDollars : USDDenominations<FiftyDollars, FiftyDollar>(
-        "fifty dollar bill", 50 over 1
+        "fifty dollar bill",
+        50 over 1
     ) {
         override fun new(quantity: FixedBigRational) = FiftyDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $50"
@@ -112,7 +114,8 @@ val Int.fiftyDollars get() = (this over 1).fiftyDollars
 class TwentyDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<TwentyDollars, TwentyDollar>(TwentyDollars, quantity) {
     companion object TwentyDollars : USDDenominations<TwentyDollars, TwentyDollar>(
-        "twenty dollar bill", 20 over 1
+        "twenty dollar bill",
+        20 over 1
     ) {
         override fun new(quantity: FixedBigRational) = TwentyDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $20"
@@ -126,7 +129,8 @@ val Int.twentyDollars get() = (this over 1).twentyDollars
 class TenDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<TenDollars, TenDollar>(TenDollars, quantity) {
     companion object TenDollars : USDDenominations<TenDollars, TenDollar>(
-        "ten dollar bill", TEN
+        "ten dollar bill",
+        TEN
     ) {
         override fun new(quantity: FixedBigRational) = TenDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $10"
@@ -140,7 +144,8 @@ val Int.tenDollars get() = (this over 1).tenDollars
 class FiveDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<FiveDollars, FiveDollar>(FiveDollars, quantity) {
     companion object FiveDollars : USDDenominations<FiveDollars, FiveDollar>(
-        "five dollar bill", 5 over 1
+        "five dollar bill",
+        5 over 1
     ) {
         override fun new(quantity: FixedBigRational) = FiveDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $5"
@@ -154,7 +159,8 @@ val Int.fiveDollars get() = (this over 1).fiveDollars
 class TwoDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<TwoDollars, TwoDollar>(TwoDollars, quantity) {
     companion object TwoDollars : USDDenominations<TwoDollars, TwoDollar>(
-        "two dollar bill", TWO
+        "two dollar bill",
+        TWO
     ) {
         override fun new(quantity: FixedBigRational) = TwoDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $2"
@@ -168,7 +174,8 @@ val Int.twoDollars get() = (this over 1).twoDollars
 class Dollar private constructor(quantity: FixedBigRational) :
     USDDenomination<Dollars, Dollar>(Dollars, quantity) {
     companion object Dollars : USDDenominations<Dollars, Dollar>(
-        "dollar bill", ONE
+        "dollar bill",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Dollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $1"
@@ -182,7 +189,8 @@ val Int.dollars get() = (this over 1).dollars
 class DollarCoin private constructor(quantity: FixedBigRational) :
     USDDenomination<DollarCoins, DollarCoin>(DollarCoins, quantity) {
     companion object DollarCoins : USDDenominations<DollarCoins, DollarCoin>(
-        "dollar coin", ONE
+        "dollar coin",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = DollarCoin(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 100¢"
@@ -196,7 +204,8 @@ val Int.dollarCoins get() = (this over 1).dollarCoins
 class HalfDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<HalfDollars, HalfDollar>(HalfDollars, quantity) {
     companion object HalfDollars : USDDenominations<HalfDollars, HalfDollar>(
-        "half dollar", 1 over 2
+        "half dollar",
+        1 over 2
     ) {
         override fun new(quantity: FixedBigRational) = HalfDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 50¢"
@@ -210,7 +219,8 @@ val Int.halfDollars get() = (this over 1).halfDollars
 class Quarter private constructor(quantity: FixedBigRational) :
     USDDenomination<Quarters, Quarter>(Quarters, quantity) {
     companion object Quarters : USDDenominations<Quarters, Quarter>(
-        "quarter", 1 over 4
+        "quarter",
+        1 over 4
     ) {
         override fun new(quantity: FixedBigRational) = Quarter(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 25¢"
@@ -224,7 +234,8 @@ val Int.quarters get() = (this over 1).quarters
 class Dime private constructor(quantity: FixedBigRational) :
     USDDenomination<Dimes, Dime>(Dimes, quantity) {
     companion object Dimes : USDDenominations<Dimes, Dime>(
-        "dime", 1 over 10
+        "dime",
+        1 over 10
     ) {
         override fun new(quantity: FixedBigRational) = Dime(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 10¢"
@@ -238,7 +249,8 @@ val Int.dimes get() = (this over 1).dimes
 class Nickel private constructor(quantity: FixedBigRational) :
     USDDenomination<Nickels, Nickel>(Nickels, quantity) {
     companion object Nickels : USDDenominations<Nickels, Nickel>(
-        "nickel", 1 over 20
+        "nickel",
+        1 over 20
     ) {
         override fun new(quantity: FixedBigRational) = Nickel(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 5¢"
@@ -252,7 +264,8 @@ val Int.nickels get() = (this over 1).nickels
 class Penny private constructor(quantity: FixedBigRational) :
     USDDenomination<Pennies, Penny>(Pennies, quantity) {
     companion object Pennies : USDDenominations<Pennies, Penny>(
-        "penny", 1 over 100
+        "penny",
+        1 over 100
     ) {
         override fun new(quantity: FixedBigRational) = Penny(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 1¢"

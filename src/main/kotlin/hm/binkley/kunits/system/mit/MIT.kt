@@ -43,7 +43,7 @@ object MIT : System<MIT>("MIT")
 /** Converts lengths from MIT into English units. */
 infix fun <
     V : EnglishLengths<V, N>,
-    N : EnglishLength<V, N>,
+    N : EnglishLength<V, N>
     >
 Measure<Length, MIT, *, *>.intoEnglish(other: V) = into(other) {
     it * LINES_PER_SMOOT

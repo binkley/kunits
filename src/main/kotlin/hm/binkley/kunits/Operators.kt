@@ -45,7 +45,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.unaryMinus(): M = unit.new(-quantity)
 
@@ -54,7 +54,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.plus(other: Measure<K, S, *, *>): M =
     unit.new(quantity + (other into unit).quantity)
@@ -64,7 +64,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.minus(other: Measure<K, S, *, *>): M =
     unit.new(quantity - (other into unit).quantity)
@@ -74,7 +74,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.times(factor: FixedBigRational): M = unit.new(quantity * factor)
 
@@ -83,7 +83,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 FixedBigRational.times(factor: M): M =
     factor.unit.new(this * factor.quantity)
@@ -93,7 +93,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.times(factor: Long): M = unit.new(quantity * factor)
 
@@ -102,7 +102,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 Long.times(factor: M): M = factor.unit.new(this * factor.quantity)
 
@@ -111,7 +111,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.times(factor: Int): M = unit.new(quantity * factor)
 
@@ -120,7 +120,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 Int.times(factor: M): M = factor.unit.new(this * factor.quantity)
 
@@ -129,7 +129,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     V : Units<K, S, V, N>,
-    N : Measure<K, S, V, N>,
+    N : Measure<K, S, V, N>
     >
 Measure<K, S, *, *>.div(denominator: Measure<K, S, V, N>): FixedBigRational =
     (this into denominator.unit).quantity / denominator.quantity
@@ -144,7 +144,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     V : Units<K, S, V, N>,
-    N : Measure<K, S, V, N>,
+    N : Measure<K, S, V, N>
     >
 Measure<K, S, *, *>.div(denominator: V): N = into(denominator)
 
@@ -153,7 +153,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.div(factor: FixedBigRational): M = unit.new(quantity / factor)
 
@@ -162,7 +162,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.div(factor: Long): M = unit.new(quantity / factor)
 
@@ -171,7 +171,7 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.div(factor: Int): M = unit.new(quantity / factor)
 
@@ -184,6 +184,6 @@ operator fun <
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >
 M.rem(units: List<Units<K, S, *, *>>): List<Measure<K, S, *, *>> = into(units)

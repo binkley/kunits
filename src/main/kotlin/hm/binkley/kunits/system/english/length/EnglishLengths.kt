@@ -53,24 +53,25 @@ import hm.binkley.math.fixed.over
 /** The English units of length. */
 sealed class EnglishLengths<
     U : EnglishLengths<U, M>,
-    M : EnglishLength<U, M>,
+    M : EnglishLength<U, M>
     >(
     name: String,
-    lines: FixedBigRational,
+    lines: FixedBigRational
 ) : Units<Length, English, U, M>(Length, English, name, lines)
 
 sealed class EnglishLength<
     U : EnglishLengths<U, M>,
-    M : EnglishLength<U, M>,
+    M : EnglishLength<U, M>
     >(
     units: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Length, English, U, M>(units, quantity)
 
 class Line private constructor(quantity: FixedBigRational) :
     EnglishLength<Lines, Line>(Lines, quantity) {
     companion object Lines : EnglishLengths<Lines, Line>(
-        "line", ONE
+        "line",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Line(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity lines"
@@ -84,7 +85,8 @@ val Int.lines get() = (this over 1).lines
 class Barleycorn private constructor(quantity: FixedBigRational) :
     EnglishLength<Barleycorns, Barleycorn>(Barleycorns, quantity) {
     companion object Barleycorns : EnglishLengths<Barleycorns, Barleycorn>(
-        "barleycorn", 4 over 1
+        "barleycorn",
+        4 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Barleycorn(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity Bc"
@@ -98,7 +100,8 @@ val Int.barleycorns get() = (this over 1).barleycorns
 class Inch private constructor(quantity: FixedBigRational) :
     EnglishLength<Inches, Inch>(Inches, quantity) {
     companion object Inches : EnglishLengths<Inches, Inch>(
-        "inch", 12 over 1
+        "inch",
+        12 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Inch(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity\""
@@ -112,7 +115,8 @@ val Int.inches get() = (this over 1).inches
 class Stick private constructor(quantity: FixedBigRational) :
     EnglishLength<Sticks, Stick>(Sticks, quantity) {
     companion object Sticks : EnglishLengths<Sticks, Stick>(
-        "stick", 24 over 1
+        "stick",
+        24 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Stick(quantity)
         override fun format(quantity: FixedBigRational) = when (quantity) {
@@ -129,7 +133,8 @@ val Int.sticks get() = (this over 1).sticks
 class Hand private constructor(quantity: FixedBigRational) :
     EnglishLength<Hands, Hand>(Hands, quantity) {
     companion object Hands : EnglishLengths<Hands, Hand>(
-        "hand", 48 over 1
+        "hand",
+        48 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Hand(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity hh"
@@ -143,7 +148,8 @@ val Int.hands get() = (this over 1).hands
 class Shaftment private constructor(quantity: FixedBigRational) :
     EnglishLength<Shaftments, Shaftment>(Shaftments, quantity) {
     companion object Shaftments : EnglishLengths<Shaftments, Shaftment>(
-        "shaftment", 72 over 1
+        "shaftment",
+        72 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Shaftment(quantity)
         override fun format(quantity: FixedBigRational) =
@@ -158,7 +164,8 @@ val Int.shaftments get() = (this over 1).shaftments
 class Link private constructor(quantity: FixedBigRational) :
     EnglishLength<Links, Link>(Links, quantity) {
     companion object Links : EnglishLengths<Links, Link>(
-        "link", 2_376 over 25
+        "link",
+        2_376 over 25
     ) {
         override fun new(quantity: FixedBigRational) = Link(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity links"
@@ -172,7 +179,8 @@ val Int.links get() = (this over 1).links
 class Foot private constructor(quantity: FixedBigRational) :
     EnglishLength<Feet, Foot>(Feet, quantity) {
     companion object Feet : EnglishLengths<Feet, Foot>(
-        "foot", 144 over 1
+        "foot",
+        144 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Foot(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity'"
@@ -186,7 +194,8 @@ val Int.feet get() = (this over 1).feet
 class Yard(quantity: FixedBigRational) :
     EnglishLength<Yards, Yard>(Yards, quantity) {
     companion object Yards : EnglishLengths<Yards, Yard>(
-        "yard", 432 over 1
+        "yard",
+        432 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Yard(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity yd"
@@ -200,7 +209,8 @@ val Int.yards get() = (this over 1).yards
 class Ell private constructor(quantity: FixedBigRational) :
     EnglishLength<Ells, Ell>(Ells, quantity) {
     companion object Ells : EnglishLengths<Ells, Ell>(
-        "ells", 540 over 1
+        "ells",
+        540 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Ell(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ells"
@@ -214,7 +224,8 @@ val Int.ells get() = (this over 1).ells
 class Rod private constructor(quantity: FixedBigRational) :
     EnglishLength<Rods, Rod>(Rods, quantity) {
     companion object Rods : EnglishLengths<Rods, Rod>(
-        "rod", 2_376 over 1
+        "rod",
+        2_376 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Rod(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity rods"
@@ -228,7 +239,8 @@ val Int.rods get() = (this over 1).rods
 class Chain private constructor(quantity: FixedBigRational) :
     EnglishLength<Chains, Chain>(Chains, quantity) {
     companion object Chains : EnglishLengths<Chains, Chain>(
-        "chain", 9_504 over 1
+        "chain",
+        9_504 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Chain(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ch"
@@ -242,7 +254,8 @@ val Int.chains get() = (this over 1).chains
 class Furlong private constructor(quantity: FixedBigRational) :
     EnglishLength<Furlongs, Furlong>(Furlongs, quantity) {
     companion object Furlongs : EnglishLengths<Furlongs, Furlong>(
-        "furlong", 95_040 over 1
+        "furlong",
+        95_040 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Furlong(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity fur"
@@ -256,7 +269,8 @@ val Int.furlongs get() = (this over 1).furlongs
 class Mile private constructor(quantity: FixedBigRational) :
     EnglishLength<Miles, Mile>(Miles, quantity) {
     companion object Miles : EnglishLengths<Miles, Mile>(
-        "mile", 760_320 over 1
+        "mile",
+        760_320 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Mile(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity mi"
@@ -270,7 +284,8 @@ val Int.miles get() = (this over 1).miles
 class League private constructor(quantity: FixedBigRational) :
     EnglishLength<Leagues, League>(Leagues, quantity) {
     companion object Leagues : EnglishLengths<Leagues, League>(
-        "league", 2_280_960 over 1
+        "league",
+        2_280_960 over 1
     ) {
         override fun new(quantity: FixedBigRational) = League(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity lea"

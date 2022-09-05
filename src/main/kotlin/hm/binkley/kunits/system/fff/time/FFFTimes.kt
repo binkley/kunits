@@ -39,24 +39,25 @@ import hm.binkley.math.fixed.over
 /** The furlong-firkin-fortnight units of time. */
 sealed class FFFTimes<
     U : FFFTimes<U, M>,
-    M : FFFTime<U, M>,
+    M : FFFTime<U, M>
     >(
     name: String,
-    fortnights: FixedBigRational,
+    fortnights: FixedBigRational
 ) : Units<Time, FFF, U, M>(Time, FFF, name, fortnights)
 
 sealed class FFFTime<
     U : FFFTimes<U, M>,
-    M : FFFTime<U, M>,
+    M : FFFTime<U, M>
     >(
     unit: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Time, FFF, U, M>(unit, quantity)
 
 class Fortnight private constructor(quantity: FixedBigRational) :
     FFFTime<Fortnights, Fortnight>(Fortnights, quantity) {
     companion object Fortnights : FFFTimes<Fortnights, Fortnight>(
-        "fortnight", ONE
+        "fortnight",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Fortnight(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ftn"

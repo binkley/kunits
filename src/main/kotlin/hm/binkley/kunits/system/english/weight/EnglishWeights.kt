@@ -47,24 +47,25 @@ import hm.binkley.math.fixed.over
 /** The English units of weight. */
 sealed class EnglishWeights<
     U : EnglishWeights<U, M>,
-    M : EnglishWeight<U, M>,
+    M : EnglishWeight<U, M>
     >(
     name: String,
-    drams: FixedBigRational,
+    drams: FixedBigRational
 ) : Units<Weight, English, U, M>(Weight, English, name, drams)
 
 sealed class EnglishWeight<
     U : EnglishWeights<U, M>,
-    M : EnglishWeight<U, M>,
+    M : EnglishWeight<U, M>
     >(
     unit: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Weight, English, U, M>(unit, quantity)
 
 class Grain private constructor(quantity: FixedBigRational) :
     EnglishWeight<Grains, Grain>(Grains, quantity) {
     companion object Grains : EnglishWeights<Grains, Grain>(
-        "grain", 256 over 7000
+        "grain",
+        256 over 7000
     ) {
         override fun new(quantity: FixedBigRational) = Grain(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity gr"
@@ -78,7 +79,8 @@ val Int.grains get() = (this over 1).grains
 class Dram private constructor(quantity: FixedBigRational) :
     EnglishWeight<Drams, Dram>(Drams, quantity) {
     companion object Drams : EnglishWeights<Drams, Dram>(
-        "dram", ONE
+        "dram",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Dram(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity dr"
@@ -92,7 +94,8 @@ val Int.drams get() = (this over 1).drams
 class Ounce private constructor(quantity: FixedBigRational) :
     EnglishWeight<Ounces, Ounce>(Ounces, quantity) {
     companion object Ounces : EnglishWeights<Ounces, Ounce>(
-        "ounce", 16 over 1
+        "ounce",
+        16 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Ounce(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity oz"
@@ -106,7 +109,8 @@ val Int.ounces get() = (this over 1).ounces
 class Pound private constructor(quantity: FixedBigRational) :
     EnglishWeight<Pounds, Pound>(Pounds, quantity) {
     companion object Pounds : EnglishWeights<Pounds, Pound>(
-        "pound", 256 over 1
+        "pound",
+        256 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Pound(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity lb"
@@ -120,7 +124,8 @@ val Int.pounds get() = (this over 1).pounds
 class Clove private constructor(quantity: FixedBigRational) :
     EnglishWeight<Cloves, Clove>(Cloves, quantity) {
     companion object Cloves : EnglishWeights<Cloves, Clove>(
-        "clove", 1_792 over 1
+        "clove",
+        1_792 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Clove(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity cloves"
@@ -135,7 +140,8 @@ class StoneMeasure private constructor(quantity: FixedBigRational) :
     EnglishWeight<Stone, StoneMeasure>(Stone, quantity) {
     /** Note: The plural of "stone" is "stone" when describing weight. */
     companion object Stone : EnglishWeights<Stone, StoneMeasure>(
-        "stone", 3_584 over 1
+        "stone",
+        3_584 over 1
     ) {
         override fun new(quantity: FixedBigRational) = StoneMeasure(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity st"
@@ -149,7 +155,8 @@ val Int.stone get() = (this over 1).stone
 class Tod private constructor(quantity: FixedBigRational) :
     EnglishWeight<Tods, Tod>(Tods, quantity) {
     companion object Tods : EnglishWeights<Tods, Tod>(
-        "tod", 7_168 over 1
+        "tod",
+        7_168 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Tod(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity tods"
@@ -162,7 +169,8 @@ val Int.tods get() = (this over 1).tods
 
 class HundredweightMeasure private constructor(quantity: FixedBigRational) :
     EnglishWeight<Hundredweight, HundredweightMeasure>(
-        Hundredweight, quantity
+        Hundredweight,
+        quantity
     ) {
     /**
      * Note: The plural of "hundredweight" is "hundredweight" when
@@ -170,7 +178,8 @@ class HundredweightMeasure private constructor(quantity: FixedBigRational) :
      */
     companion object Hundredweight :
         EnglishWeights<Hundredweight, HundredweightMeasure>(
-            "hundredweight", 28_672 over 1
+            "hundredweight",
+            28_672 over 1
         ) {
         override fun new(quantity: FixedBigRational) =
             HundredweightMeasure(quantity)
@@ -185,7 +194,8 @@ val Int.hundredweight get() = (this over 1).hundredweight
 class Tun private constructor(quantity: FixedBigRational) :
     EnglishWeight<Tuns, Tun>(Tuns, quantity) {
     companion object Tuns : EnglishWeights<Tuns, Tun>(
-        "tun", 573_440 over 1
+        "tun",
+        573_440 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Tun(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity tuns"

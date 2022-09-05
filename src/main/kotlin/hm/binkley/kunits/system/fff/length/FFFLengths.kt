@@ -39,24 +39,25 @@ import hm.binkley.math.fixed.over
 /** The furlong-firkin-fortnight units of length. */
 sealed class FFFLengths<
     U : FFFLengths<U, M>,
-    M : FFFLength<U, M>,
+    M : FFFLength<U, M>
     >(
     name: String,
-    furlongs: FixedBigRational,
+    furlongs: FixedBigRational
 ) : Units<Length, FFF, U, M>(Length, FFF, name, furlongs)
 
 sealed class FFFLength<
     U : FFFLengths<U, M>,
-    M : FFFLength<U, M>,
+    M : FFFLength<U, M>
     >(
     unit: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Length, FFF, U, M>(unit, quantity)
 
 class Furlong(quantity: FixedBigRational) :
     FFFLength<Furlongs, Furlong>(Furlongs, quantity) {
     companion object Furlongs : FFFLengths<Furlongs, Furlong>(
-        "furlong", ONE
+        "furlong",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Furlong(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity fur"

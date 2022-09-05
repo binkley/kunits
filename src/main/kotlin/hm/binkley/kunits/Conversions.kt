@@ -46,7 +46,7 @@ infix fun <
     K : Kind,
     S : System<S>,
     V : Units<K, S, V, N>,
-    N : Measure<K, S, V, N>,
+    N : Measure<K, S, V, N>
     >
 Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
 
@@ -71,11 +71,11 @@ fun <
     S : System<S>,
     T : System<T>,
     V : Units<K, T, V, N>,
-    N : Measure<K, T, V, N>,
+    N : Measure<K, T, V, N>
     >
 Measure<K, S, *, *>.into(
     other: Units<K, T, V, N>,
-    conversion: (FixedBigRational) -> FixedBigRational,
+    conversion: (FixedBigRational) -> FixedBigRational
 ): N = other.new(convertBases(other, conversion))
 
 /**
@@ -150,7 +150,7 @@ Measure<K, S, *, *>.into(
 
 private fun Measure<*, *, *, *>.convertBases(
     other: Units<*, *, *, *>,
-    conversion: (FixedBigRational) -> FixedBigRational,
+    conversion: (FixedBigRational) -> FixedBigRational
 ) = conversion(unit.basis * quantity) / other.basis
 
 /**

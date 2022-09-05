@@ -40,7 +40,8 @@ import hm.binkley.math.fixed.over
 class Bronze private constructor(quantity: FixedBigRational) :
     DnDDenomination<BronzePieces, Bronze>(BronzePieces, quantity) {
     companion object BronzePieces : DnDDenominations<BronzePieces, Bronze>(
-        "bronze piece", 1 over 10
+        "bronze piece",
+        1 over 10
     ) {
         override fun new(quantity: FixedBigRational) = Bronze(quantity)
 
@@ -56,7 +57,8 @@ val Int.bronze get() = (this over 1).bronze
 class Mithral private constructor(quantity: FixedBigRational) :
     DnDDenomination<MithralPieces, Mithral>(MithralPieces, quantity) {
     companion object MithralPieces : DnDDenominations<MithralPieces, Mithral>(
-        "mithral piece", 10_000 over 1
+        "mithral piece",
+        10_000 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Mithral(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity mp"
@@ -70,7 +72,8 @@ val Int.mithral get() = (this over 1).mithral
 class Adamant private constructor(quantity: FixedBigRational) :
     DnDDenomination<AdamantPieces, Adamant>(AdamantPieces, quantity) {
     companion object AdamantPieces : DnDDenominations<AdamantPieces, Adamant>(
-        "adamant piece", 100_000 over 1
+        "adamant piece",
+        100_000 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Adamant(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ap"

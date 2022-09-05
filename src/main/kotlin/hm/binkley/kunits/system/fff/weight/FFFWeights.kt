@@ -39,25 +39,26 @@ import hm.binkley.math.fixed.over
 /** The furlong-firkin-fortnight units of weight. */
 sealed class FFFWeights<
     U : FFFWeights<U, M>,
-    M : FFFWeight<U, M>,
+    M : FFFWeight<U, M>
     >(
     name: String,
-    furlongs: FixedBigRational,
+    furlongs: FixedBigRational
 ) : Units<Weight, FFF, U, M>(Weight, FFF, name, furlongs)
 
 sealed class FFFWeight<
     U : FFFWeights<U, M>,
-    M : FFFWeight<U, M>,
+    M : FFFWeight<U, M>
     >(
     unit: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Weight, FFF, U, M>(unit, quantity)
 
 /** One firkin (weight) is the weight of one firkin (volume) of water. */
 class Firkin private constructor(quantity: FixedBigRational) :
     FFFWeight<Firkins, Firkin>(Firkins, quantity) {
     companion object Firkins : FFFWeights<Firkins, Firkin>(
-        "firkin", ONE
+        "firkin",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Firkin(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity fir"

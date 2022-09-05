@@ -44,24 +44,25 @@ import hm.binkley.math.fixed.over
 /** A D&D coinage. */
 abstract class DnDDenominations<
     U : Units<Denomination, DnD, U, M>,
-    M : Measure<Denomination, DnD, U, M>,
+    M : Measure<Denomination, DnD, U, M>
     >(
     name: String,
-    copperPieces: FixedBigRational,
+    copperPieces: FixedBigRational
 ) : Units<Denomination, DnD, U, M>(Denomination, DnD, name, copperPieces)
 
 abstract class DnDDenomination<
     U : Units<Denomination, DnD, U, M>,
-    M : Measure<Denomination, DnD, U, M>,
+    M : Measure<Denomination, DnD, U, M>
     >(
     unit: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Denomination, DnD, U, M>(unit, quantity)
 
 class Copper private constructor(quantity: FixedBigRational) :
     DnDDenomination<CopperPieces, Copper>(CopperPieces, quantity) {
     companion object CopperPieces : DnDDenominations<CopperPieces, Copper>(
-        "copper piece", ONE
+        "copper piece",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Copper(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity cp"
@@ -75,7 +76,8 @@ val Int.copper get() = (this over 1).copper
 class Silver private constructor(quantity: FixedBigRational) :
     DnDDenomination<SilverPieces, Silver>(SilverPieces, quantity) {
     companion object SilverPieces : DnDDenominations<SilverPieces, Silver>(
-        "silver piece", TEN
+        "silver piece",
+        TEN
     ) {
         override fun new(quantity: FixedBigRational) = Silver(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity sp"
@@ -89,7 +91,8 @@ val Int.silver get() = (this over 1).silver
 class Electrum private constructor(quantity: FixedBigRational) :
     DnDDenomination<ElectrumPieces, Electrum>(ElectrumPieces, quantity) {
     companion object ElectrumPieces : DnDDenominations<ElectrumPieces, Electrum>(
-        "electrum piece", 50 over 1
+        "electrum piece",
+        50 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Electrum(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ep"
@@ -103,7 +106,8 @@ val Int.electrum get() = (this over 1).electrum
 class Gold private constructor(quantity: FixedBigRational) :
     DnDDenomination<GoldPieces, Gold>(GoldPieces, quantity) {
     companion object GoldPieces : DnDDenominations<GoldPieces, Gold>(
-        "gold piece", 100 over 1
+        "gold piece",
+        100 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Gold(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity gp"
@@ -117,7 +121,8 @@ val Int.gold get() = (this over 1).gold
 class Platinum private constructor(quantity: FixedBigRational) :
     DnDDenomination<PlatinumPieces, Platinum>(PlatinumPieces, quantity) {
     companion object PlatinumPieces : DnDDenominations<PlatinumPieces, Platinum>(
-        "platinum piece", 1_000 over 1
+        "platinum piece",
+        1_000 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Platinum(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity pp"

@@ -50,7 +50,7 @@ object FFF : System<FFF>("Furlong-Firkin-Fortnight")
 /** Converts lengths from FFF into English units. */
 infix fun <
     V : EnglishLengths<V, N>,
-    N : EnglishLength<V, N>,
+    N : EnglishLength<V, N>
     >
 FFFLength<*, *>.intoEnglish(other: V) = into(other) {
     it * LINES_PER_FURLONG
@@ -59,7 +59,7 @@ FFFLength<*, *>.intoEnglish(other: V) = into(other) {
 /** Converts times from FFF into English units. */
 infix fun <
     V : EnglishTimes<V, N>,
-    N : EnglishTime<V, N>,
+    N : EnglishTime<V, N>
     >
 FFFTime<*, *>.intoEnglish(other: V) = into(other) {
     it * SECONDS_PER_FORTNIGHT
@@ -68,7 +68,7 @@ FFFTime<*, *>.intoEnglish(other: V) = into(other) {
 /** Converts weights from FFF into English units. */
 infix fun <
     V : EnglishWeights<V, N>,
-    N : EnglishWeight<V, N>,
+    N : EnglishWeight<V, N>
     >
 FFFWeight<*, *>.intoEnglish(other: V) = into(other) {
     it * DRAMS_PER_FIRKIN

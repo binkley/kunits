@@ -157,10 +157,20 @@ fun main() {
     println("== USD DENOMINATIONS")
     val m4 = 4.dollars + 33.cents
     val coins = m4.into(
-        DollarCoins, HalfDollars, Quarters, Dimes, Nickels, Pennies
+        DollarCoins,
+        HalfDollars,
+        Quarters,
+        Dimes,
+        Nickels,
+        Pennies
     )
     val looseChange = listOf(
-        DollarCoins, HalfDollars, Quarters, Dimes, Nickels, Pennies
+        DollarCoins,
+        HalfDollars,
+        Quarters,
+        Dimes,
+        Nickels,
+        Pennies
     )
     val alsoCoins = m4 % looseChange
 

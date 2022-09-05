@@ -36,7 +36,7 @@ import java.util.Objects.hash
 /** Represents kinds of [Units]. */
 abstract class Kind(
     /** Unique name for kinds of unit (_eg_, "length"). */
-    val name: String,
+    val name: String
 ) {
     override fun toString() = name
 }
@@ -62,7 +62,7 @@ object Denomination : Kind("denomination")
  */
 abstract class System<S : System<S>>(
     /** The name for this system of units. */
-    val name: String,
+    val name: String
 ) {
     // Systems are singleton objects, so no point to defining equals/hashCode
 
@@ -96,7 +96,7 @@ abstract class Units<
     /** Must be unique for each unit within [system]. */
     val name: String,
     /** Amount of 1 unit expressed in base units. */
-    internal val basis: FixedBigRational,
+    internal val basis: FixedBigRational
 ) : Comparable<Units<K, S, *, *>> {
     /**
      * Creates a new measure of this unit with the given [quantity].
@@ -138,12 +138,12 @@ abstract class Measure<
     K : Kind,
     S : System<S>,
     U : Units<K, S, U, M>,
-    M : Measure<K, S, U, M>,
+    M : Measure<K, S, U, M>
     >(
     /** Unit of measure. */
     val unit: U,
     /** Quantity of [unit]s. */
-    val quantity: FixedBigRational,
+    val quantity: FixedBigRational
 ) : Comparable<Measure<K, S, *, *>> {
     /** Compares to [other] in the [U] units of measure. */
     override fun compareTo(other: Measure<K, S, *, *>) =

@@ -55,7 +55,7 @@ object Metasyntactic : System<Metasyntactic>("Metasyntactic")
 
 infix fun <
     V : Units<Length, Martian, V, N>,
-    N : Measure<Length, Martian, V, N>,
+    N : Measure<Length, Martian, V, N>
     >
 MetasyntacticLength<*, *>.intoMartian(other: V) = into(other) {
     it * (3 over 1)
@@ -63,24 +63,25 @@ MetasyntacticLength<*, *>.intoMartian(other: V) = into(other) {
 
 sealed class MetasyntacticLengths<
     U : MetasyntacticLengths<U, M>,
-    M : MetasyntacticLength<U, M>,
+    M : MetasyntacticLength<U, M>
     >(
     name: String,
-    basis: FixedBigRational,
+    basis: FixedBigRational
 ) : Units<Length, Metasyntactic, U, M>(Length, Metasyntactic, name, basis)
 
 sealed class MetasyntacticLength<
     U : MetasyntacticLengths<U, M>,
-    M : MetasyntacticLength<U, M>,
+    M : MetasyntacticLength<U, M>
     >(
     units: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Length, Metasyntactic, U, M>(units, quantity)
 
 class FooMeasure private constructor(value: FixedBigRational) :
     MetasyntacticLength<Foo, FooMeasure>(Foo, value) {
     companion object Foo : MetasyntacticLengths<Foo, FooMeasure>(
-        "foo", ONE
+        "foo",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = FooMeasure(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity foo"
@@ -94,7 +95,8 @@ val Int.foo get() = (this over 1).foo
 class BarMeasure private constructor(value: FixedBigRational) :
     MetasyntacticLength<Bar, BarMeasure>(Bar, value) {
     companion object Bar : MetasyntacticLengths<Bar, BarMeasure>(
-        "bar", TWO
+        "bar",
+        TWO
     ) {
         override fun new(quantity: FixedBigRational) = BarMeasure(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity bar"
@@ -108,7 +110,8 @@ val Int.bar get() = (this over 1).bar
 class BazMeasure private constructor(value: FixedBigRational) :
     MetasyntacticLength<Baz, BazMeasure>(Baz, value) {
     companion object Baz : MetasyntacticLengths<Baz, BazMeasure>(
-        "baz", 4 over 1
+        "baz",
+        4 over 1
     ) {
         override fun new(quantity: FixedBigRational) = BazMeasure(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity baz"
@@ -121,24 +124,25 @@ val Int.baz get() = (this over 1).baz
 
 sealed class MetasyntacticTimes<
     U : MetasyntacticTimes<U, M>,
-    M : MetasyntacticTime<U, M>,
+    M : MetasyntacticTime<U, M>
     >(
     name: String,
-    basis: FixedBigRational,
+    basis: FixedBigRational
 ) : Units<Time, Metasyntactic, U, M>(Time, Metasyntactic, name, basis)
 
 sealed class MetasyntacticTime<
     U : MetasyntacticTimes<U, M>,
-    M : MetasyntacticTime<U, M>,
+    M : MetasyntacticTime<U, M>
     >(
     units: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Time, Metasyntactic, U, M>(units, quantity)
 
 class Spam private constructor(value: FixedBigRational) :
     MetasyntacticTime<Spams, Spam>(Spams, value) {
     companion object Spams : MetasyntacticTimes<Spams, Spam>(
-        "spam", ONE
+        "spam",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Spam(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity spams"
@@ -151,24 +155,25 @@ val Int.spams get() = (this over 1).spams
 
 sealed class MetasyntacticWeights<
     U : MetasyntacticWeights<U, M>,
-    M : MetasyntacticWeight<U, M>,
+    M : MetasyntacticWeight<U, M>
     >(
     name: String,
-    basis: FixedBigRational,
+    basis: FixedBigRational
 ) : Units<Weight, Metasyntactic, U, M>(Weight, Metasyntactic, name, basis)
 
 sealed class MetasyntacticWeight<
     U : MetasyntacticWeights<U, M>,
-    M : MetasyntacticWeight<U, M>,
+    M : MetasyntacticWeight<U, M>
     >(
     units: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Weight, Metasyntactic, U, M>(units, quantity)
 
 class Fred private constructor(value: FixedBigRational) :
     MetasyntacticWeight<Freds, Fred>(Freds, value) {
     companion object Freds : MetasyntacticWeights<Freds, Fred>(
-        "fred", ONE
+        "fred",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Fred(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity freds"
@@ -181,24 +186,25 @@ val Int.freds get() = (this over 1).freds
 
 sealed class MetasyntacticDenominations<
     U : MetasyntacticDenominations<U, M>,
-    M : MetasyntacticDenomination<U, M>,
+    M : MetasyntacticDenomination<U, M>
     >(
     name: String,
-    basis: FixedBigRational,
+    basis: FixedBigRational
 ) : Units<Denomination, Metasyntactic, U, M>(Denomination, Metasyntactic, name, basis)
 
 sealed class MetasyntacticDenomination<
     U : MetasyntacticDenominations<U, M>,
-    M : MetasyntacticDenomination<U, M>,
+    M : MetasyntacticDenomination<U, M>
     >(
     units: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<Denomination, Metasyntactic, U, M>(units, quantity)
 
 class Alice private constructor(value: FixedBigRational) :
     MetasyntacticDenomination<Alicen, Alice>(Alicen, value) {
     companion object Alicen : MetasyntacticDenominations<Alicen, Alice>(
-        "alice", ONE
+        "alice",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Alice(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity alices"
@@ -213,24 +219,25 @@ object ShoeSize : Kind("shoe size")
 
 sealed class MetasyntacticShoeSizes<
     U : MetasyntacticShoeSizes<U, M>,
-    M : MetasyntacticShoeSize<U, M>,
+    M : MetasyntacticShoeSize<U, M>
     >(
     name: String,
-    basis: FixedBigRational,
+    basis: FixedBigRational
 ) : Units<ShoeSize, Metasyntactic, U, M>(ShoeSize, Metasyntactic, name, basis)
 
 sealed class MetasyntacticShoeSize<
     U : MetasyntacticShoeSizes<U, M>,
-    M : MetasyntacticShoeSize<U, M>,
+    M : MetasyntacticShoeSize<U, M>
     >(
     units: U,
-    quantity: FixedBigRational,
+    quantity: FixedBigRational
 ) : Measure<ShoeSize, Metasyntactic, U, M>(units, quantity)
 
 class Toto private constructor(value: FixedBigRational) :
     MetasyntacticShoeSize<Totos, Toto>(Totos, value) {
     companion object Totos : MetasyntacticShoeSizes<Totos, Toto>(
-        "toto", ONE
+        "toto",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Toto(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity totos"
@@ -246,7 +253,7 @@ object Martian : System<Martian>("Martian")
 
 infix fun <
     V : Units<Length, Metasyntactic, V, N>,
-    N : Measure<Length, Metasyntactic, V, N>,
+    N : Measure<Length, Metasyntactic, V, N>
     >
 Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
@@ -255,7 +262,10 @@ Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
 class Grok private constructor(value: FixedBigRational) :
     Measure<Length, Martian, Groks, Grok>(Groks, value) {
     companion object Groks : Units<Length, Martian, Groks, Grok>(
-        Length, Martian, "grok", ONE
+        Length,
+        Martian,
+        "grok",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Grok(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity groks"

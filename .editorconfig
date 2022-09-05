@@ -5,7 +5,5 @@ end_of_line = lf
 
 [*.{kt,kts}]
 # Oh, the irony.  IntelliJ insists on sorting java* imports last
-disabled_rules=import-ordering
-ij_kotlin_allow_trailing_comma = false
-ij_kotlin_allow_trailing_comma_on_call_site = false
+ktlint_disabled_rules=import-ordering, trailing-comma-on-call-site, trailing-comma-on-declaration-site
 ktlint_code_style = official
