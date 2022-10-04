@@ -36,7 +36,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
-internal class ExtensionsTest {
+internal class ConversionsTest {
     @Test
     fun `should convert between units`() {
         (1.bar into FooMeasure) shouldBe 2.foo

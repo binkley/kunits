@@ -48,14 +48,13 @@ infix fun <
     V : Units<K, S, V, N>,
     N : Measure<K, S, V, N>,
     >
-Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N =
-    into(other) { it }
+Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
 
 /**
  * Converts this measure into units of [other] for a (possibly) different
  * system of units.
  *
- * Use [conversion] when moving between systems of units.
+ * Use [convert] when moving between systems of units.
  * It takes the value of this measure expressed in base units, and returns
  * a new measure value in base units for [other].
  *
@@ -65,7 +64,7 @@ Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N =
  * @param V the units of [N]
  * @param N the measurement type of [V]
  * @param other the target units
- * @param conversion convert bases of the two units
+ * @param convert converts bases of the two units
  */
 fun <
     K : Kind,
@@ -76,8 +75,8 @@ fun <
     >
 Measure<K, S, *, *>.into(
     other: Units<K, T, V, N>,
-    conversion: (FixedBigRational) -> FixedBigRational,
-): N = other.new(convertBases(other, conversion))
+    convert: (FixedBigRational) -> FixedBigRational,
+): N = other.new(convertBases(other, convert))
 
 /**
  * Converts this measure into lowest terms for [restOfUnits] from the most
@@ -151,8 +150,8 @@ Measure<K, S, *, *>.into(
 
 private fun Measure<*, *, *, *>.convertBases(
     other: Units<*, *, *, *>,
-    conversion: (FixedBigRational) -> FixedBigRational,
-) = conversion(unit.basis * quantity) / other.basis
+    convert: (FixedBigRational) -> FixedBigRational,
+) = convert(unit.basis * quantity) / other.basis
 
 /**
  * Sorts the array element-wise descending, each entry with an attached index
