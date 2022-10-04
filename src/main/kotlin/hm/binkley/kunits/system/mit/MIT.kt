@@ -35,7 +35,7 @@ import hm.binkley.kunits.system.english.length.EnglishLength
 import hm.binkley.kunits.system.english.length.EnglishLengths
 import hm.binkley.math.fixed.over
 
-private val LINES_PER_SMOOT = (804 over 1)
+private val linesPerSmoot = (804 over 1)
 
 /** Tbe system of MIT units. */
 object MIT : System<MIT>("MIT")
@@ -46,5 +46,5 @@ infix fun <
     N : EnglishLength<V, N>
     >
 Measure<Length, MIT, *, *>.intoEnglish(other: V) = into(other) {
-    it * LINES_PER_SMOOT
+    it * linesPerSmoot
 }

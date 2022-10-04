@@ -40,9 +40,9 @@ import hm.binkley.kunits.system.fff.time.FFFTime
 import hm.binkley.kunits.system.fff.weight.FFFWeight
 import hm.binkley.math.fixed.over
 
-private val LINES_PER_FURLONG = (95_040 over 1)
-private val SECONDS_PER_FORTNIGHT = (1_209_600 over 1)
-private val DRAMS_PER_FIRKIN = (23_040 over 1)
+private val linesPerFurlong = (95_040 over 1)
+private val secondsPerFortnight = (1_209_600 over 1)
+private val dramsPerFirkin = (23_040 over 1)
 
 /** The system of furlong-firkin-fortnight units. */
 object FFF : System<FFF>("Furlong-Firkin-Fortnight")
@@ -53,7 +53,7 @@ infix fun <
     N : EnglishLength<V, N>
     >
 FFFLength<*, *>.intoEnglish(other: V) = into(other) {
-    it * LINES_PER_FURLONG
+    it * linesPerFurlong
 }
 
 /** Converts times from FFF into English units. */
@@ -62,7 +62,7 @@ infix fun <
     N : EnglishTime<V, N>
     >
 FFFTime<*, *>.intoEnglish(other: V) = into(other) {
-    it * SECONDS_PER_FORTNIGHT
+    it * secondsPerFortnight
 }
 
 /** Converts weights from FFF into English units. */
@@ -71,5 +71,5 @@ infix fun <
     N : EnglishWeight<V, N>
     >
 FFFWeight<*, *>.intoEnglish(other: V) = into(other) {
-    it * DRAMS_PER_FIRKIN
+    it * dramsPerFirkin
 }
