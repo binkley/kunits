@@ -22,7 +22,7 @@ USD is provided as a practical example.
 
 The project is a demonstration of the power (and limits) of generics in
 Kotlin and in writing a clean DSL: see
-[`main.kt`](src/main/kotlin/hm/binkley/kunits/main.kt).
+[`Main.kt`](src/main/kotlin/hm/binkley/kunits/Main.kt).
 It is also fun.
 
 * [Build](#build)
@@ -81,48 +81,48 @@ this file and code source in sync more than already the case.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](src/main/kotlin/hm/binkley/kunits/main.kt#L53)
+  [`120.lines`](src/main/kotlin/hm/binkley/kunits/Main.kt#L53)
 - From `Long`s:
-  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/main.kt#L89)
+  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/Main.kt#L89)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/main.kt#L71)
+  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/Main.kt#L71)
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L54)
+  [`+m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L54)
 - Negation:
-  [`-m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L55)
+  [`-m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L55)
 - Addition:
-  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/main.kt#L107)
+  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/Main.kt#L107)
 - Subtraction:
-  [`(m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/main.kt#L60)
+  [`(m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L60)
 - Multiplication:
-  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L79)
+  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L79)
 - Division:
-  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/main.kt#L81)
+  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L81)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/main.kt#L93), or as
+  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/Main.kt#L93), or as
   shorthand, [`m1 /
-  Barleycorns`](src/main/kotlin/hm/binkley/kunits/main.kt#L62)
+  Barleycorns`](src/main/kotlin/hm/binkley/kunits/Main.kt#L62)
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/main.kt#L108), or as shorthand,
-  [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/main.kt#L114)
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/Main.kt#L108), or as shorthand,
+  [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/Main.kt#L114)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/main.kt#L127)
+  Inches`](src/main/kotlin/hm/binkley/kunits/Main.kt#L127)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](src/main/kotlin/hm/binkley/kunits/main.kt#L126)
+  $FFF"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L126)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/main.kt#L118)
+  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L118)
 
 ### API
 
@@ -134,10 +134,10 @@ this file and code source in sync more than already the case.
   [`English`](src/main/kotlin/hm/binkley/kunits/system/english/English.kt))
 - [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents
   units of measure (_eg_,
-  [`MetasyntacticLengths`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#37))
+  [`MetasyntacticLengths`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#37))
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents
   quantities of units (_eg_,
-  [`m1`](src/main/kotlin/hm/binkley/kunits/main.kt#53))
+  [`m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#53))
 
 Included for `Measure` are the usual simple arithmetic operations.
 
@@ -150,8 +150,8 @@ The exemplar of quirkiness is traditional
 
 Unreal systems of units for testing:
 
-- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L16)
-- [`Martian`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L217)
+- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L16)
+- [`Martian`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L217)
 
 Below is the source for the Martian system of units showing the minimal
 code needed for setting up a system of units:
@@ -179,7 +179,7 @@ val Int.groks get() = (this over 1).groks
 ```
 
 For convenience, systems of units may provide [conversions into other
-systems](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L28):
+systems](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L28):
 
 ```kotlin
 infix fun <
@@ -201,13 +201,13 @@ However,
 is an example of extending a kind of units.
 
 Also, see
-[`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/test-systems.kt#L185) for an
+[`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L185) for an
 example of creating new kinds of units.
 
 #### Use of generics
 
-Generic signatures pervade types and function signatures. The standard
-ordering is:
+Generic signatures pervade types and function signatures.
+The standard ordering is:
 
 - `K` "kind" &mdash; is this length, weight, etc.
 - `S` "system" &dash; is this English units, etc.
@@ -248,9 +248,9 @@ Or consider:
 Unfortunately, `as` is an existing keyword for type casting.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/conversions.kt#L6) function,
+[`into`](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L6) function,
 and a more general version for [conversions into unit units of the same
-kind in another system](src/main/kotlin/hm/binkley/kunits/conversions.kt#L26).
+kind in another system](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L26).
 
 ```kotlin
 2.feet into Inches
@@ -299,7 +299,7 @@ Maven.
 Following [_The Rules_](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast),
 `inline` is removed for now, until JaCoCo resolves this issue.
 
-#### Mixing compile errors with runtime errors for the same problem
+#### Mixing compilation errors with runtime errors for the same problem
 
 Incompatible unit conversions are inconsistent. The two cases are:
 
