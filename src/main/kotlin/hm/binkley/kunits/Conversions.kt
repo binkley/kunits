@@ -46,9 +46,10 @@ infix fun <
     K : Kind,
     S : System<S>,
     V : Units<K, S, V, N>,
-    N : Measure<K, S, V, N>
+    N : Measure<K, S, V, N>,
     >
-Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
+Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N =
+    into(other) { it }
 
 /**
  * Converts this measure into units of [other] for a (possibly) different
@@ -71,11 +72,11 @@ fun <
     S : System<S>,
     T : System<T>,
     V : Units<K, T, V, N>,
-    N : Measure<K, T, V, N>
+    N : Measure<K, T, V, N>,
     >
 Measure<K, S, *, *>.into(
     other: Units<K, T, V, N>,
-    conversion: (FixedBigRational) -> FixedBigRational
+    conversion: (FixedBigRational) -> FixedBigRational,
 ): N = other.new(convertBases(other, conversion))
 
 /**
@@ -98,7 +99,7 @@ Measure<K, S, *, *>.into(
 fun <K : Kind, S : System<S>>
 Measure<K, S, *, *>.into(
     firstUnit: Units<K, S, *, *>,
-    vararg restOfUnits: Units<K, S, *, *>
+    vararg restOfUnits: Units<K, S, *, *>,
 ): List<Measure<K, S, *, *>> = with(restOfUnits.toMutableList()) {
     add(0, firstUnit)
     into(this)
@@ -122,7 +123,7 @@ Measure<K, S, *, *>.into(
  */
 fun <K : Kind, S : System<S>>
 Measure<K, S, *, *>.into(
-    units: List<Units<K, S, *, *>>
+    units: List<Units<K, S, *, *>>,
 ): List<Measure<K, S, *, *>> {
     require(units.isNotEmpty()) { "No units" }
 
@@ -150,7 +151,7 @@ Measure<K, S, *, *>.into(
 
 private fun Measure<*, *, *, *>.convertBases(
     other: Units<*, *, *, *>,
-    conversion: (FixedBigRational) -> FixedBigRational
+    conversion: (FixedBigRational) -> FixedBigRational,
 ) = conversion(unit.basis * quantity) / other.basis
 
 /**
