@@ -65,6 +65,9 @@ internal class ConversionsTest {
         // 1.alices into Foo
     }
 
+    // TODO: Move conversions between systems here?
+
+    /** @todo This duplicates testing for rationals */
     @Nested
     inner class Reductions {
         @Test
