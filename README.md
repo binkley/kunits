@@ -311,7 +311,8 @@ Incompatible unit conversions are inconsistent. The two cases are:
 Behavior:
 
 * Operations between incompatible units do not compile.
-  For example, you cannot convert feet into pounds
+  This is **by design**.
+  For example, you cannot convert feet into pounds.
 
 ```kotlin
 // Does not compile: feet and pounds are different kinds of units
