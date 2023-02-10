@@ -57,7 +57,7 @@ infix fun <
     V : Units<Length, Martian, V, N>,
     N : Measure<Length, Martian, V, N>
     >
-MetasyntacticLength<*, *>.intoMartian(other: V) = into(other) {
+    MetasyntacticLength<*, *>.intoMartian(other: V) = into(other) {
     it * (3 over 1)
 }
 
@@ -255,7 +255,7 @@ infix fun <
     V : Units<Length, Metasyntactic, V, N>,
     N : Measure<Length, Metasyntactic, V, N>
     >
-Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
+    Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) = into(other) {
     it * (1 over 3)
 }
 

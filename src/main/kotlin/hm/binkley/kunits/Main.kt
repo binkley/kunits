@@ -81,18 +81,18 @@ fun main() {
     println("Change of lengths -> (no change) ${m1 into Lines}")
     println(
         "Change of lengths -> (lines to barleycorns) ${
-        m1 into Barleycorns
+            m1 into Barleycorns
         }"
     )
     println("Adding like lengths -> (m1+m1) ${m1 + m1}")
     println(
         "Adding related lengths -> (lines+barleycorns) ${
-        m1 + (m1 into Barleycorns)
+            m1 + (m1 into Barleycorns)
         }"
     )
     println(
         "Subtracting related lengths -> (hands-lines) ${
-        (m1 into Hands) - m1
+            (m1 into Hands) - m1
         }"
     )
     println("Scaling length -> (tripling) ${m1 * 3}")
@@ -101,7 +101,7 @@ fun main() {
     println("Change of lengths -> (multiple) ${m1 into Inches into Sticks}")
     println(
         "Complex expression -> (yards+feet-barleycorns into hands) ${
-        ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
+            ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
         }"
     )
 
@@ -116,7 +116,7 @@ fun main() {
     println("Adding related times -> (seconds + minutes) ${m2 + 1.minutes}")
     println(
         "Subtracting related times -> (quadrants-seconds) ${
-        (m2 into Quadrants) - m2
+            (m2 into Quadrants) - m2
         }"
     )
     println("Scaling time -> (quadrupling) ${m2 * 4}")
@@ -125,7 +125,7 @@ fun main() {
     println("Change of times -> (multiple) ${m2 into Mileways into Quinzièmes}")
     println(
         "Complex expression -> (minutes+days-weeks into seconds) ${
-        ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into Seconds
+            ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into Seconds
         }"
     )
 
@@ -140,7 +140,7 @@ fun main() {
     println("Adding like weights -> (m3+1) ${m3 + 1.ounces}")
     println(
         "Subtracting related weights -> (pounds-ounces) ${
-        (m3 into Pounds) - m3
+            (m3 into Pounds) - m3
         })"
     )
     println("Scaling weight -> (quintupling) ${m3 * 5}")
@@ -149,7 +149,7 @@ fun main() {
     println("Change of weights -> (multiple) ${m3 into Pounds into Stone}")
     println(
         "Complex expression -> (stone+pounds-ounces into drams) ${
-        ((m3 into Stone) + (m3 into Pounds) - (m3 into Ounces)) into Drams
+            ((m3 into Stone) + (m3 into Pounds) - (m3 into Ounces)) into Drams
         }"
     )
 
@@ -194,7 +194,7 @@ fun main() {
     val duration = 94.25.minutes // 94¼ minutes
     println(
         "$duration (94¼) IS ${
-        duration.into(Seconds, Minutes, Hours)
+            duration.into(Seconds, Minutes, Hours)
         } (${duration into Hours})"
     )
 }

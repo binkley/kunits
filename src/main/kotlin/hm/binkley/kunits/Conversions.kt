@@ -48,7 +48,7 @@ infix fun <
     V : Units<K, S, V, N>,
     N : Measure<K, S, V, N>,
     >
-Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
+    Measure<K, S, *, *>.into(other: Units<K, S, V, N>): N = into(other) { it }
 
 /**
  * Converts this measure into units of [other] for a (possibly) different
@@ -73,10 +73,10 @@ fun <
     V : Units<K, T, V, N>,
     N : Measure<K, T, V, N>,
     >
-Measure<K, S, *, *>.into(
-    other: Units<K, T, V, N>,
-    convert: (FixedBigRational) -> FixedBigRational,
-): N = other.new(convertBases(other, convert))
+    Measure<K, S, *, *>.into(
+        other: Units<K, T, V, N>,
+        convert: (FixedBigRational) -> FixedBigRational,
+    ): N = other.new(convertBases(other, convert))
 
 /**
  * Converts this measure into lowest terms for [restOfUnits] from the most
@@ -96,10 +96,10 @@ Measure<K, S, *, *>.into(
  * [restOfUnits]
  */
 fun <K : Kind, S : System<S>>
-Measure<K, S, *, *>.into(
-    firstUnit: Units<K, S, *, *>,
-    vararg restOfUnits: Units<K, S, *, *>,
-): List<Measure<K, S, *, *>> = with(restOfUnits.toMutableList()) {
+    Measure<K, S, *, *>.into(
+        firstUnit: Units<K, S, *, *>,
+        vararg restOfUnits: Units<K, S, *, *>,
+    ): List<Measure<K, S, *, *>> = with(restOfUnits.toMutableList()) {
     add(0, firstUnit)
     into(this)
 }
@@ -121,9 +121,9 @@ Measure<K, S, *, *>.into(
  * @return the reduced measures in the same order as [units]
  */
 fun <K : Kind, S : System<S>>
-Measure<K, S, *, *>.into(
-    units: List<Units<K, S, *, *>>,
-): List<Measure<K, S, *, *>> {
+    Measure<K, S, *, *>.into(
+        units: List<Units<K, S, *, *>>,
+    ): List<Measure<K, S, *, *>> {
     require(units.isNotEmpty()) { "No units" }
 
     // Pre-populate with nulls so that we may write in any order
