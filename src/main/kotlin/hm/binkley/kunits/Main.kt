@@ -183,7 +183,9 @@ fun main() {
 
     println()
     println("== CONVERSIONS")
-    println("${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English")
+    println(
+        "${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English"
+    )
     println("${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN $FFF")
     val smootInInches = 1.smoots intoEnglish Inches
     println("${1.smoots} IN $MIT IS $smootInInches IN $English")

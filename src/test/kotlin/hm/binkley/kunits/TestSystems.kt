@@ -190,7 +190,12 @@ sealed class MetasyntacticDenominations<
     >(
     name: String,
     basis: FixedBigRational
-) : Units<Denomination, Metasyntactic, U, M>(Denomination, Metasyntactic, name, basis)
+) : Units<Denomination, Metasyntactic, U, M>(
+    Denomination,
+    Metasyntactic,
+    name,
+    basis
+)
 
 sealed class MetasyntacticDenomination<
     U : MetasyntacticDenominations<U, M>,

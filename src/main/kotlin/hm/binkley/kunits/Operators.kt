@@ -186,4 +186,6 @@ operator fun <
     U : Units<K, S, U, M>,
     M : Measure<K, S, U, M>
     >
-    M.rem(units: List<Units<K, S, *, *>>): List<Measure<K, S, *, *>> = into(units)
+    M.rem(units: List<Units<K, S, *, *>>): List<Measure<K, S, *, *>> = into(
+    units
+)

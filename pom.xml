@@ -86,7 +86,7 @@
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
         <detekt-maven-plugin.version>1.22.0</detekt-maven-plugin.version>
-        <dokka.version>1.7.20</dokka.version>
+        <dokka.version>1.8.10</dokka.version>
         <jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>17</jdk.version>
@@ -95,7 +95,7 @@
         <kotlin-rational.version>kotlin-rational-2.2.0</kotlin-rational.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
-        <kotlin.version>1.8.10</kotlin.version>
+        <kotlin.version>1.8.20</kotlin.version>
         <ktlint-maven-plugin.version>1.16.0</ktlint-maven-plugin.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.5.0</maven-assembly-plugin.version>
