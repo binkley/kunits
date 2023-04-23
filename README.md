@@ -324,6 +324,10 @@ Behavior:
 1.smoots intoEnglish Inches
 ```
 
+## Ideas
+
+* [_Hogshead_](https://en.wikipedia.org/wiki/Hogshead)
+
 ## Reading
 
 * [_10 Little-Known Units of
