@@ -105,6 +105,7 @@
         <maven-project-info-reports-plugin.version>3.4.3</maven-project-info-reports-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+        <maven-wrapper-plugin.version>3.2.0</maven-wrapper-plugin.version>
         <owasp.skip>false</owasp.skip>
         <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
         <pitest-maven.version>1.13.0</pitest-maven.version>
@@ -170,6 +171,15 @@
 
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-wrapper-plugin</artifactId>
+                <version>${maven-wrapper-plugin.version}</version>
+                <configuration>
+                    <distributionType>source</distributionType>
+                    <mavenVersion>${maven.version}</mavenVersion>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>fr.jcgay.maven.plugins</groupId>
                 <artifactId>buildplan-maven-plugin</artifactId>
                 <version>${buildplan-maven-plugin.version}</version>
@@ -188,7 +198,7 @@
                 <configuration>
                     <rules>
                         <requireMavenVersion>
-                            <version>3.8.4</version>
+                            <version>3.9.0</version>
                         </requireMavenVersion>
                     </rules>
                 </configuration>
