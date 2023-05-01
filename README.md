@@ -147,6 +147,7 @@ The exemplar of quirkiness is traditional
 
 - [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
 - [English units of time](src/main/kotlin/hm/binkley/kunits/system/english/time/EnglishTimes.kt)
+- [English units of volume](src/main/kotlin/hm/binkley/kunits/system/english/volume/wine/EnglishVolumes.kt)
 - [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
 
 Unreal systems of units for testing:
@@ -324,10 +325,6 @@ Behavior:
 1.smoots intoEnglish Inches
 ```
 
-## Ideas
-
-* [_Hogshead_](https://en.wikipedia.org/wiki/Hogshead)
-
 ## Reading
 
 * [_10 Little-Known Units of
@@ -339,6 +336,7 @@ Behavior:
 * [_English Weights &amp;
   Measures_](http://home.clara.net/brianp/quickref.html)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
+* [_Hogshead_](https://en.wikipedia.org/wiki/Hogshead)
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
 * [_metasyntactic variable_](https://foldoc.org/metasyntactic+variable)
 * [_Physikal_](https://github.com/Tenkiv/Physikal)
