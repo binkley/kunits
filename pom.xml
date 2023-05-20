@@ -104,11 +104,11 @@
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.4.3</maven-project-info-reports-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
         <maven-wrapper-plugin.version>3.2.0</maven-wrapper-plugin.version>
         <owasp.skip>false</owasp.skip>
-        <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
-        <pitest-maven.version>1.13.2</pitest-maven.version>
+        <pitest-junit5-plugin.version>1.2.0</pitest-junit5-plugin.version>
+        <pitest-maven.version>1.14.0</pitest-maven.version>
         <project.build.sourceEncoding>${java.charset}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
         <system-lambda.version>1.2.1</system-lambda.version>
