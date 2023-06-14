@@ -86,11 +86,11 @@
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
         <detekt-maven-plugin.version>1.22.0</detekt-maven-plugin.version>
-        <dokka.version>1.8.10</dokka.version>
+        <dokka.version>1.8.20</dokka.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>17</jdk.version>
-        <junit.version>5.10.0-M1</junit.version>
+        <junit.version>5.9.3</junit.version>
         <kotest.version>5.6.2</kotest.version>
         <kotlin-rational.version>kotlin-rational-2.2.0</kotlin-rational.version>
         <kotlin.code.style>official</kotlin.code.style>
@@ -103,8 +103,8 @@
         <maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.4.3</maven-project-info-reports-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven-wrapper-plugin.version>3.2.0</maven-wrapper-plugin.version>
         <owasp.skip>false</owasp.skip>
         <pitest-junit5-plugin.version>1.2.0</pitest-junit5-plugin.version>
