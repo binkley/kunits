@@ -106,6 +106,7 @@
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven-wrapper-plugin.version>3.2.0</maven-wrapper-plugin.version>
+        <maven.version>3.9.3</maven.version>
         <owasp.skip>false</owasp.skip>
         <pitest-junit5-plugin.version>1.2.0</pitest-junit5-plugin.version>
         <pitest-maven.version>1.14.2</pitest-maven.version>
