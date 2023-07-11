@@ -210,7 +210,7 @@
                 <configuration>
                     <rules>
                         <requireMavenVersion>
-                            <version>3.9.0</version>
+                            <version>${maven.version}</version>
                         </requireMavenVersion>
                     </rules>
                 </configuration>
