@@ -31,11 +31,14 @@ import hm.binkley.kunits.system.dnd.denomination.DnDDenomination
 import hm.binkley.kunits.system.dnd.denomination.DnDDenominations
 import hm.binkley.kunits.system.dnd.denomination.other.Adamant.AdamantPieces
 import hm.binkley.kunits.system.dnd.denomination.other.Bronze.BronzePieces
-import hm.binkley.kunits.system.dnd.denomination.other.Mithral.MithralPieces
+import hm.binkley.kunits.system.dnd.denomination.other.Mithril.MithrilPieces
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.over
 
-/** Examples of adding to existing units of measure. */
+/**
+ * Examples of adding to existing units of measure.
+ * See https://www.sageadvice.eu/prices-for-brass-steel-mithril-adamantine/.
+ */
 
 class Bronze private constructor(quantity: FixedBigRational) :
     DnDDenomination<BronzePieces, Bronze>(BronzePieces, quantity) {
@@ -54,20 +57,20 @@ val FixedBigRational.bronze get() = BronzePieces.new(this)
 val Long.bronze get() = (this over 1).bronze
 val Int.bronze get() = (this over 1).bronze
 
-class Mithral private constructor(quantity: FixedBigRational) :
-    DnDDenomination<MithralPieces, Mithral>(MithralPieces, quantity) {
-    companion object MithralPieces : DnDDenominations<MithralPieces, Mithral>(
-        "mithral piece",
+class Mithril private constructor(quantity: FixedBigRational) :
+    DnDDenomination<MithrilPieces, Mithril>(MithrilPieces, quantity) {
+    companion object MithrilPieces : DnDDenominations<MithrilPieces, Mithril>(
+        "mithril piece",
         10_000 over 1
     ) {
-        override fun new(quantity: FixedBigRational) = Mithral(quantity)
+        override fun new(quantity: FixedBigRational) = Mithril(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity mp"
     }
 }
 
-val FixedBigRational.mithral get() = MithralPieces.new(this)
-val Long.mithral get() = (this over 1).mithral
-val Int.mithral get() = (this over 1).mithral
+val FixedBigRational.mithril get() = MithrilPieces.new(this)
+val Long.mithril get() = (this over 1).mithril
+val Int.mithril get() = (this over 1).mithril
 
 class Adamant private constructor(quantity: FixedBigRational) :
     DnDDenomination<AdamantPieces, Adamant>(AdamantPieces, quantity) {
