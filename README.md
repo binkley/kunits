@@ -145,10 +145,21 @@ Included for `Measure` are the usual simple arithmetic operations.
 The exemplar of quirkiness is traditional
 [_English units_](https://en.wikipedia.org/wiki/English_units):
 
+- [English units of denomination
+  (money)](src/main/kotlin/hm/binkley/kunits/system/english/denomination/EnglishDenominations.kt)
 - [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
 - [English units of time](src/main/kotlin/hm/binkley/kunits/system/english/time/EnglishTimes.kt)
 - [English units of volume](src/main/kotlin/hm/binkley/kunits/system/english/volume/wine/EnglishVolumes.kt)
 - [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
+
+Among the challenges with the English (British) systems of units is that
+coinages available in historic periods do not always align with expression 
+of value.
+For example, the crown is a coin worth 5 shillings, however, it is notated 
+as "5s" (5 shillings) rather as number of crowns as it was simply a coin, not a 
+basis in the notation of value.
+The same is true for many or most historic coinage systems though the 
+English (British) system is most prominent.
 
 Unreal systems of units for testing:
 
@@ -330,6 +341,8 @@ Behavior:
 * [_10 Little-Known Units of
   Time_](https://www.mentalfloss.com/article/60080/10-little-known-units-time)
 * [_Avoirdupois system_](https://en.wikipedia.org/wiki/Avoirdupois_system)
+* [_British Denominations_](https://coins.nd.edu/colcoin/colcoinintros/BritishDenominations1.html)
+* [_Carolingian monetary system_](https://en.wikipedia.org/wiki/Carolingian_monetary_system)
 * [_Chart showing the relationships of distance
   measures_](https://en.wikipedia.org/wiki/English_units#/media/File:English_Length_Units_Graph.svg)
 * [_English units_](https://en.wikipedia.org/wiki/English_units)
