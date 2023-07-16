@@ -248,7 +248,7 @@ class Guinea private constructor(quantity: FixedBigRational) :
             (252 over 1)
         ) {
         override fun new(quantity: FixedBigRational) = Guinea(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity guineas"
+        override fun format(quantity: FixedBigRational) = "${quantity}gns"
     }
 }
 

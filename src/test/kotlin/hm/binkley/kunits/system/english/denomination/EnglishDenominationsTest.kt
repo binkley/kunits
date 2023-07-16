@@ -81,6 +81,6 @@ internal class EnglishDenominationsTest {
         "$Pounds" shouldBe "English denomination: pound"
         "${1.pounds}" shouldBe "£1"
         "$Guineas" shouldBe "English denomination: guinea"
-        "${1.guineas}" shouldBe "1 guineas"
+        "${1.guineas}" shouldBe "1gns"
     }
 }
