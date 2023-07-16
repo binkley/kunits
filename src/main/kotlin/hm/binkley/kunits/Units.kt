@@ -44,6 +44,9 @@ abstract class Kind(
 /** Type token for units of length. */
 object Length : Kind("length")
 
+/** Type token for units of area. */
+object Area : Kind("area")
+
 /** Type token for units of volume. */
 object Volume : Kind("volume")
 
