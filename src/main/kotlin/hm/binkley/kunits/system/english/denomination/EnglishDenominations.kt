@@ -33,6 +33,7 @@ import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
+import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
@@ -174,6 +175,22 @@ class Shilling private constructor(quantity: FixedBigRational) :
 val FixedBigRational.shillings get() = Shilling.new(this)
 val Long.shillings get() = (this over 1).shillings
 val Int.shillings get() = (this over 1).shillings
+
+class Florin private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Florins, Florin>(Florin, quantity) {
+    companion object Florins :
+        EnglishDenominations<Florins, Florin>(
+            "florin",
+            (24 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Florin(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity florins"
+    }
+}
+
+val FixedBigRational.florins get() = Florin.new(this)
+val Long.florins get() = (this over 1).florins
+val Int.florins get() = (this over 1).florins
 
 class Crown private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Crowns, Crown>(Crown, quantity) {

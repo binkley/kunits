@@ -30,6 +30,7 @@ package hm.binkley.kunits.system.english.denomination
 import hm.binkley.kunits.into
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
+import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
@@ -50,6 +51,7 @@ internal class EnglishDenominationsTest {
         1L.threepence shouldBe (3.pence into Threepence)
         1L.sixpence shouldBe (6.pence into Sixpence)
         1L.shillings shouldBe (12.pence into Shillings)
+        1L.florins shouldBe (24.pence into Florins)
         1L.crowns shouldBe (60.pence into Crowns)
         1L.marks shouldBe (160.pence into Marks)
         1L.pounds shouldBe (240.pence into Pounds)
@@ -70,6 +72,8 @@ internal class EnglishDenominationsTest {
         "${1.sixpence}" shouldBe "1 sixpence"
         "$Shilling" shouldBe "English denomination: shilling"
         "${1.shillings}" shouldBe "1s"
+        "$Florin" shouldBe "English denomination: florin"
+        "${1.florins}" shouldBe "1 florins"
         "$Crowns" shouldBe "English denomination: crown"
         "${1.crowns}" shouldBe "1 crowns"
         "$Marks" shouldBe "English denomination: mark"
