@@ -4,7 +4,7 @@ import hm.binkley.kunits.Area
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.fff.FFF
-import hm.binkley.kunits.system.fff.area.FootFathom.FootFathoms
+import hm.binkley.kunits.system.fff.area.FootFathomMeasure.FootFathom
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
@@ -26,17 +26,19 @@ sealed class FFFArea<
     quantity: FixedBigRational
 ) : Measure<Area, FFF, U, M>(unit, quantity)
 
-class FootFathom(quantity: FixedBigRational) :
-    FFFArea<FootFathoms, FootFathom>(FootFathoms, quantity) {
-    companion object FootFathoms : FFFAreas<FootFathoms, FootFathom>(
+class FootFathomMeasure(quantity: FixedBigRational) :
+    FFFArea<FootFathom, FootFathomMeasure>(FootFathom, quantity) {
+    companion object FootFathom : FFFAreas<FootFathom, FootFathomMeasure>(
         "foot-fathom",
         ONE
     ) {
-        override fun new(quantity: FixedBigRational) = FootFathom(quantity)
+        override fun new(quantity: FixedBigRational) =
+            FootFathomMeasure(quantity)
+
         override fun format(quantity: FixedBigRational) = "$quantity ft-fath"
     }
 }
 
-val FixedBigRational.footFathoms get() = FootFathoms.new(this)
-val Long.footFathoms get() = (this over 1).footFathoms
-val Int.footFathoms get() = (this over 1).footFathoms
+val FixedBigRational.footFathom get() = FootFathom.new(this)
+val Long.footFathom get() = (this over 1).footFathom
+val Int.footFathom get() = (this over 1).footFathom
