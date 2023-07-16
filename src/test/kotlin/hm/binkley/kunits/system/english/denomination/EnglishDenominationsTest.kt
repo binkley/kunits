@@ -31,8 +31,10 @@ import hm.binkley.kunits.into
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
+import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfGroat.HalfGroats
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
@@ -51,7 +53,9 @@ internal class EnglishDenominationsTest {
         1L.farthings shouldBe ((1 over 4).pence into Farthings)
         1L.halfpence shouldBe ((1 over 2).pence into Halfpence)
         1L.pence shouldBe 1.pence
+        1L.halfGroats shouldBe (2.pence into HalfGroats)
         1L.threepence shouldBe (3.pence into Threepence)
+        1L.groats shouldBe (4.pence into Groats)
         1L.sixpence shouldBe (6.pence into Sixpence)
         1L.shillings shouldBe (12.pence into Shillings)
         1L.florins shouldBe (24.pence into Florins)
@@ -72,8 +76,12 @@ internal class EnglishDenominationsTest {
         "${1.halfpence}" shouldBe "1 halfpennies"
         "$Penny" shouldBe "English denomination: penny"
         "${1.pence}" shouldBe "1d"
+        "$HalfGroat" shouldBe "English denomination: half-groat"
+        "${1.halfGroats}" shouldBe "1 half-groats"
         "$Threepenny" shouldBe "English denomination: threepenny"
         "${1.threepence}" shouldBe "1 threepence"
+        "$Groat" shouldBe "English denomination: groat"
+        "${1.groats}" shouldBe "1 groats"
         "$Sixpenny" shouldBe "English denomination: sixpenny"
         "${1.sixpence}" shouldBe "1 sixpence"
         "$Shilling" shouldBe "English denomination: shilling"

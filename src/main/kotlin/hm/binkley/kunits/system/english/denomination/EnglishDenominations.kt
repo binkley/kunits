@@ -34,8 +34,10 @@ import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
+import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfGroat.HalfGroats
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
@@ -112,6 +114,22 @@ val FixedBigRational.pence get() = Pence.new(this)
 val Long.pence get() = (this over 1).pence
 val Int.pence get() = (this over 1).pence
 
+class HalfGroat private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<HalfGroats, HalfGroat>(HalfGroats, quantity) {
+    companion object HalfGroats : EnglishDenominations<HalfGroats, HalfGroat>(
+        "half-groat",
+        (2 over 1)
+    ) {
+        override fun new(quantity: FixedBigRational) = HalfGroat(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity half-groats"
+    }
+}
+
+val FixedBigRational.halfGroats get() = HalfGroats.new(this)
+val Long.halfGroats get() = (this over 1).halfGroats
+val Int.halfGroats get() = (this over 1).halfGroats
+
 class Threepenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Threepence, Threepenny>(Threepenny, quantity) {
     companion object Threepence :
@@ -127,6 +145,21 @@ class Threepenny private constructor(quantity: FixedBigRational) :
 val FixedBigRational.threepence get() = Threepenny.new(this)
 val Long.threepence get() = (this over 1).threepence
 val Int.threepence get() = (this over 1).threepence
+
+class Groat private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Groats, Groat>(Groats, quantity) {
+    companion object Groats : EnglishDenominations<Groats, Groat>(
+        "groat",
+        (4 over 1)
+    ) {
+        override fun new(quantity: FixedBigRational) = Groat(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity groats"
+    }
+}
+
+val FixedBigRational.groats get() = Groats.new(this)
+val Long.groats get() = (this over 1).groats
+val Int.groats get() = (this over 1).groats
 
 class Sixpenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Sixpence, Sixpenny>(Sixpenny, quantity) {
