@@ -32,6 +32,9 @@ import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
+import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
+import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
@@ -52,7 +55,10 @@ internal class EnglishDenominationsTest {
         1L.sixpence shouldBe (6.pence into Sixpence)
         1L.shillings shouldBe (12.pence into Shillings)
         1L.florins shouldBe (24.pence into Florins)
+        1L.halfCrowns shouldBe (30.pence into HalfCrowns)
         1L.crowns shouldBe (60.pence into Crowns)
+        1L.halfSovereigns shouldBe (120.pence into HalfSovereigns)
+        1L.halfGuineas shouldBe (126.pence into HalfGuineas)
         1L.marks shouldBe (160.pence into Marks)
         1L.pounds shouldBe (240.pence into Pounds)
         1L.guineas shouldBe (252.pence into Guineas)
@@ -60,7 +66,7 @@ internal class EnglishDenominationsTest {
 
     @Test
     fun `should pretty print`() {
-        "$Farthings" shouldBe "English denomination: farthing"
+        "$Farthing" shouldBe "English denomination: farthing"
         "${1.farthings}" shouldBe "1 farthings"
         "$Halfpenny" shouldBe "English denomination: halfpenny"
         "${1.halfpence}" shouldBe "1 halfpennies"
@@ -74,13 +80,19 @@ internal class EnglishDenominationsTest {
         "${1.shillings}" shouldBe "1s"
         "$Florin" shouldBe "English denomination: florin"
         "${1.florins}" shouldBe "1 florins"
-        "$Crowns" shouldBe "English denomination: crown"
+        "$HalfCrown" shouldBe "English denomination: half-crown"
+        "${1.halfCrowns}" shouldBe "1 half-crowns"
+        "$HalfGuinea" shouldBe "English denomination: half-guinea"
+        "${1.halfGuineas}" shouldBe "1 half-guineas"
+        "$Crown" shouldBe "English denomination: crown"
         "${1.crowns}" shouldBe "1 crowns"
-        "$Marks" shouldBe "English denomination: mark"
+        "$HalfSovereign" shouldBe "English denomination: half-sovereign"
+        "${1.halfSovereigns}" shouldBe "1 half-sovereigns"
+        "$Mark" shouldBe "English denomination: mark"
         "${1.marks}" shouldBe "1 marks"
-        "$Pounds" shouldBe "English denomination: pound"
+        "$Pound" shouldBe "English denomination: pound"
         "${1.pounds}" shouldBe "£1"
-        "$Guineas" shouldBe "English denomination: guinea"
+        "$Guinea" shouldBe "English denomination: guinea"
         "${1.guineas}" shouldBe "1gns"
     }
 }

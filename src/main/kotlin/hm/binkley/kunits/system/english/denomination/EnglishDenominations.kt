@@ -35,6 +35,9 @@ import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
+import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
+import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
@@ -54,25 +57,6 @@ sealed class EnglishDenominations<
     name: String,
     pence: FixedBigRational
 ) : Units<Denomination, English, U, M>(Denomination, English, name, pence)
-
-/* TODO: expose and test
-private fun EnglishDenominations<*, *>.formatAsChange(
-    quantity: FixedBigRational
-): String {
-    val penceToFormat = (basis * quantity).pence
-    val (pounds, remainingPounds) =
-        (penceToFormat into Pounds).quantity
-            .truncateAndRemainder()
-    val (shillings, remainingShillings) =
-        (remainingPounds.pounds into Shillings).quantity
-            .truncateAndRemainder()
-    val pence = (remainingShillings.shillings into Pence).quantity
-
-    // TODO: Skip leading or trailing zero amounts
-    // TODO: solidus, not slash
-    return "£$pounds ${shillings}s${pence}d"
-}
-*/
 
 sealed class EnglishDenomination<
     U : EnglishDenominations<U, M>,
@@ -192,6 +176,23 @@ val FixedBigRational.florins get() = Florin.new(this)
 val Long.florins get() = (this over 1).florins
 val Int.florins get() = (this over 1).florins
 
+class HalfCrown private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<HalfCrowns, HalfCrown>(HalfCrown, quantity) {
+    companion object HalfCrowns :
+        EnglishDenominations<HalfCrowns, HalfCrown>(
+            "half-crown",
+            (30 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = HalfCrown(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity half-crowns"
+    }
+}
+
+val FixedBigRational.halfCrowns get() = HalfCrown.new(this)
+val Long.halfCrowns get() = (this over 1).halfCrowns
+val Int.halfCrowns get() = (this over 1).halfCrowns
+
 class Crown private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Crowns, Crown>(Crown, quantity) {
     companion object Crowns :
@@ -207,6 +208,40 @@ class Crown private constructor(quantity: FixedBigRational) :
 val FixedBigRational.crowns get() = Crown.new(this)
 val Long.crowns get() = (this over 1).crowns
 val Int.crowns get() = (this over 1).crowns
+
+class HalfSovereign private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<HalfSovereigns, HalfSovereign>(HalfSovereign, quantity) {
+    companion object HalfSovereigns :
+        EnglishDenominations<HalfSovereigns, HalfSovereign>(
+            "half-sovereign",
+            (120 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = HalfSovereign(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity half-sovereigns"
+    }
+}
+
+val FixedBigRational.halfSovereigns get() = HalfSovereign.new(this)
+val Long.halfSovereigns get() = (this over 1).halfSovereigns
+val Int.halfSovereigns get() = (this over 1).halfSovereigns
+
+class HalfGuinea private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<HalfGuineas, HalfGuinea>(HalfGuinea, quantity) {
+    companion object HalfGuineas :
+        EnglishDenominations<HalfGuineas, HalfGuinea>(
+            "half-guinea",
+            (126 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = HalfGuinea(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity half-guineas"
+    }
+}
+
+val FixedBigRational.halfGuineas get() = HalfGuinea.new(this)
+val Long.halfGuineas get() = (this over 1).halfGuineas
+val Int.halfGuineas get() = (this over 1).halfGuineas
 
 class Mark private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Marks, Mark>(Mark, quantity) {
