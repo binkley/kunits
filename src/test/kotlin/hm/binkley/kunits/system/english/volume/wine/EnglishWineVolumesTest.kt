@@ -32,7 +32,7 @@ import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class EnglishVolumesTest {
+internal class EnglishWineVolumesTest {
     @Test
     fun `should convert`() {
         1L.tuns shouldBe 1.tuns

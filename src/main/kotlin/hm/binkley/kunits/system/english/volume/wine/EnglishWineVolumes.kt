@@ -49,25 +49,25 @@ import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
 
-sealed class EnglishVolumes<
-    U : EnglishVolumes<U, M>,
-    M : EnglishVolume<U, M>,
+sealed class EnglishWineVolumes<
+    U : EnglishWineVolumes<U, M>,
+    M : EnglishWineVolume<U, M>,
     >(
     name: String,
     seconds: FixedBigRational,
 ) : Units<Volume, English, U, M>(Volume, English, name, seconds)
 
-sealed class EnglishVolume<
-    U : EnglishVolumes<U, M>,
-    M : EnglishVolume<U, M>,
+sealed class EnglishWineVolume<
+    U : EnglishWineVolumes<U, M>,
+    M : EnglishWineVolume<U, M>,
     >(
     unit: U,
     quantity: FixedBigRational,
 ) : Measure<Volume, English, U, M>(unit, quantity)
 
 class Tun private constructor(quantity: FixedBigRational) :
-    EnglishVolume<Tuns, Tun>(Tuns, quantity) {
-    companion object Tuns : EnglishVolumes<Tuns, Tun>(
+    EnglishWineVolume<Tuns, Tun>(Tuns, quantity) {
+    companion object Tuns : EnglishWineVolumes<Tuns, Tun>(
         "tun",
         ONE
     ) {
@@ -81,8 +81,8 @@ val Long.tuns get() = (this over 1).tuns
 val Int.tuns get() = (this over 1).tuns
 
 class Pipe private constructor(quantity: FixedBigRational) :
-    EnglishVolume<Pipes, Pipe>(Pipes, quantity) {
-    companion object Pipes : EnglishVolumes<Pipes, Pipe>(
+    EnglishWineVolume<Pipes, Pipe>(Pipes, quantity) {
+    companion object Pipes : EnglishWineVolumes<Pipes, Pipe>(
         "pipe",
         (1 over 2)
     ) {
@@ -96,8 +96,8 @@ val Long.pipes get() = (this over 1).pipes
 val Int.pipes get() = (this over 1).pipes
 
 class Puncheon private constructor(quantity: FixedBigRational) :
-    EnglishVolume<Puncheons, Puncheon>(Puncheons, quantity) {
-    companion object Puncheons : EnglishVolumes<Puncheons, Puncheon>(
+    EnglishWineVolume<Puncheons, Puncheon>(Puncheons, quantity) {
+    companion object Puncheons : EnglishWineVolumes<Puncheons, Puncheon>(
         "puncheon",
         (1 over 3)
     ) {
@@ -111,8 +111,8 @@ val Long.puncheons get() = (this over 1).puncheons
 val Int.puncheons get() = (this over 1).puncheons
 
 class Hogshead private constructor(quantity: FixedBigRational) :
-    EnglishVolume<Hogsheads, Hogshead>(Hogsheads, quantity) {
-    companion object Hogsheads : EnglishVolumes<Hogsheads, Hogshead>(
+    EnglishWineVolume<Hogsheads, Hogshead>(Hogsheads, quantity) {
+    companion object Hogsheads : EnglishWineVolumes<Hogsheads, Hogshead>(
         "hogshead",
         (1 over 4)
     ) {
@@ -127,8 +127,8 @@ val Long.hogsheads get() = (this over 1).hogsheads
 val Int.hogsheads get() = (this over 1).hogsheads
 
 class Tierce private constructor(quantity: FixedBigRational) :
-    EnglishVolume<Tierces, Tierce>(Tierces, quantity) {
-    companion object Tierces : EnglishVolumes<Tierces, Tierce>(
+    EnglishWineVolume<Tierces, Tierce>(Tierces, quantity) {
+    companion object Tierces : EnglishWineVolumes<Tierces, Tierce>(
         "tierce",
         (1 over 6)
     ) {
@@ -142,8 +142,8 @@ val Long.tierces get() = (this over 1).tierces
 val Int.tierces get() = (this over 1).tierces
 
 class WineBarrel private constructor(quantity: FixedBigRational) :
-    EnglishVolume<WineBarrels, WineBarrel>(WineBarrels, quantity) {
-    companion object WineBarrels : EnglishVolumes<WineBarrels, WineBarrel>(
+    EnglishWineVolume<WineBarrels, WineBarrel>(WineBarrels, quantity) {
+    companion object WineBarrels : EnglishWineVolumes<WineBarrels, WineBarrel>(
         "wine barrel",
         (1 over 8)
     ) {
@@ -158,8 +158,8 @@ val Long.wineBarrels get() = (this over 1).wineBarrels
 val Int.wineBarrels get() = (this over 1).wineBarrels
 
 class Rundlet private constructor(quantity: FixedBigRational) :
-    EnglishVolume<Rundlets, Rundlet>(Rundlets, quantity) {
-    companion object Rundlets : EnglishVolumes<Rundlets, Rundlet>(
+    EnglishWineVolume<Rundlets, Rundlet>(Rundlets, quantity) {
+    companion object Rundlets : EnglishWineVolumes<Rundlets, Rundlet>(
         "rundlet",
         (1 over 14)
     ) {
