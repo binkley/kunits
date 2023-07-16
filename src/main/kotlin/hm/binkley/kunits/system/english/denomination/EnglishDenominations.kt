@@ -33,16 +33,17 @@ import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
+import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
+import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
+import hm.binkley.kunits.system.english.denomination.Pound.Pounds
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
-import hm.binkley.math.div
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
-import hm.binkley.math.times
 
 /** The English units of denomination. */
 sealed class EnglishDenominations<
@@ -52,6 +53,25 @@ sealed class EnglishDenominations<
     name: String,
     pence: FixedBigRational
 ) : Units<Denomination, English, U, M>(Denomination, English, name, pence)
+
+/* TODO: expose and test
+private fun EnglishDenominations<*, *>.formatAsChange(
+    quantity: FixedBigRational
+): String {
+    val penceToFormat = (basis * quantity).pence
+    val (pounds, remainingPounds) =
+        (penceToFormat into Pounds).quantity
+            .truncateAndRemainder()
+    val (shillings, remainingShillings) =
+        (remainingPounds.pounds into Shillings).quantity
+            .truncateAndRemainder()
+    val pence = (remainingShillings.shillings into Pence).quantity
+
+    // TODO: Skip leading or trailing zero amounts
+    // TODO: solidus, not slash
+    return "£$pounds ${shillings}s${pence}d"
+}
+*/
 
 sealed class EnglishDenomination<
     U : EnglishDenominations<U, M>,
@@ -68,7 +88,7 @@ class Farthing private constructor(quantity: FixedBigRational) :
         (1 over 4)
     ) {
         override fun new(quantity: FixedBigRational) = Farthing(quantity)
-        override fun format(quantity: FixedBigRational) = "${quantity / 4}d"
+        override fun format(quantity: FixedBigRational) = "$quantity farthings"
     }
 }
 
@@ -83,7 +103,8 @@ class Halfpenny private constructor(quantity: FixedBigRational) :
         (1 over 2)
     ) {
         override fun new(quantity: FixedBigRational) = Halfpenny(quantity)
-        override fun format(quantity: FixedBigRational) = "${quantity / 2}d"
+        override fun format(quantity: FixedBigRational) =
+            "$quantity halfpennies"
     }
 }
 
@@ -114,13 +135,13 @@ class Threepenny private constructor(quantity: FixedBigRational) :
             (3 over 1)
         ) {
         override fun new(quantity: FixedBigRational) = Threepenny(quantity)
-        override fun format(quantity: FixedBigRational) = "${quantity * 3}d"
+        override fun format(quantity: FixedBigRational) = "$quantity threepence"
     }
 }
 
-val FixedBigRational.threepenny get() = Threepenny.new(this)
-val Long.threepence get() = (this over 1).threepenny
-val Int.threepence get() = (this over 1).threepenny
+val FixedBigRational.threepence get() = Threepenny.new(this)
+val Long.threepence get() = (this over 1).threepence
+val Int.threepence get() = (this over 1).threepence
 
 class Sixpenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Sixpence, Sixpenny>(Sixpenny, quantity) {
@@ -130,13 +151,13 @@ class Sixpenny private constructor(quantity: FixedBigRational) :
             (6 over 1)
         ) {
         override fun new(quantity: FixedBigRational) = Sixpenny(quantity)
-        override fun format(quantity: FixedBigRational) = "${quantity * 6}d"
+        override fun format(quantity: FixedBigRational) = "$quantity sixpence"
     }
 }
 
-val FixedBigRational.sixpenny get() = Sixpenny.new(this)
-val Long.sixpence get() = (this over 1).sixpenny
-val Int.sixpence get() = (this over 1).sixpenny
+val FixedBigRational.sixpence get() = Sixpenny.new(this)
+val Long.sixpence get() = (this over 1).sixpence
+val Int.sixpence get() = (this over 1).sixpence
 
 class Shilling private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Shillings, Shilling>(Shilling, quantity) {
@@ -150,9 +171,9 @@ class Shilling private constructor(quantity: FixedBigRational) :
     }
 }
 
-val FixedBigRational.shilling get() = Shilling.new(this)
-val Long.shillings get() = (this over 1).shilling
-val Int.shillings get() = (this over 1).shilling
+val FixedBigRational.shillings get() = Shilling.new(this)
+val Long.shillings get() = (this over 1).shillings
+val Int.shillings get() = (this over 1).shillings
 
 class Crown private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Crowns, Crown>(Crown, quantity) {
@@ -162,10 +183,58 @@ class Crown private constructor(quantity: FixedBigRational) :
             (60 over 1)
         ) {
         override fun new(quantity: FixedBigRational) = Crown(quantity)
-        override fun format(quantity: FixedBigRational) = "${quantity * 5}s"
+        override fun format(quantity: FixedBigRational) = "$quantity crowns"
     }
 }
 
-val FixedBigRational.crown get() = Crown.new(this)
-val Long.crowns get() = (this over 1).crown
-val Int.crowns get() = (this over 1).crown
+val FixedBigRational.crowns get() = Crown.new(this)
+val Long.crowns get() = (this over 1).crowns
+val Int.crowns get() = (this over 1).crowns
+
+class Mark private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Marks, Mark>(Mark, quantity) {
+    companion object Marks :
+        EnglishDenominations<Marks, Mark>(
+            "mark",
+            (160 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Mark(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity marks"
+    }
+}
+
+val FixedBigRational.marks get() = Mark.new(this)
+val Long.marks get() = (this over 1).marks
+val Int.marks get() = (this over 1).marks
+
+class Pound private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Pounds, Pound>(Pound, quantity) {
+    companion object Pounds :
+        EnglishDenominations<Pounds, Pound>(
+            "pound",
+            (240 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Pound(quantity)
+        override fun format(quantity: FixedBigRational) = "£$quantity"
+    }
+}
+
+val FixedBigRational.pounds get() = Pound.new(this)
+val Long.pounds get() = (this over 1).pounds
+val Int.pounds get() = (this over 1).pounds
+
+class Guinea private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Guineas, Guinea>(Guinea, quantity) {
+    companion object Guineas :
+        EnglishDenominations<Guineas, Guinea>(
+            "guinea",
+            (252 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Guinea(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity guineas"
+    }
+}
+
+val FixedBigRational.guineas get() = Guinea.new(this)
+val Long.guineas get() = (this over 1).guineas
+val Int.guineas get() = (this over 1).guineas
