@@ -49,6 +49,7 @@ $ ./batect demo
 ```
 
 Test coverage is 100% for lines, branches, and instructions.
+Check out the badge and [coverage summary](actions/) for a build. 
 
 ### Systems of units
 
