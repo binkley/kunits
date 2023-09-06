@@ -11,6 +11,7 @@ Units of measure in Kotlin
 align="right" width="20%"/>
 
 [![build](https://github.com/binkley/kunits/workflows/build/badge.svg)](https://github.com/binkley/kunits/actions)
+[![coverage](https://github.com/binkley/kunits/raw/master/images/jacoco.svg)](https://github.com/binkley/kunits/actions/workflows/ci.yml)
 [![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
 [![pull requests](https://img.shields.io/github/issues-pr/binkley/kunits.svg)](https://github.com/binkley/kunits/pulls)
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
@@ -29,7 +30,7 @@ It is also fun.
 * [Build](#build)
 * [Design](#design)
 * [Considerations](#considerations)
-* [Kotlin rational](#kotlin-rational)
+* [Kotlin rational](#kunits)
 * [Reading](#reading)
 
 ## Build
@@ -60,11 +61,11 @@ Test coverage is 100% for lines, branches, and instructions.
 ### Kotlin rational
 
 This library depends on
-[`kotlin-rational`](https://github.com/binkley/kotlin-rational) for
+[`kunits`](https://github.com/binkley/kunits) for
 representing big rationals.
 
-Presently there is no published dependency for `kotlin-rational`.
-To build KUnits, install locally from the `kotlin-rational-2.2.0` tag.
+Presently there is no published dependency for `kunits`.
+To build KUnits, install locally from the `kunits-2.2.0` tag.
 
 ### Platform
 
