@@ -83,10 +83,11 @@ fun Measure<Denomination, USD, *, *>.format(): String =
 
 class HundredDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<HundredDollars, HundredDollar>(HundredDollars, quantity) {
-    companion object HundredDollars : USDDenominations<HundredDollars, HundredDollar>(
-        "hundred dollar bill",
-        100 over 1
-    ) {
+    companion object HundredDollars :
+        USDDenominations<HundredDollars, HundredDollar>(
+            "hundred dollar bill",
+            100 over 1
+        ) {
         override fun new(quantity: FixedBigRational) = HundredDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $100"
     }
@@ -113,10 +114,11 @@ val Int.fiftyDollars get() = (this over 1).fiftyDollars
 
 class TwentyDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<TwentyDollars, TwentyDollar>(TwentyDollars, quantity) {
-    companion object TwentyDollars : USDDenominations<TwentyDollars, TwentyDollar>(
-        "twenty dollar bill",
-        20 over 1
-    ) {
+    companion object TwentyDollars :
+        USDDenominations<TwentyDollars, TwentyDollar>(
+            "twenty dollar bill",
+            20 over 1
+        ) {
         override fun new(quantity: FixedBigRational) = TwentyDollar(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity $20"
     }

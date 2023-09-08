@@ -101,7 +101,8 @@ fun main() {
     println("Change of lengths -> (multiple) ${m1 into Inches into Sticks}")
     println(
         "Complex expression -> (yards+feet-barleycorns into hands) ${
-            ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns)) into Hands
+            ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns))
+                into Hands
         }"
     )
 
@@ -183,8 +184,11 @@ fun main() {
 
     println()
     println("== CONVERSIONS")
+    // Use multiline string because of long line in the code
     println(
-        "${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English"
+        """
+${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English
+        """.trimIndent()
     )
     println("${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN $FFF")
     val smootInInches = 1.smoots intoEnglish Inches

@@ -131,7 +131,9 @@ operator fun <
     V : Units<K, S, V, N>,
     N : Measure<K, S, V, N>
     >
-    Measure<K, S, *, *>.div(denominator: Measure<K, S, V, N>): FixedBigRational =
+    Measure<K, S, *, *>.div(
+        denominator: Measure<K, S, V, N>
+    ): FixedBigRational =
     (this into denominator.unit).quantity / denominator.quantity
 
 /**

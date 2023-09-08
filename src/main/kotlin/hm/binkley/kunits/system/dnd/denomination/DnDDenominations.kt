@@ -90,10 +90,11 @@ val Int.silver get() = (this over 1).silver
 
 class Electrum private constructor(quantity: FixedBigRational) :
     DnDDenomination<ElectrumPieces, Electrum>(ElectrumPieces, quantity) {
-    companion object ElectrumPieces : DnDDenominations<ElectrumPieces, Electrum>(
-        "electrum piece",
-        50 over 1
-    ) {
+    companion object ElectrumPieces :
+        DnDDenominations<ElectrumPieces, Electrum>(
+            "electrum piece",
+            50 over 1
+        ) {
         override fun new(quantity: FixedBigRational) = Electrum(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity ep"
     }
@@ -120,10 +121,11 @@ val Int.gold get() = (this over 1).gold
 
 class Platinum private constructor(quantity: FixedBigRational) :
     DnDDenomination<PlatinumPieces, Platinum>(PlatinumPieces, quantity) {
-    companion object PlatinumPieces : DnDDenominations<PlatinumPieces, Platinum>(
-        "platinum piece",
-        1_000 over 1
-    ) {
+    companion object PlatinumPieces :
+        DnDDenominations<PlatinumPieces, Platinum>(
+            "platinum piece",
+            1_000 over 1
+        ) {
         override fun new(quantity: FixedBigRational) = Platinum(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity pp"
     }

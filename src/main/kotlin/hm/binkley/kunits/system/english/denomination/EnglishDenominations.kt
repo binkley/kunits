@@ -243,7 +243,10 @@ val Long.crowns get() = (this over 1).crowns
 val Int.crowns get() = (this over 1).crowns
 
 class HalfSovereign private constructor(quantity: FixedBigRational) :
-    EnglishDenomination<HalfSovereigns, HalfSovereign>(HalfSovereign, quantity) {
+    EnglishDenomination<HalfSovereigns, HalfSovereign>(
+        HalfSovereign,
+        quantity
+    ) {
     companion object HalfSovereigns :
         EnglishDenominations<HalfSovereigns, HalfSovereign>(
             "half-sovereign",

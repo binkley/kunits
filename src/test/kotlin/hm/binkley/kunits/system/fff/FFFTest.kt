@@ -48,7 +48,8 @@ internal class FFFTest {
     @Test
     fun `should convert into English`() {
         (1.furlongs intoEnglish EnglishFurlongs) shouldBe 1.englishFurlongs
-        (1.fortnights intoEnglish EnglishFortnights) shouldBe 1.englishFortnights
+        (1.fortnights intoEnglish EnglishFortnights) shouldBe
+            1.englishFortnights
         (1.firkins intoEnglish Pounds) shouldBe 90.pounds
     }
 }
