@@ -46,19 +46,28 @@ import hm.binkley.kunits.system.fff.weight.FFFWeights
 object English : System<English>("English")
 
 /** Converts lengths from English into FFF units. */
-infix fun <V : FFFLengths<V, N>, N : FFFLength<V, N>>
-    EnglishLength<*, *>.intoFFF(other: V) = into(other) {
+infix fun <V : FFFLengths<V, N>, N : FFFLength<V, N>> EnglishLength<*, *>.intoFFF(
+    other: V
+) = into(
+    other
+) {
     it * FURLONGS_PER_LINE
 }
 
 /** Converts lengths from English into FFF units. */
-infix fun <V : FFFTimes<V, N>, N : FFFTime<V, N>>
-    EnglishTime<*, *>.intoFFF(other: V) = into(other) {
+infix fun <V : FFFTimes<V, N>, N : FFFTime<V, N>> EnglishTime<*, *>.intoFFF(
+    other: V
+) = into(
+    other
+) {
     it * FORTNIGHTS_PER_SECOND
 }
 
 /** Converts lengths from English into FFF units. */
-infix fun <V : FFFWeights<V, N>, N : FFFWeight<V, N>>
-    EnglishWeight<*, *>.intoFFF(other: V) = into(other) {
+infix fun <V : FFFWeights<V, N>, N : FFFWeight<V, N>> EnglishWeight<*, *>.intoFFF(
+    other: V
+) = into(
+    other
+) {
     it * FIRKINS_PER_DRAM
 }

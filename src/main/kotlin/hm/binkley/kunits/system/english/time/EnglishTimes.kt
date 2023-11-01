@@ -186,8 +186,7 @@ class Quadrant private constructor(quantity: FixedBigRational) :
         (21_600 over 1)
     ) {
         override fun new(quantity: FixedBigRational) = Quadrant(quantity)
-        override fun format(quantity: FixedBigRational) =
-            "$quantity quadrants"
+        override fun format(quantity: FixedBigRational) = "$quantity quadrants"
     }
 }
 
@@ -232,8 +231,7 @@ class Fortnight private constructor(quantity: FixedBigRational) :
         (1_209_600 over 1)
     ) {
         override fun new(quantity: FixedBigRational) = Fortnight(quantity)
-        override fun format(quantity: FixedBigRational) =
-            "$quantity fortnights"
+        override fun format(quantity: FixedBigRational) = "$quantity fortnights"
     }
 }
 
@@ -248,8 +246,7 @@ class Quinzième private constructor(quantity: FixedBigRational) :
         (1_296_000 over 1)
     ) {
         override fun new(quantity: FixedBigRational) = Quinzième(quantity)
-        override fun format(quantity: FixedBigRational) =
-            "$quantity quinzièmes"
+        override fun format(quantity: FixedBigRational) = "$quantity quinzièmes"
     }
 }
 

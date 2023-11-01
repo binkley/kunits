@@ -152,8 +152,7 @@ class Shaftment private constructor(quantity: FixedBigRational) :
         72 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Shaftment(quantity)
-        override fun format(quantity: FixedBigRational) =
-            "$quantity shaftments"
+        override fun format(quantity: FixedBigRational) = "$quantity shaftments"
     }
 }
 

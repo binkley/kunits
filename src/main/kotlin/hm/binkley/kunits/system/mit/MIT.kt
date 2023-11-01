@@ -42,7 +42,8 @@ object MIT : System<MIT>("MIT")
 infix fun <
     V : EnglishLengths<V, N>,
     N : EnglishLength<V, N>,
-    >
-    Measure<Length, MIT, *, *>.intoEnglish(other: V) = into(other) {
+    > Measure<Length, MIT, *, *>.intoEnglish(
+    other: V
+) = into(other) {
     it / SMOOTS_PER_LINE
 }

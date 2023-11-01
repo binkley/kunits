@@ -49,8 +49,9 @@ object FFF : System<FFF>("Furlong-Firkin-Fortnight")
 infix fun <
     V : EnglishLengths<V, N>,
     N : EnglishLength<V, N>,
-    >
-    FFFLength<*, *>.intoEnglish(other: V) = into(other) {
+    > FFFLength<*, *>.intoEnglish(
+    other: V
+) = into(other) {
     it / FURLONGS_PER_LINE
 }
 
@@ -58,8 +59,9 @@ infix fun <
 infix fun <
     V : EnglishTimes<V, N>,
     N : EnglishTime<V, N>,
-    >
-    FFFTime<*, *>.intoEnglish(other: V) = into(other) {
+    > FFFTime<*, *>.intoEnglish(
+    other: V
+) = into(other) {
     it / FORTNIGHTS_PER_SECOND
 }
 
@@ -67,7 +69,8 @@ infix fun <
 infix fun <
     V : EnglishWeights<V, N>,
     N : EnglishWeight<V, N>,
-    >
-    FFFWeight<*, *>.intoEnglish(other: V) = into(other) {
+    > FFFWeight<*, *>.intoEnglish(
+    other: V
+) = into(other) {
     it / FIRKINS_PER_DRAM
 }
