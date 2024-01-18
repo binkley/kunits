@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore Batect caches
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: batect-cache
         with:
@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Restore Maven caches
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: maven-cache
         with:
