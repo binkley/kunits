@@ -21,6 +21,14 @@ This project covers historical, fantasy, or whimsical units: Metric is
 uninteresting except that being based on base 10, it is not representable
 by binary computers (the French revolutionaries overlooked that).
 USD is provided as a practical example.
+Using a "base class" type hierarchy is not your only approach.
+You can use typing and generics to improve the experience for others using
+your library.
+
+> [!NOTE]
+> The purpose of this project is to show practical (or whimsical) examples of
+> a complex hierarchy of types and take advantage of Kotlin typing in doing
+> so.
 
 The project is a demonstration of the power (and limits) of generics in
 Kotlin and in writing a clean DSL: see
