@@ -10,7 +10,7 @@ Units of measure in Kotlin
 <img src="./images/kunits.png" alt="KUnits"
 align="right" width="20%"/>
 
-[![build](https://github.com/binkley/kunits/workflows/build/badge.svg)](https://github.com/binkley/kunits/actions)
+[![build](https://github.com/binkley/kunits/actions/workflows/ci.yml/badge.svg)](https://github.com/binkley/kunits/actions)
 [![coverage](https://github.com/binkley/kunits/raw/master/images/jacoco.svg)](https://github.com/binkley/kunits/actions/workflows/ci.yml)
 [![pull requests](https://img.shields.io/github/issues-pr/binkley/kunits.svg)](https://github.com/binkley/kunits/pulls)
 [![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
