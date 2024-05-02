@@ -34,7 +34,6 @@ import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
-import hm.binkley.kunits.system.english.denomination.HalfGroat.HalfGroats
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
@@ -43,6 +42,7 @@ import hm.binkley.kunits.system.english.denomination.Pound.Pounds
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
+import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
@@ -53,7 +53,11 @@ internal class EnglishDenominationsTest {
         1L.farthings shouldBe ((1 over 4).pence into Farthings)
         1L.halfpence shouldBe ((1 over 2).pence into Halfpence)
         1L.pence shouldBe 1.pence
-        1L.halfGroats shouldBe (2.pence into HalfGroats)
+        1L.twopence shouldBe (2.pence into Twopence)
+        (1 over 1).tuppence shouldBe 1.twopence
+        1L.tuppence shouldBe 1.twopence
+        (1 over 1).halfGroats shouldBe 1.twopence
+        1L.halfGroats shouldBe 1.twopence
         1L.threepence shouldBe (3.pence into Threepence)
         (1 over 1).thruppence shouldBe 1.threepence
         1L.thruppence shouldBe 1.threepence
@@ -84,8 +88,10 @@ internal class EnglishDenominationsTest {
         "${1.halfpence}" shouldBe "1 halfpennies"
         "$Penny" shouldBe "English denomination: penny"
         "${1.pence}" shouldBe "1d"
-        "$HalfGroat" shouldBe "English denomination: half-groat"
-        "${1.halfGroats}" shouldBe "1 half-groats"
+        "$Twopenny" shouldBe "English denomination: twopenny"
+        "${1.twopence}" shouldBe "1 twopence"
+        "${1.tuppence}" shouldBe "1 twopence"
+        "${1.halfGroats}" shouldBe "1 twopence"
         "$Threepenny" shouldBe "English denomination: threepenny"
         "${1.threepence}" shouldBe "1 threepence"
         "${1.thruppence}" shouldBe "1 threepence"

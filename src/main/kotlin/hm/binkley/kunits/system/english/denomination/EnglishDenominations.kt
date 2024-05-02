@@ -37,7 +37,7 @@ import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
-import hm.binkley.kunits.system.english.denomination.HalfGroat.HalfGroats
+import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
@@ -114,21 +114,28 @@ val FixedBigRational.pence get() = Pence.new(this)
 val Long.pence get() = (this over 1).pence
 val Int.pence get() = (this over 1).pence
 
-class HalfGroat private constructor(quantity: FixedBigRational) :
-    EnglishDenomination<HalfGroats, HalfGroat>(HalfGroats, quantity) {
-    companion object HalfGroats : EnglishDenominations<HalfGroats, HalfGroat>(
-        "half-groat",
+class Twopenny private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Twopence, Twopenny>(Twopence, quantity) {
+    companion object Twopence : EnglishDenominations<Twopence, Twopenny>(
+        "twopenny",
         (2 over 1)
     ) {
-        override fun new(quantity: FixedBigRational) = HalfGroat(quantity)
-        override fun format(quantity: FixedBigRational) =
-            "$quantity half-groats"
+        override fun new(quantity: FixedBigRational) = Twopenny(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity twopence"
     }
 }
 
-val FixedBigRational.halfGroats get() = HalfGroats.new(this)
-val Long.halfGroats get() = (this over 1).halfGroats
-val Int.halfGroats get() = (this over 1).halfGroats
+val FixedBigRational.twopence get() = Twopence.new(this)
+val Long.twopence get() = (this over 1).twopence
+val Int.twopence get() = (this over 1).twopence
+
+// Aliases for twopenny
+val FixedBigRational.tuppence get() = Twopence.new(this)
+val Long.tuppence get() = (this over 1).twopence
+val Int.tuppence get() = (this over 1).twopence
+val FixedBigRational.halfGroats get() = Twopence.new(this)
+val Long.halfGroats get() = (this over 1).twopence
+val Int.halfGroats get() = (this over 1).twopence
 
 class Threepenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Threepence, Threepenny>(Threepenny, quantity) {

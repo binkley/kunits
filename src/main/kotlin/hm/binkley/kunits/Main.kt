@@ -29,8 +29,6 @@ package hm.binkley.kunits
 
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.intoFFF
-import hm.binkley.kunits.system.english.denomination.pounds
-import hm.binkley.kunits.system.english.denomination.quid
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
@@ -38,12 +36,17 @@ import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
-import hm.binkley.kunits.system.english.denomination.HalfGroat.HalfGroats
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
+import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
+import hm.binkley.kunits.system.english.denomination.halfGroats
+import hm.binkley.kunits.system.english.denomination.pounds
+import hm.binkley.kunits.system.english.denomination.quid
+import hm.binkley.kunits.system.english.denomination.tuppence
+import hm.binkley.kunits.system.english.denomination.twopence
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Foot.Feet
 import hm.binkley.kunits.system.english.length.Hand.Hands
@@ -124,7 +127,11 @@ fun main() {
     println()
     println("== PRE-1971 BRITISH COINAGE")
     val p1 = 1.pounds
+    val p2 = 1.twopence
     println("$p1 (pounds) is ${1.quid} (quid)")
+    println(
+        "$p2 (pence) is ${1.tuppence} (tuppence) or ${1.halfGroats} (half-groat)"
+    )
     println(
         """$p1 is
     ${p1 into Guineas}
@@ -136,7 +143,7 @@ fun main() {
     or ${p1 into Sixpence}
     or ${p1 into Groats}
     or ${p1 into Threepence}
-    or ${p1 into HalfGroats}
+    or ${p1 into Twopence}
     or ${p1 into Pence}
     or ${p1 into Halfpence}
     or ${p1 into Farthings}"""

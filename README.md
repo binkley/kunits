@@ -98,6 +98,9 @@ this file and code source in sync more than already the case.
 - From `FixedBigRational`s:
   [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/Main.kt#L71)
 
+There are also aliases for some units such as `1.twopence` is identical to
+`1.tuppence`.
+
 #### Arithmetic
 
 - Idempotency:
