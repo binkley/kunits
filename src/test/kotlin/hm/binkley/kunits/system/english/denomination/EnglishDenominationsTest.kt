@@ -55,8 +55,8 @@ internal class EnglishDenominationsTest {
         1L.pence shouldBe 1.pence
         1L.halfGroats shouldBe (2.pence into HalfGroats)
         1L.threepence shouldBe (3.pence into Threepence)
-        (1 over 1).joeys shouldBe 1.threepence
-        1L.joeys shouldBe 1.threepence
+        (1 over 1).thruppence shouldBe 1.threepence
+        1L.thruppence shouldBe 1.threepence
         1L.groats shouldBe (4.pence into Groats)
         1L.sixpence shouldBe (6.pence into Sixpence)
         (1 over 1).tanners shouldBe 1.sixpence
@@ -88,7 +88,7 @@ internal class EnglishDenominationsTest {
         "${1.halfGroats}" shouldBe "1 half-groats"
         "$Threepenny" shouldBe "English denomination: threepenny"
         "${1.threepence}" shouldBe "1 threepence"
-        "${1.joeys}" shouldBe "1 threepence"
+        "${1.thruppence}" shouldBe "1 threepence"
         "$Groat" shouldBe "English denomination: groat"
         "${1.groats}" shouldBe "1 groats"
         "$Sixpenny" shouldBe "English denomination: sixpenny"

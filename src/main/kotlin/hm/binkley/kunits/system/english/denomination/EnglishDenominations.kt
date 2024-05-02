@@ -147,9 +147,9 @@ val Long.threepence get() = (this over 1).threepence
 val Int.threepence get() = (this over 1).threepence
 
 // Aliases for threepenny
-val FixedBigRational.joeys get() = Threepenny.new(this)
-val Long.joeys get() = (this over 1).threepence
-val Int.joeys get() = (this over 1).threepence
+val FixedBigRational.thruppence get() = Threepenny.new(this)
+val Long.thruppence get() = (this over 1).threepence
+val Int.thruppence get() = (this over 1).threepence
 
 class Groat private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Groats, Groat>(Groats, quantity) {
