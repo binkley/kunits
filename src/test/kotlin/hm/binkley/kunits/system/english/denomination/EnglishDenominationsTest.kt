@@ -55,9 +55,15 @@ internal class EnglishDenominationsTest {
         1L.pence shouldBe 1.pence
         1L.halfGroats shouldBe (2.pence into HalfGroats)
         1L.threepence shouldBe (3.pence into Threepence)
+        (1 over 1).joeys shouldBe 1.threepence
+        1L.joeys shouldBe 1.threepence
         1L.groats shouldBe (4.pence into Groats)
         1L.sixpence shouldBe (6.pence into Sixpence)
+        (1 over 1).tanners shouldBe 1.sixpence
+        1L.tanners shouldBe 1.sixpence
         1L.shillings shouldBe (12.pence into Shillings)
+        (1 over 1).bob shouldBe 1.shillings
+        1L.bob shouldBe 1.shillings
         1L.florins shouldBe (24.pence into Florins)
         1L.halfCrowns shouldBe (30.pence into HalfCrowns)
         1L.crowns shouldBe (60.pence into Crowns)
@@ -65,6 +71,8 @@ internal class EnglishDenominationsTest {
         1L.halfGuineas shouldBe (126.pence into HalfGuineas)
         1L.marks shouldBe (160.pence into Marks)
         1L.pounds shouldBe (240.pence into Pounds)
+        (1 over 1).quid shouldBe 1.pounds
+        1L.quid shouldBe 1.pounds
         1L.guineas shouldBe (252.pence into Guineas)
     }
 
@@ -80,12 +88,15 @@ internal class EnglishDenominationsTest {
         "${1.halfGroats}" shouldBe "1 half-groats"
         "$Threepenny" shouldBe "English denomination: threepenny"
         "${1.threepence}" shouldBe "1 threepence"
+        "${1.joeys}" shouldBe "1 threepence"
         "$Groat" shouldBe "English denomination: groat"
         "${1.groats}" shouldBe "1 groats"
         "$Sixpenny" shouldBe "English denomination: sixpenny"
         "${1.sixpence}" shouldBe "1 sixpence"
+        "${1.tanners}" shouldBe "1 sixpence"
         "$Shilling" shouldBe "English denomination: shilling"
         "${1.shillings}" shouldBe "1s"
+        "${1.bob}" shouldBe "1s"
         "$Florin" shouldBe "English denomination: florin"
         "${1.florins}" shouldBe "1 florins"
         "$HalfCrown" shouldBe "English denomination: half-crown"
@@ -100,6 +111,7 @@ internal class EnglishDenominationsTest {
         "${1.marks}" shouldBe "1 marks"
         "$Pound" shouldBe "English denomination: pound"
         "${1.pounds}" shouldBe "£1"
+        "${1.quid}" shouldBe "£1"
         "$Guinea" shouldBe "English denomination: guinea"
         "${1.guineas}" shouldBe "1gns"
     }

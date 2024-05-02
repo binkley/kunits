@@ -146,6 +146,11 @@ val FixedBigRational.threepence get() = Threepenny.new(this)
 val Long.threepence get() = (this over 1).threepence
 val Int.threepence get() = (this over 1).threepence
 
+// Aliases for threepenny
+val FixedBigRational.joeys get() = Threepenny.new(this)
+val Long.joeys get() = (this over 1).threepence
+val Int.joeys get() = (this over 1).threepence
+
 class Groat private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Groats, Groat>(Groats, quantity) {
     companion object Groats : EnglishDenominations<Groats, Groat>(
@@ -177,6 +182,11 @@ val FixedBigRational.sixpence get() = Sixpenny.new(this)
 val Long.sixpence get() = (this over 1).sixpence
 val Int.sixpence get() = (this over 1).sixpence
 
+// Aliases for sixpenny
+val FixedBigRational.tanners get() = Sixpenny.new(this)
+val Long.tanners get() = (this over 1).sixpence
+val Int.tanners get() = (this over 1).sixpence
+
 class Shilling private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Shillings, Shilling>(Shilling, quantity) {
     companion object Shillings :
@@ -192,6 +202,11 @@ class Shilling private constructor(quantity: FixedBigRational) :
 val FixedBigRational.shillings get() = Shilling.new(this)
 val Long.shillings get() = (this over 1).shillings
 val Int.shillings get() = (this over 1).shillings
+
+// Aliases for shilling
+val FixedBigRational.bob get() = Shilling.new(this)
+val Long.bob get() = (this over 1).shillings
+val Int.bob get() = (this over 1).shillings
 
 class Florin private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Florins, Florin>(Florin, quantity) {
@@ -310,6 +325,11 @@ class Pound private constructor(quantity: FixedBigRational) :
 val FixedBigRational.pounds get() = Pound.new(this)
 val Long.pounds get() = (this over 1).pounds
 val Int.pounds get() = (this over 1).pounds
+
+// Aliases for pound
+val FixedBigRational.quid get() = Pound.new(this)
+val Long.quid get() = (this over 1).pounds
+val Int.quid get() = (this over 1).pounds
 
 class Guinea private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Guineas, Guinea>(Guinea, quantity) {
