@@ -50,6 +50,23 @@ Scaling length -> (thirding) 40 lines
 Change of lengths -> (multiple) 5 sticks
 Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
 
+== PRE-1971 BRITISH COINAGE
+£1 (pounds) is £1 (quid)
+£1 is
+    20⁄21gns
+    or 3⁄2 marks
+    or 40⁄21 half-guineas
+    or 4 crowns
+    or 8 half-crowns
+    or 10 florins
+    or 40 sixpence
+    or 60 groats
+    or 80 threepence
+    or 120 half-groats
+    or 240d
+    or 480 halfpennies
+    or 960 farthings
+
 == OUTDATED TIMES
 Positive time -> (+m2) 12345⁄4 sec
 Negative time -> (+m2) -12345⁄4 sec

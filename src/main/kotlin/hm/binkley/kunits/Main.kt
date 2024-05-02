@@ -29,6 +29,21 @@ package hm.binkley.kunits
 
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.intoFFF
+import hm.binkley.kunits.system.english.denomination.pounds
+import hm.binkley.kunits.system.english.denomination.quid
+import hm.binkley.kunits.system.english.denomination.Crown.Crowns
+import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
+import hm.binkley.kunits.system.english.denomination.Florin.Florins
+import hm.binkley.kunits.system.english.denomination.Groat.Groats
+import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
+import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
+import hm.binkley.kunits.system.english.denomination.HalfGroat.HalfGroats
+import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
+import hm.binkley.kunits.system.english.denomination.Mark.Marks
+import hm.binkley.kunits.system.english.denomination.Penny.Pence
+import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
+import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Foot.Feet
 import hm.binkley.kunits.system.english.length.Hand.Hands
@@ -104,6 +119,27 @@ fun main() {
             ((m1 into Yards) + (m1 into Feet) - (m1 into Barleycorns))
                 into Hands
         }"
+    )
+
+    println()
+    println("== PRE-1971 BRITISH COINAGE")
+    val p1 = 1.pounds
+    println("$p1 (pounds) is ${1.quid} (quid)")
+    println(
+        """$p1 is
+    ${p1 into Guineas}
+    or ${p1 into Marks}
+    or ${p1 into HalfGuineas}
+    or ${p1 into Crowns}
+    or ${p1 into HalfCrowns}
+    or ${p1 into Florins}
+    or ${p1 into Sixpence}
+    or ${p1 into Groats}
+    or ${p1 into Threepence}
+    or ${p1 into HalfGroats}
+    or ${p1 into Pence}
+    or ${p1 into Halfpence}
+    or ${p1 into Farthings}"""
     )
 
     println()
