@@ -78,7 +78,7 @@ To build KUnits, install locally from the `kunits-2.2.0` tag.
 
 ### Platform
 
-This code targets JDK 17.
+This code targets JDK 21.
 
 ## Design
 
