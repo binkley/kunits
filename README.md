@@ -1,6 +1,6 @@
 <a href="./LICENSE.md">
 <img src="./images/public-domain.svg" alt="Public Domain"
-align="right" width="20%" height="auto"/>
+align="right" width="10%" height="auto"/>
 </a>
 
 # KUnits
@@ -24,6 +24,9 @@ USD is provided as a practical example.
 Using a "base class" type hierarchy is not your only approach.
 You can use typing and generics to improve the experience for others using
 your library.
+
+(The "cow" mug does not represent anything.
+It is fun to look at.)
 
 > [!NOTE]
 > The purpose of this project is to show practical (or whimsical) examples of
