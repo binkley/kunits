@@ -180,48 +180,54 @@ English (British) system is most prominent.
 
 Unreal systems of units for testing:
 
-- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L16)
-- [`Martian`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L217)
+- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L54)
+- [`Martian`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L258)
 
 Below is the source for the Martian system of units showing the minimal
 code needed for setting up a system of units:
 
 ```kotlin
-// Define the Martian system of units, a singleton
 object Martian : System<Martian>("Martian")
 
+infix fun <
+    V : Units<Length, Metasyntactic, V, N>,
+    N : Measure<Length, Metasyntactic, V, N>
+    > Measure<Length, Martian, *, *>.intoMetasyntactic(
+    other: V
+) = into(other) {
+    it * (1 over 3)
+}
+
 class Grok private constructor(value: FixedBigRational) :
-// Grok is a measure of length in the Martian system
     Measure<Length, Martian, Groks, Grok>(Groks, value) {
-    // Groks are units measured as multiples of one grok
     companion object Groks : Units<Length, Martian, Groks, Grok>(
-        Length, Martian, "grok", ONE
+        Length,
+        Martian,
+        "grok",
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Grok(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity groks"
     }
 }
 
-// Factory extension properties for creating some quantity of groks
 val FixedBigRational.groks get() = Groks.new(this)
 val Long.groks get() = (this over 1).groks
 val Int.groks get() = (this over 1).groks
 ```
 
 For convenience, systems of units may provide [conversions into other
-systems](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L28):
+systems](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L56):
 
 ```kotlin
 infix fun <
-        V : Units<Length, Metasyntactic, V, N>,
-        N : Measure<Length, Metasyntactic, V, N>,
-        >
-// Specialize converting Martian units of length to Metasyntactic ones
-// Elsewhere, define the reflexive `intoMartian` to reverse the conversion
-        Measure<Length, Martian, *, *>.intoMetasyntactic(other: V) =
-    into(other) {
-        it * (1 over 3)
-    }
+    V : Units<Length, Martian, V, N>,
+    N : Measure<Length, Martian, V, N>
+    > MetasyntacticLength<*, *>.intoMartian(
+    other: V
+) = into(other) {
+    it * (3 over 1)
+}
 ```
 
 Typically, the base type for units of measure (`MartialLengths`, above) is
@@ -231,7 +237,7 @@ However,
 is an example of extending a kind of units.
 
 Also, see
-[`ShoeSizes`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L185) for an
+[`ShoeSize`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L224) for an
 example of creating new kinds of units.
 
 #### Use of generics
@@ -278,9 +284,9 @@ Or consider:
 Unfortunately, `as` is an existing keyword for type casting.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L6) function,
+[`into`](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L45) function,
 and a more general version for [conversions into unit units of the same
-kind in another system](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L26).
+kind in another system](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L70).
 
 ```kotlin
 2.feet into Inches
