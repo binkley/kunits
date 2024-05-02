@@ -95,51 +95,52 @@ this file and code source in sync more than already the case.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](src/main/kotlin/hm/binkley/kunits/Main.kt#L53)
+  [`120.lines`](src/main/kotlin/hm/binkley/kunits/Main.kt#L96)
 - From `Long`s:
-  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/Main.kt#L89)
+  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/Main.kt#L178)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/Main.kt#L71)
+  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/Main.kt#L154)
 
-There are also aliases for some units such as `1.tuppence` is identical to
+There are also aliases for some units such as
+[`1.tuppence`](src/main/kotlin/hm/binkley/kunits/Main.kt#L133) is identical to
 `1.twopence`.
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L54)
+  [`+m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L97)
 - Negation:
-  [`-m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L55)
+  [`-m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L98)
 - Addition:
-  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/Main.kt#L107)
+  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/Main.kt#L202)
 - Subtraction:
-  [`(m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L60)
+  [`(m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L113)
 - Multiplication:
-  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L79)
+  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L166)
 - Division:
-  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L81)
+  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L168)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/Main.kt#L93), or as
+  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/Main.kt#L182), or as
   shorthand, [`m1 /
-  Barleycorns`](src/main/kotlin/hm/binkley/kunits/Main.kt#L62)
+  Barleycorns`](src/main/kotlin/hm/binkley/kunits/Main.kt#L117)
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/Main.kt#L108), or as shorthand,
-  [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/Main.kt#L114)
+  Pennies)`](src/main/kotlin/hm/binkley/kunits/Main.kt#L203), or as shorthand,
+  [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/Main.kt#L219)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/Main.kt#L127)
+  Inches`](src/main/kotlin/hm/binkley/kunits/Main.kt#L237)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L126)
+  $FFF"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L236)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L118)
+  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L223)
 
 ### API
 
@@ -154,7 +155,7 @@ There are also aliases for some units such as `1.tuppence` is identical to
   [`MetasyntacticLengths`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#37))
 - [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents
   quantities of units (_eg_,
-  [`m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#53))
+  [`m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L96))
 
 Included for `Measure` are the usual simple arithmetic operations.
 
