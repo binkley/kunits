@@ -70,6 +70,14 @@ Check out the badge and [coverage summary](actions/) for a build.
 * [USD](src/main/kotlin/hm/binkley/kunits/system/usd/)
 * [D&amp;D](src/main/kotlin/hm/binkley/kunits/system/dnd/)
 
+> [NOTE!] No attempt is made to distinguish _English_ and _British_ systems of
+> measurements.
+> The intermingled history of the British Isles is complex, and coinage
+> changed dramatically in place and time (such as UK decimalisation in 1971).
+> A complete system would provide a location/date-dependent calendar of
+> coinage which is beyond the scope of this project.
+> I do the best I can; suggestions welcome.
+
 ### Kotlin rational
 
 This library depends on
