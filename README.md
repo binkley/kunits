@@ -186,6 +186,15 @@ English (British) system is most prominent.
 > coinage which is beyond the scope of this project.
 > I do the best I can; suggestions welcome.
 
+> [NOTE!] Further, as values of lesser common coins changed, and there are
+> coins issued with the same value as earlier coins in use alongside each
+> other (changing value and availability of silver and gold; changes in
+> rulership issuing coins).
+> This project usually uses the latter value, or the most used value of
+> coinage.
+> This is difficult to get right for coins lesser known to modern readers, or
+> which were not or only rarely in circulation in modern lifetimes.
+
 Unreal systems of units for testing:
 
 - [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L54)

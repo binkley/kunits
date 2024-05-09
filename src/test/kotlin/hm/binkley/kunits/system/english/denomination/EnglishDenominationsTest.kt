@@ -28,12 +28,14 @@
 package hm.binkley.kunits.system.english.denomination
 
 import hm.binkley.kunits.into
+import hm.binkley.kunits.system.english.denomination.Angel.Angels
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.DoubleSovereign.DoubleSovereigns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
+import hm.binkley.kunits.system.english.denomination.HalfAngel.HalfAngels
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
@@ -42,7 +44,9 @@ import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
+import hm.binkley.kunits.system.english.denomination.QuarterAngel.QuarterAngels
 import hm.binkley.kunits.system.english.denomination.QuarterNoble.QuarterNobles
+import hm.binkley.kunits.system.english.denomination.QuintupleSovereign.QuintupleSovereigns
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
@@ -73,11 +77,14 @@ internal class EnglishDenominationsTest {
         1L.shillings shouldBe (12.pence into Shillings)
         (1 over 1).bob shouldBe 1.shillings
         1L.bob shouldBe 1.shillings
+        1L.quarterNobles shouldBe (20.pence into QuarterNobles)
         1L.florins shouldBe (24.pence into Florins)
-        1L.quarterNobles shouldBe (25.pence into QuarterNobles)
+        1L.quarterAngels shouldBe (24.pence into QuarterAngels)
         1L.halfCrowns shouldBe (30.pence into HalfCrowns)
         1L.halfNobles shouldBe (50.pence into HalfNobles)
         1L.crowns shouldBe (60.pence into Crowns)
+        1L.halfAngels shouldBe (66.pence into HalfAngels)
+        1L.angels shouldBe (80.pence into Angels)
         1L.nobles shouldBe (100.pence into Nobles)
         1L.halfSovereigns shouldBe (120.pence into HalfSovereigns)
         1L.halfGuineas shouldBe (126.pence into HalfGuineas)
@@ -88,6 +95,7 @@ internal class EnglishDenominationsTest {
         1L.sovereigns shouldBe (240.pence into Sovereigns)
         1L.guineas shouldBe (252.pence into Guineas)
         1L.doubleSovereigns shouldBe (480.pence into DoubleSovereigns)
+        1L.quintupleSovereigns shouldBe (1200.pence into QuintupleSovereigns)
     }
 
     @Test
@@ -117,14 +125,20 @@ internal class EnglishDenominationsTest {
         "${1.florins}" shouldBe "1 florins"
         "$QuarterNoble" shouldBe "English denomination: quarter-noble"
         "${1.quarterNobles}" shouldBe "1 quarter-nobles"
+        "$QuarterAngel" shouldBe "English denomination: gold quarter-angel"
+        "${1.quarterAngels}" shouldBe "1 gold quarter-angels"
         "$HalfCrown" shouldBe "English denomination: half-crown"
         "${1.halfCrowns}" shouldBe "1 half-crowns"
+        "$HalfAngel" shouldBe "English denomination: gold half-angel"
+        "${1.halfAngels}" shouldBe "1 gold half-angels"
         "$HalfNoble" shouldBe "English denomination: half-noble"
         "${1.halfNobles}" shouldBe "1 half-nobles"
         "$HalfGuinea" shouldBe "English denomination: half-guinea"
         "${1.halfGuineas}" shouldBe "1 half-guineas"
         "$Crown" shouldBe "English denomination: crown"
         "${1.crowns}" shouldBe "1 crowns"
+        "$Angel" shouldBe "English denomination: gold angel"
+        "${1.angels}" shouldBe "1 gold angels"
         "$Noble" shouldBe "English denomination: gold noble"
         "${1.nobles}" shouldBe "1 gold nobles"
         "$HalfSovereign" shouldBe "English denomination: gold half-sovereign"
@@ -141,5 +155,8 @@ internal class EnglishDenominationsTest {
         "$DoubleSovereign" shouldBe
             "English denomination: gold double-sovereign"
         "${1.doubleSovereigns}" shouldBe "1 gold double-sovereigns"
+        "$QuintupleSovereign" shouldBe
+            "English denomination: gold quintuple-sovereign"
+        "${1.quintupleSovereigns}" shouldBe "1 gold quintuple-sovereigns"
     }
 }
