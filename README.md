@@ -186,14 +186,17 @@ English (British) system is most prominent.
 > coinage which is beyond the scope of this project.
 > I do the best I can; suggestions welcome.
 
-> [NOTE!] Further, as values of lesser common coins changed, and there are
-> coins issued with the same value as earlier coins in use alongside each
+> [NOTE!] Further, values of several coins changed over time, and coins were
+> issued with the same value as earlier coins while being used alongside each
 > other (changing value and availability of silver and gold; changes in
-> rulership issuing coins).
-> This project usually uses the latter value, or the most used value of
-> coinage.
-> This is difficult to get right for coins lesser known to modern readers, or
-> which were not or only rarely in circulation in modern lifetimes.
+> rulership issuing coins; etc), and England/Britain/UK redominated several
+> times.
+>
+> This project usually uses a latter value for coins, or the most used value
+> of coinage, based on Internet reading; I am no historian or numismatist, but
+> I enjoy the challenge of representing the mishmash of this coinage in
+> software.
+> Repeating: I do the best I can; suggestions welcome.
 
 Unreal systems of units for testing:
 
@@ -389,6 +392,8 @@ Behavior:
 * [_English Weights &amp;
   Measures_](http://home.clara.net/brianp/quickref.html)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
+* [_Great Recoinage of
+  1816_](https://en.wikipedia.org/wiki/Great_Recoinage_of_1816)
 * [_Hogshead_](https://en.wikipedia.org/wiki/Hogshead)
 * [_How Quids, Bobs, Florins, Tanners, and Joeys Got Their
   Names_](https://mjhughescoins.com/how-quids-bobs-florins-tanners-and-joeys-got-their-names/)
