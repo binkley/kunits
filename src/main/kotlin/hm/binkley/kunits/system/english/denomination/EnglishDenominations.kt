@@ -32,6 +32,7 @@ import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
+import hm.binkley.kunits.system.english.denomination.DoubleSovereign.DoubleSovereigns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
@@ -39,13 +40,17 @@ import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
+import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
+import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
+import hm.binkley.kunits.system.english.denomination.QuarterNoble.QuarterNobles
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
+import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
@@ -231,6 +236,24 @@ val FixedBigRational.florins get() = Florin.new(this)
 val Long.florins get() = (this over 1).florins
 val Int.florins get() = (this over 1).florins
 
+/** @see Noble */
+class QuarterNoble private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<QuarterNobles, QuarterNoble>(QuarterNoble, quantity) {
+    companion object QuarterNobles :
+        EnglishDenominations<QuarterNobles, QuarterNoble>(
+            "quarter-noble",
+            (25 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = QuarterNoble(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity quarter-nobles"
+    }
+}
+
+val FixedBigRational.quarterNobles get() = QuarterNoble.new(this)
+val Long.quarterNobles get() = (this over 1).quarterNobles
+val Int.quarterNobles get() = (this over 1).quarterNobles
+
 class HalfCrown private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfCrowns, HalfCrown>(HalfCrown, quantity) {
     companion object HalfCrowns :
@@ -248,6 +271,24 @@ val FixedBigRational.halfCrowns get() = HalfCrown.new(this)
 val Long.halfCrowns get() = (this over 1).halfCrowns
 val Int.halfCrowns get() = (this over 1).halfCrowns
 
+/** @see Noble */
+class HalfNoble private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<HalfNobles, HalfNoble>(HalfNoble, quantity) {
+    companion object HalfNobles :
+        EnglishDenominations<HalfNobles, HalfNoble>(
+            "half-noble",
+            (50 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = HalfNoble(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity half-nobles"
+    }
+}
+
+val FixedBigRational.halfNobles get() = HalfNoble.new(this)
+val Long.halfNobles get() = (this over 1).halfNobles
+val Int.halfNobles get() = (this over 1).halfNobles
+
 class Crown private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Crowns, Crown>(Crown, quantity) {
     companion object Crowns :
@@ -264,6 +305,30 @@ val FixedBigRational.crowns get() = Crown.new(this)
 val Long.crowns get() = (this over 1).crowns
 val Int.crowns get() = (this over 1).crowns
 
+/**
+ * This coin is troublesome. It changed value over its lifetime, and gold
+ * coinage was never popular in England or Britain. So the exact value depends
+ * on the year it was in use, technically up until decimalisation.
+ *
+ * See https://en.wikipedia.org/wiki/Noble_(English_coin).
+ */
+class Noble private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Nobles, Noble>(Noble, quantity) {
+    companion object Nobles :
+        EnglishDenominations<Nobles, Noble>(
+            "gold noble",
+            (100 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Noble(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity gold nobles"
+    }
+}
+
+val FixedBigRational.nobles get() = Noble.new(this)
+val Long.nobles get() = (this over 1).nobles
+val Int.nobles get() = (this over 1).nobles
+
 class HalfSovereign private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfSovereigns, HalfSovereign>(
         HalfSovereign,
@@ -271,12 +336,12 @@ class HalfSovereign private constructor(quantity: FixedBigRational) :
     ) {
     companion object HalfSovereigns :
         EnglishDenominations<HalfSovereigns, HalfSovereign>(
-            "half-sovereign",
+            "gold half-sovereign",
             (120 over 1)
         ) {
         override fun new(quantity: FixedBigRational) = HalfSovereign(quantity)
         override fun format(quantity: FixedBigRational) =
-            "$quantity half-sovereigns"
+            "$quantity gold half-sovereigns"
     }
 }
 
@@ -338,6 +403,26 @@ val FixedBigRational.quid get() = Pound.new(this)
 val Long.quid get() = (this over 1).pounds
 val Int.quid get() = (this over 1).pounds
 
+class Sovereign private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Sovereigns, Sovereign>(
+        Sovereign,
+        quantity
+    ) {
+    companion object Sovereigns :
+        EnglishDenominations<Sovereigns, Sovereign>(
+            "gold sovereign",
+            (240 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Sovereign(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity gold sovereigns"
+    }
+}
+
+val FixedBigRational.sovereigns get() = Sovereign.new(this)
+val Long.sovereigns get() = (this over 1).sovereigns
+val Int.sovereigns get() = (this over 1).sovereigns
+
 class Guinea private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Guineas, Guinea>(Guinea, quantity) {
     companion object Guineas :
@@ -353,3 +438,23 @@ class Guinea private constructor(quantity: FixedBigRational) :
 val FixedBigRational.guineas get() = Guinea.new(this)
 val Long.guineas get() = (this over 1).guineas
 val Int.guineas get() = (this over 1).guineas
+
+class DoubleSovereign private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<DoubleSovereigns, DoubleSovereign>(
+        DoubleSovereign,
+        quantity
+    ) {
+    companion object DoubleSovereigns :
+        EnglishDenominations<DoubleSovereigns, DoubleSovereign>(
+            "gold double-sovereign",
+            (480 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = DoubleSovereign(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity gold double-sovereigns"
+    }
+}
+
+val FixedBigRational.doubleSovereigns get() = DoubleSovereign.new(this)
+val Long.doubleSovereigns get() = (this over 1).doubleSovereigns
+val Int.doubleSovereigns get() = (this over 1).doubleSovereigns
