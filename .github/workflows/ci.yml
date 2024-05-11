@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-maven:
-    name: Builds and tests for Maven under Batect
+    name: Builds and tests for Maven under Earthly
     runs-on: ubuntu-latest
 
     steps:
