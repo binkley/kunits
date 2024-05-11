@@ -11,7 +11,7 @@ on:
       - 'images/**'
 
 jobs:
-  build-maven:
+  build:
     name: Builds and tests for Maven under Earthly
     runs-on: ubuntu-latest
 

@@ -12,6 +12,6 @@ build:
     SAVE ARTIFACT --keep-ts target/site/jacoco/jacoco.csv AS LOCAL target/site/jacoco/jacoco.csv
 
 run:
-    FROM +build-with-maven
+    FROM +build
     COPY run .
     RUN ./run
