@@ -178,6 +178,9 @@ basis in the notation of value.
 The same is true for many or most historic coinage systems though the 
 English (British) system is most prominent.
 
+An example of a historic English coin not represented is the [_gold
+penny_](https://en.wikipedia.org/wiki/Gold_penny) (20 pence in its time).
+
 > [NOTE!] No attempt is made to distinguish _English_ and _British_ systems of
 > measurements.
 > The intermingled history of the British Isles is complex, and coinage
