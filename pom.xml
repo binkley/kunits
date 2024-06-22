@@ -90,23 +90,23 @@
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>21</jdk.version>
-        <junit.version>5.11.0-M1</junit.version>
-        <kotest.version>5.9.0</kotest.version>
+        <junit.version>5.11.0-M2</junit.version>
+        <kotest.version>5.9.1</kotest.version>
         <kotlin-rational.version>kotlin-rational-2.2.0</kotlin-rational.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
-        <kotlin.version>2.0.0-RC3</kotlin.version>
+        <kotlin.version>2.0.20-Beta1</kotlin.version>
         <ktlint-maven-plugin.version>3.2.0</ktlint-maven-plugin.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
-        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
-        <maven-jar-plugin.version>3.4.1</maven-jar-plugin.version>
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.4.3</maven-project-info-reports-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
-        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-        <maven-wrapper-plugin.version>3.3.1</maven-wrapper-plugin.version>
+        <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
+        <maven-wrapper-plugin.version>3.3.2</maven-wrapper-plugin.version>
         <maven.version>3.9.6</maven.version>
         <owasp.skip>false</owasp.skip>
         <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
