@@ -96,6 +96,8 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
         <kotlin.version>2.0.20-Beta2</kotlin.version>
+        <kover-maven-plugin.version>0.8.3</kover-maven-plugin.version>
+        <kover.skip>false</kover.skip>
         <ktlint-maven-plugin.version>3.2.0</ktlint-maven-plugin.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
@@ -271,6 +273,40 @@
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kover-maven-plugin</artifactId>
+                <version>${kover-maven-plugin.version}</version>
+                <configuration>
+                    <skip>${kover.skip}</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>kover-instrumentation</id>
+                        <goals>
+                            <goal>instrumentation</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>kover-xml</id>
+                        <goals>
+                            <goal>report-xml</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>kover-html</id>
+                        <goals>
+                            <goal>report-html</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>kover-verify</id>
+                        <goals>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
