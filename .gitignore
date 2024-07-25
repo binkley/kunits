@@ -1,4 +1,5 @@
-/.batect/
-/.idea/
 /*.iml
+/.batect/
+/.envrc
+/.idea/
 /target/
