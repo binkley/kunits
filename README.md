@@ -24,8 +24,11 @@ that).
 USD is provided as a practical example.
 English units are a good example of conversions and rational fractions.
 This library shows that typing and generics improve the experience for others
-in any domain; this project focuses on units of measure, but the lesson is
-general.
+in any domain&mdash;focusing on units of measure&mdash;but the lesson is
+general when providing code for others.
+See
+[`Main.kt`](https://github.com/binkley/kunits/blob/master/src/main/kotlin/hm/binkley/kunits/Main.kt)
+for examples that caller does not code for generics.
 
 The "cow" mug for the project does not represent anything unless you're
 Scottish which I am not.
