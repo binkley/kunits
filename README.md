@@ -21,6 +21,8 @@ This project covers historical, fantasy, or whimsical units:
 Metric units are uninteresting except that being based on base 10, they are
 not representable by binary computers (the French revolutionaries overlooked
 that).
+**And it is fun.**
+
 USD is provided as a practical example.
 English units are a good example of conversions and rational fractions.
 This library shows that typing and generics improve the experience for others
@@ -30,7 +32,7 @@ See
 [`Main.kt`](https://github.com/binkley/kunits/blob/master/src/main/kotlin/hm/binkley/kunits/Main.kt)
 for examples that caller does not code for generics.
 
-The "cow" mug for the project does not represent anything unless you're
+The "cow mug" for the project does not represent anything unless you're
 Scottish which I am not.
 Still ... "ku-nits" is a bit like "coo-nits": _fleas on cows_[^1][^2].
 Working with less common units is like fleas on cows: managed and to avoid
@@ -49,39 +51,24 @@ generics. 🐮
   [candela](https://en.wikipedia.org/wiki/Candela)/m<sup>2</sup>.
   This is a project on lesser known units.
 
-> [!NOTE]
-> The purpose of this project is to show practical (or whimsical) examples of
-> a complex hierarchy of types and take advantage of Kotlin typing in doing
-> so.
+## Try it
 
-The project is a demonstration of the power (and limits) of generics in
-Kotlin and in writing a clean DSL: see
-[`Main.kt`](src/main/kotlin/hm/binkley/kunits/Main.kt).
-It is also fun.
+After cloning the project, try [`./run`](./run) for a demonstration.
 
-* [Build](#build)
-* [Design](#design)
-* [Considerations](#considerations)
-* [Kotlin rational](#kunits)
-* [Reading](#reading)
-
-## Build
-
-Try [`./run`](./run) for a demonstration.
-
-The build is vanilla [Maven](pom.xml), with [Batect](https://batect.dev)
-offered as a means to reproduce locally what CI does.
+The build is vanilla [Maven](pom.xml), and includes a `./mvnw` (wrapper)
+script.
 
 ```
 $ ./mvnw clean verify
-$ ./run
+$ ./run  # a demo
 # Or:
-$ ./batect build
-$ ./batect demo
+$ earthly +build
+$ earthly +run  # a demo
 ```
 
 Test coverage is 100% for lines, branches, and instructions.
-Check out the badge and [coverage summary](actions/) for a build. 
+Checkout [CI builds](https://github.com/binkley/kunits/actions) to see what
+happens.
 
 ### Systems of units
 
@@ -93,12 +80,16 @@ Check out the badge and [coverage summary](actions/) for a build.
 
 ### Kotlin rational
 
-This library depends on
-[`kunits`](https://github.com/binkley/kunits) for
-representing big rationals.
+Kunits depends on an older version of
+[`kotlin-rational`](https://github.com/binkley/kotlin-rational).
+to represent "big" rationals (infinite precision fractions limits to your
+computing environment).
 
-Presently there is no published dependency for `kunits`.
-To build KUnits, install locally from the `kunits-2.2.0` tag.
+Presently there is no published dependency for `kotlin-rational` (a project of
+this author).
+To build KUnits, install locally from the
+[`kotlin-rational-2.2.0`](https://github.com/binkley/kotlin-rational/tree/kotlin-rational-2.2.0)
+tag.
 
 ### Platform
 
