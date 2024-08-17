@@ -21,7 +21,7 @@ This project covers historical, fantasy, or whimsical units:
 Metric units are uninteresting except that being based on base 10, they are
 not representable by binary computers (the French revolutionaries [overlooked
 that](https://www.bbc.com/travel/article/20180923-how-france-created-the-metric-system)).
-**And it is fun.**
+**And this project is fun.**
 
 USD is provided as a practical example.
 English units are a good example of conversions and rational fractions.
