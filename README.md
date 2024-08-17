@@ -25,8 +25,9 @@ Using a "base class" type hierarchy is not your only approach.
 You can use typing and generics to improve the experience for others using
 your library.
 
-(The "cow" mug does not represent anything.
-It is fun to look at.)
+(The "cow" mug does not represent anything unless you're Scottish which I am
+not.
+Still ... "ku-nits" is a bit like "coo-nits". 🐮)
 
 > [!NOTE]
 > The purpose of this project is to show practical (or whimsical) examples of
