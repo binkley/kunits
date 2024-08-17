@@ -27,13 +27,22 @@ your library.
 
 The "cow" mug for the project does not represent anything unless you're
 Scottish which I am not.
-Still ... "ku-nits" is a bit like "coo-nits": fleas on cows.
+Still ... "ku-nits" is a bit like "coo-nits": _fleas on cows_[^1][^2].
 Working with less common units is like fleas on cows: managed and to avoid
 unless necessary.
 It is not so cavalier when uncommon units of measure are central.
 Hopefully this project demonstrates a sensible, idiomatic means for unit
 conversions, and helps you manage irritations, and learn more about Kotlin
 generics. 🐮
+
+[^1]: Coo _vs_ cow:
+  ([coo](https://www.dsl.ac.uk/entry/snd/cow_n4) not
+  [cow](https://www.dsl.ac.uk/entry/snd/coo_n1) though code often contains
+  _hobgoblins_).
+[^2]: Nit is here meant the annoying [spot,
+  speck](https://www.wordnik.com/words/nit), or code petruberance, not 1
+  [candela](https://en.wikipedia.org/wiki/Candela)/m<sup>2</sup>.
+  This is a project on lesser known units.
 
 > [!NOTE]
 > The purpose of this project is to show practical (or whimsical) examples of
