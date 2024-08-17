@@ -5,7 +5,7 @@ align="right" width="10%" height="auto"/>
 
 # KUnits
 
-Units of measure in Kotlin
+Units of measure in Kotlin.
 
 <img src="./images/kunits.png" alt="KUnits"
 align="right" width="20%"/>
