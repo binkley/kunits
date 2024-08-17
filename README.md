@@ -96,8 +96,9 @@ happens.
 
 Kunits depends on an older version of
 [`kotlin-rational`](https://github.com/binkley/kotlin-rational) to represent
-"big" rationals (infinite precision fractions limits to your computing
+"big" rationals (infinite precision fractions limited only by your computing
 environment).
+All example unit conversions in this project are "small" precision (ratios).
 Conversions among units relies on rational (finite) ratios.
 
 Presently there is no published dependency for `kotlin-rational` (a project of
