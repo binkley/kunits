@@ -52,7 +52,6 @@ Subtracting related times -> (quadrants-seconds) 0 quadrants
 Scaling time -> (quadrupling) 12345 sec
 Change of times -> (seconds to minutes) 823⁄16 min
 Scaling time -> (quartering) 12345⁄16 sec
-Change of times -> (multiple) 823⁄345600 quinzièmes
 Complex expression -> (minutes+days-weeks into seconds) 12345⁄4 sec
 
 == AVOIRDUPOIS WEIGHTS

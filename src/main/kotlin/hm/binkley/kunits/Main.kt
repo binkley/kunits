@@ -31,10 +31,8 @@ import hm.binkley.kunits.system.english.length.lines
 import hm.binkley.kunits.system.english.length.yards
 import hm.binkley.kunits.system.english.time.Day.Days
 import hm.binkley.kunits.system.english.time.Hour.Hours
-import hm.binkley.kunits.system.english.time.Mileway.Mileways
 import hm.binkley.kunits.system.english.time.Minute.Minutes
 import hm.binkley.kunits.system.english.time.Quadrant.Quadrants
-import hm.binkley.kunits.system.english.time.Quinzième.Quinzièmes
 import hm.binkley.kunits.system.english.time.Second.Seconds
 import hm.binkley.kunits.system.english.time.Week.Weeks
 import hm.binkley.kunits.system.english.time.minutes
@@ -139,7 +137,6 @@ fun main() {
     println("Scaling time -> (quadrupling) ${m2 * 4}")
     println("Change of times -> (seconds to minutes) ${m2 / Minutes}")
     println("Scaling time -> (quartering) ${m2 / 4}")
-    println("Change of times -> (multiple) ${m2 into Mileways into Quinzièmes}")
     println(
         "Complex expression -> (minutes+days-weeks into seconds) ${
             ((m2 into Minutes) + (m2 into Days) - (m2 into Weeks)) into Seconds

@@ -1,10 +1,3 @@
-// Quinzième and ilk
-@file:Suppress(
-    "ClassName",
-    "NonAsciiCharacters",
-    "ObjectPropertyName"
-)
-
 package hm.binkley.kunits.system.english.time
 
 import hm.binkley.kunits.Measure
@@ -20,7 +13,6 @@ import hm.binkley.kunits.system.english.time.Minute.Minutes
 import hm.binkley.kunits.system.english.time.Moment.Moments
 import hm.binkley.kunits.system.english.time.Point.Points
 import hm.binkley.kunits.system.english.time.Quadrant.Quadrants
-import hm.binkley.kunits.system.english.time.Quinzième.Quinzièmes
 import hm.binkley.kunits.system.english.time.Second.Seconds
 import hm.binkley.kunits.system.english.time.Week.Weeks
 import hm.binkley.math.fixed.FixedBigRational
@@ -211,18 +203,3 @@ class Fortnight private constructor(quantity: FixedBigRational) :
 val FixedBigRational.fortnights get() = Fortnights.new(this)
 val Long.fortnights get() = (this over 1).fortnights
 val Int.fortnights get() = (this over 1).fortnights
-
-class Quinzième private constructor(quantity: FixedBigRational) :
-    EnglishTime<Quinzièmes, Quinzième>(Quinzièmes, quantity) {
-    companion object Quinzièmes : EnglishTimes<Quinzièmes, Quinzième>(
-        "quinzième",
-        (1_296_000 over 1)
-    ) {
-        override fun new(quantity: FixedBigRational) = Quinzième(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity quinzièmes"
-    }
-}
-
-val FixedBigRational.quinzièmes get() = Quinzièmes.new(this)
-val Long.quinzièmes get() = (this over 1).quinzièmes
-val Int.quinzièmes get() = (this over 1).quinzièmes

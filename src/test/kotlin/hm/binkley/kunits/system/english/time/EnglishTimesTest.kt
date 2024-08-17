@@ -31,7 +31,6 @@ internal class EnglishTimesTest {
         1L.days shouldBe (4.quadrants into Days)
         1L.weeks shouldBe (7.days into Weeks)
         1L.fortnights shouldBe (2.weeks into Fortnights)
-        1L.quinzièmes shouldBe ((15 over 14).fortnights into Quinzième)
     }
 
     @Test
@@ -59,7 +58,5 @@ internal class EnglishTimesTest {
         "${1.weeks}" shouldBe "1 weeks"
         "$Fortnight" shouldBe "English time: fortnight"
         "${1.fortnights}" shouldBe "1 fortnights"
-        "$Quinzième" shouldBe "English time: quinzième"
-        "${1.quinzièmes}" shouldBe "1 quinzièmes"
     }
 }

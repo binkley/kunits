@@ -27,7 +27,7 @@ your library.
 
 (The "cow" mug does not represent anything unless you're Scottish which I am
 not.
-Still ... "ku-nits" is a bit like "coo-nits". 🐮)
+Still ... "ku-nits" is a bit like "coo-nits": fleas on cows. 🐮)
 
 > [!NOTE]
 > The purpose of this project is to show practical (or whimsical) examples of

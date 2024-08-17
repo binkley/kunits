@@ -1,10 +1,3 @@
-// Quinzième and ilk
-@file:Suppress(
-    "ClassName",
-    "NonAsciiCharacters",
-    "ObjectPropertyName"
-)
-
 package hm.binkley.kunits.system.english.volume.wine
 
 import hm.binkley.kunits.Measure
