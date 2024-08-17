@@ -18,13 +18,14 @@ align="right" width="20%"/>
 [![license](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 This project covers historical, fantasy, or whimsical units:
-Metric units are uninteresting except that being based on base 10, it is not
-representable by binary computers (the French revolutionaries overlooked
+Metric units are uninteresting except that being based on base 10, they are
+not representable by binary computers (the French revolutionaries overlooked
 that).
 USD is provided as a practical example.
-Using a "base class" type hierarchy is not your only approach.
-You can use typing and generics to improve the experience for others using
-your library.
+English units are a good example of conversions and rational fractions.
+This library shows that typing and generics improve the experience for others
+in any domain; this project focuses on units of measure, but the lesson is
+general.
 
 The "cow" mug for the project does not represent anything unless you're
 Scottish which I am not.
