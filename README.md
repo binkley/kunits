@@ -1,5 +1,5 @@
 <a href="./LICENSE.md">
-<img src="./images/public-domain.svg" alt="Public Domain"
+<img src="./images/cc0.svg" alt="Creative Commons Public Domain Dedication"
 align="right" width="10%" height="auto"/>
 </a>
 
@@ -15,7 +15,7 @@ align="right" width="20%"/>
 [![pull requests](https://img.shields.io/github/issues-pr/binkley/kunits.svg)](https://github.com/binkley/kunits/pulls)
 [![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
-[![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
+[![license](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 This project covers historical, fantasy, or whimsical units: Metric is
 uninteresting except that being based on base 10, it is not representable
