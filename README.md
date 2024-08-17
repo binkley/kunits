@@ -17,9 +17,10 @@ align="right" width="20%"/>
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
 [![license](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
-This project covers historical, fantasy, or whimsical units: Metric is
-uninteresting except that being based on base 10, it is not representable
-by binary computers (the French revolutionaries overlooked that).
+This project covers historical, fantasy, or whimsical units:
+Metric units are uninteresting except that being based on base 10, it is not
+representable by binary computers (the French revolutionaries overlooked
+that).
 USD is provided as a practical example.
 Using a "base class" type hierarchy is not your only approach.
 You can use typing and generics to improve the experience for others using
