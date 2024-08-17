@@ -25,9 +25,15 @@ Using a "base class" type hierarchy is not your only approach.
 You can use typing and generics to improve the experience for others using
 your library.
 
-(The "cow" mug does not represent anything unless you're Scottish which I am
-not.
-Still ... "ku-nits" is a bit like "coo-nits": fleas on cows. 🐮)
+The "cow" mug for the project does not represent anything unless you're
+Scottish which I am not.
+Still ... "ku-nits" is a bit like "coo-nits": fleas on cows.
+Working with less common units is like fleas on cows: managed and to avoid
+unless necessary.
+It is not so cavalier when uncommon units of measure are central.
+Hopefully this project demonstrates a sensible, idiomatic means for unit
+conversions, and helps you manage irritations, and learn more about Kotlin
+generics. 🐮
 
 > [!NOTE]
 > The purpose of this project is to show practical (or whimsical) examples of
