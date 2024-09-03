@@ -75,7 +75,7 @@
         <kotlin.version>2.0.20</kotlin.version>
         <kover-maven-plugin.version>0.8.3</kover-maven-plugin.version>
         <kover.skip>false</kover.skip>
-        <ktlint-maven-plugin.version>3.2.0</ktlint-maven-plugin.version>
+        <ktlint-maven-plugin.version>3.3.0</ktlint-maven-plugin.version>
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
