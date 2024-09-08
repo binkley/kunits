@@ -9,7 +9,7 @@ build:
     COPY pom.xml .
     COPY config config
     COPY src src
-    RUN --secret OWASP_NVD_API_KEY ./mvnw --no-transfer-progress clean verify site
+    RUN --secret OWASP_NVD_API_KEY ./mvnw --batch-mode --no-transfer-progress clean verify site
 
     # For CI so that GitHub can copy artifacts:
     # Just copy everything rather than maintain a whitelist of files/dirs.
