@@ -2,6 +2,7 @@ VERSION 0.8
 FROM eclipse-temurin:21-jdk-jammy
 WORKDIR /code
 
+# build builds and tests with Maven, and saves the target/ directory
 build:
     COPY mvnw .
     COPY .mvn .mvn
@@ -14,6 +15,7 @@ build:
     # Just copy everything rather than maintain a whitelist of files/dirs.
     SAVE ARTIFACT --keep-ts target AS LOCAL target
 
+# run runs the demo program with Maven, building if needed
 run:
     FROM +build
     COPY run .
