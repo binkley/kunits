@@ -62,6 +62,7 @@
         <coverage.instructions>100</coverage.instructions>
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
+        <dependency-check-maven.version>10.0.4</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.23.5</detekt-maven-plugin.version>
         <dokka.version>1.9.20</dokka.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
@@ -79,6 +80,7 @@
         <main.class>hm.binkley.kunits.MainKt</main.class>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
+        <maven-dependency-plugin.version>3.8.0</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <maven-jar-plugin.version>4.0.0-beta-1</maven-jar-plugin.version>
         <maven-javadoc-plugin.version>3.10.0</maven-javadoc-plugin.version>
@@ -87,6 +89,7 @@
         <maven-surefire-plugin.version>3.5.0</maven-surefire-plugin.version>
         <maven-wrapper-plugin.version>3.3.2</maven-wrapper-plugin.version>
         <maven.version>4.0.0-beta-3</maven.version>
+        <owasp.nvdApiKey>${env.OWASP_NVD_API_KEY}</owasp.nvdApiKey>
         <owasp.skip>false</owasp.skip>
         <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
         <pitest-maven.version>1.16.3</pitest-maven.version>
@@ -207,6 +210,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -423,6 +431,25 @@
                         <phase>package</phase>
                         <goals>
                             <goal>dokka</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependency-check-maven.version}</version>
+                <configuration>
+                    <!-- This is not dotnet code -->
+                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+                    <failBuildOnCVSS>0</failBuildOnCVSS>
+                    <nvdApiKey>${owasp.nvdApiKey}</nvdApiKey>
+                    <skip>${owasp.skip}</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
