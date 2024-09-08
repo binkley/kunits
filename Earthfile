@@ -9,7 +9,10 @@ build:
     COPY config config
     COPY src src
     RUN --secret OWASP_NVD_API_KEY ./mvnw --no-transfer-progress clean verify site
-    SAVE ARTIFACT --keep-ts target/site/jacoco/jacoco.csv AS LOCAL target/site/jacoco/jacoco.csv
+
+    # For CI so that GitHub can copy artifacts:
+    # Just copy everything rather than maintain a whitelist of files/dirs.
+    SAVE ARTIFACT --keep-ts target AS LOCAL target
 
 run:
     FROM +build

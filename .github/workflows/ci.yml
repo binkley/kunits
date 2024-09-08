@@ -24,6 +24,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
       - name: Use Earthly
         uses: earthly/actions-setup@v1
         with:
@@ -31,15 +34,6 @@ jobs:
           # This is a manual step.
           # Using "latest" to force CI warnings if Earthfile is outdated
           version: "latest"
-
-      - name: Clone repository
-        uses: actions/checkout@v4
-
-      - name: Setup Java for caching
-        with:
-          distribution: temurin
-          java-version: 21
-          cache: maven
 
       - name: Restore Maven caches
         uses: actions/cache@master
@@ -117,4 +111,4 @@ jobs:
         with:
           name: dokka-jar-main
           if-no-files-found: error
-          path: target/kunits-0-dokka.jar
+          path: target/kunits-0-SNAPSHOT-dokka.jar
