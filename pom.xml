@@ -93,6 +93,7 @@
         <owasp.skip>false</owasp.skip>
         <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
         <pitest-maven.version>1.16.3</pitest-maven.version>
+        <pitest.skip>false</pitest.skip>
         <project.build.sourceEncoding>${java.charset}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
         <system-lambda.version>1.2.1</system-lambda.version>
@@ -392,6 +393,7 @@
                     </avoidCallsTo>
                     <exportLineCoverage>true</exportLineCoverage>
                     <mutationThreshold>${coverage.mutation}</mutationThreshold>
+                    <skip>${pitest.skip}</skip>
                     <timestampedReports>false</timestampedReports>
                     <withHistory>true</withHistory>
                 </configuration>
