@@ -27,25 +27,19 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
+      - name: Setup Java for caching
+        # TODO: error using actions/setup-java@4
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
       - name: Use Earthly
         uses: earthly/actions-setup@v1
         with:
-          # The version in CI should match the version you use locally.
-          # This is a manual step.
-          # Using "latest" to force CI warnings if Earthfile is outdated
-          version: "latest"
-
-      - name: Restore Maven caches
-        uses: actions/cache@master
-        env:
-          cache-name: maven-cache
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version: ^0.8.0
 
       - name: Build and test
         run: earthly --secret OWASP_NVD_API_KEY +build
