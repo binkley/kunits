@@ -3,7 +3,7 @@ FROM eclipse-temurin:21-jdk-jammy
 WORKDIR /code
 # Save Maven downloads across targets and runs of earthly
 # This adds a layer to the image
-CACHE --persist maven-cache
+CACHE --id maven-cache --persist maven-cache
 
 # build builds and tests with Maven, and saves the target/ directory
 build:
