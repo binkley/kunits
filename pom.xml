@@ -395,6 +395,7 @@
                     <mutationThreshold>${coverage.mutation}</mutationThreshold>
                     <skip>${pitest.skip}</skip>
                     <timestampedReports>false</timestampedReports>
+                    <verbosity>NO_SPINNER</verbosity>
                     <withHistory>true</withHistory>
                 </configuration>
                 <executions>
