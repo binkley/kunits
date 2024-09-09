@@ -66,7 +66,6 @@
         <coverage.mutation>99</coverage.mutation>
         <dependency-check-maven.version>10.0.4</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.23.5</detekt-maven-plugin.version>
-        <dokka.version>1.9.20</dokka.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>21</jdk.version>
@@ -416,29 +415,6 @@
                 </dependencies>
             </plugin>
             <plugin>
-                <groupId>org.jetbrains.dokka</groupId>
-                <artifactId>dokka-maven-plugin</artifactId>
-                <version>${dokka.version}</version>
-                <configuration>
-                    <reportUndocumented>true</reportUndocumented>
-                    <sourceLinks>
-                        <link>
-                            <path>${project.basedir}</path>
-                            <url>${project.url}/blob/master</url>
-                            <lineSuffix>#L</lineSuffix>
-                        </link>
-                    </sourceLinks>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>dokka</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
                 <version>${dependency-check-maven.version}</version>
@@ -467,25 +443,6 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>dokka-jar</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <classifier>dokka</classifier>
-                            <classesDirectory>${project.build.directory}/dokka</classesDirectory>
-                            <skipIfEmpty>true</skipIfEmpty>
-                        </configuration>
-                        <goals>
-                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
