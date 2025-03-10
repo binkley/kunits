@@ -14,6 +14,7 @@ import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
+import hm.binkley.kunits.system.english.denomination.Leopard.Leopards
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
@@ -57,6 +58,7 @@ internal class EnglishDenominationsTest {
         1L.halfNobles shouldBe (50.pence into HalfNobles)
         1L.crowns shouldBe (60.pence into Crowns)
         1L.halfAngels shouldBe (66.pence into HalfAngels)
+        1L.leopards shouldBe (72.pence into Leopards)
         1L.angels shouldBe (80.pence into Angels)
         1L.nobles shouldBe (100.pence into Nobles)
         1L.halfSovereigns shouldBe (120.pence into HalfSovereigns)
@@ -104,6 +106,8 @@ internal class EnglishDenominationsTest {
         "${1.halfCrowns}" shouldBe "1 half-crowns"
         "$HalfAngel" shouldBe "English denomination: gold half-angel"
         "${1.halfAngels}" shouldBe "1 gold half-angels"
+        "$Leopard" shouldBe "English denomination: gold leopard"
+        "${1.leopards}" shouldBe "1 gold leopards"
         "$HalfNoble" shouldBe "English denomination: half-noble"
         "${1.halfNobles}" shouldBe "1 half-nobles"
         "$HalfGuinea" shouldBe "English denomination: half-guinea"

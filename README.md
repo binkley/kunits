@@ -423,6 +423,7 @@ Behavior:
 * [_English Weights &amp;
   Measures_](http://home.clara.net/brianp/quickref.html)
 * [_FFF system_](https://en.wikipedia.org/wiki/FFF_system)
+* [_Florin (English coin)](https://en.wikipedia.org/wiki/Florin_(English_coin))
 * [_Great Recoinage of
   1816_](https://en.wikipedia.org/wiki/Great_Recoinage_of_1816)
 * [_Hogshead_](https://en.wikipedia.org/wiki/Hogshead)
@@ -431,6 +432,7 @@ Behavior:
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
 * [_List of British banknotes and
   coins_](https://en.wikipedia.org/wiki/List_of_British_banknotes_and_coins)
+* [_Medieval money_](https://castellogy.com/history/medieval-money)
 * [_metasyntactic variable_](https://foldoc.org/metasyntactic+variable)
 * [_Physikal_](https://github.com/Tenkiv/Physikal)
 * [_Smoot_](https://en.wikipedia.org/wiki/Smoot)

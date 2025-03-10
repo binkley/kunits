@@ -11,13 +11,13 @@ import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
-import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
-import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
-import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfAngel.HalfAngels
+import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
+import hm.binkley.kunits.system.english.denomination.Leopard.Leopards
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
@@ -29,6 +29,7 @@ import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
+import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
@@ -322,6 +323,43 @@ class HalfAngel private constructor(quantity: FixedBigRational) :
 val FixedBigRational.halfAngels get() = HalfAngel.new(this)
 val Long.halfAngels get() = (this over 1).halfAngels
 val Int.halfAngels get() = (this over 1).halfAngels
+
+/**
+ * > Gold coins were first introduced in 1257, when a gold penny, designed for
+ * > alms-giving, was issued by the English mints.
+ * > Gold coins only became used more generally after 1344, when the leopard coin
+ * > was issued.
+ * > The leopard was officially valued the same as 72 silver pence, and also had
+ * > half and quarter equivalents.
+ * > ...
+ * > As an example, in theory the value of a gold leopard was fixed at 72 silver
+ * > pennies.
+ * > But, if the market value of raw gold increased by relative to silver, by,
+ * > say, around 10 percent, then it would beneficial to melt down any gold
+ * > leopards and sell that raw gold on.
+ * > Someone doing this would be realizing a profit of 8 pence on each of the
+ * > gold coins they destroyed.
+ * > This process quickly tended to drive gold coins out of circulation as they
+ * > were melted down by their owners.
+ * > If the value of gold fell relative to silver, one could profit by carrying
+ * > out the process in reverse.
+ */
+class Leopard private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Leopards, Leopard>(Leopard, quantity) {
+    companion object Leopards :
+        EnglishDenominations<Leopards, Leopard>(
+            "gold leopard",
+            (72 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Leopard(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity gold leopards"
+    }
+}
+
+val FixedBigRational.leopards get() = Leopard.new(this)
+val Long.leopards get() = (this over 1).leopards
+val Int.leopards get() = (this over 1).leopards
 
 /**
  * This coin is troublesome. It changed value over its lifetime, and gold
