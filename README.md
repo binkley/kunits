@@ -66,6 +66,13 @@ $ earthly +build
 $ earthly +run  # a demo
 ```
 
+> [!NOTE]
+> You will need an OWASP API key exported to your environment as
+> `OWASP_NVD_API_KEY`.
+> This is for running security checks on dependencies as part of the build.
+> Alternatively, use the `-Dowasp.skip=true` flag to `./mvn`; there is no
+> equivalent for skipping these checks for the Earthly build.
+
 Test coverage is 100% for lines, branches, and instructions.
 Checkout [CI builds](https://github.com/binkley/kunits/actions) to see what
 happens.
@@ -94,8 +101,7 @@ happens.
 
 ### Kotlin rational
 
-Kunits depends on an older version of
-[`kotlin-rational`](https://github.com/binkley/kotlin-rational) to represent
+Kunits depends on an older version of [`kotlin-rational`](https://github.com/binkley/kotlin-rational) to represent
 "big" rationals (infinite precision fractions limited only by your computing
 environment).
 All example unit conversions in this project are "small" precision (ratios).
