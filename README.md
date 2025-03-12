@@ -13,7 +13,7 @@ align="right" width="20%"/>
 [![build](https://github.com/binkley/kunits/actions/workflows/ci.yml/badge.svg)](https://github.com/binkley/kunits/actions)
 [![coverage](https://github.com/binkley/kunits/raw/master/images/jacoco.svg)](https://github.com/binkley/kunits/actions/workflows/ci.yml)
 [![pull requests](https://img.shields.io/github/issues-pr/binkley/kunits.svg)](https://github.com/binkley/kunits/pulls)
-[![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues/)
+[![issues](https://img.shields.io/github/issues/binkley/kunits.svg)](https://github.com/binkley/kunits/issues)
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
 [![license](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
@@ -79,24 +79,24 @@ happens.
 
 ### Systems of units
 
-* [D&amp;D](src/main/kotlin/hm/binkley/kunits/system/dnd/) &mdash;
+* [D&amp;D](src/main/kotlin/hm/binkley/kunits/system/dnd) &mdash;
    [currency
-   denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/hm/binkley/kunits/system/dnd/denomination/)
-* [English](src/main/kotlin/hm/binkley/kunits/system/english/) &mdash;
+   denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/hm/binkley/kunits/system/dnd/denomination)
+* [English](src/main/kotlin/hm/binkley/kunits/system/english) &mdash;
    [currency
    denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/denomination),
    [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/length),
    [times](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/time),
    [volumes of wine](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/volume/wine),
    [weights](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/weight)
-* [FFF](src/main/kotlin/hm/binkley/kunits/system/fff/) &mdash;
+* [FFF](src/main/kotlin/hm/binkley/kunits/system/fff) &mdash;
    [areas](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/area),
    [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/length),
    [times](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/time),
    [weights](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/weight)
-* [MIT](src/main/kotlin/hm/binkley/kunits/system/mit/) &mdash;
+* [MIT](src/main/kotlin/hm/binkley/kunits/system/mit) &mdash;
    [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/mit/length)
-* [USD](src/main/kotlin/hm/binkley/kunits/system/usd/) &mdash; [currenncy
+* [USD](src/main/kotlin/hm/binkley/kunits/system/usd) &mdash; [currenncy
    denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/usd/denomination)
 
 ### Kotlin rational
