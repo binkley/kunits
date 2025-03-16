@@ -98,10 +98,9 @@ fun main() {
     println()
     println("== PRE-1971 BRITISH COINAGE")
     val p1 = 1.pounds
-    val p2 = 1.twopence
     println("$p1 (pounds) is ${1.quid} (quid)")
     println(
-        "$p2 (pence) is ${1.tuppence} (tuppence) or ${1.halfGroats} (half-groat)"
+        "${1.twopence} (twopenny) is ${1.tuppence} (tuppence) or ${1.halfGroats} (half-groat)"
     )
     println(
         """$p1 is

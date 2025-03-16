@@ -136,8 +136,7 @@ this file and code source in sync more than already the case.
   [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/Main.kt#L154)
 
 There are also aliases for some units such as
-[`1.tuppence`](src/main/kotlin/hm/binkley/kunits/Main.kt#L133) is identical to
-`1.twopence`.
+[`1.twopence`](src/main/kotlin/hm/binkley/kunits/Main.kt#L133) is identical to `1.tuppence`.
 
 #### Arithmetic
 

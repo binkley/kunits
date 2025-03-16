@@ -25,7 +25,7 @@ Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
 
 == PRE-1971 BRITISH COINAGE
 £1 (pounds) is £1 (quid)
-1 twopence (pence) is 1 twopence (tuppence) or 1 twopence (half-groat)
+1 tuppence (twopenny) is 1 tuppence (tuppence) or 1 tuppence (half-groat)
 £1 is
     20⁄21gns
     or 3⁄2 marks
@@ -35,10 +35,10 @@ Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
     or 10 florins
     or 40 sixpence
     or 60 groats
-    or 80 threepence
-    or 120 twopence
+    or 80 thruppence
+    or 120 tuppence
     or 240d
-    or 480 halfpennies
+    or 480 ha'pence
     or 960 farthings
 
 == OUTDATED TIMES

@@ -74,8 +74,7 @@ class Halfpenny private constructor(quantity: FixedBigRational) :
         (1 over 2)
     ) {
         override fun new(quantity: FixedBigRational) = Halfpenny(quantity)
-        override fun format(quantity: FixedBigRational) =
-            "$quantity halfpennies"
+        override fun format(quantity: FixedBigRational) = "$quantity ha'pence"
     }
 }
 
@@ -106,7 +105,7 @@ class Twopenny private constructor(quantity: FixedBigRational) :
         (2 over 1)
     ) {
         override fun new(quantity: FixedBigRational) = Twopenny(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity twopence"
+        override fun format(quantity: FixedBigRational) = "$quantity tuppence"
     }
 }
 
@@ -131,7 +130,7 @@ class Threepenny private constructor(quantity: FixedBigRational) :
             (3 over 1)
         ) {
         override fun new(quantity: FixedBigRational) = Threepenny(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity threepence"
+        override fun format(quantity: FixedBigRational) = "$quantity thruppence"
     }
 }
 
