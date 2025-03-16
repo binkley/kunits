@@ -8,11 +8,16 @@ import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfFarthing.HalfFarthings
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
+import hm.binkley.kunits.system.english.denomination.Mite.Mites
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
+import hm.binkley.kunits.system.english.denomination.QuarterFarthing.QuarterFarthings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
+import hm.binkley.kunits.system.english.denomination.ThirdFarthing.ThirdFarthings
+import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.kunits.system.english.denomination.halfGroats
@@ -96,7 +101,7 @@ fun main() {
     )
 
     println()
-    println("== PRE-1971 BRITISH COINAGE")
+    println("== PRE-1971 ENGLISH AND BRITISH COINAGE")
     val p1 = 1.pounds
     println("$p1 (pounds) is ${1.quid} (quid)")
     println(
@@ -115,8 +120,13 @@ fun main() {
     or ${p1 into Threepence}
     or ${p1 into Twopence}
     or ${p1 into Pence}
+    or ${p1 into ThreeFarthings}
     or ${p1 into Halfpence}
-    or ${p1 into Farthings}"""
+    or ${p1 into Farthings}
+    or ${p1 into HalfFarthings}
+    or ${p1 into ThirdFarthings}
+    or ${p1 into QuarterFarthings}
+    or ${p1 into Mites}"""
     )
 
     println()

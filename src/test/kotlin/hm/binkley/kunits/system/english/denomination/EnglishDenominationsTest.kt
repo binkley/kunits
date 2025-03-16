@@ -10,20 +10,25 @@ import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfAngel.HalfAngels
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
+import hm.binkley.kunits.system.english.denomination.HalfFarthing.HalfFarthings
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Leopard.Leopards
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
+import hm.binkley.kunits.system.english.denomination.Mite.Mites
 import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
 import hm.binkley.kunits.system.english.denomination.QuarterAngel.QuarterAngels
+import hm.binkley.kunits.system.english.denomination.QuarterFarthing.QuarterFarthings
 import hm.binkley.kunits.system.english.denomination.QuarterNoble.QuarterNobles
 import hm.binkley.kunits.system.english.denomination.QuintupleSovereign.QuintupleSovereigns
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
+import hm.binkley.kunits.system.english.denomination.ThirdFarthing.ThirdFarthings
+import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.over
@@ -33,7 +38,12 @@ import org.junit.jupiter.api.Test
 internal class EnglishDenominationsTest {
     @Test
     fun `should convert`() {
+        1L.mites shouldBe ((1 over 24).pence into Mites)
+        1L.quarterFarthings shouldBe ((1 over 16).pence into QuarterFarthings)
+        1L.thirdFarthings shouldBe ((1 over 12).pence into ThirdFarthings)
+        1L.halfFarthings shouldBe ((1 over 8).pence into HalfFarthings)
         1L.farthings shouldBe ((1 over 4).pence into Farthings)
+        1L.threeFarthings shouldBe ((3 over 4).pence into ThreeFarthings)
         1L.halfpence shouldBe ((1 over 2).pence into Halfpence)
         1L.pence shouldBe 1.pence
         1L.twopence shouldBe (2.pence into Twopence)
@@ -75,10 +85,20 @@ internal class EnglishDenominationsTest {
 
     @Test
     fun `should pretty print`() {
+        "$Mites" shouldBe "English denomination: mite"
+        "${1.mites}" shouldBe "1 mites"
+        "$QuarterFarthings" shouldBe "English denomination: quarter farthing"
+        "${1.quarterFarthings}" shouldBe "1 quarter farthings"
+        "$ThirdFarthings" shouldBe "English denomination: third farthing"
+        "${1.thirdFarthings}" shouldBe "1 third farthings"
+        "$HalfFarthings" shouldBe "English denomination: half farthing"
+        "${1.halfFarthings}" shouldBe "1 half farthings"
         "$Farthing" shouldBe "English denomination: farthing"
         "${1.farthings}" shouldBe "1 farthings"
         "$Halfpenny" shouldBe "English denomination: halfpenny"
         "${1.halfpence}" shouldBe "1 ha'pence"
+        "$ThreeFarthings" shouldBe "English denomination: three farthing"
+        "${1.threeFarthings}" shouldBe "1 three farthings"
         "$Penny" shouldBe "English denomination: penny"
         "${1.pence}" shouldBe "1d"
         "$Twopenny" shouldBe "English denomination: twopenny"

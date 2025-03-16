@@ -23,7 +23,7 @@ Scaling length -> (thirding) 40 lines
 Change of lengths -> (multiple) 5 sticks
 Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
 
-== PRE-1971 BRITISH COINAGE
+== PRE-1971 ENGLISH AND BRITISH COINAGE
 £1 (pounds) is £1 (quid)
 1 tuppence (twopenny) is 1 tuppence (tuppence) or 1 tuppence (half-groat)
 £1 is
@@ -38,8 +38,13 @@ Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
     or 80 thruppence
     or 120 tuppence
     or 240d
+    or 320 three farthings
     or 480 ha'pence
     or 960 farthings
+    or 1920 half farthings
+    or 2880 third farthings
+    or 3840 quarter farthings
+    or 5760 mites
 
 == OUTDATED TIMES
 Positive time -> (+m2) 12345⁄4 sec
