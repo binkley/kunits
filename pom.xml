@@ -63,6 +63,7 @@
         <coverage.mutation>99</coverage.mutation>
         <dependency-check-maven.version>12.1.0</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.23.8</detekt-maven-plugin.version>
+        <flexmark.version>0.64.8</flexmark.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>21</jdk.version>
@@ -129,6 +130,13 @@
             <groupId>com.github.binkley</groupId>
             <artifactId>kotlin-rational</artifactId>
             <version>${kotlin-rational.version}</version>
+        </dependency>
+
+        <!-- Generate code from user-defined units -->
+        <dependency>
+            <groupId>com.vladsch.flexmark</groupId>
+            <artifactId>flexmark</artifactId>
+            <version>${flexmark.version}</version>
         </dependency>
 
         <dependency>
