@@ -60,7 +60,7 @@ jobs:
           if-no-files-found: error
           path: target/site/jacoco/
 
-# Generage coverage badge for README
+# Generate coverage badge for README
 # Gradle builds are similar but will require configuration the path for the
 # CSV JaCoCo report.
 
