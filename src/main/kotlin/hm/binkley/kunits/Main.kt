@@ -48,6 +48,7 @@ import hm.binkley.kunits.system.english.weight.Pound.Pounds
 import hm.binkley.kunits.system.english.weight.StoneMeasure.Stone
 import hm.binkley.kunits.system.english.weight.drams
 import hm.binkley.kunits.system.english.weight.ounces
+import hm.binkley.kunits.system.english.weight.stone
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.intoEnglish
 import hm.binkley.kunits.system.fff.length.Furlong.Furlongs
@@ -169,12 +170,16 @@ fun main() {
     println("Scaling weight -> (quintupling) ${m3 * 5}")
     println("Change of weights -> (drams to ounces) ${m3 / Ounces}")
     println("Scaling weight -> (fifthing) ${m3 / 5}")
-    println("Change of weights -> (multiple) ${m3 into Pounds into Stone}")
     println(
         "Complex expression -> (stone+pounds-ounces into drams) ${
             ((m3 into Stone) + (m3 into Pounds) - (m3 into Ounces)) into Drams
         }"
     )
+
+    println()
+    println("== TRADITIONAL BODY WEIGHTS")
+    println("A stone is 14 lbs: ${1.stone into Pounds}")
+    println("Change of weights -> (multiple) ${m3 into Pounds into Stone}")
 
     println()
     println("== USD DENOMINATIONS")

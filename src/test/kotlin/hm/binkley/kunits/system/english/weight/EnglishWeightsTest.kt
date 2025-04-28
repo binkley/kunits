@@ -37,7 +37,7 @@ internal class EnglishWeightsTest {
         "$Ounce" shouldBe "English weight: ounce"
         "${1.ounces}" shouldBe "1 oz"
         "$Pound" shouldBe "English weight: pound"
-        "${1.pounds}" shouldBe "1 lb"
+        "${1.pounds}" shouldBe "1 lbs"
         "$Clove" shouldBe "English weight: clove"
         "${1.cloves}" shouldBe "1 cloves"
         "$Stone" shouldBe "English weight: stone"

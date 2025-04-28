@@ -86,7 +86,7 @@ class Pound private constructor(quantity: FixedBigRational) :
         256 over 1
     ) {
         override fun new(quantity: FixedBigRational) = Pound(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity lb"
+        override fun format(quantity: FixedBigRational) = "$quantity lbs"
     }
 }
 

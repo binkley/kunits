@@ -66,12 +66,15 @@ Change of weights -> (no change) 300 dr
 Change of weights -> (drams into ounces) 75⁄4 oz
 Adding like weights -> (m3+m3) 600 dr
 Adding like weights -> (m3+1) 316 dr
-Subtracting related weights -> (pounds-ounces) 0 lb)
+Subtracting related weights -> (pounds-ounces) 0 lbs)
 Scaling weight -> (quintupling) 1500 dr
 Change of weights -> (drams to ounces) 75⁄4 oz
 Scaling weight -> (fifthing) 60 dr
-Change of weights -> (multiple) 75⁄896 st
 Complex expression -> (stone+pounds-ounces into drams) 300 dr
+
+== TRADITIONAL BODY WEIGHTS
+A stone is 14 lbs: 14 lbs
+Change of weights -> (multiple) 75⁄896 st
 
 == USD DENOMINATIONS
 $4.33 MAKES CHANGE IN 9 COINS AS:
