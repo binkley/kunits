@@ -72,7 +72,7 @@
         <kotlin-rational.version>kotlin-rational-2.2.0</kotlin-rational.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
-        <kotlin.version>2.1.10</kotlin.version>
+        <kotlin.version>2.1.20</kotlin.version>
         <kover-maven-plugin.version>0.9.1</kover-maven-plugin.version>
         <kover.skip>false</kover.skip>
         <ktlint-maven-plugin.version>3.5.0</ktlint-maven-plugin.version>
