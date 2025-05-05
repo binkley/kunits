@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-internal class DnDDenominationFormatTest {
+internal class DndNumberFormatTest {
     @ParameterizedTest(name = "{0} cp → {2} ({1})")
     @CsvSource(
         // cp, style, expected
