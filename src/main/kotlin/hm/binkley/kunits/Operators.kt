@@ -4,7 +4,7 @@ import hm.binkley.math.div
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.times
 
-/** Returns this measure. */
+/** Syntactic sugar for returning the measure unchanged. */
 operator fun <
     K : Kind,
     S : System<S>,
@@ -13,7 +13,10 @@ operator fun <
     > M.unaryPlus(): M =
     this
 
-/** Negates this measure. */
+/**
+ * Syntactic sugar to turn a positive measure into a negative measure of the
+ * same kind (and vice versa).
+ */
 operator fun <
     K : Kind,
     S : System<S>,
@@ -22,7 +25,10 @@ operator fun <
     > M.unaryMinus(): M =
     unit.new(-quantity)
 
-/** Adds the two measures in units of the _left_ side. */
+/**
+ * Syntactic sugar to add the _right_ measure to the _left_, and convert the
+ * right side if needed, preserving the unit of the left side.
+ */
 operator fun <
     K : Kind,
     S : System<S>,
@@ -32,7 +38,10 @@ operator fun <
     other: Measure<K, S, *, *>
 ): M = unit.new(quantity + (other into unit).quantity)
 
-/** Subtracts the two measures in units of the _left_ side. */
+/**
+ * Syntactic sugar to subtract the _right_ measure from the _left_, and convert
+ * the right side if needed, preserving the unit of the left side.
+ */
 operator fun <
     K : Kind,
     S : System<S>,
@@ -160,8 +169,7 @@ operator fun <
 
 /**
  * Divides up the measure by [units].
- *
- * @todo An experiment, unlikely good API design
+ * Shorthand for `this into units`.
  */
 operator fun <
     K : Kind,
