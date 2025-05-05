@@ -15,13 +15,13 @@ class DnDNumberFormat(val style: DnDFormatStyle = SHORT) : NumberFormat() {
     override fun format(
         number: Double,
         toAppendTo: StringBuffer,
-        pos: FieldPosition?
-    ): StringBuffer? = TODO("Not yet implemented")
+        pos: FieldPosition
+    ): StringBuffer = TODO("Not yet implemented")
 
     override fun format(
         number: Long,
         toAppendTo: StringBuffer,
-        pos: FieldPosition?
+        pos: FieldPosition
     ): StringBuffer {
         val coins =
             number.copper into GoldPieces into listOf(
