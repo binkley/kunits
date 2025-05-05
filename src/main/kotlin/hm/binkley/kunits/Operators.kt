@@ -170,6 +170,4 @@ operator fun <
     M : Measure<K, S, U, M>
     > M.rem(
     units: List<Units<K, S, *, *>>
-): List<Measure<K, S, *, *>> = into(
-    units
-)
+): List<Measure<K, S, *, *>> = this into units

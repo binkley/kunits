@@ -85,10 +85,10 @@ fun <K : Kind, S : System<S>> Measure<K, S, *, *>.into(
 /**
  * Converts this measure into lowest terms for [units], from most significant
  * unit to least significant, returning the same order as [units].
- * Example: `64.inches.into(listOf(Feet, Inches))` is the list of `5.feet` and
- * `4.inches`.
- * Note: `64.inches.into(listOf(Inches, Feet))` is the list of `4.inches` and
- * `5.feet` following the order of units as provided.
+ *
+ * Examples
+ * - `64.inches.into(Feet, Inches)` returns `5.feet` and `4.inches`.
+ * - `64.inches into listOf(Inches, Feet)` returns `4.inches` and `5.feet`
  *
  * This function raises an exception if there are no units.
  *
@@ -98,7 +98,7 @@ fun <K : Kind, S : System<S>> Measure<K, S, *, *>.into(
  *
  * @return the reduced measures in the same order as [units]
  */
-fun <K : Kind, S : System<S>> Measure<K, S, *, *>.into(
+infix fun <K : Kind, S : System<S>> Measure<K, S, *, *>.into(
     units: List<Units<K, S, *, *>>,
 ): List<Measure<K, S, *, *>> {
     require(units.isNotEmpty()) { "No units" }
