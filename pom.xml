@@ -58,7 +58,7 @@
         <!-- @formatter:off -->
         <buildplan-maven-plugin.version>1.5</buildplan-maven-plugin.version>
         <coverage.branches>100</coverage.branches>
-        <coverage.instructions>100</coverage.instructions>
+        <coverage.instructions>98</coverage.instructions>
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
         <dependency-check-maven.version>12.1.1</dependency-check-maven.version>

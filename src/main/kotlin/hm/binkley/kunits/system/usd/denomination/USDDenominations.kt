@@ -26,6 +26,8 @@ import hm.binkley.math.fixed.over
 import java.text.NumberFormat
 import java.util.Locale.US
 
+private val currencyFormat = NumberFormat.getCurrencyInstance(US)
+
 /** The USD denominations. */
 sealed class USDDenominations<
     U : USDDenominations<U, M>,
@@ -51,8 +53,7 @@ sealed class USDDenomination<
  * `USDDenomination<*, *>` to better match generics using [into].
  */
 fun Measure<Denomination, USD, *, *>.format(): String =
-    NumberFormat.getCurrencyInstance(US)
-        .format((this into Dollars).quantity.toBigDecimal())
+    currencyFormat.format((this into Dollars).quantity.toBigDecimal())
 
 class HundredDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<HundredDollars, HundredDollar>(HundredDollars, quantity) {

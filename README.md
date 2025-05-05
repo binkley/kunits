@@ -23,7 +23,8 @@ not representable by binary computers (the French revolutionaries [overlooked
 that](https://www.bbc.com/travel/article/20180923-how-france-created-the-metric-system)).
 **And this project is fun.**
 
-USD is provided as a practical example.
+[USD currency](./src/main/kotlin/hm/binkley/kunits/system/usd/denomination/USDDenominations.kt)
+is provided as a practical example of base 10 units.
 English units are a good example of conversions and rational fractions.
 This library shows that typing and generics improve the experience for others
 in any domain&mdash;focusing on units of measure&mdash;but the lesson is

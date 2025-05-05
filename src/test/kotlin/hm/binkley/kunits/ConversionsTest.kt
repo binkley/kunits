@@ -2,6 +2,7 @@ package hm.binkley.kunits
 
 import hm.binkley.kunits.BarMeasure.Bar
 import hm.binkley.kunits.BazMeasure.Baz
+import hm.binkley.kunits.FooMeasure.Foo
 import hm.binkley.kunits.Grok.Groks
 import hm.binkley.math.fixed.over
 import io.kotest.assertions.throwables.shouldThrow
@@ -38,15 +39,12 @@ internal class ConversionsTest {
         // 1.alices into Foo
     }
 
-    // TODO: Move conversions between systems here?
-
-    /** @todo This duplicates testing for rationals */
     @Nested
     inner class Reductions {
         @Test
         fun `should convert into lowest terms all with values`() {
             val measure = 7.baz + 2.bar + (5 over 2).foo
-            val lowestTerms = measure.into(Baz, Bar, FooMeasure)
+            val lowestTerms = measure.into(Baz, Bar, Foo)
 
             lowestTerms shouldBe listOf(8.baz, 1.bar, (1 over 2).foo)
         }
@@ -54,7 +52,7 @@ internal class ConversionsTest {
         @Test
         fun `should convert into lowest terms with some zeroes`() {
             val measure = 1.bar
-            val lowestTerms = measure.into(Baz, Bar, FooMeasure)
+            val lowestTerms = measure.into(Baz, Bar, Foo)
 
             lowestTerms shouldBe listOf(0.baz, 1.bar, 0.foo)
         }
@@ -65,6 +63,14 @@ internal class ConversionsTest {
             val lowestTerms = measure.into(FooMeasure, Baz, Bar)
 
             lowestTerms shouldBe listOf((1 over 2).foo, 8.baz, 1.bar)
+        }
+
+        @Test
+        fun `should upconvert before spreading into other units`() {
+            val measure = 3.foo
+            val lowestTerms = measure.into(Baz, Bar, Foo)
+
+            lowestTerms shouldBe listOf(0.baz, 1.bar, 1.foo)
         }
 
         @Test
