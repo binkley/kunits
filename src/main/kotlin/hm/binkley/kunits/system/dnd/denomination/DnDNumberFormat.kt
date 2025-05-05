@@ -20,57 +20,34 @@ class DnDNumberFormat(val style: DnDFormatStyle = SHORT) : NumberFormat() {
 
     override fun format(
         number: Long,
-        toAppendTo: StringBuffer,
+        buffer: StringBuffer,
         pos: FieldPosition
     ): StringBuffer {
-        val coins =
-            number.copper into GoldPieces into listOf(
-                GoldPieces,
-                SilverPieces,
-                CopperPieces
-            )
-        val gp = coins[0]
-        val sp = coins[1]
-        val cp = coins[2]
-        val buffer = toAppendTo // ?: StringBuffer() -- TODO: is this possible?
+        val (gpCoins, spCoins, cpCoins) = number.copper into listOf(
+            GoldPieces,
+            SilverPieces,
+            CopperPieces
+        )
+        val gp = gpCoins.quantity
+        val sp = spCoins.quantity
+        val cp = cpCoins.quantity
 
         when (style) {
             SHORT -> {
-                if (gp.quantity.isZero()) {
-                    buffer.append("-/")
-                } else {
-                    buffer.append(
-                        "${gp.quantity}/"
-                    )
-                }
-                if (sp.quantity.isZero()) {
-                    buffer.append("-/")
-                } else {
-                    buffer.append(
-                        "${sp.quantity}/"
-                    )
-                }
-                if (cp.quantity.isZero()) {
-                    buffer.append('-')
-                } else {
-                    buffer.append(
-                        "${cp.quantity}"
-                    )
-                }
+                if (gp.isZero()) buffer.append("-/") else buffer.append("$gp/")
+                if (sp.isZero()) buffer.append("-/") else buffer.append("$sp/")
+                if (cp.isZero()) buffer.append('-') else buffer.append("$cp")
             }
 
             LONG -> {
                 val longCoinage = mutableListOf<String>()
-                if (!gp.quantity.isZero()) longCoinage.add("$gp")
-                if (!sp.quantity.isZero()) longCoinage.add("$sp")
-                if (!cp.quantity.isZero()) longCoinage.add("$cp")
+                if (!gp.isZero()) longCoinage.add("$gpCoins")
+                if (!sp.isZero()) longCoinage.add("$spCoins")
+                if (!cp.isZero()) longCoinage.add("$cpCoins")
                 if (longCoinage.isEmpty()) {
                     buffer.append("0 cp")
                 } else {
-                    longCoinage.joinTo(
-                        buffer,
-                        separator = " "
-                    )
+                    longCoinage.joinTo(buffer, separator = " ")
                 }
             }
         }
