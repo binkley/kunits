@@ -53,12 +53,18 @@ fun <
 
 /**
  * Converts this measure into lowest terms for [restOfUnits] from the most
- * significant unit to the least significant, returning the same order as
+ * significant unit to the least significant, returning the _same order_ as
  * [firstUnit] and [restOfUnits].
- * Example: `64.inches.into(Feet, Inches)` is the list of `5.feet` and
- * `4.inches`.
- * Note: `64.inches.into(Inches, Feet)` is the list of `4.inches` and
- * `5.feet following the order of units as provided.
+ * This is a _greedy_ algorithm, so is not always optimal but performs well
+ * especially for smaller numbers, and follows the order of units provided.
+ * For example, using units of 5, 10, 20, and 25, converting from 40 produces
+ * one each of 25, 10, and 5, but an optimal minimization might be 20 twice.
+ * See a _dynamic programming_ approach contrasted in
+ * https://en.wikipedia.org/wiki/Change-making_problem.
+ *
+ * Examples
+ * - `64.inches.into(Feet, Inches)` returns `5.feet` and `4.inches`.
+ * - `64.inches.into(Inches, Feet)` returns `4.inches` and `5.feet`
  *
  * @param K the kind of units
  * @param S the system of units
