@@ -314,6 +314,24 @@ The standard ordering is:
 > &mdash; Alan J. Perlis
 
 There are too many options for "nice" Kotlin syntactic sugar.
+This library uses math/bit operators when sensible, and backs off where it
+conflicts with the existing Kotlin standard library.
+
+See [`Operators.kt`](./src/main/kotlin/hm/binkley/kunits/Operators.kt).
+Simple math operators with `Measure` arithmetic (possily with conversion of
+right-hand sides to the units of the left):
+- `+a` &mdash; idempotency
+- `-a` &mdash; negation
+- `a + b` &mdash; addition
+- `a - b` &mdash; subtraction
+- `a * b` &mdash; multiplication
+- `a / b` &mdash; division
+- `a % b` &mdash; modulo -- an exact modulus including remainders using a
+   largest-to-smallest ("greedy") approach
+
+##### Handling "into" conversions
+
+
 The most "natural English" approach might be:
 
 ```kotlin
@@ -329,7 +347,8 @@ Another might be:
 2.feet to Inches
 ```
 
-However, this overloads the universal `to` function for creating `Pair`s.
+However, this overloads the standard library `to` function for creating `Pair`s
+(very much needed when declaring maps).
 
 Or consider:
 
