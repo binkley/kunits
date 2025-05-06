@@ -59,8 +59,10 @@ fun <
  * especially for smaller numbers, and follows the order of units provided.
  * For example, using units of 5, 10, 20, and 25, converting from 40 produces
  * one each of 25, 10, and 5, but an optimal minimization might be 20 twice.
- * See a _dynamic programming_ approach contrasted in
+ * See a _dynamic programming_ (DP) approach contrasted in
  * https://en.wikipedia.org/wiki/Change-making_problem.
+ * Note that the DP optimal approach is not sensible with fractional units
+ * (such as 1.25) and relies on the amounts for integer indexing.
  *
  * Examples
  * - `64.inches.into(Feet, Inches)` returns `5.feet` and `4.inches`.
@@ -85,6 +87,14 @@ fun <K : Kind, S : System<S>> Measure<K, S, *, *>.into(
 /**
  * Converts this measure into lowest terms for [units], from most significant
  * unit to least significant, returning the same order as [units].
+ * This is a _greedy_ algorithm, so is not always optimal but performs well
+ * especially for smaller numbers, and follows the order of units provided.
+ * For example, using units of 5, 10, 20, and 25, converting from 40 produces
+ * one each of 25, 10, and 5, but an optimal minimization might be 20 twice.
+ * See a _dynamic programming_ (DP) approach contrasted in
+ * https://en.wikipedia.org/wiki/Change-making_problem.
+ * Note that the DP optimal approach is not sensible with fractional units
+ * (such as 1.25) and relies on the amounts for integer indexing.
  *
  * Examples
  * - `64.inches.into(Feet, Inches)` returns `5.feet` and `4.inches`.
