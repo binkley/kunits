@@ -5,10 +5,9 @@ align="right" width="10%" height="auto"/>
 
 # KUnits
 
-Units of measure in Kotlin.
+Typesafe units of measure in Kotlin.
 
-<img src="./images/kunits.png" alt="KUnits"
-align="right" width="20%"/>
+<img src="./images/kunits.png" alt="KUnits" align="right" width="20%"/>
 
 [![build](https://github.com/binkley/kunits/actions/workflows/ci.yml/badge.svg)](https://github.com/binkley/kunits/actions)
 [![coverage](https://github.com/binkley/kunits/raw/master/images/jacoco.svg)](https://github.com/binkley/kunits/actions/workflows/ci.yml)
