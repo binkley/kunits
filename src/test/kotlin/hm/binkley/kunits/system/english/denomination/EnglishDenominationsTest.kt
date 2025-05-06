@@ -41,7 +41,7 @@ import org.junit.jupiter.params.provider.CsvSource
 internal class EnglishDenominationsTest {
     @ParameterizedTest(name = "{0} lbs, {1} d, {2} p → {3}")
     @CsvSource(
-        // lbs, s, d, expected
+        // pounds, shillings, pence, expected
         "0, 0, 0, 0d",
         "0, 0, 1, -/1",
         "0, 1, 0, 1/-",
