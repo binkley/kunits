@@ -13,14 +13,14 @@ import org.junit.jupiter.api.Test
 internal class ConversionsTest {
     @Test
     fun `should convert between units`() {
-        (1.bar into FooMeasure) shouldBe 2.foo
+        (1.bar into Foo) shouldBe 2.foo
         (2L.foo into Bar) shouldBe 1L.bar
     }
 
     @Test
     fun `should convert between systems`() {
         (1.foo intoMartian Groks) shouldBe 3.groks
-        (1.groks intoMetasyntactic FooMeasure) shouldBe (1 over 3).foo
+        (1.groks intoMetasyntactic Foo) shouldBe (1 over 3).foo
     }
 
     @Test
