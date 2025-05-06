@@ -8,13 +8,11 @@ env:
 on:
   push:
     paths-ignore:
-      # Generic files to ignore for building
-      - '*.md'
+      - '**.md'
       - 'images/**'
   pull_request:
     paths-ignore:
-      # Generic files to ignore for building
-      - '*.md'
+      - '**.md'
       - 'images/**'
   workflow_dispatch:
 
