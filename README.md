@@ -16,9 +16,9 @@ Typesafe units of measure in Kotlin.
 [![vulnerabilities](https://snyk.io/test/github/binkley/kunits/badge.svg)](https://snyk.io/test/github/binkley/kunits)
 [![license](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
-This project covers historical, fantasy, or whimsical units:
-Metric units are uninteresting except that being based on base 10, they are
-not representable by binary computers (the French revolutionaries [overlooked
+This project covers historical, fantasy, or whimsical units: Metric units are
+boring except that being based on base 10, they are not representable by
+binary computers (the French revolutionaries [overlooked
 that](https://www.bbc.com/travel/article/20180923-how-france-created-the-metric-system)).
 **And this project is fun.**
 
