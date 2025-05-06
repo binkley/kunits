@@ -20,9 +20,12 @@ import hm.binkley.kunits.system.english.denomination.ThirdFarthing.ThirdFarthing
 import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
+import hm.binkley.kunits.system.english.denomination.formatTraditional
 import hm.binkley.kunits.system.english.denomination.halfGroats
+import hm.binkley.kunits.system.english.denomination.pence
 import hm.binkley.kunits.system.english.denomination.pounds
 import hm.binkley.kunits.system.english.denomination.quid
+import hm.binkley.kunits.system.english.denomination.shillings
 import hm.binkley.kunits.system.english.denomination.tuppence
 import hm.binkley.kunits.system.english.denomination.twopence
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
@@ -182,32 +185,37 @@ fun main() {
     println("Change of weights -> (multiple) ${m3 into Pounds into Stone}")
 
     println()
-    println("== USD DENOMINATIONS")
-    val m4 = 4.dollars + 33.cents
-    val coins = m4.into(
-        DollarCoins,
-        HalfDollars,
-        Quarters,
-        Dimes,
-        Nickels,
-        Pennies
-    )
-    val looseChange = listOf(
-        DollarCoins,
-        HalfDollars,
-        Quarters,
-        Dimes,
-        Nickels,
-        Pennies
-    )
-    val alsoCoins = m4 % looseChange
+    println("== TRADITIONAL ENGLISH COINAGE")
+    val m4 = 2.pounds + 42.shillings + 4.pence
+    println("$m4 IS ${m4.formatTraditional()}")
 
-    val coinCount = coins.map { it.quantity }.sumOf { it.toInt() }
-    println("${m4.format()} MAKES CHANGE IN $coinCount COINS AS:")
-    coins.forEach { println("- $it (${it.format()})") }
-    val recheckM4 = coins.fold(0.dollars) { sum, next -> sum + next }
+    println()
+    println("== USD DENOMINATIONS")
+    val m5 = 4.dollars + 33.cents
+    val usCoins = m5.into(
+        DollarCoins,
+        HalfDollars,
+        Quarters,
+        Dimes,
+        Nickels,
+        Pennies
+    )
+    val usLooseChange = listOf(
+        DollarCoins,
+        HalfDollars,
+        Quarters,
+        Dimes,
+        Nickels,
+        Pennies
+    )
+    val alsoCoins = m5 % usLooseChange
+
+    val coinCount = usCoins.map { it.quantity }.sumOf { it.toInt() }
+    println("${m5.format()} MAKES CHANGE IN $coinCount COINS AS:")
+    usCoins.forEach { println("- $it (${it.format()})") }
+    val recheckM4 = usCoins.fold(0.dollars) { sum, next -> sum + next }
     println("WHICH SUMS TO ${recheckM4.format()}")
-    println("AND IS THE SAME AS $alsoCoins (${coins == alsoCoins})")
+    println("AND IS THE SAME AS $alsoCoins (${usCoins == alsoCoins})")
 
     println()
     println("== CONVERSIONS")

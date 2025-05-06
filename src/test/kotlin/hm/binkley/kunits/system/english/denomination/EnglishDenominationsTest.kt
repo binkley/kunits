@@ -1,6 +1,7 @@
 package hm.binkley.kunits.system.english.denomination
 
 import hm.binkley.kunits.into
+import hm.binkley.kunits.plus
 import hm.binkley.kunits.system.english.denomination.Angel.Angels
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.DoubleSovereign.DoubleSovereigns
@@ -34,8 +35,31 @@ import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 internal class EnglishDenominationsTest {
+    @ParameterizedTest(name = "{0} lbs, {1} d, {2} p → {3}")
+    @CsvSource(
+        // lbs, s, d, expected
+        "0, 0, 0, 0d",
+        "0, 0, 1, -/1",
+        "0, 1, 0, 1/-",
+        "1, 0, 0, 1/-/-",
+        "0, 2, 4, 2/4",
+        "2, 42, 4, 4/2/4"
+    )
+    fun `should format traditionally`(
+        pounds: Int,
+        shillings: Int,
+        pence: Int,
+        expected: String
+    ) {
+        val amount = pounds.pounds + shillings.shillings + pence.pence
+
+        amount.formatTraditional() shouldBe expected
+    }
+
     @Test
     fun `should convert`() {
         1L.mites shouldBe ((1 over 24).pence into Mites)

@@ -3,6 +3,7 @@ package hm.binkley.kunits.system.english.denomination
 import hm.binkley.kunits.Denomination
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
+import hm.binkley.kunits.into
 import hm.binkley.kunits.system.english.English
 import hm.binkley.kunits.system.english.denomination.Angel.Angels
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
@@ -38,6 +39,7 @@ import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
+import hm.binkley.math.isZero
 
 /** The English units of denomination. */
 sealed class EnglishDenominations<
@@ -55,6 +57,27 @@ sealed class EnglishDenomination<
     units: U,
     quantity: FixedBigRational
 ) : Measure<Denomination, English, U, M>(units, quantity)
+
+/**
+ * Formats this amount in traditional pre-decimal English currency style.
+ *
+ * Examples:
+ * - 0 pence is "0d" rather than "-/-/-"
+ * - 2 shillings and 4 pence is "2/4" (no leading "-/" for zero pounds)
+ * - 2 pounds, 42 shillings, and 4 pence is "4/2/4" (extra shillings are pounds)
+ */
+fun EnglishDenomination<*, *>.formatTraditional(): String {
+    if (quantity.isZero()) return "0d"
+    val buffer = StringBuffer()
+    val (pounds, shillings, pence) = into(Pounds, Shillings, Pence)
+    val lbs = pounds.quantity
+    val d = shillings.quantity
+    val p = pence.quantity
+    if (!lbs.isZero()) buffer.append("$lbs/")
+    if (d.isZero()) buffer.append("-/") else buffer.append("$d/")
+    if (p.isZero()) buffer.append("-") else buffer.append("$p")
+    return buffer.toString()
+}
 
 class Mite private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Mites, Mite>(Mites, quantity) {

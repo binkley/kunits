@@ -76,6 +76,9 @@ Complex expression -> (stone+pounds-ounces into drams) 300 dr
 A stone is 14 lbs: 14 lbs
 Change of weights -> (multiple) 75⁄896 st
 
+== TRADITIONAL ENGLISH COINAGE
+£247⁄60 IS 4/2/4
+
 == USD DENOMINATIONS
 $4.33 MAKES CHANGE IN 9 COINS AS:
 - 4 100¢ ($4.00)

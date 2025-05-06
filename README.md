@@ -203,6 +203,9 @@ The exemplar of quirkiness is traditional
 - [English units of volume](src/main/kotlin/hm/binkley/kunits/system/english/volume/wine/EnglishWineVolumes.kt)
 - [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
 
+See also the English denominations for an example custom formatting function,
+`formatTraditional()` (eg, "4/2/4" for 4 pounds, 2 shillings, and 4 pence).
+
 Among the challenges with the English (British) systems of units is that
 coinages available in historic periods do not always align with expression 
 of value.
