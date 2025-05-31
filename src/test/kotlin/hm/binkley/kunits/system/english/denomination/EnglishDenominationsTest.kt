@@ -69,10 +69,14 @@ internal class EnglishDenominationsTest {
         1L.farthings shouldBe ((1 over 4).pence into Farthings)
         1L.threeFarthings shouldBe ((3 over 4).pence into ThreeFarthings)
         1L.halfpence shouldBe ((1 over 2).pence into Halfpence)
+        (1 over 1).`ha'penny` shouldBe 1.halfpence
+        1L.`ha'penny` shouldBe 1.halfpence
+        1.`ha'penny` shouldBe 1.halfpence
         1L.pence shouldBe 1.pence
         1L.twopence shouldBe (2.pence into Twopence)
-        (1 over 1).tuppence shouldBe 1.twopence
-        1L.tuppence shouldBe 1.twopence
+        (1 over 1).`tu'penny` shouldBe 1.twopence
+        1L.`tu'penny` shouldBe 1.twopence
+        1.`tu'penny` shouldBe 1.twopence
         (1 over 1).halfGroats shouldBe 1.twopence
         1L.halfGroats shouldBe 1.twopence
         1L.threepence shouldBe (3.pence into Threepence)
@@ -127,7 +131,7 @@ internal class EnglishDenominationsTest {
         "${1.pence}" shouldBe "1d"
         "$Twopenny" shouldBe "English denomination: twopenny"
         "${1.twopence}" shouldBe "1 tuppence"
-        "${1.tuppence}" shouldBe "1 tuppence"
+        "${1.`tu'penny`}" shouldBe "1 tuppence"
         "${1.halfGroats}" shouldBe "1 tuppence"
         "$Threepenny" shouldBe "English denomination: threepenny"
         "${1.threepence}" shouldBe "1 thruppence"

@@ -182,6 +182,11 @@ val FixedBigRational.halfpence get() = Halfpence.new(this)
 val Long.halfpence get() = (this over 1).halfpence
 val Int.halfpence get() = (this over 1).halfpence
 
+// Aliases for halfpence
+val FixedBigRational.`ha'penny` get() = Halfpence.new(this)
+val Long.`ha'penny` get() = (this over 1).halfpence
+val Int.`ha'penny` get() = (this over 1).halfpence
+
 class ThreeFarthing private constructor(quantity: FixedBigRational) :
     EnglishDenomination<ThreeFarthings, ThreeFarthing>(
         ThreeFarthing,
@@ -234,9 +239,9 @@ val Long.twopence get() = (this over 1).twopence
 val Int.twopence get() = (this over 1).twopence
 
 // Aliases for twopenny
-val FixedBigRational.tuppence get() = Twopence.new(this)
-val Long.tuppence get() = (this over 1).twopence
-val Int.tuppence get() = (this over 1).twopence
+val FixedBigRational.`tu'penny` get() = Twopence.new(this)
+val Long.`tu'penny` get() = (this over 1).twopence
+val Int.`tu'penny` get() = (this over 1).twopence
 val FixedBigRational.halfGroats get() = Twopence.new(this)
 val Long.halfGroats get() = (this over 1).twopence
 val Int.halfGroats get() = (this over 1).twopence

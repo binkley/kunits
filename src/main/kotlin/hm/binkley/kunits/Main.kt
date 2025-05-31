@@ -26,7 +26,7 @@ import hm.binkley.kunits.system.english.denomination.pence
 import hm.binkley.kunits.system.english.denomination.pounds
 import hm.binkley.kunits.system.english.denomination.quid
 import hm.binkley.kunits.system.english.denomination.shillings
-import hm.binkley.kunits.system.english.denomination.tuppence
+import hm.binkley.kunits.system.english.denomination.`tu'penny`
 import hm.binkley.kunits.system.english.denomination.twopence
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Foot.Feet
@@ -109,7 +109,7 @@ fun main() {
     val p1 = 1.pounds
     println("$p1 (pounds) is ${1.quid} (quid)")
     println(
-        "${1.twopence} (twopenny) is ${1.tuppence} (tuppence) or ${1.halfGroats} (half-groat)"
+        "${1.twopence} (twopenny) is ${1.`tu'penny`} (tuppence) or ${1.halfGroats} (half-groat)"
     )
     println(
         """$p1 is
