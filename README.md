@@ -22,14 +22,14 @@ binary computers (the French revolutionaries [overlooked
 that](https://www.bbc.com/travel/article/20180923-how-france-created-the-metric-system)).
 **And this project is fun.**
 
-[USD currency](./src/main/kotlin/hm/binkley/kunits/system/usd/denomination/USDDenominations.kt)
+[USD currency](./src/main/kotlin/system/usd/denomination/USDDenominations.kt)
 is provided as a practical example of base 10 units.
 English units are a good example of conversions and rational fractions.
 This library shows that typing and generics improve the experience for others
 in any domain&mdash;focusing on units of measure&mdash;but the lesson is
 general when providing code for others.
 See
-[`Main.kt`](https://github.com/binkley/kunits/blob/master/src/main/kotlin/hm/binkley/kunits/Main.kt)
+[`Main.kt`](https://github.com/binkley/kunits/blob/master/src/main/kotlin/Main.kt)
 for examples that caller does not code for generics.
 
 The "cow mug" for the project does not represent anything unless you're
@@ -79,25 +79,25 @@ happens.
 
 ### Systems of units
 
-* [D&amp;D](src/main/kotlin/hm/binkley/kunits/system/dnd) &mdash;
+* [D&amp;D](src/main/kotlin/system/dnd) &mdash;
    [currency
-   denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/hm/binkley/kunits/system/dnd/denomination)
-* [English](src/main/kotlin/hm/binkley/kunits/system/english) &mdash;
+   denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/dnd/denomination)
+* [English](src/main/kotlin/system/english) &mdash;
    [currency
-   denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/denomination),
-   [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/length),
-   [times](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/time),
-   [volumes of wine](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/volume/wine),
-   [weights](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/english/weight)
-* [FFF](src/main/kotlin/hm/binkley/kunits/system/fff) &mdash;
-   [areas](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/area),
-   [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/length),
-   [times](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/time),
-   [weights](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/fff/weight)
-* [MIT](src/main/kotlin/hm/binkley/kunits/system/mit) &mdash;
-   [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/mit/length)
-* [USD](src/main/kotlin/hm/binkley/kunits/system/usd) &mdash; [currenncy
-   denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/hm/binkley/kunits/system/usd/denomination)
+   denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/english/denomination),
+   [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/english/length),
+   [times](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/english/time),
+   [volumes of wine](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/english/volume/wine),
+   [weights](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/english/weight)
+* [FFF](src/main/kotlin/system/fff) &mdash;
+   [areas](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/fff/area),
+   [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/fff/length),
+   [times](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/fff/time),
+   [weights](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/fff/weight)
+* [MIT](src/main/kotlin/system/mit) &mdash;
+   [lengths](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/mit/length)
+* [USD](src/main/kotlin/system/usd) &mdash; [currenncy
+   denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/usd/denomination)
 
 ### Kotlin rational
 
@@ -129,66 +129,66 @@ this file and code source in sync more than already the case.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](src/main/kotlin/hm/binkley/kunits/Main.kt#L96)
+  [`120.lines`](src/main/kotlin/Main.kt#L96)
 - From `Long`s:
-  [`300L.drams`](src/main/kotlin/hm/binkley/kunits/Main.kt#L178)
+  [`300L.drams`](src/main/kotlin/Main.kt#L178)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](src/main/kotlin/hm/binkley/kunits/Main.kt#L154)
+  [`(12_345 over 4).seconds`](src/main/kotlin/Main.kt#L154)
 
 There are also aliases for some units such as
-[`1.twopence`](src/main/kotlin/hm/binkley/kunits/Main.kt#L133) is identical to `1.tuppence`.
+[`1.twopence`](src/main/kotlin/Main.kt#L133) is identical to `1.tuppence`.
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L97)
+  [`+m1`](src/main/kotlin/Main.kt#L97)
 - Negation:
-  [`-m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L98)
+  [`-m1`](src/main/kotlin/Main.kt#L98)
 - Addition:
-  [`4.dollars + 33.cents`](src/main/kotlin/hm/binkley/kunits/Main.kt#L202)
+  [`4.dollars + 33.cents`](src/main/kotlin/Main.kt#L202)
 - Subtraction:
-  [`(m1 into Hands) - m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L113)
+  [`(m1 into Hands) - m1`](src/main/kotlin/Main.kt#L113)
 - Multiplication:
-  [`m2 * 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L166)
+  [`m2 * 4`](src/main/kotlin/Main.kt#L166)
 - Division:
-  [`m2 / 4`](src/main/kotlin/hm/binkley/kunits/Main.kt#L168)
+  [`m2 / 4`](src/main/kotlin/Main.kt#L168)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](src/main/kotlin/hm/binkley/kunits/Main.kt#L182), or as
+  [`m3 into Ounces`](src/main/kotlin/Main.kt#L182), or as
   shorthand, [`m1 /
-  Barleycorns`](src/main/kotlin/hm/binkley/kunits/Main.kt#L117)
+  Barleycorns`](src/main/kotlin/Main.kt#L117)
 - Into multiple other units of the same kind within a system:
   [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
-  Pennies)`](src/main/kotlin/hm/binkley/kunits/Main.kt#L203), or as shorthand,
-  [`m4 % looseChange`](src/main/kotlin/hm/binkley/kunits/Main.kt#L219)
+  Pennies)`](src/main/kotlin/Main.kt#L203), or as shorthand,
+  [`m4 % looseChange`](src/main/kotlin/Main.kt#L219)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](src/main/kotlin/hm/binkley/kunits/Main.kt#L237)
+  Inches`](src/main/kotlin/Main.kt#L237)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L236)
+  $FFF"`](src/main/kotlin/Main.kt#L236)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](src/main/kotlin/hm/binkley/kunits/Main.kt#L223)
+  [`"- $it (${it.format()})"`](src/main/kotlin/Main.kt#L223)
 
 ### API
 
-- [`Kind`](src/main/kotlin/hm/binkley/kunits/Units.kt#L9) represents a
+- [`Kind`](src/main/kotlin/Units.kt#L9) represents a
   kind of units (_eg_,
-  [`Length`](src/main/kotlin/hm/binkley/kunits/Units.kt#L18))
-- [`System`](src/main/kotlin/hm/binkley/kunits/Units.kt#L29) represents a
+  [`Length`](src/main/kotlin/Units.kt#L18))
+- [`System`](src/main/kotlin/Units.kt#L29) represents a
   system of units (_eg_,
-  [`English`](src/main/kotlin/hm/binkley/kunits/system/english/English.kt))
-- [`Units`](src/main/kotlin/hm/binkley/kunits/Units.kt#L46) represents
+  [`English`](src/main/kotlin/system/english/English.kt))
+- [`Units`](src/main/kotlin/Units.kt#L46) represents
   units of measure (_eg_,
-  [`MetasyntacticLengths`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#37))
-- [`Measure`](src/main/kotlin/hm/binkley/kunits/Units.kt#L98) represents
+  [`MetasyntacticLengths`](src/test/kotlin/TestSystems.kt#37))
+- [`Measure`](src/main/kotlin/Units.kt#L98) represents
   quantities of units (_eg_,
-  [`m1`](src/main/kotlin/hm/binkley/kunits/Main.kt#L96))
+  [`m1`](src/main/kotlin/Main.kt#L96))
 
 Included for `Measure` are the usual simple arithmetic operations.
 
@@ -196,11 +196,11 @@ The exemplar of quirkiness is traditional
 [_English units_](https://en.wikipedia.org/wiki/English_units):
 
 - [English units of denomination
-  (money)](src/main/kotlin/hm/binkley/kunits/system/english/denomination/EnglishDenominations.kt)
-- [English units of length](src/main/kotlin/hm/binkley/kunits/system/english/length/EnglishLengths.kt)
-- [English units of time](src/main/kotlin/hm/binkley/kunits/system/english/time/EnglishTimes.kt)
-- [English units of volume](src/main/kotlin/hm/binkley/kunits/system/english/volume/wine/EnglishWineVolumes.kt)
-- [English units of weight](src/main/kotlin/hm/binkley/kunits/system/english/weight/EnglishWeights.kt)
+  (money)](src/main/kotlin/system/english/denomination/EnglishDenominations.kt)
+- [English units of length](src/main/kotlin/system/english/length/EnglishLengths.kt)
+- [English units of time](src/main/kotlin/system/english/time/EnglishTimes.kt)
+- [English units of volume](src/main/kotlin/system/english/volume/wine/EnglishWineVolumes.kt)
+- [English units of weight](src/main/kotlin/system/english/weight/EnglishWeights.kt)
 
 See also the English denominations for an example custom formatting function,
 `formatTraditional()` (eg, "4/2/4" for 4 pounds, 2 shillings, and 4 pence).
@@ -239,8 +239,8 @@ penny_](https://en.wikipedia.org/wiki/Gold_penny) (20 pence in its time).
 
 Unreal systems of units for testing:
 
-- [`Metasyntactic`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L54)
-- [`Martian`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L258)
+- [`Metasyntactic`](src/test/kotlin/TestSystems.kt#L54)
+- [`Martian`](src/test/kotlin/TestSystems.kt#L258)
 
 Below is the source for the Martian system of units showing the minimal
 code needed for setting up a system of units:
@@ -276,7 +276,7 @@ val Int.groks get() = (this over 1).groks
 ```
 
 For convenience, systems of units may provide [conversions into other
-systems](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L56):
+systems](src/test/kotlin/TestSystems.kt#L56):
 
 ```kotlin
 infix fun <
@@ -292,11 +292,11 @@ infix fun <
 Typically, the base type for units of measure (`MartialLengths`, above) is
 `sealed` as there is a known, fixed number of units.
 However,
-[`OtherDnDDenominations`](src/main/kotlin/hm/binkley/kunits/system/dnd/denomination/other/OtherDnDDenominations.kt)
+[`OtherDnDDenominations`](src/main/kotlin/system/dnd/denomination/other/OtherDnDDenominations.kt)
 is an example of extending a kind of units.
 
 Also, see
-[`ShoeSize`](src/test/kotlin/hm/binkley/kunits/TestSystems.kt#L224) for an
+[`ShoeSize`](src/test/kotlin/TestSystems.kt#L224) for an
 example of creating new kinds of units.
 
 #### Use of generics
@@ -320,7 +320,7 @@ There are too many options for "nice" Kotlin syntactic sugar.
 This library uses math/bit operators when sensible, and backs off where it
 conflicts with the existing Kotlin standard library.
 
-See [`Operators.kt`](./src/main/kotlin/hm/binkley/kunits/Operators.kt).
+See [`Operators.kt`](./src/main/kotlin/Operators.kt).
 Simple math operators with `Measure` arithmetic (possily with conversion of
 right-hand sides to the units of the left):
 - `+a` &mdash; idempotency
@@ -362,9 +362,9 @@ Or consider:
 Unfortunately, `as` is an existing keyword for type casting.
 
 The chosen compromise is an infix
-[`into`](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L45) function,
+[`into`](src/main/kotlin/Conversions.kt#L45) function,
 and a more general version for [conversions into unit units of the same
-kind in another system](src/main/kotlin/hm/binkley/kunits/Conversions.kt#L70).
+kind in another system](src/main/kotlin/Conversions.kt#L70).
 
 ```kotlin
 2.feet into Inches
