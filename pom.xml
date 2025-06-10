@@ -61,7 +61,7 @@
         <coverage.instructions>98</coverage.instructions>
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
-        <dependency-check-maven.version>12.1.2</dependency-check-maven.version>
+        <dependency-check-maven.version>12.1.3</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.23.8</detekt-maven-plugin.version>
         <flexmark.version>0.64.8</flexmark.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
