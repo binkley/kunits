@@ -82,6 +82,9 @@ happens.
 * [D&amp;D](src/main/kotlin/system/dnd) &mdash;
    [currency
    denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/dnd/denomination)
+* [Discworld](src/main/kotlin/system/discworld) &mdash;
+   [Ankh-Morpork currency
+   denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/discworld/ankh_morpork/denomination)
 * [English](src/main/kotlin/system/english) &mdash;
    [currency
    denominations](https://github.com/binkley/kunits/tree/master/src/main/kotlin/system/english/denomination),
@@ -446,6 +449,7 @@ Behavior:
 * [_Carolingian monetary system_](https://en.wikipedia.org/wiki/Carolingian_monetary_system)
 * [_Chart showing the relationships of distance
   measures_](https://en.wikipedia.org/wiki/English_units#/media/File:English_Length_Units_Graph.svg)
+* [_Currency_](https://wiki.lspace.org/Currency) for Ankh-Morpork
 * [_English units_](https://en.wikipedia.org/wiki/English_units)
 * [_English Weights &amp;
   Measures_](http://home.clara.net/brianp/quickref.html)
