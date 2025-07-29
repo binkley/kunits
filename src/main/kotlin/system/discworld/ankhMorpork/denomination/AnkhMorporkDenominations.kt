@@ -7,7 +7,7 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
-import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpenny.Sixpence
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpence.Sixpences
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
@@ -54,19 +54,19 @@ val FixedBigRational.pennies get() = Pence.new(this)
 val Long.pennies get() = (this over 1).pence
 val Int.pennies get() = (this over 1).pence
 
-class Sixpenny private constructor(quantity: FixedBigRational) :
-    AnkhMorporkDenomination<Sixpence, Sixpenny>(Sixpenny, quantity) {
-    companion object Sixpence :
-        AnkhMorporkDenominations<Sixpence, Sixpenny>(
+class Sixpence private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<Sixpences, Sixpence>(Sixpence, quantity) {
+    companion object Sixpences :
+        AnkhMorporkDenominations<Sixpences, Sixpence>(
             "sixpence",
             (6 over 1)
         ) {
-        override fun new(quantity: FixedBigRational) = Sixpenny(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity sixpence"
+        override fun new(quantity: FixedBigRational) = Sixpence(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity sixpences"
     }
 }
 
-val FixedBigRational.sixpence get() = Sixpenny.new(this)
+val FixedBigRational.sixpence get() = Sixpence.new(this)
 val Long.sixpence get() = (this over 1).sixpence
 val Int.sixpence get() = (this over 1).sixpence
 
