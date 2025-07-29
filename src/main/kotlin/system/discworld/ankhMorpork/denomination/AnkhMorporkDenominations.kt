@@ -9,6 +9,7 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pennies
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
+import java.util.Calendar.AM
 
 /** The AnkhMorpork denominations. */
 sealed class AnkhMorporkDenominations<
@@ -39,7 +40,7 @@ class Dollar private constructor(quantity: FixedBigRational) :
         ONE
     ) {
         override fun new(quantity: FixedBigRational) = Dollar(quantity)
-        override fun format(quantity: FixedBigRational) = "$$quantity"
+        override fun format(quantity: FixedBigRational) = $$"$$quantity $AM"
     }
 }
 
@@ -54,7 +55,7 @@ class Penny private constructor(quantity: FixedBigRational) :
         1 over 240
     ) {
         override fun new(quantity: FixedBigRational) = Penny(quantity)
-        override fun format(quantity: FixedBigRational) = "${quantity}p"
+        override fun format(quantity: FixedBigRational) = "$quantity 1p"
     }
 }
 

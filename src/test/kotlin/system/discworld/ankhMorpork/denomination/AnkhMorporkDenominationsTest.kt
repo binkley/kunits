@@ -4,6 +4,7 @@ import hm.binkley.kunits.into
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import java.util.Calendar.AM
 
 internal class AnkhMorporkDenominationsTest {
     @Test
@@ -15,8 +16,8 @@ internal class AnkhMorporkDenominationsTest {
     @Test
     fun `should pretty print`() {
         "$Penny" shouldBe "Ankh-Morpork denomination: penny"
-        "${1.pennies}" shouldBe "1p"
+        "${1.pennies}" shouldBe "1 1p"
         "$Dollar" shouldBe "Ankh-Morpork denomination: dollar"
-        "${1.dollars}" shouldBe "$1"
+        "${1.dollars}" shouldBe $$"1 $AM"
     }
 }
