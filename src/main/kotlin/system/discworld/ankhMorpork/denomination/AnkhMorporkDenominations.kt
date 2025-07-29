@@ -5,11 +5,10 @@ import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
-import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pennies
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
-import java.util.Calendar.AM
 
 /** The AnkhMorpork denominations. */
 sealed class AnkhMorporkDenominations<
@@ -17,12 +16,12 @@ sealed class AnkhMorporkDenominations<
     M : AnkhMorporkDenomination<U, M>
     >(
     name: String,
-    dollars: FixedBigRational
+    pence: FixedBigRational
 ) : Units<Denomination, AnkhMorpork, U, M>(
     Denomination,
     AnkhMorpork,
     name,
-    dollars
+    pence
 )
 
 sealed class AnkhMorporkDenomination<
@@ -37,7 +36,7 @@ class Dollar private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Dollars, Dollar>(Dollars, quantity) {
     companion object Dollars : AnkhMorporkDenominations<Dollars, Dollar>(
         "dollar",
-        ONE
+        (240 over 1)
     ) {
         override fun new(quantity: FixedBigRational) = Dollar(quantity)
         override fun format(quantity: FixedBigRational) = $$"$$quantity $AM"
@@ -49,16 +48,21 @@ val Long.dollars get() = (this over 1).dollars
 val Int.dollars get() = (this over 1).dollars
 
 class Penny private constructor(quantity: FixedBigRational) :
-    AnkhMorporkDenomination<Pennies, Penny>(Pennies, quantity) {
-    companion object Pennies : AnkhMorporkDenominations<Pennies, Penny>(
+    AnkhMorporkDenomination<Pence, Penny>(Pence, quantity) {
+    companion object Pence : AnkhMorporkDenominations<Pence, Penny>(
         "penny",
-        1 over 240
+        ONE
     ) {
         override fun new(quantity: FixedBigRational) = Penny(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity 1p"
     }
 }
 
-val FixedBigRational.pennies get() = Pennies.new(this)
-val Long.pennies get() = (this over 1).pennies
-val Int.pennies get() = (this over 1).pennies
+val FixedBigRational.pence get() = Pence.new(this)
+val Long.pence get() = (this over 1).pence
+val Int.pence get() = (this over 1).pence
+
+// Common synonym depending on usage
+val FixedBigRational.pennies get() = Pence.new(this)
+val Long.pennies get() = (this over 1).pence
+val Int.pennies get() = (this over 1).pence
