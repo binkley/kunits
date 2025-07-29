@@ -12,6 +12,6 @@ internal class LancreDenominationsTest {
     @Test
     fun `should pretty print`() {
         "$Penny" shouldBe "Lancre denomination: penny"
-        "${1.pennies}" shouldBe "1 1p"
+        "${1.pennies}" shouldBe "1¢"
     }
 }

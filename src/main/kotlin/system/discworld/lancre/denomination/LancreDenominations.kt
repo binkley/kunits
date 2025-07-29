@@ -38,7 +38,7 @@ class Penny private constructor(quantity: FixedBigRational) :
         ONE
     ) {
         override fun new(quantity: FixedBigRational) = Penny(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity 1p"
+        override fun format(quantity: FixedBigRational) = "$quantity¢"
     }
 }
 

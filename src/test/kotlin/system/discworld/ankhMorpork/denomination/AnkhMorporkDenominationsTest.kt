@@ -15,8 +15,8 @@ internal class AnkhMorporkDenominationsTest {
     @Test
     fun `should pretty print`() {
         "$Penny" shouldBe "Ankh-Morpork denomination: penny"
-        "${1.pennies}" shouldBe "1 1p"
+        "${1.pennies}" shouldBe "1p"
         "$Dollar" shouldBe "Ankh-Morpork denomination: dollar"
-        "${1.dollars}" shouldBe "1 $1"
+        "${1.dollars}" shouldBe "$1"
     }
 }
