@@ -13,9 +13,9 @@ import hm.binkley.math.fixed.over
 
 /** The AnkhMorpork denominations. */
 sealed class AnkhMorporkDenominations<
-        U : AnkhMorporkDenominations<U, M>,
-        M : AnkhMorporkDenomination<U, M>
-        >(
+    U : AnkhMorporkDenominations<U, M>,
+    M : AnkhMorporkDenomination<U, M>
+    >(
     name: String,
     pence: FixedBigRational
 ) : Units<Denomination, AnkhMorpork, U, M>(
@@ -26,9 +26,9 @@ sealed class AnkhMorporkDenominations<
 )
 
 sealed class AnkhMorporkDenomination<
-        U : AnkhMorporkDenominations<U, M>,
-        M : AnkhMorporkDenomination<U, M>
-        >(
+    U : AnkhMorporkDenominations<U, M>,
+    M : AnkhMorporkDenomination<U, M>
+    >(
     unit: U,
     quantity: FixedBigRational
 ) : Measure<Denomination, AnkhMorpork, U, M>(unit, quantity)
