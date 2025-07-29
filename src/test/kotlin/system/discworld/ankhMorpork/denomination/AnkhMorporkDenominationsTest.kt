@@ -13,14 +13,17 @@ internal class AnkhMorporkDenominationsTest {
         (1 over 1).pennies shouldBe 1.pence
         1L.pennies shouldBe 1.pence
         1.pennies shouldBe 1.pence
+        1L.shillings shouldBe (20.pence into Shilling.Shillings)
         1L.dollars shouldBe (240.pence into Dollars)
     }
 
     @Test
     fun `should pretty print`() {
         "$Penny" shouldBe "Ankh-Morpork denomination: penny"
-        "${1.pence}" shouldBe "1 1p"
+        "${1.pence}" shouldBe "1p"
+        "$Shilling" shouldBe "Ankh-Morpork denomination: shilling"
+        "${1.shillings}" shouldBe "1s"
         "$Dollar" shouldBe "Ankh-Morpork denomination: dollar"
-        "${1.dollars}" shouldBe $$"1 $AM"
+        "${1.dollars}" shouldBe "$1"
     }
 }
