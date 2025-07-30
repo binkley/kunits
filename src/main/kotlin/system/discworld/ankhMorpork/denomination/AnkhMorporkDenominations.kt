@@ -7,6 +7,7 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Elim.Elims
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Farthing.Farthings
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Groat.Groats
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Mite.Mites
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
@@ -156,6 +157,22 @@ class Thruppenny private constructor(quantity: FixedBigRational) :
 val FixedBigRational.thruppence get() = Thruppenny.new(this)
 val Long.thruppence get() = (this over 1).thruppence
 val Int.thruppence get() = (this over 1).thruppence
+
+class Groat private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<Groats, Groat>(Groat, quantity) {
+    companion object Groats :
+        AnkhMorporkDenominations<Groats, Groat>(
+            "groat",
+            (4 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Groat(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity groats"
+    }
+}
+
+val FixedBigRational.groats get() = Groat.new(this)
+val Long.groats get() = (this over 1).groats
+val Int.groats get() = (this over 1).groats
 
 class Sixpence private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Sixpences, Sixpence>(Sixpence, quantity) {
