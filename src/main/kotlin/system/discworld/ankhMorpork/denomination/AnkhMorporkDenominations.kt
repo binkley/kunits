@@ -9,6 +9,7 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpence.Sixpences
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Thruppenny.Thruppence
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Tuppenny.Tuppence
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
@@ -54,6 +55,22 @@ val Int.pence get() = (this over 1).pence
 val FixedBigRational.pennies get() = Pence.new(this)
 val Long.pennies get() = (this over 1).pence
 val Int.pennies get() = (this over 1).pence
+
+class Tuppenny private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<Tuppence, Tuppenny>(Tuppenny, quantity) {
+    companion object Tuppence :
+        AnkhMorporkDenominations<Tuppence, Tuppenny>(
+            "tuppenny",
+            (2 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = Tuppenny(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity tuppence"
+    }
+}
+
+val FixedBigRational.tuppence get() = Tuppenny.new(this)
+val Long.tuppence get() = (this over 1).tuppence
+val Int.tuppence get() = (this over 1).tuppence
 
 class Thruppenny private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Thruppence, Thruppenny>(Thruppenny, quantity) {
