@@ -135,51 +135,52 @@ this file and code source in sync more than already the case.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](./src/main/kotlin/Main.kt#L96)
+  [`120.lines`](./src/main/kotlin/Main.kt#L76)
 - From `Long`s:
-  [`300L.drams`](./src/main/kotlin/Main.kt#L178)
+  [`300L.drams`](./src/main/kotlin/Main.kt#L161)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](./src/main/kotlin/Main.kt#L154)
+  [`(12_345 over 4).seconds`](./src/main/kotlin/Main.kt#L138)
 
 There are also aliases for some units such as
-[`1.twopence`](./src/main/kotlin/Main.kt#L133) is identical to `1.tuppence`.
+[`1.twopence`](./src/main/kotlin/Main.kt#L112) is identical to `1.tuppence`
+and with an alias for "tu'penny".
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](./src/main/kotlin/Main.kt#L97)
+  [`+m1`](./src/main/kotlin/Main.kt#L77)
 - Negation:
-  [`-m1`](./src/main/kotlin/Main.kt#L98)
+  [`-m1`](./src/main/kotlin/Main.kt#L78)
 - Addition:
-  [`4.dollars + 33.cents`](./src/main/kotlin/Main.kt#L202)
+  [`4.dollars + 33.cents`](./src/main/kotlin/Main.kt#L194)
 - Subtraction:
-  [`(m1 into Hands) - m1`](./src/main/kotlin/Main.kt#L113)
+  [`(m1 into Hands) - m1`](./src/main/kotlin/Main.kt#L93)
 - Multiplication:
-  [`m2 * 4`](./src/main/kotlin/Main.kt#L166)
+  [`m2 * 4`](./src/main/kotlin/Main.kt#L150)
 - Division:
-  [`m2 / 4`](./src/main/kotlin/Main.kt#L168)
+  [`m2 / 4`](./src/main/kotlin/Main.kt#L152)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](./src/main/kotlin/Main.kt#L182), or as
+  [`m3 into Ounces`](./src/main/kotlin/Main.kt#L165), or as
   shorthand, [`m1 /
-  Barleycorns`](./src/main/kotlin/Main.kt#L117)
+  Barleycorns`](./src/main/kotlin/Main.kt#L182)
 - Into multiple other units of the same kind within a system:
-  [`m4.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
-  Pennies)`](./src/main/kotlin/Main.kt#L203), or as shorthand,
-  [`m4 % looseChange`](./src/main/kotlin/Main.kt#L219)
+  [`m5.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
+  Pennies)`](./src/main/kotlin/Main.kt#L195), or as shorthand,
+  [`m5 % usLooseChange`](./src/main/kotlin/Main.kt#L211)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](./src/main/kotlin/Main.kt#L237)
+  Inches`](./src/main/kotlin/Main.kt#L229)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](./src/main/kotlin/Main.kt#L236)
+  $FFF"`](./src/main/kotlin/Main.kt#L228)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](./src/main/kotlin/Main.kt#L223)
+  [`"- $it (${it.format()})"`](./src/main/kotlin/Main.kt#L215)
 
 ### API
 
@@ -194,7 +195,7 @@ There are also aliases for some units such as
   [`MetasyntacticLengths`](./src/test/kotlin/TestSystems.kt#37))
 - [`Measure`](./src/main/kotlin/Units.kt#L98) represents
   quantities of units (_eg_,
-  [`m1`](./src/main/kotlin/Main.kt#L96))
+  [`m1`](./src/main/kotlin/Main.kt#L76))
 
 Included for `Measure` are the usual simple arithmetic operations.
 
@@ -246,7 +247,7 @@ penny_](https://en.wikipedia.org/wiki/Gold_penny) (20 pence in its time).
 Unreal systems of units for testing:
 
 - [`Metasyntactic`](./src/test/kotlin/TestSystems.kt#L54)
-- [`Martian`](./src/test/kotlin/TestSystems.kt#L258)
+- [`Martian`](./src/test/kotlin/TestSystems.kt#L231)
 
 Below is the source for the Martian system of units showing the minimal
 code needed for setting up a system of units:
@@ -282,7 +283,7 @@ val Int.groks get() = (this over 1).groks
 ```
 
 For convenience, systems of units may provide [conversions into other
-systems](./src/test/kotlin/TestSystems.kt#L56):
+systems](./src/test/kotlin/TestSystems.kt#L29):
 
 ```kotlin
 infix fun <
@@ -302,7 +303,7 @@ However,
 is an example of extending a kind of units.
 
 Also, see
-[`ShoeSize`](./src/test/kotlin/TestSystems.kt#L224) for an
+[`ShoeSize`](./src/test/kotlin/TestSystems.kt#L197) for an
 example of creating new kinds of units.
 
 #### Use of generics
