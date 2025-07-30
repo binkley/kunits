@@ -85,7 +85,7 @@ happens.
 * [Discworld](src/main/kotlin/system/discworld) &mdash;
    * Ankh-Morpork
       - [Ankh-Morpork currency
-        denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/discworld/ankh_morpork/denomination)
+        denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/discworld/ankhMorpork/denomination)
    * Lancre
       - [Lancre currency
         denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/discworld/lancre/denomination)
