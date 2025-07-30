@@ -82,6 +82,7 @@ happens.
 * [D&amp;D](src/main/kotlin/system/dnd) &mdash;
    [currency
    denominations](https://github.com/binkley/kunits/blob/master/src/main/kotlin/system/dnd/denomination)
+  - [alternative denominations](./src/main/kotlin/system/dnd/denomination/other)
 * [Discworld](src/main/kotlin/system/discworld) &mdash;
    * Ankh-Morpork
       - [Ankh-Morpork currency
