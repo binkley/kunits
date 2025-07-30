@@ -2,6 +2,7 @@ package hm.binkley.kunits.system.discworld.ankhMorpork.denomination
 
 import hm.binkley.kunits.into
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpence.Sixpences
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Thruppenny.Thruppence
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test
 internal class AnkhMorporkDenominationsTest {
     @Test
     fun `should convert`() {
+        1L.halfpennies shouldBe ((1 over 2).pence into Halfpennies)
         1L.pence shouldBe 1.pence
         (1 over 1).pennies shouldBe 1.pence
         1L.pennies shouldBe 1.pence
@@ -26,6 +28,8 @@ internal class AnkhMorporkDenominationsTest {
 
     @Test
     fun `should pretty print`() {
+        "$Halfpenny" shouldBe "Ankh-Morpork denomination: halfpenny"
+        "${1.halfpennies}" shouldBe "1 halfpennies"
         "$Penny" shouldBe "Ankh-Morpork denomination: penny"
         "${1.pence}" shouldBe "1p"
         "$Tuppenny" shouldBe "Ankh-Morpork denomination: tuppenny"

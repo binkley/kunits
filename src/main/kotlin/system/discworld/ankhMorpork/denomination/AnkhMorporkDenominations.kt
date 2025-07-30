@@ -5,6 +5,7 @@ import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpence.Sixpences
@@ -35,6 +36,23 @@ sealed class AnkhMorporkDenomination<
     unit: U,
     quantity: FixedBigRational
 ) : Measure<Denomination, AnkhMorpork, U, M>(unit, quantity)
+
+class Halfpenny private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<Halfpennies, Halfpenny>(Halfpenny, quantity) {
+    companion object Halfpennies :
+        AnkhMorporkDenominations<Halfpennies, Halfpenny>(
+            "halfpenny",
+            (1 over 2)
+        ) {
+        override fun new(quantity: FixedBigRational) = Halfpenny(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity halfpennies"
+    }
+}
+
+val FixedBigRational.halfpennies get() = Halfpenny.new(this)
+val Long.halfpennies get() = (this over 1).halfpennies
+val Int.halfpennies get() = (this over 1).halfpennies
 
 class Penny private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Pence, Penny>(Pence, quantity) {
