@@ -7,10 +7,12 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Farthing.Fart
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Groat.Groats
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Mite.Mites
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpence.Sixpences
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Thruppenny.Thruppence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Tuppenny.Tuppence
+import hm.binkley.math.fixed.ONE
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
@@ -19,19 +21,19 @@ internal class AnkhMorporkDenominationsTest {
     @Test
     fun `should convert`() {
         1L.elims shouldBe ((1 over 16).pence into Elims)
-        1L.mites shouldBe ((1 over 8).pence into Mites)
-        1L.farthings shouldBe ((1 over 4).pence into Farthings)
-        1L.halfpennies shouldBe ((1 over 2).pence into Halfpennies)
-        1L.pence shouldBe 1.pence
-        (1 over 1).pennies shouldBe 1.pence
+        1L.mites shouldBe (2.elims into Mites)
+        1L.farthings shouldBe (2.mites into Farthings)
+        1L.halfpennies shouldBe (2.farthings into Halfpennies)
+        1L.pence shouldBe (2.halfpennies into Pence)
+        ONE.pennies shouldBe 1.pence
         1L.pennies shouldBe 1.pence
         1.pennies shouldBe 1.pence
         1L.tuppence shouldBe (2.pence into Tuppence)
         1L.thruppence shouldBe (3.pence into Thruppence)
-        1L.groats shouldBe (4.pence into Groats)
-        1L.sixpences shouldBe (6.pence into Sixpences)
-        1L.shillings shouldBe (12.pence into Shillings)
-        1L.dollars shouldBe (240.pence into Dollars)
+        1L.groats shouldBe (2.tuppence into Groats)
+        1L.sixpences shouldBe (2.thruppence into Sixpences)
+        1L.shillings shouldBe (4.thruppence into Shillings)
+        1L.dollars shouldBe (20.shillings into Dollars)
     }
 
     @Test

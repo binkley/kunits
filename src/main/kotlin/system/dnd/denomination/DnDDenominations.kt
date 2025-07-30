@@ -4,11 +4,11 @@ import hm.binkley.kunits.Denomination
 import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.dnd.DnD
-import hm.binkley.kunits.system.dnd.denomination.Copper.CopperPieces
-import hm.binkley.kunits.system.dnd.denomination.Electrum.ElectrumPieces
-import hm.binkley.kunits.system.dnd.denomination.Gold.GoldPieces
-import hm.binkley.kunits.system.dnd.denomination.Platinum.PlatinumPieces
-import hm.binkley.kunits.system.dnd.denomination.Silver.SilverPieces
+import hm.binkley.kunits.system.dnd.denomination.CopperPiece.CopperPieces
+import hm.binkley.kunits.system.dnd.denomination.ElectrumPiece.ElectrumPieces
+import hm.binkley.kunits.system.dnd.denomination.GoldPiece.GoldPieces
+import hm.binkley.kunits.system.dnd.denomination.PlatinumPiece.PlatinumPieces
+import hm.binkley.kunits.system.dnd.denomination.SilverPiece.SilverPieces
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.FixedBigRational.Companion.TEN
@@ -31,79 +31,79 @@ abstract class DnDDenomination<
     quantity: FixedBigRational
 ) : Measure<Denomination, DnD, U, M>(unit, quantity)
 
-class Copper private constructor(quantity: FixedBigRational) :
-    DnDDenomination<CopperPieces, Copper>(CopperPieces, quantity) {
-    companion object CopperPieces : DnDDenominations<CopperPieces, Copper>(
-        "copper piece",
+class CopperPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<CopperPieces, CopperPiece>(CopperPieces, quantity) {
+    companion object CopperPieces : DnDDenominations<CopperPieces, CopperPiece>(
+        "Copper Piece",
         ONE
     ) {
-        override fun new(quantity: FixedBigRational) = Copper(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity cp"
+        override fun new(quantity: FixedBigRational) = CopperPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity CP"
     }
 }
 
-val FixedBigRational.copper get() = CopperPieces.new(this)
-val Long.copper get() = (this over 1).copper
-val Int.copper get() = (this over 1).copper
+val FixedBigRational.copperPieces get() = CopperPieces.new(this)
+val Long.copperPieces get() = (this over 1).copperPieces
+val Int.copperPieces get() = (this over 1).copperPieces
 
-class Silver private constructor(quantity: FixedBigRational) :
-    DnDDenomination<SilverPieces, Silver>(SilverPieces, quantity) {
-    companion object SilverPieces : DnDDenominations<SilverPieces, Silver>(
-        "silver piece",
+class SilverPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<SilverPieces, SilverPiece>(SilverPieces, quantity) {
+    companion object SilverPieces : DnDDenominations<SilverPieces, SilverPiece>(
+        "Silver Piece",
         TEN
     ) {
-        override fun new(quantity: FixedBigRational) = Silver(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity sp"
+        override fun new(quantity: FixedBigRational) = SilverPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity SP"
     }
 }
 
-val FixedBigRational.silver get() = SilverPieces.new(this)
-val Long.silver get() = (this over 1).silver
-val Int.silver get() = (this over 1).silver
+val FixedBigRational.silverPieces get() = SilverPieces.new(this)
+val Long.silverPieces get() = (this over 1).silverPieces
+val Int.silverPieces get() = (this over 1).silverPieces
 
-class Electrum private constructor(quantity: FixedBigRational) :
-    DnDDenomination<ElectrumPieces, Electrum>(ElectrumPieces, quantity) {
+class ElectrumPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<ElectrumPieces, ElectrumPiece>(ElectrumPieces, quantity) {
     companion object ElectrumPieces :
-        DnDDenominations<ElectrumPieces, Electrum>(
-            "electrum piece",
+        DnDDenominations<ElectrumPieces, ElectrumPiece>(
+            "Electrum Piece",
             50 over 1
         ) {
-        override fun new(quantity: FixedBigRational) = Electrum(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity ep"
+        override fun new(quantity: FixedBigRational) = ElectrumPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity EP"
     }
 }
 
-val FixedBigRational.electrum get() = ElectrumPieces.new(this)
-val Long.electrum get() = (this over 1).electrum
-val Int.electrum get() = (this over 1).electrum
+val FixedBigRational.electrumPieces get() = ElectrumPieces.new(this)
+val Long.electrumPieces get() = (this over 1).electrumPieces
+val Int.electrumPieces get() = (this over 1).electrumPieces
 
-class Gold private constructor(quantity: FixedBigRational) :
-    DnDDenomination<GoldPieces, Gold>(GoldPieces, quantity) {
-    companion object GoldPieces : DnDDenominations<GoldPieces, Gold>(
-        "gold piece",
+class GoldPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<GoldPieces, GoldPiece>(GoldPieces, quantity) {
+    companion object GoldPieces : DnDDenominations<GoldPieces, GoldPiece>(
+        "Gold Piece",
         100 over 1
     ) {
-        override fun new(quantity: FixedBigRational) = Gold(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity gp"
+        override fun new(quantity: FixedBigRational) = GoldPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity GP"
     }
 }
 
-val FixedBigRational.gold get() = GoldPieces.new(this)
-val Long.gold get() = (this over 1).gold
-val Int.gold get() = (this over 1).gold
+val FixedBigRational.goldPieces get() = GoldPieces.new(this)
+val Long.goldPieces get() = (this over 1).goldPieces
+val Int.goldPieces get() = (this over 1).goldPieces
 
-class Platinum private constructor(quantity: FixedBigRational) :
-    DnDDenomination<PlatinumPieces, Platinum>(PlatinumPieces, quantity) {
+class PlatinumPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<PlatinumPieces, PlatinumPiece>(PlatinumPieces, quantity) {
     companion object PlatinumPieces :
-        DnDDenominations<PlatinumPieces, Platinum>(
-            "platinum piece",
+        DnDDenominations<PlatinumPieces, PlatinumPiece>(
+            "Platinum Piece",
             1_000 over 1
         ) {
-        override fun new(quantity: FixedBigRational) = Platinum(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity pp"
+        override fun new(quantity: FixedBigRational) = PlatinumPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity PP"
     }
 }
 
-val FixedBigRational.platinum get() = PlatinumPieces.new(this)
-val Long.platinum get() = (this over 1).platinum
-val Int.platinum get() = (this over 1).platinum
+val FixedBigRational.platinumPieces get() = PlatinumPieces.new(this)
+val Long.platinumPieces get() = (this over 1).platinumPieces
+val Int.platinumPieces get() = (this over 1).platinumPieces

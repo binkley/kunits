@@ -2,9 +2,9 @@ package hm.binkley.kunits.system.dnd.denomination.other
 
 import hm.binkley.kunits.system.dnd.denomination.DnDDenomination
 import hm.binkley.kunits.system.dnd.denomination.DnDDenominations
-import hm.binkley.kunits.system.dnd.denomination.other.Adamant.AdamantPieces
-import hm.binkley.kunits.system.dnd.denomination.other.Bronze.BronzePieces
-import hm.binkley.kunits.system.dnd.denomination.other.Mithril.MithrilPieces
+import hm.binkley.kunits.system.dnd.denomination.other.AdamantPiece.AdamantPieces
+import hm.binkley.kunits.system.dnd.denomination.other.BronzePiece.BronzePieces
+import hm.binkley.kunits.system.dnd.denomination.other.MithrilPiece.MithrilPieces
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.over
 
@@ -13,49 +13,51 @@ import hm.binkley.math.fixed.over
  * See https://www.sageadvice.eu/prices-for-brass-steel-mithril-adamantine/.
  */
 
-class Bronze private constructor(quantity: FixedBigRational) :
-    DnDDenomination<BronzePieces, Bronze>(BronzePieces, quantity) {
-    companion object BronzePieces : DnDDenominations<BronzePieces, Bronze>(
-        "bronze piece",
+class BronzePiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<BronzePieces, BronzePiece>(BronzePieces, quantity) {
+    companion object BronzePieces : DnDDenominations<BronzePieces, BronzePiece>(
+        "Bronze Piece",
         1 over 10
     ) {
-        override fun new(quantity: FixedBigRational) = Bronze(quantity)
+        override fun new(quantity: FixedBigRational) = BronzePiece(quantity)
 
         /** @todo "bp" for bronze piece _vs "bp" for brass piece */
-        override fun format(quantity: FixedBigRational) = "$quantity bp"
+        override fun format(quantity: FixedBigRational) = "$quantity BP"
     }
 }
 
-val FixedBigRational.bronze get() = BronzePieces.new(this)
-val Long.bronze get() = (this over 1).bronze
-val Int.bronze get() = (this over 1).bronze
+val FixedBigRational.bronzePieces get() = BronzePieces.new(this)
+val Long.bronzePieces get() = (this over 1).bronzePieces
+val Int.bronzePieces get() = (this over 1).bronzePieces
 
-class Mithril private constructor(quantity: FixedBigRational) :
-    DnDDenomination<MithrilPieces, Mithril>(MithrilPieces, quantity) {
-    companion object MithrilPieces : DnDDenominations<MithrilPieces, Mithril>(
-        "mithril piece",
-        10_000 over 1
-    ) {
-        override fun new(quantity: FixedBigRational) = Mithril(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity mp"
+class MithrilPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<MithrilPieces, MithrilPiece>(MithrilPieces, quantity) {
+    companion object MithrilPieces :
+        DnDDenominations<MithrilPieces, MithrilPiece>(
+            "Mithril Piece",
+            10_000 over 1
+        ) {
+        override fun new(quantity: FixedBigRational) = MithrilPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity MP"
     }
 }
 
-val FixedBigRational.mithril get() = MithrilPieces.new(this)
-val Long.mithril get() = (this over 1).mithril
-val Int.mithril get() = (this over 1).mithril
+val FixedBigRational.mithrilPieces get() = MithrilPieces.new(this)
+val Long.mithrilPieces get() = (this over 1).mithrilPieces
+val Int.mithrilPieces get() = (this over 1).mithrilPieces
 
-class Adamant private constructor(quantity: FixedBigRational) :
-    DnDDenomination<AdamantPieces, Adamant>(AdamantPieces, quantity) {
-    companion object AdamantPieces : DnDDenominations<AdamantPieces, Adamant>(
-        "adamant piece",
-        100_000 over 1
-    ) {
-        override fun new(quantity: FixedBigRational) = Adamant(quantity)
-        override fun format(quantity: FixedBigRational) = "$quantity ap"
+class AdamantPiece private constructor(quantity: FixedBigRational) :
+    DnDDenomination<AdamantPieces, AdamantPiece>(AdamantPieces, quantity) {
+    companion object AdamantPieces :
+        DnDDenominations<AdamantPieces, AdamantPiece>(
+            "Adamant Piece",
+            100_000 over 1
+        ) {
+        override fun new(quantity: FixedBigRational) = AdamantPiece(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity AP"
     }
 }
 
-val FixedBigRational.adamant get() = AdamantPieces.new(this)
-val Long.adamant get() = (this over 1).adamant
-val Int.adamant get() = (this over 1).adamant
+val FixedBigRational.adamantPieces get() = AdamantPieces.new(this)
+val Long.adamantPieces get() = (this over 1).adamantPieces
+val Int.adamantPieces get() = (this over 1).adamantPieces

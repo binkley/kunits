@@ -465,6 +465,8 @@ Behavior:
 * [_How Quids, Bobs, Florins, Tanners, and Joeys Got Their
   Names_](https://mjhughescoins.com/how-quids-bobs-florins-tanners-and-joeys-got-their-names/)
 * [_Imperial units_](https://en.wikipedia.org/wiki/Imperial_units)
+* [_Less common
+  coinage_](https://dungeonsdragons.fandom.com/wiki/Coinage#Less_common_coinage) &mdash; D&amp;D
 * [_List of British banknotes and
   coins_](https://en.wikipedia.org/wiki/List_of_British_banknotes_and_coins)
 * [_Medieval money_](https://castellogy.com/history/medieval-money)
