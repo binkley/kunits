@@ -4,6 +4,7 @@ import hm.binkley.kunits.into
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Mite.Mites
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Sixpence.Sixpences
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Thruppenny.Thruppence
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test
 internal class AnkhMorporkDenominationsTest {
     @Test
     fun `should convert`() {
+        1L.mites shouldBe ((1 over 8).pence into Mites)
         1L.farthings shouldBe ((1 over 4).pence into Farthings)
         1L.halfpennies shouldBe ((1 over 2).pence into Halfpennies)
         1L.pence shouldBe 1.pence
@@ -30,6 +32,8 @@ internal class AnkhMorporkDenominationsTest {
 
     @Test
     fun `should pretty print`() {
+        "$Mite" shouldBe "Ankh-Morpork denomination: mite"
+        "${1.mites}" shouldBe "1 mites"
         "$Farthing" shouldBe "Ankh-Morpork denomination: farthing"
         "${1.farthings}" shouldBe "1 farthings"
         "$Halfpenny" shouldBe "Ankh-Morpork denomination: halfpenny"
