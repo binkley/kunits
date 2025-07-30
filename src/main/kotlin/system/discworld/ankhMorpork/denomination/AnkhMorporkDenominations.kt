@@ -5,6 +5,7 @@ import hm.binkley.kunits.Measure
 import hm.binkley.kunits.Units
 import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollars
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Elim.Elims
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Mite.Mites
@@ -39,7 +40,21 @@ sealed class AnkhMorporkDenomination<
     quantity: FixedBigRational
 ) : Measure<Denomination, AnkhMorpork, U, M>(unit, quantity)
 
-// TODO: Elim
+class Elim private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<Elims, Elim>(Elim, quantity) {
+    companion object Elims :
+        AnkhMorporkDenominations<Elims, Elim>(
+            "elim",
+            (1 over 16)
+        ) {
+        override fun new(quantity: FixedBigRational) = Elim(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity elims"
+    }
+}
+
+val FixedBigRational.elims get() = Elim.new(this)
+val Long.elims get() = (this over 1).elims
+val Int.elims get() = (this over 1).elims
 
 class Mite private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Mites, Mite>(Mite, quantity) {
