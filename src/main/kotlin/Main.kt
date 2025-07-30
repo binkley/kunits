@@ -1,7 +1,12 @@
 package hm.binkley.kunits
 
+import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny as AnkhMorporkPence
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.dollars as ankhMorporkDollars
+import hm.binkley.kunits.system.discworld.intoLancre
+import hm.binkley.kunits.system.discworld.lancre.Lancre
+import hm.binkley.kunits.system.discworld.lancre.denomination.Penny as LancrePennies
 import hm.binkley.kunits.system.english.English
-import hm.binkley.kunits.system.english.intoFFF
 import hm.binkley.kunits.system.english.denomination.Crown.Crowns
 import hm.binkley.kunits.system.english.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.english.denomination.Florin.Florins
@@ -20,14 +25,15 @@ import hm.binkley.kunits.system.english.denomination.ThirdFarthing.ThirdFarthing
 import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
+import hm.binkley.kunits.system.english.denomination.`tu'penny`
 import hm.binkley.kunits.system.english.denomination.formatTraditional
 import hm.binkley.kunits.system.english.denomination.halfGroats
 import hm.binkley.kunits.system.english.denomination.pence
 import hm.binkley.kunits.system.english.denomination.pounds
 import hm.binkley.kunits.system.english.denomination.quid
 import hm.binkley.kunits.system.english.denomination.shillings
-import hm.binkley.kunits.system.english.denomination.`tu'penny`
 import hm.binkley.kunits.system.english.denomination.twopence
+import hm.binkley.kunits.system.english.intoFFF
 import hm.binkley.kunits.system.english.length.Barleycorn.Barleycorns
 import hm.binkley.kunits.system.english.length.Foot.Feet
 import hm.binkley.kunits.system.english.length.Hand.Hands
@@ -55,6 +61,7 @@ import hm.binkley.kunits.system.english.weight.stone
 import hm.binkley.kunits.system.fff.FFF
 import hm.binkley.kunits.system.fff.intoEnglish
 import hm.binkley.kunits.system.fff.length.Furlong.Furlongs
+import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 import hm.binkley.kunits.system.mit.MIT
 import hm.binkley.kunits.system.mit.intoEnglish
 import hm.binkley.kunits.system.mit.length.smoots
@@ -68,7 +75,6 @@ import hm.binkley.kunits.system.usd.denomination.cents
 import hm.binkley.kunits.system.usd.denomination.dollars
 import hm.binkley.kunits.system.usd.denomination.format
 import hm.binkley.math.fixed.over
-import hm.binkley.kunits.system.fff.length.furlongs as fffFurlongs
 
 /** Runs the demo. */
 fun main() {
@@ -237,5 +243,15 @@ ${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English
         "$duration (94¼) IS ${
             duration.into(Seconds, Minutes, Hours)
         } (${duration into Hours})"
+    )
+
+    println()
+    println("== DISCWORLD DENOMINATIONS")
+    val amd = 1.ankhMorporkDollars
+    // Use multiline string because of long line in the code
+    println(
+        """
+$amd IS ${amd into AnkhMorporkPence} IN $AnkhMorpork AND ${amd intoLancre LancrePennies} IN $Lancre
+        """.trimIndent()
     )
 }
