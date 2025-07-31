@@ -186,9 +186,8 @@ val FixedBigRational.halfpence get() = Halfpence.new(this)
 val Long.halfpence get() = (this over 1).halfpence
 val Int.halfpence get() = (this over 1).halfpence
 
-// Aliases for halfpence (pronounced "hay penny")
+// Alias for halfpence (pronounced "hay penny")
 // Typical API usage would simply call "halfpence".
-// This is an Easter egg.
 val FixedBigRational.`ha'penny` get() = Halfpence.new(this)
 val Long.`ha'penny` get() = (this over 1).halfpence
 val Int.`ha'penny` get() = (this over 1).halfpence
@@ -244,10 +243,12 @@ val FixedBigRational.twopence get() = Twopence.new(this)
 val Long.twopence get() = (this over 1).twopence
 val Int.twopence get() = (this over 1).twopence
 
-// Aliases for twopenny
+// Alias for twopence (pronounced "tuh pence")
+// Typical API usage would simply call "twopence".
 val FixedBigRational.`tu'penny` get() = Twopence.new(this)
 val Long.`tu'penny` get() = (this over 1).twopence
 val Int.`tu'penny` get() = (this over 1).twopence
+// Alias for twopence
 val FixedBigRational.halfGroats get() = Twopence.new(this)
 val Long.halfGroats get() = (this over 1).twopence
 val Int.halfGroats get() = (this over 1).twopence
@@ -269,7 +270,8 @@ val FixedBigRational.threepence get() = Threepenny.new(this)
 val Long.threepence get() = (this over 1).threepence
 val Int.threepence get() = (this over 1).threepence
 
-// Aliases for threepenny
+// Alias for threepenny
+// Typical API usage would simply call "threepence".
 val FixedBigRational.thruppence get() = Threepenny.new(this)
 val Long.thruppence get() = (this over 1).threepence
 val Int.thruppence get() = (this over 1).threepence
@@ -306,7 +308,7 @@ val FixedBigRational.sixpence get() = Sixpenny.new(this)
 val Long.sixpence get() = (this over 1).sixpence
 val Int.sixpence get() = (this over 1).sixpence
 
-// Aliases for sixpenny
+// Alias for sixpenny
 val FixedBigRational.tanners get() = Sixpenny.new(this)
 val Long.tanners get() = (this over 1).sixpence
 val Int.tanners get() = (this over 1).sixpence
@@ -327,7 +329,7 @@ val FixedBigRational.shillings get() = Shilling.new(this)
 val Long.shillings get() = (this over 1).shillings
 val Int.shillings get() = (this over 1).shillings
 
-// Aliases for shilling
+// Alias for shilling
 val FixedBigRational.bob get() = Shilling.new(this)
 val Long.bob get() = (this over 1).shillings
 val Int.bob get() = (this over 1).shillings
@@ -611,7 +613,7 @@ val FixedBigRational.pounds get() = Pound.new(this)
 val Long.pounds get() = (this over 1).pounds
 val Int.pounds get() = (this over 1).pounds
 
-// Aliases for pound
+// Alias for pound
 val FixedBigRational.quid get() = Pound.new(this)
 val Long.quid get() = (this over 1).pounds
 val Int.quid get() = (this over 1).pounds
