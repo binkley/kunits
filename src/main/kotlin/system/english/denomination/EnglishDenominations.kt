@@ -170,7 +170,6 @@ val FixedBigRational.farthings get() = Farthings.new(this)
 val Long.farthings get() = (this over 1).farthings
 val Int.farthings get() = (this over 1).farthings
 
-/** @see Penny */
 class Halfpenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Halfpence, Halfpenny>(Halfpence, quantity) {
     companion object Halfpence : EnglishDenominations<Halfpence, Halfpenny>(
@@ -227,7 +226,6 @@ val FixedBigRational.pence get() = Pence.new(this)
 val Long.pence get() = (this over 1).pence
 val Int.pence get() = (this over 1).pence
 
-/** @see Penny */
 class Twopenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Twopence, Twopenny>(Twopence, quantity) {
     companion object Twopence : EnglishDenominations<Twopence, Twopenny>(
@@ -254,7 +252,6 @@ val FixedBigRational.halfGroats get() = Twopence.new(this)
 val Long.halfGroats get() = (this over 1).twopence
 val Int.halfGroats get() = (this over 1).twopence
 
-/** @see Penny */
 class Threepenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Threepence, Threepenny>(Threepenny, quantity) {
     companion object Threepence :
@@ -292,7 +289,6 @@ val FixedBigRational.groats get() = Groats.new(this)
 val Long.groats get() = (this over 1).groats
 val Int.groats get() = (this over 1).groats
 
-/** @see Penny */
 class Sixpenny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Sixpence, Sixpenny>(Sixpenny, quantity) {
     companion object Sixpence :
@@ -351,7 +347,6 @@ val FixedBigRational.florins get() = Florin.new(this)
 val Long.florins get() = (this over 1).florins
 val Int.florins get() = (this over 1).florins
 
-/** @see Angel */
 class QuarterAngel private constructor(quantity: FixedBigRational) :
     EnglishDenomination<QuarterAngels, QuarterAngel>(QuarterAngel, quantity) {
     companion object QuarterAngels :
@@ -369,7 +364,6 @@ val FixedBigRational.quarterAngels get() = QuarterAngel.new(this)
 val Long.quarterAngels get() = (this over 1).quarterAngels
 val Int.quarterAngels get() = (this over 1).quarterAngels
 
-/** @see Noble */
 class QuarterNoble private constructor(quantity: FixedBigRational) :
     EnglishDenomination<QuarterNobles, QuarterNoble>(QuarterNoble, quantity) {
     companion object QuarterNobles :
@@ -387,7 +381,6 @@ val FixedBigRational.quarterNobles get() = QuarterNoble.new(this)
 val Long.quarterNobles get() = (this over 1).quarterNobles
 val Int.quarterNobles get() = (this over 1).quarterNobles
 
-/** @see Crown */
 class HalfCrown private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfCrowns, HalfCrown>(HalfCrown, quantity) {
     companion object HalfCrowns :
@@ -405,7 +398,6 @@ val FixedBigRational.halfCrowns get() = HalfCrown.new(this)
 val Long.halfCrowns get() = (this over 1).halfCrowns
 val Int.halfCrowns get() = (this over 1).halfCrowns
 
-/** @see Noble */
 class HalfNoble private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfNobles, HalfNoble>(HalfNoble, quantity) {
     companion object HalfNobles :
@@ -439,7 +431,6 @@ val FixedBigRational.crowns get() = Crown.new(this)
 val Long.crowns get() = (this over 1).crowns
 val Int.crowns get() = (this over 1).crowns
 
-/** @see Angel */
 class HalfAngel private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfAngels, HalfAngel>(HalfAngel, quantity) {
     companion object HalfAngels :
@@ -543,7 +534,6 @@ val FixedBigRational.nobles get() = Noble.new(this)
 val Long.nobles get() = (this over 1).nobles
 val Int.nobles get() = (this over 1).nobles
 
-/** @see Sovereign */
 class HalfSovereign private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfSovereigns, HalfSovereign>(
         HalfSovereign,
@@ -564,7 +554,6 @@ val FixedBigRational.halfSovereigns get() = HalfSovereign.new(this)
 val Long.halfSovereigns get() = (this over 1).halfSovereigns
 val Int.halfSovereigns get() = (this over 1).halfSovereigns
 
-/** @see Guinea */
 class HalfGuinea private constructor(quantity: FixedBigRational) :
     EnglishDenomination<HalfGuineas, HalfGuinea>(HalfGuinea, quantity) {
     companion object HalfGuineas :
@@ -655,7 +644,6 @@ val FixedBigRational.guineas get() = Guinea.new(this)
 val Long.guineas get() = (this over 1).guineas
 val Int.guineas get() = (this over 1).guineas
 
-/** @see Sovereign */
 class DoubleSovereign private constructor(quantity: FixedBigRational) :
     EnglishDenomination<DoubleSovereigns, DoubleSovereign>(
         DoubleSovereign,
@@ -676,7 +664,6 @@ val FixedBigRational.doubleSovereigns get() = DoubleSovereign.new(this)
 val Long.doubleSovereigns get() = (this over 1).doubleSovereigns
 val Int.doubleSovereigns get() = (this over 1).doubleSovereigns
 
-/** @see Sovereign */
 class QuintupleSovereign private constructor(quantity: FixedBigRational) :
     EnglishDenomination<QuintupleSovereigns, QuintupleSovereign>(
         QuintupleSovereign,
