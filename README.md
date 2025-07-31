@@ -165,7 +165,7 @@ and with an alias for "tu'penny".
 - Between units of the same kind within a system:
   [`m3 into Ounces`](./src/main/kotlin/Main.kt#L171), or as
   shorthand, [`m1 /
-  Barleycorns`](./src/main/kotlin/Main.kt#L188)
+  Barleycorns`](./src/main/kotlin/Main.kt#L103)
 - Into multiple other units of the same kind within a system:
   [`m5.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
   Pennies)`](./src/main/kotlin/Main.kt#L201), or as shorthand,
