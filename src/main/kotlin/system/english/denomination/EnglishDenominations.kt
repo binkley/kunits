@@ -182,7 +182,9 @@ val FixedBigRational.halfpence get() = Halfpence.new(this)
 val Long.halfpence get() = (this over 1).halfpence
 val Int.halfpence get() = (this over 1).halfpence
 
-// Aliases for halfpence
+// Aliases for halfpence (pronounced "hay penny")
+// Typical API usage would simply call "halfpence".
+// This is an Easter egg.
 val FixedBigRational.`ha'penny` get() = Halfpence.new(this)
 val Long.`ha'penny` get() = (this over 1).halfpence
 val Int.`ha'penny` get() = (this over 1).halfpence
