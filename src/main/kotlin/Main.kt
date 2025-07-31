@@ -24,7 +24,7 @@ import hm.binkley.kunits.system.english.denomination.Penny.Pence
 import hm.binkley.kunits.system.english.denomination.Quarterfarthing.Quarterfarthings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Thirdfarthing.Thirdfarthings
-import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
+import hm.binkley.kunits.system.english.denomination.Threefarthing.Threefarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.kunits.system.english.denomination.`tu'penny`
@@ -132,7 +132,7 @@ fun main() {
     or ${p1 into Threepence}
     or ${p1 into Twopence}
     or ${p1 into Pence}
-    or ${p1 into ThreeFarthings}
+    or ${p1 into Threefarthings}
     or ${p1 into Halfpence}
     or ${p1 into Farthings}
     or ${p1 into Halffarthings}

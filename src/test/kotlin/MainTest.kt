@@ -38,7 +38,7 @@ Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
     or 80 thruppence
     or 120 tuppence
     or 240d
-    or 320 three farthings
+    or 320 threefarthings
     or 480 ha'pence
     or 960 farthings
     or 1920 halffarthings

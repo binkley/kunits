@@ -29,7 +29,7 @@ import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
 import hm.binkley.kunits.system.english.denomination.Thirdfarthing.Thirdfarthings
-import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
+import hm.binkley.kunits.system.english.denomination.Threefarthing.Threefarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.over
@@ -67,7 +67,7 @@ internal class EnglishDenominationsTest {
         1L.thirdfarthings shouldBe ((1 over 12).pence into Thirdfarthings)
         1L.halffarthings shouldBe ((1 over 8).pence into Halffarthings)
         1L.farthings shouldBe ((1 over 4).pence into Farthings)
-        1L.threeFarthings shouldBe ((3 over 4).pence into ThreeFarthings)
+        1L.threefarthings shouldBe ((3 over 4).pence into Threefarthings)
         1L.halfpence shouldBe ((1 over 2).pence into Halfpence)
         (1 over 1).`ha'penny` shouldBe 1.halfpence
         1L.`ha'penny` shouldBe 1.halfpence
@@ -125,8 +125,8 @@ internal class EnglishDenominationsTest {
         "${1.farthings}" shouldBe "1 farthings"
         "$Halfpenny" shouldBe "English denomination: halfpenny"
         "${1.halfpence}" shouldBe "1 ha'pence"
-        "$ThreeFarthings" shouldBe "English denomination: three farthing"
-        "${1.threeFarthings}" shouldBe "1 three farthings"
+        "$Threefarthings" shouldBe "English denomination: threefarthing"
+        "${1.threefarthings}" shouldBe "1 threefarthings"
         "$Penny" shouldBe "English denomination: penny"
         "${1.pence}" shouldBe "1d"
         "$Twopenny" shouldBe "English denomination: twopenny"

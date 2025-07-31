@@ -33,7 +33,7 @@ import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
 import hm.binkley.kunits.system.english.denomination.Thirdfarthing.Thirdfarthings
-import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
+import hm.binkley.kunits.system.english.denomination.Threefarthing.Threefarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.FixedBigRational
@@ -189,25 +189,25 @@ val FixedBigRational.`ha'penny` get() = Halfpence.new(this)
 val Long.`ha'penny` get() = (this over 1).halfpence
 val Int.`ha'penny` get() = (this over 1).halfpence
 
-class ThreeFarthing private constructor(quantity: FixedBigRational) :
-    EnglishDenomination<ThreeFarthings, ThreeFarthing>(
-        ThreeFarthing,
+class Threefarthing private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Threefarthings, Threefarthing>(
+        Threefarthing,
         quantity
     ) {
-    companion object ThreeFarthings :
-        EnglishDenominations<ThreeFarthings, ThreeFarthing>(
-            "three farthing",
+    companion object Threefarthings :
+        EnglishDenominations<Threefarthings, Threefarthing>(
+            "threefarthing",
             (3 over 4)
         ) {
-        override fun new(quantity: FixedBigRational) = ThreeFarthing(quantity)
+        override fun new(quantity: FixedBigRational) = Threefarthing(quantity)
         override fun format(quantity: FixedBigRational) =
-            "$quantity three farthings"
+            "$quantity threefarthings"
     }
 }
 
-val FixedBigRational.threeFarthings get() = ThreeFarthings.new(this)
-val Long.threeFarthings get() = (this over 1).threeFarthings
-val Int.threeFarthings get() = (this over 1).threeFarthings
+val FixedBigRational.threefarthings get() = Threefarthings.new(this)
+val Long.threefarthings get() = (this over 1).threefarthings
+val Int.threefarthings get() = (this over 1).threefarthings
 
 class Penny private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Pence, Penny>(Pence, quantity) {
