@@ -8,7 +8,9 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Dollar.Dollar
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Elim.Elims
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Farthing.Farthings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Groat.Groats
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.KingsShilling.KingsShillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Mite.Mites
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
@@ -43,11 +45,10 @@ sealed class AnkhMorporkDenomination<
 
 class Elim private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Elims, Elim>(Elim, quantity) {
-    companion object Elims :
-        AnkhMorporkDenominations<Elims, Elim>(
-            "elim",
-            (1 over 16)
-        ) {
+    companion object Elims : AnkhMorporkDenominations<Elims, Elim>(
+        "elim",
+        (1 over 16)
+    ) {
         override fun new(quantity: FixedBigRational) = Elim(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity elims"
     }
@@ -59,11 +60,10 @@ val Int.elims get() = (this over 1).elims
 
 class Mite private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Mites, Mite>(Mite, quantity) {
-    companion object Mites :
-        AnkhMorporkDenominations<Mites, Mite>(
-            "mite",
-            (1 over 8)
-        ) {
+    companion object Mites : AnkhMorporkDenominations<Mites, Mite>(
+        "mite",
+        (1 over 8)
+    ) {
         override fun new(quantity: FixedBigRational) = Mite(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity mites"
     }
@@ -75,11 +75,10 @@ val Int.mites get() = (this over 1).mites
 
 class Farthing private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Farthings, Farthing>(Farthing, quantity) {
-    companion object Farthings :
-        AnkhMorporkDenominations<Farthings, Farthing>(
-            "farthing",
-            (1 over 4)
-        ) {
+    companion object Farthings : AnkhMorporkDenominations<Farthings, Farthing>(
+        "farthing",
+        (1 over 4)
+    ) {
         override fun new(quantity: FixedBigRational) = Farthing(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity farthings"
     }
@@ -128,11 +127,10 @@ val Int.pennies get() = (this over 1).pence
 
 class Tuppenny private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Tuppence, Tuppenny>(Tuppenny, quantity) {
-    companion object Tuppence :
-        AnkhMorporkDenominations<Tuppence, Tuppenny>(
-            "tuppenny",
-            (2 over 1)
-        ) {
+    companion object Tuppence : AnkhMorporkDenominations<Tuppence, Tuppenny>(
+        "tuppenny",
+        (2 over 1)
+    ) {
         override fun new(quantity: FixedBigRational) = Tuppenny(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity tuppence"
     }
@@ -160,11 +158,10 @@ val Int.thruppence get() = (this over 1).thruppence
 
 class Groat private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Groats, Groat>(Groat, quantity) {
-    companion object Groats :
-        AnkhMorporkDenominations<Groats, Groat>(
-            "groat",
-            (4 over 1)
-        ) {
+    companion object Groats : AnkhMorporkDenominations<Groats, Groat>(
+        "groat",
+        (4 over 1)
+    ) {
         override fun new(quantity: FixedBigRational) = Groat(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity groats"
     }
@@ -176,11 +173,10 @@ val Int.groats get() = (this over 1).groats
 
 class Sixpence private constructor(quantity: FixedBigRational) :
     AnkhMorporkDenomination<Sixpences, Sixpence>(Sixpence, quantity) {
-    companion object Sixpences :
-        AnkhMorporkDenominations<Sixpences, Sixpence>(
-            "sixpence",
-            (6 over 1)
-        ) {
+    companion object Sixpences : AnkhMorporkDenominations<Sixpences, Sixpence>(
+        "sixpence",
+        (6 over 1)
+    ) {
         override fun new(quantity: FixedBigRational) = Sixpence(quantity)
         override fun format(quantity: FixedBigRational) = "$quantity sixpences"
     }
@@ -221,8 +217,29 @@ val FixedBigRational.dollars get() = Dollars.new(this)
 val Long.dollars get() = (this over 1).dollars
 val Int.dollars get() = (this over 1).dollars
 
+/** Same value as an Ankh-Morpork dollar but treated specially by the Watch. */
+class KingsShilling private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<KingsShillings, KingsShilling>(
+        KingsShillings,
+        quantity
+    ) {
+    companion object KingsShillings :
+        AnkhMorporkDenominations<KingsShillings, KingsShilling>(
+            "King's shilling",
+            (240 over 1)
+        ) {
+        override fun new(quantity: FixedBigRational) = KingsShilling(quantity)
+        override fun format(quantity: FixedBigRational) =
+            "$quantity King's shillings"
+    }
+}
+
+val FixedBigRational.kingsShillings get() = KingsShillings.new(this)
+val Long.kingsShillings get() = (this over 1).kingsShillings
+val Int.kingsShillings get() = (this over 1).kingsShillings
+
 class Guinea private constructor(quantity: FixedBigRational) :
-    AnkhMorporkDenomination<Guinea.Guineas, Guinea>(Guineas, quantity) {
+    AnkhMorporkDenomination<Guineas, Guinea>(Guineas, quantity) {
     companion object Guineas : AnkhMorporkDenominations<Guineas, Guinea>(
         "guinea",
         (252 over 1)
@@ -232,6 +249,6 @@ class Guinea private constructor(quantity: FixedBigRational) :
     }
 }
 
-val FixedBigRational.guineas get() = Guinea.Guineas.new(this)
+val FixedBigRational.guineas get() = Guineas.new(this)
 val Long.guineas get() = (this over 1).guineas
 val Int.guineas get() = (this over 1).guineas

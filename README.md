@@ -135,52 +135,52 @@ this file and code source in sync more than already the case.
 #### Creating measures of units
 
 - From `Int`s:
-  [`120.lines`](./src/main/kotlin/Main.kt#L82)
+  [`120.lines`](./src/main/kotlin/Main.kt#L86)
 - From `Long`s:
-  [`300L.drams`](./src/main/kotlin/Main.kt#L167)
+  [`300L.drams`](./src/main/kotlin/Main.kt#L171)
 - From `FixedBigRational`s:
-  [`(12_345 over 4).seconds`](./src/main/kotlin/Main.kt#L144)
+  [`(12_345 over 4).seconds`](./src/main/kotlin/Main.kt#L148)
 
 There are also aliases for some units such as
-[`1.twopence`](./src/main/kotlin/Main.kt#L118) is identical to `1.tuppence`
+[`1.twopence`](./src/main/kotlin/Main.kt#L122) is identical to `1.tuppence`
 and with an alias for "tu'penny".
 
 #### Arithmetic
 
 - Idempotency:
-  [`+m1`](./src/main/kotlin/Main.kt#L83)
+  [`+m1`](./src/main/kotlin/Main.kt#L87)
 - Negation:
-  [`-m1`](./src/main/kotlin/Main.kt#L84)
+  [`-m1`](./src/main/kotlin/Main.kt#L88)
 - Addition:
-  [`4.dollars + 33.cents`](./src/main/kotlin/Main.kt#L200)
+  [`4.dollars + 33.cents`](./src/main/kotlin/Main.kt#L208)
 - Subtraction:
-  [`(m1 into Hands) - m1`](./src/main/kotlin/Main.kt#L99)
+  [`(m1 into Hands) - m1`](./src/main/kotlin/Main.kt#L103)
 - Multiplication:
-  [`m2 * 4`](./src/main/kotlin/Main.kt#L156)
+  [`m2 * 4`](./src/main/kotlin/Main.kt#L160)
 - Division:
-  [`m2 / 4`](./src/main/kotlin/Main.kt#L158)
+  [`m2 / 4`](./src/main/kotlin/Main.kt#L162)
 
 #### Converting measures into other units
 
 - Between units of the same kind within a system:
-  [`m3 into Ounces`](./src/main/kotlin/Main.kt#L171), or as
+  [`m3 into Ounces`](./src/main/kotlin/Main.kt#L175), or as
   shorthand, [`m1 /
-  Barleycorns`](./src/main/kotlin/Main.kt#L103)
+  Barleycorns`](./src/main/kotlin/Main.kt#L107)
 - Into multiple other units of the same kind within a system:
   [`m5.into(DollarCoins, HalfDollars, Quarters, Dimes, Nickels,
-  Pennies)`](./src/main/kotlin/Main.kt#L201), or as shorthand,
-  [`m5 % usLooseChange`](./src/main/kotlin/Main.kt#L217)
+  Pennies)`](./src/main/kotlin/Main.kt#L209), or as shorthand,
+  [`m5 % usLooseChange`](./src/main/kotlin/Main.kt#L225)
 - Between units of the same kind between different systems:
   [`1.smoots intoEnglish
-  Inches`](./src/main/kotlin/Main.kt#L235)
+  Inches`](./src/main/kotlin/Main.kt#L243)
 
 #### Pretty printing
 
 - Default formatting:
   [`"${220.yards} IN $English IS ${220.yards intoFFF Furlongs} IN
-  $FFF"`](./src/main/kotlin/Main.kt#L234)
+  $FFF"`](./src/main/kotlin/Main.kt#L242)
 - Custom formatting:
-  [`"- $it (${it.format()})"`](./src/main/kotlin/Main.kt#L221)
+  [`"- $it (${it.format()})"`](./src/main/kotlin/Main.kt#L229)
 
 ### API
 

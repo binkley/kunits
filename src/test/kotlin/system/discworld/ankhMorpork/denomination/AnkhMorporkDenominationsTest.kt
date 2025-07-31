@@ -7,6 +7,7 @@ import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Farthing.Fart
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Groat.Groats
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Halfpenny.Halfpennies
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.KingsShilling.KingsShillings
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Mite.Mites
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny.Pence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling.Shillings
@@ -35,6 +36,7 @@ internal class AnkhMorporkDenominationsTest {
         1L.sixpences shouldBe (2.thruppence into Sixpences)
         1L.shillings shouldBe (4.thruppence into Shillings)
         1L.dollars shouldBe (20.shillings into Dollars)
+        1L.kingsShillings shouldBe (1.dollars into KingsShillings)
         1L.guineas shouldBe (21.shillings into Guineas)
     }
 
@@ -62,6 +64,8 @@ internal class AnkhMorporkDenominationsTest {
         "${1.shillings}" shouldBe "1s"
         "$Dollar" shouldBe "Ankh-Morpork denomination: dollar"
         "${1.dollars}" shouldBe "$1"
+        "$KingsShilling" shouldBe "Ankh-Morpork denomination: King's shilling"
+        "${1.kingsShillings}" shouldBe "1 King's shillings"
         "$Guinea" shouldBe "Ankh-Morpork denomination: guinea"
         "${1.guineas}" shouldBe "1 guineas"
     }

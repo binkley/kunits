@@ -105,6 +105,7 @@ AND IS THE SAME AS [4 100¢, 0 50¢, 1 25¢, 0 10¢, 1 5¢, 3 1¢] (true)
 
 == DISCWORLD DENOMINATIONS
 $1 IS 240p IN Ankh-Morpork AND 100¢ IN Lancre
+1 King's shillings IS $1
 1 guineas IS 21s
             """
     }
