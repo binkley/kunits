@@ -39,6 +39,7 @@ import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
 import hm.binkley.math.fixed.FixedBigRational
 import hm.binkley.math.fixed.FixedBigRational.Companion.ONE
 import hm.binkley.math.fixed.over
+import hm.binkley.math.isNegative
 import hm.binkley.math.isZero
 
 /** The English units of denomination. */
@@ -68,13 +69,15 @@ sealed class EnglishDenomination<
  */
 fun EnglishDenomination<*, *>.formatTraditional(): String {
     if (quantity.isZero()) return "0d"
-    val buffer = StringBuffer()
     val (pounds, shillings, pence) = into(Pounds, Shillings, Pence)
-    val lbs = pounds.quantity
-    val s = shillings.quantity
-    val d = pence.quantity
-    if (s.isZero() && d.isZero()) return "£$lbs"
-    if (!lbs.isZero()) buffer.append("$lbs/")
+    val sign = if (quantity.isNegative()) "-" else ""
+    val lbs = pounds.quantity.absoluteValue
+    val s = shillings.quantity.absoluteValue
+    val d = pence.quantity.absoluteValue
+    if (s.isZero() && d.isZero()) return "$sign£$lbs"
+    if (lbs.isZero() && s.isZero()) return "$sign${d}d"
+    val buffer = StringBuffer(sign)
+    if (!lbs.isZero()) buffer.append("£$lbs ")
     if (s.isZero()) buffer.append("-/") else buffer.append("$s/")
     if (d.isZero()) buffer.append("-") else buffer.append("$d")
     return buffer.toString()

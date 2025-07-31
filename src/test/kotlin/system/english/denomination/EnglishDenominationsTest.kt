@@ -11,10 +11,10 @@ import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfAngel.HalfAngels
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
-import hm.binkley.kunits.system.english.denomination.Halffarthing.Halffarthings
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
+import hm.binkley.kunits.system.english.denomination.Halffarthing.Halffarthings
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Leopard.Leopards
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
@@ -22,8 +22,8 @@ import hm.binkley.kunits.system.english.denomination.Mite.Mites
 import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
 import hm.binkley.kunits.system.english.denomination.QuarterAngel.QuarterAngels
-import hm.binkley.kunits.system.english.denomination.Quarterfarthing.Quarterfarthings
 import hm.binkley.kunits.system.english.denomination.QuarterNoble.QuarterNobles
+import hm.binkley.kunits.system.english.denomination.Quarterfarthing.Quarterfarthings
 import hm.binkley.kunits.system.english.denomination.QuintupleSovereign.QuintupleSovereigns
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
@@ -42,12 +42,21 @@ internal class EnglishDenominationsTest {
     @ParameterizedTest(name = "{0} lbs, {1} d, {2} p → {3}")
     @CsvSource(
         // pounds, shillings, pence, expected
-        "0, 0, 0, 0d",
-        "0, 0, 1, -/1",
-        "0, 1, 0, 1/-",
-        "1, 0, 0, £1",
-        "0, 2, 4, 2/4",
-        "2, 42, 4, 4/2/4"
+        "0, 0, 0, 0d",           // nothing
+        "0, 0, 1, 1d",          // just pence
+        "0, 1, 0, 1/-",          // just shillings
+        "1, 0, 0, £1",           // just pounds
+        "0, 2, 4, 2/4",          // mixed shillings + pence
+        "2, 42, 4, £4 2/4",      // shilling overflow
+        "0, 1, 13, 2/1",         // pence overflow
+        "1, 25, 25, £2 7/1",     // both shilling & pence overflow
+        "0, 5, 0, 5/-",          // trailing zero part suppressed
+        "3, 0, 6, £3 -/6",       // zero shillings with pence
+        "10, 19, 11, £10 19/11", // boundary case (no overflow)
+        "-1, 0, 0, -£1",         // negative pounds
+        "0,-1, 0, -1/-",         // negative shillings
+        "0, 0,-6, -6d",          // negative pence
+        "-1,-2,-6, -£1 2/6"      // negative total
     )
     fun `should format traditionally`(
         pounds: Int,
@@ -178,10 +187,10 @@ internal class EnglishDenominationsTest {
         "$Guinea" shouldBe "English denomination: guinea"
         "${1.guineas}" shouldBe "1gns"
         "$DoubleSovereign" shouldBe
-            "English denomination: gold double-sovereign"
+                "English denomination: gold double-sovereign"
         "${1.doubleSovereigns}" shouldBe "1 gold double-sovereigns"
         "$QuintupleSovereign" shouldBe
-            "English denomination: gold quintuple-sovereign"
+                "English denomination: gold quintuple-sovereign"
         "${1.quintupleSovereigns}" shouldBe "1 gold quintuple-sovereigns"
     }
 }

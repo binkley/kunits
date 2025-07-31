@@ -81,7 +81,7 @@ No money is 0d
 2 shillings is 2/-
 30 pence is 2/6
 240 pence is £1
-£247⁄60 IS 4/2/4
+£247⁄60 IS £4 2/4
 
 == USD DENOMINATIONS
 $4.33 MAKES CHANGE IN 9 COINS AS:
