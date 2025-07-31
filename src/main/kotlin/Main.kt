@@ -15,15 +15,15 @@ import hm.binkley.kunits.system.english.denomination.Florin.Florins
 import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
-import hm.binkley.kunits.system.english.denomination.HalfFarthing.HalfFarthings
+import hm.binkley.kunits.system.english.denomination.Halffarthing.Halffarthings
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.Halfpenny.Halfpence
 import hm.binkley.kunits.system.english.denomination.Mark.Marks
 import hm.binkley.kunits.system.english.denomination.Mite.Mites
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
-import hm.binkley.kunits.system.english.denomination.QuarterFarthing.QuarterFarthings
+import hm.binkley.kunits.system.english.denomination.Quarterfarthing.Quarterfarthings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
-import hm.binkley.kunits.system.english.denomination.ThirdFarthing.ThirdFarthings
+import hm.binkley.kunits.system.english.denomination.Thirdfarthing.Thirdfarthings
 import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
@@ -135,9 +135,9 @@ fun main() {
     or ${p1 into ThreeFarthings}
     or ${p1 into Halfpence}
     or ${p1 into Farthings}
-    or ${p1 into HalfFarthings}
-    or ${p1 into ThirdFarthings}
-    or ${p1 into QuarterFarthings}
+    or ${p1 into Halffarthings}
+    or ${p1 into Thirdfarthings}
+    or ${p1 into Quarterfarthings}
     or ${p1 into Mites}"""
     )
 

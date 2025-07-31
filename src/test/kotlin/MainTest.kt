@@ -41,9 +41,9 @@ Complex expression -> (yards+feet-barleycorns into hands) 5⁄2 hh
     or 320 three farthings
     or 480 ha'pence
     or 960 farthings
-    or 1920 half farthings
-    or 2880 third farthings
-    or 3840 quarter farthings
+    or 1920 halffarthings
+    or 2880 thirdfarthings
+    or 3840 quarterfarthings
     or 5760 mites
 
 == OUTDATED TIMES

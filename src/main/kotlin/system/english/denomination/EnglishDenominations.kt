@@ -14,7 +14,7 @@ import hm.binkley.kunits.system.english.denomination.Groat.Groats
 import hm.binkley.kunits.system.english.denomination.Guinea.Guineas
 import hm.binkley.kunits.system.english.denomination.HalfAngel.HalfAngels
 import hm.binkley.kunits.system.english.denomination.HalfCrown.HalfCrowns
-import hm.binkley.kunits.system.english.denomination.HalfFarthing.HalfFarthings
+import hm.binkley.kunits.system.english.denomination.Halffarthing.Halffarthings
 import hm.binkley.kunits.system.english.denomination.HalfGuinea.HalfGuineas
 import hm.binkley.kunits.system.english.denomination.HalfNoble.HalfNobles
 import hm.binkley.kunits.system.english.denomination.HalfSovereign.HalfSovereigns
@@ -26,13 +26,13 @@ import hm.binkley.kunits.system.english.denomination.Noble.Nobles
 import hm.binkley.kunits.system.english.denomination.Penny.Pence
 import hm.binkley.kunits.system.english.denomination.Pound.Pounds
 import hm.binkley.kunits.system.english.denomination.QuarterAngel.QuarterAngels
-import hm.binkley.kunits.system.english.denomination.QuarterFarthing.QuarterFarthings
+import hm.binkley.kunits.system.english.denomination.Quarterfarthing.Quarterfarthings
 import hm.binkley.kunits.system.english.denomination.QuarterNoble.QuarterNobles
 import hm.binkley.kunits.system.english.denomination.QuintupleSovereign.QuintupleSovereigns
 import hm.binkley.kunits.system.english.denomination.Shilling.Shillings
 import hm.binkley.kunits.system.english.denomination.Sixpenny.Sixpence
 import hm.binkley.kunits.system.english.denomination.Sovereign.Sovereigns
-import hm.binkley.kunits.system.english.denomination.ThirdFarthing.ThirdFarthings
+import hm.binkley.kunits.system.english.denomination.Thirdfarthing.Thirdfarthings
 import hm.binkley.kunits.system.english.denomination.ThreeFarthing.ThreeFarthings
 import hm.binkley.kunits.system.english.denomination.Threepenny.Threepence
 import hm.binkley.kunits.system.english.denomination.Twopenny.Twopence
@@ -94,62 +94,62 @@ val FixedBigRational.mites get() = Mites.new(this)
 val Long.mites get() = (this over 1).mites
 val Int.mites get() = (this over 1).mites
 
-class QuarterFarthing private constructor(quantity: FixedBigRational) :
-    EnglishDenomination<QuarterFarthings, QuarterFarthing>(
-        QuarterFarthings,
+class Quarterfarthing private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Quarterfarthings, Quarterfarthing>(
+        Quarterfarthings,
         quantity
     ) {
-    companion object QuarterFarthings :
-        EnglishDenominations<QuarterFarthings, QuarterFarthing>(
-            "quarter farthing",
+    companion object Quarterfarthings :
+        EnglishDenominations<Quarterfarthings, Quarterfarthing>(
+            "quarterfarthing",
             (1 over 16)
         ) {
-        override fun new(quantity: FixedBigRational) = QuarterFarthing(quantity)
+        override fun new(quantity: FixedBigRational) = Quarterfarthing(quantity)
         override fun format(quantity: FixedBigRational) =
-            "$quantity quarter farthings"
+            "$quantity quarterfarthings"
     }
 }
 
-val FixedBigRational.quarterFarthings get() = QuarterFarthings.new(this)
-val Long.quarterFarthings get() = (this over 1).quarterFarthings
-val Int.quarterFarthings get() = (this over 1).quarterFarthings
+val FixedBigRational.quarterfarthings get() = Quarterfarthings.new(this)
+val Long.quarterfarthings get() = (this over 1).quarterfarthings
+val Int.quarterfarthings get() = (this over 1).quarterfarthings
 
-class ThirdFarthing private constructor(quantity: FixedBigRational) :
-    EnglishDenomination<ThirdFarthings, ThirdFarthing>(
-        ThirdFarthings,
+class Thirdfarthing private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Thirdfarthings, Thirdfarthing>(
+        Thirdfarthings,
         quantity
     ) {
-    companion object ThirdFarthings :
-        EnglishDenominations<ThirdFarthings, ThirdFarthing>(
-            "third farthing",
+    companion object Thirdfarthings :
+        EnglishDenominations<Thirdfarthings, Thirdfarthing>(
+            "thirdfarthing",
             (1 over 12)
         ) {
-        override fun new(quantity: FixedBigRational) = ThirdFarthing(quantity)
+        override fun new(quantity: FixedBigRational) = Thirdfarthing(quantity)
         override fun format(quantity: FixedBigRational) =
-            "$quantity third farthings"
+            "$quantity thirdfarthings"
     }
 }
 
-val FixedBigRational.thirdFarthings get() = ThirdFarthings.new(this)
-val Long.thirdFarthings get() = (this over 1).thirdFarthings
-val Int.thirdFarthings get() = (this over 1).thirdFarthings
+val FixedBigRational.thirdfarthings get() = Thirdfarthings.new(this)
+val Long.thirdfarthings get() = (this over 1).thirdfarthings
+val Int.thirdfarthings get() = (this over 1).thirdfarthings
 
-class HalfFarthing private constructor(quantity: FixedBigRational) :
-    EnglishDenomination<HalfFarthings, HalfFarthing>(HalfFarthings, quantity) {
-    companion object HalfFarthings :
-        EnglishDenominations<HalfFarthings, HalfFarthing>(
-            "half farthing",
+class Halffarthing private constructor(quantity: FixedBigRational) :
+    EnglishDenomination<Halffarthings, Halffarthing>(Halffarthings, quantity) {
+    companion object Halffarthings :
+        EnglishDenominations<Halffarthings, Halffarthing>(
+            "halffarthing",
             (1 over 8)
         ) {
-        override fun new(quantity: FixedBigRational) = HalfFarthing(quantity)
+        override fun new(quantity: FixedBigRational) = Halffarthing(quantity)
         override fun format(quantity: FixedBigRational) =
-            "$quantity half farthings"
+            "$quantity halffarthings"
     }
 }
 
-val FixedBigRational.halfFarthings get() = HalfFarthings.new(this)
-val Long.halfFarthings get() = (this over 1).halfFarthings
-val Int.halfFarthings get() = (this over 1).halfFarthings
+val FixedBigRational.halffarthings get() = Halffarthings.new(this)
+val Long.halffarthings get() = (this over 1).halffarthings
+val Int.halffarthings get() = (this over 1).halffarthings
 
 class Farthing private constructor(quantity: FixedBigRational) :
     EnglishDenomination<Farthings, Farthing>(Farthings, quantity) {
