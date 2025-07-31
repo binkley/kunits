@@ -71,11 +71,12 @@ fun EnglishDenomination<*, *>.formatTraditional(): String {
     val buffer = StringBuffer()
     val (pounds, shillings, pence) = into(Pounds, Shillings, Pence)
     val lbs = pounds.quantity
-    val d = shillings.quantity
-    val p = pence.quantity
+    val s = shillings.quantity
+    val d = pence.quantity
+    if (s.isZero() && d.isZero()) return "£$lbs"
     if (!lbs.isZero()) buffer.append("$lbs/")
-    if (d.isZero()) buffer.append("-/") else buffer.append("$d/")
-    if (p.isZero()) buffer.append("-") else buffer.append("$p")
+    if (s.isZero()) buffer.append("-/") else buffer.append("$s/")
+    if (d.isZero()) buffer.append("-") else buffer.append("$d")
     return buffer.toString()
 }
 

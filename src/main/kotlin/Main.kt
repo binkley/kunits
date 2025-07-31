@@ -194,6 +194,10 @@ fun main() {
 
     println()
     println("== TRADITIONAL ENGLISH COINAGE")
+    println("No money is ${0.pence.formatTraditional()}")
+    println("2 shillings is ${2.shillings.formatTraditional()}")
+    println("30 pence is ${30.pence.formatTraditional()}")
+    println("240 pence is ${240.pence.formatTraditional()}")
     val m4 = 2.pounds + 42.shillings + 4.pence
     println("$m4 IS ${m4.formatTraditional()}")
 

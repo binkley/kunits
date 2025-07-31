@@ -77,6 +77,10 @@ A stone is 14 lbs: 14 lbs
 Change of weights -> (multiple) 75⁄896 st
 
 == TRADITIONAL ENGLISH COINAGE
+No money is 0d
+2 shillings is 2/-
+30 pence is 2/6
+240 pence is £1
 £247⁄60 IS 4/2/4
 
 == USD DENOMINATIONS
