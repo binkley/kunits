@@ -220,3 +220,18 @@ class Dollar private constructor(quantity: FixedBigRational) :
 val FixedBigRational.dollars get() = Dollars.new(this)
 val Long.dollars get() = (this over 1).dollars
 val Int.dollars get() = (this over 1).dollars
+
+class Guinea private constructor(quantity: FixedBigRational) :
+    AnkhMorporkDenomination<Guinea.Guineas, Guinea>(Guineas, quantity) {
+    companion object Guineas : AnkhMorporkDenominations<Guineas, Guinea>(
+        "guinea",
+        (252 over 1)
+    ) {
+        override fun new(quantity: FixedBigRational) = Guinea(quantity)
+        override fun format(quantity: FixedBigRational) = "$quantity guineas"
+    }
+}
+
+val FixedBigRational.guineas get() = Guinea.Guineas.new(this)
+val Long.guineas get() = (this over 1).guineas
+val Int.guineas get() = (this over 1).guineas

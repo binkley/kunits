@@ -3,6 +3,8 @@ package hm.binkley.kunits
 import hm.binkley.kunits.system.discworld.ankhMorpork.AnkhMorpork
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Penny as AnkhMorporkPence
 import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.dollars as ankhMorporkDollars
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.guineas as ankhMorporkGuineas
+import hm.binkley.kunits.system.discworld.ankhMorpork.denomination.Shilling as AnkhMorporkShilling
 import hm.binkley.kunits.system.discworld.intoLancre
 import hm.binkley.kunits.system.discworld.lancre.Lancre
 import hm.binkley.kunits.system.discworld.lancre.denomination.Penny as LancrePennies
@@ -254,4 +256,6 @@ ${1.fffFurlongs} IN $FFF IS ${1.fffFurlongs intoEnglish Yards} IN $English
 $amd IS ${amd into AnkhMorporkPence} IN $AnkhMorpork AND ${amd intoLancre LancrePennies} IN $Lancre
         """.trimIndent()
     )
+    val amg = 1.ankhMorporkGuineas
+    println("$amg IS ${amg into AnkhMorporkShilling}")
 }
