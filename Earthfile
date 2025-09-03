@@ -12,7 +12,7 @@ build:
     COPY pom.xml .
     COPY config config
     COPY src src
-    RUN --mount type=cache,id=maven-cache,target=/root/.m2 --secret OWASP_NVD_API_KEY ./mvnw --batch-mode --no-transfer-progress clean verify site
+    RUN --mount type=cache,id=maven-cache,target=/root/.m2 --secret OWASP_NVD_API_KEY ./mvnw --batch-mode --no-transfer-progress clean verify
 
     # For CI so that GitHub can copy artifacts:
     # Just copy everything rather than maintain a whitelist of files/dirs.
