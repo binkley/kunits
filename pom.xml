@@ -202,6 +202,9 @@
                 <version>${maven-enforcer-plugin.version}</version>
                 <configuration>
                     <rules>
+                        <requireJavaVersion>
+                            <version>${jdk.version}</version>
+                        </requireJavaVersion>
                         <requireMavenVersion>
                             <version>${maven.version}</version>
                         </requireMavenVersion>
