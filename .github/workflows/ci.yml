@@ -25,14 +25,14 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v5
 
+      # Maven handles caching as dependency changes
       - uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: m2-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: m2-${{ runner.os }}-
 
-# Earthly handles caching as a Docker layer
-
+      # Earthly handles caching as a Docker layer
       - name: Use Earthly
         uses: earthly/actions-setup@v1
         with:
@@ -45,9 +45,7 @@ jobs:
       - name: Execute run script
         run: ./build-as-ci +run
 
-# Save artifacts for build 
-# See Earthfile that copies these from container to local
-
+      # Save artifacts for build
       - name: Save Jar for main
         uses: actions/upload-artifact@v4
         with:
@@ -55,8 +53,7 @@ jobs:
           if-no-files-found: error
           path: target/kunits-0-SNAPSHOT.jar
 
-# Coverage badge report
-
+      # Support for coverage badge report. See "Generate coverage badge" step.
       - name: Save coverage report
         uses: actions/upload-artifact@v4
         with:
@@ -64,10 +61,9 @@ jobs:
           if-no-files-found: error
           path: target/site/jacoco/
 
-# Generate coverage badge for README
-# Gradle builds are similar but will require configuration the path for the
-# CSV JaCoCo report.
-
+      # Generate coverage badge shown in the README
+      # Gradle builds are similar but will require configuration the path for the
+      # CSV JaCoCo report.
       - name: Generate coverage badge
         uses: cicirello/jacoco-badge-generator@v2
         with:
