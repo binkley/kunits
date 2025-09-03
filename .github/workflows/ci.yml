@@ -25,6 +25,12 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v5
 
+      - uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: m2-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: m2-${{ runner.os }}-
+
 # Earthly handles caching as a Docker layer
 
       - name: Use Earthly
