@@ -34,10 +34,10 @@ jobs:
           version: ^0.8.0
 
       - name: Build and test
-        run: earthly --secret OWASP_NVD_API_KEY +build
+        run: ./build-as-ci +build
 
       - name: Execute run script
-        run: earthly --secret OWASP_NVD_API_KEY +run
+        run: ./build-as-ci +run
 
 # Save artifacts for build 
 # See Earthfile that copies these from container to local

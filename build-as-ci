@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+export PS4='+${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]:+${FUNCNAME[0]}():} '
+
+set -e
+set -u
+set -o pipefail
+
+# Notes:
+# - The whole point is reproducible builds: leverage Maven to use the timestamp
+#   of the last commit as the internal timestamp in built jars so that artifacts
+#   are SHA exactly the same
+# - Maven wants "Z" and not "+00:00" for the timestamp time zone
+# - Earthly is picky about command line ordering, and inconsistent on values
+
+case $# in
+0 )
+    echo "$0: Required Earthly target missing: +build or +run" >&2
+    exit 2
+    ;;
+esac
+
+build_ts="$(TZ=UTC git show --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format='%cd' --quiet)"
+
+for target; do
+    earthly \
+        --secret OWASP_NVD_API_KEY \
+        "$target" \
+        --BUILD_TS="$build_ts"
+done

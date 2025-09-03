@@ -5,14 +5,27 @@ WORKDIR /code
 # This adds a layer to the image
 CACHE --id maven-cache --persist maven-cache
 
+copy:
+    COPY .mvn .mvn
+    COPY config config
+    COPY mvnw .
+    COPY pom.xml .
+    COPY run .
+    COPY src src
+
 # build builds and tests with Maven, and saves the target/ directory
 build:
-    COPY mvnw .
-    COPY .mvn .mvn
-    COPY pom.xml .
-    COPY config config
-    COPY src src
-    RUN --mount type=cache,id=maven-cache,target=/root/.m2 --secret OWASP_NVD_API_KEY ./mvnw --batch-mode --no-transfer-progress clean verify
+    FROM +copy
+    ARG --required BUILD_TS
+
+    RUN \
+        --mount type=cache,id=maven-cache,target=/root/.m2 \
+        --mount type=secret,id=OWASP_NVD_API_KEY,target=/run/secrets/OWASP_NVD_API_KEY \
+        ./mvnw \
+            --batch-mode \
+            --define build.ts="$BUILD_TS" \
+            --no-transfer-progress \
+            clean verify
 
     # For CI so that GitHub can copy artifacts:
     # Just copy everything rather than maintain a whitelist of files/dirs.
@@ -21,5 +34,8 @@ build:
 # run runs the demo program with Maven, building if needed
 run:
     FROM +build
-    COPY run .
-    RUN --mount type=cache,id=maven-cache,target=/root/.m2 ./run
+
+    RUN \
+        --mount type=cache,id=maven-cache,target=/root/.m2 \
+        --no-cache \
+        ./run

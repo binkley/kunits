@@ -56,6 +56,7 @@
 
     <properties>
         <!-- @formatter:off -->
+        <build.ts>${git.commit.time}</build.ts> <!-- For CI -->
         <buildplan-maven-plugin.version>1.5</buildplan-maven-plugin.version>
         <coverage.branches>100</coverage.branches>
         <coverage.instructions>98</coverage.instructions>
@@ -92,7 +93,7 @@
         <pitest-maven.version>1.20.2</pitest-maven.version>
         <pitest.skip>false</pitest.skip>
         <project.build.sourceEncoding>${java.charset}</project.build.sourceEncoding>
-        <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
+        <project.build.outputTimestamp>${build.ts}</project.build.outputTimestamp>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
         <system-lambda.version>1.2.1</system-lambda.version>
         <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
@@ -212,6 +213,11 @@
                 <configuration>
                     <dateFormat>yyyy-MM-dd'T'HH:mm:ss'Z'</dateFormat>
                     <dateFormatTimeZone>UTC</dateFormatTimeZone>
+                    <!--
+                    CI passes in the timestamp externally since there is no
+                    .git directory inside the Earthly container.
+                    -->
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
                     <generateGitPropertiesFile>false</generateGitPropertiesFile>
                 </configuration>
             </plugin>
