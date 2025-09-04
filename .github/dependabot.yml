@@ -4,7 +4,31 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      maven-minors:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      gha-core:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+        patterns:
+          - "actions/*"
+      gha-third-party:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "actions/*"
