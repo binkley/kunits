@@ -13,7 +13,7 @@ copy:
     COPY run .
     COPY src src
 
-# build builds and tests with Maven, and saves the target/ directory
+# Builds and tests with Maven, and saves the target/ directory
 build:
     FROM +copy
     ARG --required BUILD_TS
@@ -31,7 +31,7 @@ build:
     # Just copy everything rather than maintain a whitelist of files/dirs.
     SAVE ARTIFACT --keep-ts target AS LOCAL target
 
-# run runs the demo program with Maven, building if needed
+# Runs the demo program with Maven, building if needed
 run:
     FROM +build
 
@@ -39,3 +39,34 @@ run:
         --mount type=cache,id=maven-cache,target=/root/.m2 \
         --no-cache \
         ./run
+
+# Builds for checking that jar timestamps match for the same build
+compare-jar-checksums-on-rebuild:
+    FROM +copy
+    ARG --required BUILD_TS
+
+    RUN \
+        --mount type=cache,id=maven-cache,target=/root/.m2 \
+        --no-cache \
+        ./mvnw \
+            --batch-mode \
+            --define build.ts="$BUILD_TS" \
+            --define skipTests \
+            --no-transfer-progress \
+            --quiet \
+            clean package
+    LET SUM1 = $(sha256sum ./target/kunits-0-SNAPSHOT.jar)
+
+    RUN \
+        --mount type=cache,id=maven-cache,target=/root/.m2 \
+        --no-cache \
+        ./mvnw \
+            --batch-mode \
+            --define build.ts="$BUILD_TS" \
+            --define skipTests \
+            --no-transfer-progress \
+            --quiet \
+            clean package
+    LET SUM2 = $(sha256sum ./target/kunits-0-SNAPSHOT.jar)
+
+    RUN test "$SUM1" = "$SUM2"
