@@ -123,8 +123,8 @@ operator fun <
     (this into denominator.unit).quantity / denominator.quantity
 
 /**
- * Expresses this measure in the units of [denominator], shorthand for
- * `this into denominator`.
+ * Syntactic sugar for `this into denominator`
+ * Expresses this measure in the units of [denominator].
  *
  * @see [into]
  */
@@ -168,8 +168,10 @@ operator fun <
 ): M = unit.new(quantity / factor)
 
 /**
+ * Syntactic sugar for `this into units`.
  * Divides up the measure by [units].
- * Shorthand for `this into units`.
+ *
+ * @see into
  */
 operator fun <
     K : Kind,
