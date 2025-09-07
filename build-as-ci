@@ -15,7 +15,7 @@ set -o pipefail
 
 case $# in
 0 )
-    echo "$0: Required Earthly target missing: +build or +run" >&2
+    echo "$0: Required Earthly target missing: +build, +run, or +compare-jar-checksums-on-rebuild" >&2
     exit 2
     ;;
 esac
