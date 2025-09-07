@@ -62,6 +62,9 @@ sealed class EnglishDenomination<
 /**
  * Formats this amount in traditional pre-decimal English currency style.
  *
+ * _NB_ &mdash; there are no extant non-decimal currencies in the JDK, so you
+ * cannot rely on `NumberFormat.format(BigDecimal)` to format for you.
+ *
  * Examples:
  * - 0 pence is "0d" rather than "-/-/-"
  * - 2 shillings and 4 pence is "2/4" (no leading "-/" for zero pounds)

@@ -24,9 +24,6 @@ import hm.binkley.math.fixed.FixedBigRational.Companion.TEN
 import hm.binkley.math.fixed.FixedBigRational.Companion.TWO
 import hm.binkley.math.fixed.over
 import java.text.NumberFormat
-import java.util.Locale.US
-
-private val currencyFormat = NumberFormat.getCurrencyInstance(US)
 
 /** The USD denominations. */
 sealed class USDDenominations<
@@ -49,11 +46,16 @@ sealed class USDDenomination<
  * Formats USD money following US locale rules.
  * Example: "$4.33".
  *
+ * **NOTE**: The JDK formatting classes are _not_ thread-safe.
+ * Pass in a "currency instance" for the JDK `NumberFormat`.
+ * For example, with USD denominations, you can use
+ * `NumberFormat.getCurrencyInstance(US)`.
+ *
  * NB &mdash; use `Measure<Denomination, USD, *, *>` rather than
  * `USDDenomination<*, *>` to better match generics using [into].
  */
-fun Measure<Denomination, USD, *, *>.format(): String =
-    currencyFormat.format((this into Dollars).quantity.toBigDecimal())
+fun Measure<Denomination, USD, *, *>.format(formatter: NumberFormat): String =
+    formatter.format((this into Dollars).quantity.toBigDecimal())
 
 class HundredDollar private constructor(quantity: FixedBigRational) :
     USDDenomination<HundredDollars, HundredDollar>(HundredDollars, quantity) {

@@ -79,6 +79,8 @@ import hm.binkley.kunits.system.usd.denomination.cents
 import hm.binkley.kunits.system.usd.denomination.dollars
 import hm.binkley.kunits.system.usd.denomination.format
 import hm.binkley.math.fixed.over
+import java.text.NumberFormat
+import java.util.Locale.US
 
 /** Runs the demo. */
 fun main() {
@@ -224,11 +226,12 @@ fun main() {
     )
     val alsoCoins = m5 % usLooseChange
 
+    val usdFormatter = NumberFormat.getCurrencyInstance(US)
     val coinCount = usCoins.map { it.quantity }.sumOf { it.toInt() }
-    println("${m5.format()} MAKES CHANGE IN $coinCount COINS AS:")
-    usCoins.forEach { println("- $it (${it.format()})") }
+    println("${m5.format(usdFormatter)} MAKES CHANGE IN $coinCount COINS AS:")
+    usCoins.forEach { println("- $it (${it.format(usdFormatter)})") }
     val recheckM4 = usCoins.fold(0.dollars) { sum, next -> sum + next }
-    println("WHICH SUMS TO ${recheckM4.format()}")
+    println("WHICH SUMS TO ${recheckM4.format(usdFormatter)}")
     println("AND IS THE SAME AS $alsoCoins (${usCoins == alsoCoins})")
 
     val diffOrderUsLooseChange = listOf(

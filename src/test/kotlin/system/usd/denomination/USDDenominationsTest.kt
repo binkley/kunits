@@ -1,6 +1,7 @@
 package hm.binkley.kunits.system.usd.denomination
 
 import hm.binkley.kunits.into
+import hm.binkley.kunits.plus
 import hm.binkley.kunits.system.usd.denomination.Dime.Dimes
 import hm.binkley.kunits.system.usd.denomination.Dollar.Dollars
 import hm.binkley.kunits.system.usd.denomination.DollarCoin.DollarCoins
@@ -13,9 +14,12 @@ import hm.binkley.kunits.system.usd.denomination.Quarter.Quarters
 import hm.binkley.kunits.system.usd.denomination.TenDollar.TenDollars
 import hm.binkley.kunits.system.usd.denomination.TwentyDollar.TwentyDollars
 import hm.binkley.kunits.system.usd.denomination.TwoDollar.TwoDollars
+import hm.binkley.kunits.unaryMinus
 import hm.binkley.math.fixed.over
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import java.text.NumberFormat
+import java.util.Locale.US
 
 internal class USDDenominationsTest {
     @Test
@@ -67,5 +71,15 @@ internal class USDDenominationsTest {
         "${1.fiftyDollars}" shouldBe "1 $50"
         "$HundredDollar" shouldBe "USD denomination: hundred dollar bill"
         "${1.hundredDollars}" shouldBe "1 $100"
+    }
+
+    @Test
+    fun `should format`() {
+        val usdFormatter = NumberFormat.getCurrencyInstance(US)
+        val payment = 4.dollars + 33.cents
+        val refund = -payment
+
+        payment.format(usdFormatter) shouldBe "$4.33"
+        refund.format(usdFormatter) shouldBe "-$4.33"
     }
 }
