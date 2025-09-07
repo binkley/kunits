@@ -231,6 +231,17 @@ fun main() {
     println("WHICH SUMS TO ${recheckM4.format()}")
     println("AND IS THE SAME AS $alsoCoins (${usCoins == alsoCoins})")
 
+    val diffOrderUsLooseChange = listOf(
+        Pennies,
+        DollarCoins,
+        HalfDollars,
+        Quarters,
+        Dimes,
+        Nickels
+    )
+    val diffOrderCoins = m5 % diffOrderUsLooseChange
+    println("AND ORDER DOESN'T MATTER, STILL $diffOrderCoins")
+
     println()
     println("== CONVERSIONS")
     // Use multiline string because of long line in the code
