@@ -62,7 +62,7 @@
         <coverage.instructions>98</coverage.instructions>
         <coverage.lines>100</coverage.lines>
         <coverage.mutation>99</coverage.mutation>
-        <dependency-check-maven.version>12.1.3</dependency-check-maven.version>
+        <dependency-check-maven.version>12.1.5</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.23.8</detekt-maven-plugin.version>
         <flexmark.version>0.64.8</flexmark.version>
         <git-commit-id-maven-plugin.version>9.0.2</git-commit-id-maven-plugin.version>
@@ -96,7 +96,7 @@
         <project.build.outputTimestamp>${build.ts}</project.build.outputTimestamp>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
         <system-lambda.version>1.2.1</system-lambda.version>
-        <versions-maven-plugin.version>2.19.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
         <!-- @formatter:on -->
     </properties>
 
